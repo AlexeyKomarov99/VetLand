@@ -15,5 +15,27 @@
   --black: rgb(0,0,0);
   --white: rgb(255,255,255);
   --gray: rgb(214,214,214);
+  --dark-gray: rgb(40, 40, 40);
   --indigo: rgb(0, 84, 238);
+
+  /* Градиенты и фоны */
+  --radial-gradient-red-orange: radial-gradient(101.11% 487.04% at 57.61% 304.32%, var(var(--orange)), var(var(--red)));
+  --linear-gradient-red-orange: linear-gradient(90deg, var(--red) 0%, var(var(--orange)) 100%);
+  --radial-gradient--white-gray: radial-gradient(209.26% 182.84% at -16.46% -25.14%, var(--white) 7.81%, var(--gray) 100%);
+  --transparent-black: rgba(var(--black), 0.5);
+
+  /* Границы и углы */
+  --border-radius-small: 15px;
+  --border-radius-medium: 30px;
+
+  --outline-dark-gray: 1px solid var(--dark-gray);
+  --outline-white: 1px solid var(--white);
+
+  /* Контейнер */
+  --container-width: 90%;
+
+  /* Анимация */
+  --transition-small: all 0.3s ease;
+  --transition-medium: all 0.2s ease;
+
 }
