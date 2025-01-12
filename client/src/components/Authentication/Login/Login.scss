@@ -1,0 +1,19 @@
+@import '../../../App.css';
+
+.Login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .Login__group {
+        display: flex;
+        flex-direction: column;
+        width: 475px;
+        .input {
+            margin-bottom: 1rem;
+        }
+    }
+    .Login__button-send {
+        margin-top: 50px;
+    }
+}

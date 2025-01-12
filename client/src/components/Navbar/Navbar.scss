@@ -1,0 +1,43 @@
+@import '../../App.css';
+
+.Navbar {
+    display: flex;
+
+    .Navbar__Link {
+        display: flex;
+        align-items: center;
+        margin: 0 1rem;
+        transition: var(--transition);
+        
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:hover {
+            .Navbar__Link-item {
+                color: transparent;
+                background-image: var(--radial-gradient-red-orange);
+                -webkit-background-clip: text;
+            }
+
+            .icon {
+                color: var(--red);
+            }
+        }
+
+        .Navbar__Link-item {
+            color: var(--white);
+            transition: background-image 0.3s, color 0.3s;
+            margin-right: 0.5rem;
+        }
+        
+        .icon {
+            color: var(--white);
+            transition: var(--transition);
+        }
+    }
+}

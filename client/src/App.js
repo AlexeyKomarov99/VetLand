@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+//===== Ресурсы =====//
+import './App.css';
+
 //===== Компоненты =====//
 
 import AboutUs from './pages/AboutUs/AboutUs';
@@ -12,41 +15,62 @@ import RecoverPassword from './pages/RecoverPassword/RecoverPassword'; // Вос
 import TakeHomeAlgorithm from './pages/TakeHomeAlgorithm/TakeHomeAlgorithm'; // Алгоритм как забрать домой
 import TakeHomeQuestionnaire from './pages/TakeHomeQuestionnaire/TakeHomeQuestionnaire'; // Анкета забрать домой
 import TitlePage from './pages/TitlePage/TitlePage'; // Титульная страница
+import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy'; // Политика конфиденциальности
+import AnimalInfo from './pages/AnimalInfo/AnimalInfo'; // Подробная информация о животном
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
+    
+    <div className='App'>
+      <Router>
 
-        {/* Титульная страница - маршрут по умолчанию */}
-        <Route path='/' element={<TitlePage/>} />
+        {/* Навигация */}
+        <div className='container'>
+          
+          <Routes>
 
-        {/* Забрать домой - Анкета будущего хозяина */}
-        <Route path='/questionnaire' element={<TakeHomeQuestionnaire />} />
+            {/* Титульная страница - маршрут по умолчанию */}
+            <Route path='/' element={<TitlePage/>} />
 
-        {/* Наши подопечные */}
-        <Route path='/animals' element={<Animals />} />
+            {/* Забрать домой - Анкета будущего хозяина */}
+            <Route path='/questionnaire' element={<TakeHomeQuestionnaire />} />
 
-        {/* О нас */}
-        <Route path='/about-us' element={<AboutUs />} />
+            {/* Наши подопечные */}
+            <Route path='/animals' element={<Animals />} />
 
-        {/* Уже дома */}
-        <Route path='/happy-stories' element={<AlreadyHome />} />
+            {/* О нас */}
+            <Route path='/about-us' element={<AboutUs />} />
 
-        {/* Профиль */}
-        <Route path='/profile' element={<Profile />} />
+            {/* Уже дома */}
+            <Route path='/happy-stories' element={<AlreadyHome />} />
 
-        {/* Помощь животным */}
-        <Route path='/help-animals' element={<HelpAnimals />} />
-        
-        {/* Алгоритм, как забрать домой */}
-        <Route path='./how-take-home' element={<TakeHomeAlgorithm />} />
+            {/* Профиль */}
+            <Route path='/profile' element={<Profile />} />
 
-        {/* Восстановление пароля */}
-        <Route path='/recover-password' element={<RecoverPassword />} />
+            {/* Помощь животным */}
+            <Route path='/help-animals' element={<HelpAnimals />} />
+            
+            {/* Алгоритм, как забрать домой */}
+            <Route path='./how-take-home' element={<TakeHomeAlgorithm />} />
 
-      </Routes>
-    </Router>
+            {/* Восстановление пароля */}
+            <Route path='/recover-password' element={<RecoverPassword />} />
+
+            {/* Политика конфиденциальности */}
+            <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+            
+            {/* Подробная информация о животном */}
+            <Route path='/animal-info/:id' element={<AnimalInfo />} />
+
+          </Routes>
+          <Footer />
+
+        </div>
+
+      </Router>
+
+    </div>
   )
 }
 

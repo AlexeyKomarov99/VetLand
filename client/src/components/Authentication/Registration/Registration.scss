@@ -1,0 +1,76 @@
+@import '../../../App.css';
+
+.Registration {    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .Registration__group {
+        width: 475px;
+
+        .Registration__attention {
+            text-indent: 1.25rem;
+            margin-bottom: 3rem;
+        }
+    
+        .Registration__input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+
+            .input {
+                margin-bottom: 1rem;
+            }
+        }
+
+        // Группа label
+        .Registration__label-group {
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+
+            .Registration__label-checkbox {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0.5rem;
+                cursor: pointer;
+                
+                .Registration__checkbox {
+                    display: none;
+                }
+            }
+        
+            .checkbox-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 30px; 
+                height: 30px;
+                font-size: 1.25rem;
+                border-radius: 10px;
+                border: 1px solid var(--gray);
+                margin-right: 15px;
+            }
+            
+            .Registration__checkbox-descr {
+                font-size: 12px;
+            }
+
+            .Registration__checkbox:checked + .checkbox-box {
+                background: var(--radial-gradient-red-orange);
+            }
+        }
+
+        // Кнопка
+        .Registration__button-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            .Registration__button-send {
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -1,0 +1,113 @@
+@import '../../App.css';
+
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    width: 100vw;
+    padding-top: 50px;
+
+    .Header__wrapper {
+        width: 100%;
+        max-width: 1300px;
+        margin: 0 auto;
+
+        .Header__group {
+            display: flex;
+            justify-content: space-between;
+        
+            .Header__left {
+        
+            }
+        
+            .Header__center {
+        
+            }
+        
+            .Header__right {
+                width: 253px;
+                .Header__group {
+                    display: grid;
+                    grid-template-columns: 60% 40%;
+                    grid-gap: 1rem;
+        
+                    .Header__left-part {
+                        display: flex;
+                        flex-direction: column;
+        
+                        .Header__authentication {
+                            display: flex;
+                            justify-content: start;
+                            background: rgba(28,28,28, 0.5);
+                            font-size: 12px;
+                            margin-bottom: 12px;
+                            &:hover {
+                                background: rgba(28,28,28, 0.9);
+                                transform: translateY(0);
+                            }
+                        }
+                        .Header__Link {
+                            display: flex;
+                            align-items: flex-end;
+                            justify-content: space-between;
+                            border-radius: var(--border-radius-small);
+                            outline: var(--outline-white);
+                            padding: 12px 15px;
+                            .Header__Link-descr {
+                                width: 50%;
+                                color: var(--white);
+                                font-size: 12px;
+                            }
+                            .icon {
+                                color: var(--white);
+                            }
+                        }
+                    }
+        
+                    .Header__right-part {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        padding: 12px 15px;
+                        border-radius: var(--border-radius-small);
+                        background: var(--radial-gradient-red-orange);
+                        transition: background 0.3s;
+                        cursor: pointer;
+                        &:hover {
+                            filter: brightness(1.1);
+                        }
+
+                        
+                        .Header__right-part-group {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+        
+                            .icon {
+                                width: 24px;
+                                height: 24px;
+                                color: var(--white);
+                            }
+        
+                            .Header__right-part-count {
+                                position: relative;
+                                background-color: var(--white);
+                                color: var(--red);
+                                padding: 3px 2px;
+                                border-radius: 5px;
+                            }
+                        }
+        
+                        .Header__right-part-body {
+                            color: var(--white);
+                            font-size: 12px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

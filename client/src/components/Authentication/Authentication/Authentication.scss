@@ -1,0 +1,71 @@
+@import '../../../App.css';
+
+.Authentication {
+    .Authentication__group {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 652px;
+
+        .Authentication__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: top;
+            height: 50px;
+
+            .Authentication__header-group {
+                :first-child {
+                    margin-right: 2rem;
+                }
+                .Authentication__header-descr {
+                    font: {
+                        size: 18px;
+                        weight: 600;
+                    };
+                    cursor: pointer;
+                }
+                .active {
+                    background-image: var(--linear-gradient-red-orange);
+                    -webkit-background-clip: text;
+                    color: transparent;
+                }
+                .inactive {
+                    color: var(--light-gray);
+                }
+            }
+            .Authentication__header-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: var(--gray);
+                cursor: pointer;
+                .icon {
+                    width: 18px;
+                    height: 18px;
+                    color: var(--dark-gray);
+                }
+            }
+        }
+        .Authentication__body {
+        }
+        .Authentication__footer {
+            .Authentication__footer-descr {
+                font-weight: 600;
+            }
+        }
+
+    }
+}
+.Authentication__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    background-color: rgba(0,0,0, 0.3);
+}

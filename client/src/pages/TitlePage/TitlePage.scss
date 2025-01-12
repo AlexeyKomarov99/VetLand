@@ -1,0 +1,1408 @@
+@import '../../App.css';
+
+.TitlePage {
+    position: relative;
+
+    // Секция 1. Титульная картинка
+    .TitlePage__header {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        background-image: url('../../assets/1._title_page/main-title-section.jpg');
+        position: relative; /* Убедитесь, что позиционирование корректно */
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .TitlePage__main-wrapper {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+
+            .TitlePage__main-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: start;
+                height: 100vh;
+
+                // Окно с онлайном людей  
+                .TitlePage__window-online-wrapper {
+                    width: 100%;
+                    z-index: 110;
+                    
+                    .TitlePage__window-online-container {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 256px;
+                        height: 118px;
+                        padding: 12px 15px;
+                        background: var(--light-gray);
+                        border-radius: var(--border-radius-small);
+                    
+                        .TitlePage__window-online-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 7px;
+                            height: 48px;
+                            
+                            .TitlePage__count {
+                                display: inline-block;
+                                font-size: 40px;
+                                font-weight: 700;
+                                line-height: 48px;
+                    
+                                color: transparent;
+                                background-image: var(--radial-gradient-red-orange);
+                                -webkit-background-clip: text;
+                                background-clip: text;
+                            }
+                            .TitlePage__circles-group {
+                                display: flex;
+                    
+                                :nth-child(1) {
+                                    background-color: #FF43F7;
+                                }
+                    
+                                :nth-child(2) {
+                                    background-color: #4B52FB;
+                                    margin-left: -5px;
+                                }
+                    
+                                :nth-child(3) {
+                                    background-color: #EC4B4B;
+                                    margin-left: -5px;
+                                }
+                    
+                                .TitlePage__circle-item {
+                                    position: relative;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 30px;
+                                    height: 30px;
+                                    border-radius: 50%;
+                                    border: 2px solid var(--light-gray);
+                                    font-size: 12px;
+                                    font-weight: 600;
+                                    overflow: hidden;
+                                    color: var(--white);
+                                }
+                    
+                            }
+                        }
+                        .TitlePage__window-online-body {
+                            font-size: 12px;
+                            font-weight: 500;
+                            .TitlePage__descr {
+                                color: var(--white);
+                                .TitlePage__Link-take-animals {
+                                    color: var(--white);
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Иконки мы тут
+                .TitlePage__we-here-wrapper {
+                    width: 100%;
+                    z-index: 110;
+
+                    .TitlePage__we-here-container {
+                        display: flex;
+                        align-items: end;
+                        justify-content: center;
+                        margin-left: 600px;
+                        height: 240px;
+                    }
+                }
+
+                // Контент снизу
+                .TitlePage__content-wrapper {
+                    width: 100%;
+                    margin-top: 100px;
+                    z-index: 110;
+                    .TitlePage__content-container {
+                        display: flex;
+                        justify-content: space-between;
+
+                        // Контент слева
+                        .TitlePage__content-left {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            height: 296px;
+                            // Контент сверху
+                            .TitlePage__content-left-top {
+                                display: flex;
+                                flex-direction: column;
+
+                                .TitlePage__content-left-top-item {
+                                    border-radius: var(--border-radius-small);
+                                    font-size: 24px;
+                                    color: var(--white);
+                                    font-weight: 600;
+                                    line-height: 29px;
+                                    letter-spacing: -.7px;
+                                    margin: 0 10px 10px 0;
+
+                                    .TitlePage__content-left-top-adoption {
+                                        display: inline-block;
+                                        background: var(--radial-gradient-red-orange);
+                                        border-radius: var(--border-radius-small);
+                                        margin-left: 92px;
+                                        padding: 5px 8px;
+                                    }
+                                    .TitlePage__content-left-top-temp-home {
+                                        display: inline-block;
+                                        background: var(--radial-gradient-red-orange);
+                                        border-radius: var(--border-radius-small);
+                                        padding: 5px 8px;
+                                    }
+                                    .TitlePage__content-left-top-dog-cat {
+                                        display: inline-block;
+                                        color: var(--light-gray);
+                                        background-color: var(--white);
+                                        border-radius: var(--border-radius-small);
+                                        padding: 5px 8px;
+                                    }
+                                    .TitlePage__content-left-top-seacrh-people {
+                                        display: inline-block;
+                                        color: var(--white);
+                                        background-color: black;
+                                        border-radius: var(--border-radius-small);
+                                        padding: 5px 8px;
+                                    }
+                                }
+                                .item2 {
+                                    display: flex;
+                                    :nth-child(1) {
+                                        margin-right: 10px;
+                                    }
+                                }
+                                .item3 {
+                                    display: flex;
+                                    :nth-child(1) {
+                                        margin-right: 10px;
+                                    }
+                                }
+                            }
+
+                            // Контент снизу
+                            .TitlePage__content-left-bottom {
+                                // display: inline-block;
+                                width: 75px;
+                                padding: 12px 18px;
+                                font-size: 12px;
+                                line-height: 14px;
+                                letter-spacing: .3px;
+                                border-radius: var(--border-radius-small);
+                                outline: var(--outline-white);
+                                background: transparent;
+                                transition: outline 0.3s;
+                                &:hover {
+                                    outline: 2px solid var(--white);
+                                }
+                                cursor: pointer;
+                                .TitlePage__Link-about-us {
+                                    color: var(--white);
+                                }
+                            }
+                        }
+
+                        // Контент справа
+                        .TitlePage__content-right {
+                            display: flex;
+                            justify-content: end;
+                            align-items: end;
+                            .TitlePage__content-right-group {
+                                display: flex;
+
+                                // 2 темные карточки
+                                .TitlePage__content-right-group-cards {
+                                    display: flex;
+                                    :nth-child(2) {
+                                        margin-left: 14px;
+                                    }
+                                    .TitlePage__content-right-item {
+                                        position: relative;
+                                        width: 152px;
+                                        height: 170px;
+                                        background: rgba(0,0,0, 0.5);
+                                        border-radius: var(--border-radius-medium);
+                                        transition: background .3s;
+                                        padding: 20px 20px 50px;
+                                        cursor: pointer;
+                                        &:hover {
+                                            background: rgba(0,0,0, 0.9);
+                                            .icon {
+                                                border-radius: 50%;
+                                                background-color: var(--white);
+                                                color: var(--black);
+                                            }
+                                        }
+
+                                        
+
+                                       .TitlePage__content-right-left-part {
+                                        display: flex;
+                                        flex-direction: column;
+
+                                        .TitlePage__content-right-item-title {
+                                            color: var(--white);
+                                            font-size: 14px;
+                                            font-weight: 600;
+                                            line-height: 16px;
+                                            margin-bottom: 14px;
+                                        }
+                                        .TitlePage__content-right-steps {
+                                            display: inline-block;
+                                            padding: 5px 8px;
+                                            font-weight: 600;
+                                            margin-top: 14px;
+                                            color: var(--white);
+                                            border-radius: var(--border-radius-small);
+                                            font-size: 12px;
+                                            line-height: 14px;
+                                            text-transform: uppercase;
+                                            letter-spacing: -.2px;
+                                            border: 1px solid rgba(white, 0.5);
+                                        }
+                                       }
+                                       .TitlePage__content-right-right-part {
+                                        display: flex;
+                                        align-items: end;
+                                        justify-content: end;    
+                                        color: var(--white);
+                                        margin-top: 10px;
+                                        .icon {
+                                            width: 24px;
+                                            height: 24px;
+                                        }
+                                       }
+                                    }
+                                }
+
+                                // Highpaw
+                                .TitlePage__content-right-item-highpow {
+                                    position: relative;
+                                    width: 207px;
+                                    height: 170px;
+                                    background: var(--white);
+                                    border-radius: var(--border-radius-medium);
+                                    transition: background .3s;
+                                    padding: 20px 20px 50px;
+                                    margin-left: 14px;
+                                    cursor: pointer;
+                                    .TitlePage__content-right-left-part {
+                                        
+                                        display: flex;
+                                        flex-direction: column;
+                                    }
+                                    .TitlePage__content-right-steps {
+                                        display: inline-block;
+                                        padding: 5px 8px;
+                                        font-weight: 600;
+                                        color: var(--black);
+                                        border-radius: var(--border-radius-small);
+                                        font-style: 12px;
+                                        line-height: 14px;
+                                        text-transform: uppercase;
+                                        letter-spacing: -.2px;
+                                        border: 1px solid rgba(black, 0.5);
+                                        margin-top: 14px;
+                                    }
+                                   
+                                   .TitlePage__content-right-right-part {
+                                    display: flex;
+                                    align-items: end;
+                                    justify-content: end;    
+                                    color: var(--black);
+                                    margin-top: 10px;
+                                    
+                                    .icon {
+                                        width: 24px;
+                                        height: 24px;
+                                    }
+                                   }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Секция 2. Готовы ехать домой
+    .ReadyGoHome {
+        position: relative;
+        z-index: 120;
+        margin-top: -50px;
+
+        background-color: var(--white);
+        border-radius: var(--border-radius-hard);
+        overflow: hidden;
+        .ReadyGoHome__main-wrapper {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
+            .ReadyGoHome__content-wrapper {
+                padding: 90px 0 60px;
+                .ReadyGoHome__content-group {
+                    display: flex;
+                    flex-direction: column;
+
+                    // Шапка секции
+                    .ReadyGoHome__content-header {
+                        .ReadyGoHome__header-descr {
+                            width: 225px;
+                            margin-bottom: 474px;
+                            .ReadyGoHome__header-descr-text {
+                                font-weight: 600;
+                                font-size: 22px;
+                                line-height: 26px;
+                                letter-spacing: -0.02em;
+                            }
+                        }
+                        .ReadyGoHome__header-svg {
+                            position: absolute;
+                            width: 1250px;
+                            top: 72px;
+                            right: 46px;
+                        }
+                    }
+
+                    //===== Списанные стили =====//
+                    // Тело секции
+                    .ReadyGoHome__content-body {
+                        position: relative;
+                        display: flex;
+                        align-items: start;
+                        justify-content: start;
+                        width: calc(100% + 15px);
+                        margin-right: -15px;
+                        margin-bottom: -15px;
+                        z-index: 130;
+
+                        // Левая сетка
+                        .ReadyGoHome__content-body-left {
+                            display: flex;
+                            flex-wrap: wrap;
+                            flex: 1;
+
+                            // Один элемент
+                            .ReadyGoHome__content-body-left-item {
+                                width: calc((100% - (15px * 3)) / 3);
+                                height: 270px;
+                                margin-right: 15px;
+                                margin-bottom: 15px;
+
+                                .ReadyGoHome__small-preview-card {
+                                    width: 208px;
+                                    height: 270px;
+                                    border-radius: var(--border-radius-medium);
+
+                                    // Картинка животного
+                                    .ReadyGoHome__animal-img {
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                    }
+
+                                    // Информация карточки при наведении
+                                    .ReadyGoHome__forward-layer-card-info {
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: start;
+                                        justify-content: end;
+                                        position: absolute;
+                                        width: 100%;
+                                        height: 100%;
+                                        padding: 20px;
+                                        background: transparent;
+                                        transition: opacity 0.2s ease-out;
+                                        border-radius: var(--border-radius-medium);
+
+                                        // Раскрытие карточки при наведении мыши
+                                        &:hover {
+                                            opacity: 0;
+                                        }
+
+                                        // Группа с информацией о животном
+                                        .ReadyGoHome__content-wrapper {
+                                            position: relative;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: space-between;
+                                            width: 100%;
+                                            margin-bottom: 20%;
+                                            pointer-events: none;
+
+                                            // Имя животного
+                                            .ReadyGoHome__preview-card-name {
+                                                width: calc((100% - (15px * 3)) / 3);
+                                                height: 270px;
+                                                margin-right: 15px;
+                                                margin-bottom: 15px;
+                                            }
+
+                                            // Титул для возраста
+                                            .preview-card-age-text {
+                                                font-size: 12px;
+                                                line-height: 15px;
+                                                color: var(--white);
+                                            }
+
+                                            // Возраст животного
+                                            .preview-card-age-info {
+                                                font-size: 12px;
+                                                line-height: 15px;
+                                                color: var(--white);
+                                            }
+
+                                            // Иконка
+                                            .icon {
+
+                                            }
+                                        }
+
+                                        // Группа кнопок
+                                        .ReadyGoHome__preview-card-buttons-wrapper {
+                                            position: relative;
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+                                            width: 100%;
+                                            // Кнопка забрать животного
+                                            .ReadyGoHome__take-animal {
+                                                color: var(--white);
+                                                background: var(--radial-gradient-red-orange);
+                                            }
+
+                                            // Кнопка помочь животному
+                                            .ReadyGoHome__help-animal {
+                                                color: var(--white);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // Правая сетка
+                        .ReadyGoHome__content-body-right {
+
+                        }
+
+                    }
+
+                    //===== Мои стили =====//
+                    .ReadyGoHome__animal-list {
+                        display: grid;
+                        grid-template-columns: repeat(6, 1fr);
+                        grid-template-rows: repeat(3, auto);
+                        grid-gap: 0.5rem;
+                        overflow: hidden;
+
+                        .ReadyGoHome__animal-item {
+                            position: relative;
+                            width: 200px;
+                            height: 240px;
+                            border-radius: var(--border-radius-medium);
+                            overflow: hidden;
+                            
+                            .ReadyGoHome__animal-img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                            .ReadyGoHome__animal-descr {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: end;
+                                
+                                width: 100%;
+                                height: 100%;
+                                padding: 20px;
+                                opacity: 0;
+                                background-color: rgba(0, 0, 0, 0.5);
+                                transition: opacity 0.3s ease-out;
+                                &:hover {
+                                    opacity: 1;
+                                }
+
+                                .ReadyGoHome__name {
+                                    color: var(--white);
+                                    font-size: 24px;
+                                    line-height: 26px;
+                                    margin-bottom: 20px;
+                                }
+
+                                .ReadyGoHome__age {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: end;
+                                    margin-bottom: 20px;
+
+                                    .ReadyGoHome__age-group {
+                                        display: flex;
+                                        flex-direction: column;
+    
+                                        .ReadyGoHome__age-title {
+                                            color: var(--white);
+                                            font-size: 12px;
+                                            line-height: 15px;
+                                        }
+        
+                                        .ReadyGoHome__age-number {
+                                            color: var(--white);
+                                            font-size: 12px;
+                                            line-height: 15px;
+                                        }
+                                    }
+                                    .ReadyGoHome__icon-wrapper {
+                                        .icon {
+                                            width: 30px;
+                                            height: 30px;
+                                            background-color: var(--white);
+                                            border-radius: var(--border-radius-medium);
+                                        }
+                                    }
+
+                                }
+
+                                .ReadyGoHome__button-group {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+
+                                    .ReadyGoHome__take-animal {
+                                        padding: 8px 11px;
+                                        font-size: 12px;
+                                        transform: none;
+                                        transition: background 0.3s;
+                                        &:hover {
+                                            filter: brightness(1.1);
+                                        }
+                                    }
+
+                                    .ReadyGoHome__help-animal {
+                                        padding: 8px 11px;
+                                        font-size: 12px;
+                                        background: transparent;
+                                        transform: none;
+                                        outline: var(--outline-white);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Секция 3. Посмотреть всех животных
+    .WatchAnimals {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-width: 1440px;
+        overflow: hidden;
+        margin: -60px auto -60px;
+        .WatchAnimals__container {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: end;
+            width: 100%;
+            max-width: 100%;
+            .WatchAnimals__video-wrapper {
+                position: relative;
+                right: 12%;
+
+                &::after {
+                    position: absolute;
+                    content: '';
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.3);
+                }
+                .WatchAnimals__video {
+
+                }
+            }
+            .WatchAnimals__content {
+                position: absolute;
+                width: 100%;
+                max-width: 1300px;
+                margin: 320px 55px;
+                display: inline-flex;
+                flex-direction: column;
+                align-items: start;
+
+                .WatchAnimals__text {
+                    font-size: 45px;
+                    line-height: 55px;
+                    font-weight: 600;
+                    letter-spacing: -0.03em;
+                    color: var(--white);
+                }
+                .WatchAnimals__number {
+                    font-size: 300px;
+                    font-family: 700;
+                    line-height: 250px;
+                    margin: 30px 0 48px;
+                    letter-spacing: -0.02em;
+                    color: var(--white);
+                }
+                .WatchAnimals__descr {
+                    font-size: 45px;
+                    line-height: 55px;
+                    letter-spacing: -0.03em;
+                    font-weight: 600;
+                    color: var(--white);
+                }
+                .WatchAnimals__Link {
+                    width: 100%;
+                    display: flex;
+                    justify-content: end;
+                    align-items: end;
+                    margin-top: 70px;
+
+                    .WatchAnimals__link-descr {
+                        font-size: 34px;
+                        font-weight: 600;
+                        line-height: 41px;
+                        letter-spacing: -0.04em;
+                        color: var(--white);
+                        margin-right: 30px;
+                    }
+                    .icon {
+                        width: 77px;
+                        height: 77px;
+                        color: var(--white);
+                        &:hover {
+                            fill: var(--white);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    // Секция 4. На лечении
+    .AnimalTreatment {
+        position: relative;
+        background-color: var(--white);
+        border-radius: var(--border-radius-hard);
+        padding: 60px 0 50px;
+        overflow: hidden;
+
+        .AnimalTreatment__wrapper {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
+
+            .AnimalTreatment__content {
+                display: flex;
+                flex-direction: column;
+                
+                .AnimalTreatment__title {
+                    font-size: 34px;
+                    line-height: 41px;
+                    letter-spacing: -0.04em;
+                    font-weight: 600;
+                    margin-bottom: 53px;
+                }
+                .AnimalTreatment__description {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .AnimalTreatment__cards-group {
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        grid-gap: 1rem;
+
+                        // Свойства одной карточки
+                        .AnimalTreatment__animal-item {
+                            position: relative;
+                            width: 200px;
+                            height: 240px;
+                            border-radius: var(--border-radius-medium);
+                            overflow: hidden;
+                            .ReadyGoHome__animal-img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+                        .AnimalTreatment__animal-descr {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: end;
+                            
+                            width: 100%;
+                            height: 100%;
+                            padding: 20px;
+                            opacity: 0;
+                            background-color: rgba(0, 0, 0, 0.5);
+                            transition: opacity 0.3s ease-out;
+                            &:hover {
+                                opacity: 1;
+                            }
+                            .AnimalTreatment__name {
+                                color: var(--white);
+                                font-size: 24px;
+                                line-height: 26px;
+                                margin-bottom: 20px;
+                            }
+
+                            .AnimalTreatment__age {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: end;
+                                margin-bottom: 20px;
+                                .AnimalTreatment__age-group {
+                                    display: flex;
+                                    flex-direction: column;
+                                    .AnimalTreatment__age-title {
+                                        color: var(--white);
+                                        font-size: 12px;
+                                        line-height: 15px;
+                                    }
+                                    .AnimalTreatment__age-number {
+                                        color: var(--white);
+                                        font-size: 12px;
+                                        line-height: 15px;
+                                    }
+                                }
+                                .AnimalTreatment__icon-wrapper {
+                                    .icon {
+                                        width: 30px;
+                                        height: 30px;
+                                        background-color: var(--white);
+                                        border-radius: var(--border-radius-medium);
+                                    }
+                                }
+                            }
+
+                            .AnimalTreatment__button-group {
+
+                                .AnimalTreatment__take-animal {
+
+                                }
+                                .AnimalTreatment__help-animal {
+
+                                }
+                            }
+
+                        }
+
+                    }
+                    .AnimalTreatment__yet {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 333px;
+                        .AnimalTreatment__yet-text {
+                            font-size: 34px;
+                            line-height: 41px;
+                            letter-spacing: -0.04em;
+                            font-weight: 600;
+                        }
+                        .AnimalTreatment__yet-number {
+                            font-size: 135px;
+                            line-height: 128px;
+                            letter-spacing: -0.05em;
+                            font-weight: 600;
+                            color: #0054EE;
+                        }
+                        .AnimalTreatment__yet-group {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .AnimalTreatment__yet-descr {
+                                font-size: 18px;
+                                line-height: 22px;
+                                letter-spacing: -0.02em;
+                                font-weight: 600;
+                                color: var(--black);
+                            }
+                            .AnimalTreatment__Link {
+                                .icon {
+                                    width: 52px;
+                                    height: 52px;
+                                    &:hover {
+                                        background: var(--radial-gradient-red-orange);
+                                        color: var(--white);
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Секция 5. Connect - фото с котом
+    .Connect {
+        position: relative;
+        background-color: var(--white);
+        border-radius: var(--border-radius-hard);
+        overflow: hidden;
+        margin-top: 0.35rem;
+        padding: 60px 0 45px;
+
+        .Connect__wrapper {
+            width: 100%;
+            max-width: 1440px;
+            padding: 0 60px;
+
+            .Connect__container {
+                // position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 110;
+                .Connect__photo-cat {
+
+                }
+                .Connect__title {
+                    position: relative;
+                    width: 100%;
+                    height: 250px;
+                    font-size: 280px;
+                    line-height: 250px;
+                    font-weight: 700;
+                    text-align: center;
+                    letter-spacing: -0.06em;
+                    background: var(--linear-gradient-red-orange);
+                    background-clip: text;
+                    color: transparent;
+
+                }
+                .Connect__descr {
+                    position: relative;
+                    width: 338px;
+                    font-weight: 600;
+                    font-size: 45px;
+                    line-height: 55px;
+                    letter-spacing: -0.03em;
+                    margin-top: 50px;
+                    margin-bottom: 90px;
+                    z-index: 110;
+                }
+                .Connect__cards-group {
+                    
+                }
+            }
+        }
+    }
+
+    // Секция 6. Наша команда
+    .OurTeam {
+        background-color: var(--white);
+        border-radius: var(--border-radius-hard);
+        margin-top: 0.35rem;
+        .OurTeam__wrapper {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
+            .OurTeam__container {
+                padding: 90px 0 60px;
+
+                // Цель фонда
+                .OurTeam__purpose-fund {
+                    display: flex;
+                    justify-content: start;
+                    align-items: start;
+                    .OurTeam__purpose-title {
+                        width: 50%;
+                        font-weight: 600;
+                        font-size: 34px;
+                        line-height: 41px;
+                        letter-spacing: -0.04em;
+                        padding-right: 8px;
+                    }
+                    .OurTeam__purpose-fund-descr {
+                        width: 50%;
+                        font-weight: 400;
+                        font-size: 34px;
+                        line-height: 41px;
+                        letter-spacing: -0.04em;
+                        padding-top: 8px;
+                        padding-left: 8px;
+                    }
+                }
+
+                // Титул
+                .OurTeam__title {
+                    color: transparent;
+                    background: var(--radial-gradient-red-orange);
+                    background-clip: text;
+
+                    margin-bottom: 48px;
+                    font-size: 78px;
+                    font-weight: 600;
+                    line-height: 74px;
+                    letter-spacing: -0.05em;
+                    .OurTeam__title-animal-color {
+                        color: var(--light-gray);
+                        margin-bottom: 48px;
+                        font-size: 78px;
+                        font-weight: 600;
+                        line-height: 74px;
+                        letter-spacing: -0.05em;
+                    }
+                }
+
+                // Группа карточек
+                .OurTeam__cards-group {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    grid-gap: 1rem;
+                    .OurTeam__card-wrapper {
+                        border-radius: var(--border-radius-medium);
+                        overflow: hidden;
+                        .OurTeam__card-img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    .OurTeam__card-our-team-descr {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 100%;
+                        height: 100%;
+                        padding: 30px 34px;
+                        transition: var(--transition);
+                        background: var(--radial-gradient--white-gray);
+                        border-radius: var(--border-radius-medium);
+
+                        &:hover {
+                            transform: translateY(-10px);
+                            .OurTeam__card-icon {
+                                .icon {
+                                    background: var(--radial-gradient-red-orange);
+                                    color: var(--white);
+                                    border-radius: 50%;
+                                }
+                            }
+                        }
+                        .OurTeam__header-group {
+                            .OurTeam__card-title {
+                                margin-bottom: 30px;
+                                font-size: 34px;
+                                font-weight: 600;
+                                line-height: 41px;
+                                letter-spacing: -0.04em;
+                            }
+                            .OurTeam__card-descr {
+                                font-size: 14px;
+                                font-weight: 500;
+                                line-height: 18px;
+                                letter-spacing: -0.02em;
+                            }
+                        }
+                        .OurTeam__card-icon {
+                            display: flex;
+                            justify-content: end;
+                            align-items: end;
+                            .icon {
+                                color: red;
+                                width: 30px;
+                                height: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Секция 7. Как забрать домой?
+    .TakeHome {
+        background-color: var(--white);
+        border-radius: var(--border-radius-hard);
+        margin-top: 0.35rem;
+        .TakeHome__wrapper {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
+            .TakeHome__container {
+                padding: 90px 0 60px;
+
+                // Оглавление раздела
+                .TakeHome__header {
+                    display: flex;
+                    justify-content: start;
+                    align-items: start;
+                    margin-bottom: 114px;
+                    .TakeHome__title {
+                        width: 50%;
+                        font-size: 100px;
+                        line-height: 95px;
+                        letter-spacing: -0.05em;
+                        font-weight: 600;
+                        .TakeHome__title-background {
+                            color: transparent;
+                            background: var(--radial-gradient-red-orange);
+                            background-clip: text;
+                            font-size: 100px;
+                            line-height: 95px;
+                            letter-spacing: -0.05em;
+                            font-weight: 600;
+                        }
+                    }
+                    .TakeHome__descr {
+                        width: 50%;
+                        padding-top: 9px;
+                        padding-left: 12px;
+                        font-weight: 400;
+                        font-size: 34px;
+                        line-height: 41px;
+                        letter-spacing: -0.04em;
+                    }
+                }
+
+                // Группа карточек
+                .TakeHome__cards-group {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    grid-gap: 1rem;
+                    margin-bottom: 100px;
+
+                    .TakeHome__card-item {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: start;
+                        height: 370px;
+                        padding: 23px 37.5px 36px;
+                        background: var(--radial-gradient-red-orange);
+                        border-radius: var(--border-radius-medium);
+                        transition: var(--transition);
+                        &:hover {
+                            transform: translateY(-10px);
+                            .TakeHome__card-body {
+                                .TakeHome__card-body-arrow {
+                                    .icon {
+                                        background-color: var(--white);
+                                        color: red;
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Шапка карточки
+                        .TakeHome__card-header {
+                            display: flex;
+                            flex-direction: column;
+                            color: var(--white);
+                            .TakeHome__card-header-number {
+                                font-size: 100px;
+                                font-weight: 600;
+                                line-height: 95px;
+                                letter-spacing: -0.05em;
+                            }
+                            .TakeHome__card-header-descr {
+                                padding-top: 12px;
+                                font-size: 20px;
+                                font-weight: 600;
+                                line-height: 26px;
+                                letter-spacing: -0.03em;
+                                text-transform: uppercase;
+                            }
+                        }
+
+                        // Тело карточки
+                        .TakeHome__card-body {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: end;
+                            color: var(--white);
+                            .TakeHome__card-body-descr {
+                                font-size: 18px;
+                                font-weight: 500;
+                                line-height: 22px;
+                                letter-spacing: -0.02em;
+                            }
+                            .TakeHome__card-body-arrow {
+                                .icon {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+                // Ссылка на всех животных
+                .TakeHome__take-home-animal {
+                    display: flex;
+                    justify-content: center;
+                    align-items: end;
+                    &:hover {
+                        .icon {
+                            fill: var(--black);
+                        }
+                    }
+                    .TakeHome__take-home-animal-descr {
+                        margin-right: 27px;
+                        font-size: 22px;
+                        font-weight: 600;
+                        line-height: 36px;
+                        letter-spacing: -0.03em;
+                    }
+                    .icon {
+                        width: 77px;
+                        height: 77px;
+                    }
+                }
+            }
+        }
+    }
+
+    // Секция 8. Чем я могу помочь?
+    .HowCanHelp {
+        margin-top: 0.35rem;
+        .HowCanHelp__wrapper-section {
+            position: relative;
+            width: 100%;
+            max-width: 1440px;
+            height: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--border-radius-hard);
+            margin-bottom: 15px;
+
+            // Блок с видео
+            .HowCanHelp__video-wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: var(--border-radius-hard);
+                overflow: hidden;
+                &::after {
+                    position: absolute;
+                    content: '';
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0,0,0,0.3);
+                }
+                .HowCanHelp__video {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                    width: 1920px;
+                    height: 1080px;
+                    object-fit: cover;
+                    content: normal;
+                }
+            }
+
+            // Блок с контентом
+            .HowCanHelp__body-content {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 100%;
+                .HowCanHelp__wrapper {
+                    width: 100%;
+                    max-width: 1440px;
+                    margin: 0 auto;
+                    padding: 0 60px;
+                    .HowCanHelp__content {
+                        position: relative;
+                        
+                        // Заголовок
+                        .HowCanHelp__header {
+                            margin: 60px auto 20px;
+                            text-align: center;
+                            .HowCanHelp__header-text {
+                                display: inline-block;
+                                font-size: 161px;
+                                font-weight: 700;
+                                line-height: 146px;
+                                letter-spacing: -0.06em;
+                                padding-right: 0.06em;
+                                color: var(--white);
+                            }
+                        }
+
+                        // Туловище контента
+                        .HowCanHelp__body {
+                            .HowCanHelp__body-descr {
+                                font-size: 24px;
+                                font-weight: 600;
+                                line-height: 26px;
+                                letter-spacing: -0.03em;
+                                margin-bottom: 59px;
+                                color: var(--white);
+                            }
+                        }
+
+                        // Ноги контента
+                        .HowCanHelp__footer {
+                            // display: flex;
+                            // flex-wrap: wrap;
+                            // justify-content: start;
+                            // align-items: start;
+                            // margin-bottom: 45px;
+                            display: grid;
+                            grid-template-columns: repeat(5, 1fr);
+                            grid-gap: 0.5rem;
+                            margin-left: -20px;
+
+                            .HowCanHelp__card-item {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-between;
+                                background-color: transparent;
+                                transition: var(--transition);
+                                border-radius: var(--border-radius-medium);
+                                border: 2px solid var(--white);
+                                width: 254px;
+                                height: 270px;
+                                padding: 25px 24px;
+                                margin-bottom: 15px;
+                                margin-right: 12px;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: var(--white);
+                                    .HowCanHelp__card-header {
+                                        color: var(--black);
+                                    }
+                                    .HowCanHelp__icons-group {
+                                        .icon {
+                                            color: var(--light-gray);
+                                            outline: 1px solid var(--light-gray);
+                                        }
+                                    }
+                                    
+                                    .HowCanHelp__card-footer {
+                                        .icon {
+                                            color: var(--white);
+                                            background: var(--radial-gradient-red-orange);
+                                            border-radius: 50%;
+                                        }
+                                        .icon-ozon {
+                                            color: #0054EE;
+                                        }
+                                    }
+                                }
+                                .HowCanHelp__card-header {
+                                    color: var(--white);
+                                    max-width: 182px;
+                                    font-size: 22px;
+                                    font-weight: 700;
+                                    line-height: 26px;
+                                    letter-spacing: -0.03em;
+                                    text-transform: uppercase;
+                                }
+                                .HowCanHelp__card-footer {
+                                    display: flex;
+                                    justify-content: end;
+                                    align-items: end;
+                                    .icon {
+                                        width: 30px;
+                                        height: 30px;
+                                        color: var(--white);
+                                    }
+                                }
+                                .HowCanHelp__icons-group {
+                                    display: flex;
+                                    .icon {
+                                        display: inline-flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        width: 30px;
+                                        height: 30px;
+                                        border-radius: 11px;
+                                        color: var(--white);
+                                        padding: 0.5rem;
+                                        outline: 1px solid rgba(255,255,255,0.3);
+                                        &:not(:last-child) {
+                                            margin-right: 7.5px;
+                                        }
+                                        &:hover {
+                                            color: var(--white);
+                                            background: var(--radial-gradient-red-orange);
+                                            outline: 1px solid var(--white);
+                                        }
+                                    }
+                                }
+                                .icon-ozon {
+                                    color: var(--white);
+                                }
+                                .card-footer-ozon {
+                                    display: flex;
+                                    justify-content: start;
+                                    align-items: start;
+                                }
+                            }
+
+                            .card-transform {
+                                transition: var(--transition);
+                                &:hover {
+                                    transform: translateY(-10px);
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+
+
+
+
+        
