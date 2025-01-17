@@ -35,13 +35,15 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: start;
-                height: 100vh;
+                height: 85vh;
 
                 // Окно с онлайном людей  
                 .TitlePage__window-online-wrapper {
                     width: 100%;
                     z-index: 110;
-                    
+                    margin-top: 180px;
+                    margin-left: 20px;
+
                     .TitlePage__window-online-container {
                         display: flex;
                         flex-direction: column;
@@ -122,13 +124,17 @@
                 .TitlePage__we-here-wrapper {
                     width: 100%;
                     z-index: 110;
-
+                    // overflow: hidden;
+                    
                     .TitlePage__we-here-container {
                         display: flex;
-                        align-items: end;
-                        justify-content: center;
-                        margin-left: 600px;
-                        height: 240px;
+                        justify-content: end;
+                        align-items: start;
+                        transform: translate(55px, 50px);
+
+                        .content-2 {
+                            transform: translateY(50px);
+                        }
                     }
                 }
 
@@ -356,7 +362,7 @@
         margin-top: -50px;
 
         background-color: var(--white);
-        border-radius: var(--border-radius-hard);
+        border-radius: var(--border-radius-high);
         overflow: hidden;
         .ReadyGoHome__main-wrapper {
             width: 100%;

@@ -17,6 +17,7 @@ import TakeHomeQuestionnaire from './pages/TakeHomeQuestionnaire/TakeHomeQuestio
 import TitlePage from './pages/TitlePage/TitlePage'; // Титульная страница
 import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy'; // Политика конфиденциальности
 import AnimalInfo from './pages/AnimalInfo/AnimalInfo'; // Подробная информация о животном
+import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         {/* Навигация */}
         <div className='container'>
           
+          <Header />
           <Routes>
 
             {/* Титульная страница - маршрут по умолчанию */}

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import './TitlePage.scss';
 
 //===== Компоненты =====//
-import Header from '../../components/Header/Header';
 import { BsArrowRightCircle as ArrowRightCircleIcon } from "react-icons/bs";
 import { RiArrowRightDownLine as ArrowRightButtonIcon } from "react-icons/ri";
 
@@ -32,8 +31,6 @@ const TitlePage = () => {
   return (
 
     <div className="TitlePage">
-      
-      <Header />
 
       {/* Секция 1. Титульная картинка */}
       <header className="TitlePage__header">
@@ -54,7 +51,7 @@ const TitlePage = () => {
                 </div>
                 <span className="TitlePage__window-online-body">
                   <span className="TitlePage__descr">
-                    Человек прямо сейчас <Link to='/animals' className='TitlePage__Link-take-animals'>выбирает</Link> друга
+                    Человек прямо <br /> <Link to='/animals' className='TitlePage__Link-take-animals'>выбирает</Link> сейчас друга
                   </span>
                 </span>
               </div>
@@ -69,7 +66,7 @@ const TitlePage = () => {
                   <path d="M254.072 73.2446H201.859V65.8461H241.968L201.859 26.8588L207.719 21.0322L246.613 59.9642V21.0322H254.072V73.2446Z" fill="white" stroke="white" strokeLinejoin="round"></path>
                 </svg>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="583" height="245" viewBox="0 0 583 245" fill="none">
+                <svg className='content-2' xmlns="http://www.w3.org/2000/svg" width="583" height="245" viewBox="0 0 583 245" fill="none">
                   <g clipPath="url(#clip0_4206_26910)">
                     <path d="M115.09 108.869C119.983 111.967 125.669 113.582 131.46 113.519C135.189 113.628 138.896 112.903 142.31 111.399C145.083 110.156 147.563 108.343 149.59 106.079C151.356 104.111 152.834 101.902 153.98 99.5195H154.91V112.229H176.61V6.43945H154.61V46.2095H153.94C152.836 43.8555 151.412 41.6649 149.71 39.6995C147.723 37.3474 145.259 35.4452 142.48 34.1195C139.007 32.4994 135.2 31.7216 131.37 31.8495C125.69 31.8111 120.117 33.3892 115.3 36.3995C110.447 39.3861 106.557 43.9128 103.63 49.9795C100.703 56.0461 99.24 63.6061 99.24 72.6595C99.24 81.5061 100.653 88.9795 103.48 95.0795C105.956 100.689 109.984 105.474 115.09 108.869V108.869ZM123.66 60.4695C124.736 57.2761 126.687 54.4489 129.29 52.3095C131.899 50.278 135.134 49.2175 138.44 49.3095C141.673 49.2214 144.843 50.2215 147.44 52.1495C150.065 54.2395 152.04 57.0358 153.13 60.2095C154.53 64.1562 155.207 68.3226 155.13 72.5095C155.219 76.7102 154.541 80.892 153.13 84.8495C152.03 88.0628 150.06 90.9082 147.44 93.0695C144.862 95.0404 141.683 96.0612 138.44 95.9595C135.14 96.0657 131.906 95.023 129.29 93.0095C126.706 90.811 124.762 87.9579 123.66 84.7495C122.349 80.8355 121.717 76.7264 121.79 72.5995C121.711 68.4754 122.357 64.3695 123.7 60.4695H123.66Z" stroke="white" strokeWidth="0.78" strokeMiterlimit="10"></path>
                     <path d="M77.57 136.43L51.9501 216.81H50.96L25.39 136.43H0.550049L37.07 242.23H65.89L102.36 136.43H77.57Z" stroke="white" strokeWidth="0.78" strokeMiterlimit="10"></path>
@@ -1144,19 +1141,3 @@ const TitlePage = () => {
 }
 
 export default TitlePage;
-
-
-    // Секция 2. Готовы ехать домой
-
-    // Секция 3. Видео с собакой
-
-    // Секция 4. На лечении
-
-    // Секция 5. Connect
-
-    // Секция 6. Наша команда
-
-    // Секция 7. Как забрать домой
-
-    // Секция 8. Чем я могу помочь?
-
