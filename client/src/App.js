@@ -6,6 +6,7 @@ import './App.css';
 
 //===== Компоненты =====//
 
+import Header from './components/Header/Header';
 import AboutUs from './pages/AboutUs/AboutUs';
 import AlreadyHome from './pages/AlreadyHome/AlreadyHome'; // Уже дома
 import Animals from './pages/Animals/Animals'; // Животные
