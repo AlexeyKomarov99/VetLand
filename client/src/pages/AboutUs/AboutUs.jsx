@@ -3,13 +3,32 @@ import {Link} from 'react-router-dom';
 
 //===== Ресурсы =====//
 import { MdSubdirectoryArrowRight as ArrowRightBottomIcon } from "react-icons/md";
+import { FaArrowRight as ArrowRightIcon } from "react-icons/fa6";
+import { FaArrowDown as ArrowDownIcon } from "react-icons/fa";
 import './AboutUs.scss';
 
-import PhotoDogs from '../../assets/3._about_us/animal-back.png';
 import PhotoVeterinarianFemale from '../../assets/3._about_us/VeterinarianFemale.jpg';
 import PhotoManagingPartnerMale from '../../assets/3._about_us/ManagingPartnerMale.jpg';
 import PhotoManagingPartnerFemale from '../../assets/3._about_us/ManagingPartnerFemale.jpg';
 import PhotoHeadShelterFemale from '../../assets/3._about_us/HeadShelterFemale.jpg';
+
+const listFileNames = [
+  { id: 1, name: "Шаблон договора о передаче питомца" },
+  { id: 2, name: "Реквизиты Фонда" },
+  { id: 3, name: "Отчет о целевом использовании д/с за 2020 г." },
+  { id: 4, name: "Отчет о целевом использовании д/с за 2021 г." },
+  { id: 5, name: "Свидетельство ОГРН" },
+  { id: 6, name: "Свидетельство ИНН" },
+  { id: 7, name: "Устав" },
+  { id: 8, name: "Благотворительные программы" },
+  { id: 9, name: "Аудиторское заключение за 2021 г." },
+  { id: 10, name: "Отчет о проделанной работе за 2022 г." },
+  { id: 11, name: "Отчет о целевом использовании средств за 2022 г. БФ Ветгород" },
+  { id: 12, name: "Задачи и проекты на 2023 г. БФ Ветгород" },
+  { id: 13, name: "Отчет БФ о каналах поступления за 2022 г." },
+  { id: 14, name: "Аудиторское заключение БФ за 2022 г." },
+  { id: 15, name: "Аудиторское заключение БФ за 2023 г." }
+]
 
 const AboutUs = () => {
   return (
@@ -116,7 +135,7 @@ const AboutUs = () => {
       </section>
 
       {/* Секция 3. Команда Vetland Adoption */}
-      <div className="Team">
+      <section className="Team">
         <div className="Team__wrapper">
           <div className="Team__container">
 
@@ -173,11 +192,81 @@ const AboutUs = () => {
 
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Секция 4. Чем я могу помочь? */}
+      <section className="HowHelp">
+        <div className="HowHelp__wrapper">
+          <div className="HowHelp__container">
+            <div className="HowHelp__content">
+              <h2 className="HowHelp__header">Чем я могу помочь?</h2>
+              <div className="HowHelp__body">
+                <div className="HowHelp__body-title">
+                  Любая помощь <br /> очень важна для нас:
+                </div>
+
+                <div className="HowHelp__body-cards">
+                  <Link 
+                    className="HowHelp__card-item"
+                    to='/animals'
+                  >
+                    <div className="HowHelp__card-header">Забрать домой</div>
+                    <div className="HowHelp__card-footer">
+                      <ArrowRightIcon className='icon' />
+                    </div>
+                  </Link>
+
+                  <Link 
+                    className="HowHelp__card-item"
+                    to='/help-animals'
+                  >
+                    <div className="HowHelp__card-header">Помочь фонду</div>
+                    <div className="HowHelp__card-footer">
+                      <ArrowRightIcon className='icon' />
+                    </div>
+                  </Link>
+
+                  <Link 
+                    className="HowHelp__card-item"
+                    to='/help-animals'
+                  >
+                    <div className="HowHelp__card-header">Помочь животному</div>
+                    <div className="HowHelp__card-footer">
+                      <ArrowRightIcon className='icon' />
+                    </div>
+                  </Link>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Секция 5. Документы */}
+      <section className="Documents">
+        <div className="Documents__wrapper">
+          <div className="Documents__container">
+            <div className="Documents__content">
+              <h2 className="Documents__header">Документы</h2>
+              <div className="Documents__body-cards">
+
+                {
+                  listFileNames.map((file) => (
+                    <div key={file.id} className="Documents__card-item">
+                      <div className="Documents__card-header">{file.name}</div>
+                      <div className="Documents__card-footer">
+                        <ArrowDownIcon className='icon' />
+                      </div>
+                    </div>
+                  ))
+                }
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
   )
