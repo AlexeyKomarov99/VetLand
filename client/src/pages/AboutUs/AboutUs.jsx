@@ -208,7 +208,7 @@ const AboutUs = () => {
                 <div className="HowHelp__body-cards">
                   <Link 
                     className="HowHelp__card-item"
-                    to='/animals'
+                    to='/questionnaire'
                   >
                     <div className="HowHelp__card-header">Забрать домой</div>
                     <div className="HowHelp__card-footer">

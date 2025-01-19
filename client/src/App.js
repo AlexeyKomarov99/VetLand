@@ -37,6 +37,8 @@ const App = () => {
 
             {/* Забрать домой - Анкета будущего хозяина */}
             <Route path='/questionnaire' element={<TakeHomeQuestionnaire />} />
+            
+            {/* Route path='/questionnaire/:id' */}
 
             {/* Наши подопечные */}
             <Route path='/animals' element={<Animals />} />
@@ -51,7 +53,7 @@ const App = () => {
             <Route path='/profile' element={<Profile />} />
 
             {/* Помощь животным */}
-            <Route path='/help-animals' element={<HelpAnimals />} />
+            <Route path='/help-us' element={<HelpAnimals />} />
             
             {/* Алгоритм, как забрать домой */}
             <Route path='./how-take-home' element={<TakeHomeAlgorithm />} />

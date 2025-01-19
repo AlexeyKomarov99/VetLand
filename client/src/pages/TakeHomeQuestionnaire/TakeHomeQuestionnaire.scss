@@ -1,0 +1,275 @@
+@import '../../App.css';
+
+.TakeHomeQuestionnaire {
+    
+    .AnimalImage {
+        position: relative;
+        z-index: 10;
+        background-image: url('../../assets//2._take_home/questionnaire-background.jpg');
+        background-size: cover;
+        background-position: 0 -90px;
+        height: 100vh;
+        border-top-left-radius: var(--border-radius-high);
+        border-top-right-radius: var(--border-radius-high);
+    }
+
+    // Секция 1. Вступление
+    .Introduction {
+        position: relative;
+        z-index: 15;
+        border-top-left-radius: var(--border-radius-high);
+        border-top-right-radius: var(--border-radius-high);
+        background-color: var(--white);
+        margin-top: -300px;
+        .Introduction__wrapper {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
+            .Introduction__container {
+                padding: 60px 0 45px;
+                .Introduction__content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: start;
+                    padding-bottom: 45px;
+                    border-bottom: 2px solid var(--dark-gray);
+                    .Introduction__content-title {
+                        width: 60%;
+                        font-size: 34px;
+                        font-weight: 600;
+                        line-height: 41px;
+                        margin-bottom: 50px;
+                        color: var(--light-gray);
+                    }
+                    .Introduction__content-descr {
+                        width: 40%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: start;
+                        align-items: start;
+                        .Introduction__content-item {
+                            font-weight: 600;
+                            font-size: 18px;
+                            line-height: 120%;
+                            letter-spacing: -0.02em;
+                            color: var(--light-gray);
+                            &:nth-child(n):not(:last-child) {
+                                margin-bottom: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Секция 2. Заполнение анкеты
+    .Questionnaire {
+        border-bottom-left-radius: var(--border-radius-high);
+        border-bottom-right-radius: var(--border-radius-high);
+        background-color: var(--white);
+
+        .Questionnaire__wrapper {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
+            .Questionnaire__container {
+                padding: 0 0 60px;
+                .Questionnaire__content {
+
+
+                    // Секции заполнения анкеты
+                    .Questionnaire__section-questionnaire {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: start;
+                        margin-bottom: 100px;
+
+                        // Группа кнопок
+                        .Questionnaire__btn-group {
+                            display: flex;
+                            margin-top: 1px;
+                            .Questionnaire__btn-item {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border-radius: var(--border-radius-small);
+                                outline: var(--outline-light-gray);
+                                background-color: transparent;
+                                padding: 5px 8px;
+                                
+                                cursor: pointer;
+                                &:first-child {
+                                    margin-right: 10px;
+                                }
+                                
+                                .Questionnaire__btn-descr {
+                                    font-size: 24px;
+                                    line-height: 25px;
+                                    font-weight: 600;
+                                    letter-spacing: -0.03em;
+                                    color: var(--gray);
+                                }
+                                
+                                .checkcircle-icon {
+                                    display: inline-flex;
+                                    width: 20px;
+                                    height: 20px;
+                                    margin-left: 8px;
+                                }
+                            }
+                            .pending {
+                                background: var(--radial-gradient-red-orange);
+                                color: var(--white);
+                            }
+                            .success {
+                                background: var(--green);
+                                color: var(--white);
+                            }
+                        }
+
+                        // Описание по времени заполнения анкеты
+                        .Questionnaire__time-passage-group {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            :first-child {
+                                margin-right: 8px;
+                            }
+                            .icon {
+                                width: 20px;
+                                height: 20px;
+                                color: var(--light-gray);
+                            }
+                            .Questionnaire__time-passage-text {
+                                font-weight: 600;
+                                font-size: 14px;
+                                line-height: 17px;
+                                letter-spacing: -0.02em;
+                                color: var(--light-gray);
+                            }
+                        }
+                    }
+
+                    // Первичные данные о пользователе
+                    .Questionnaire__contact-info {
+                        display: flex;
+                        flex-direction: column;
+
+                        .Questionnaire__contact-info-group {
+                            display: flex;
+                            flex-direction: row;
+                            margin-bottom: 50px;
+                            .Questionnaire__contact-info-item {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-between;
+                                &:nth-child(n):not(:last-child) {
+                                    margin-right: 16px;
+                                }
+                                .Questionnaire__contact-info-input {
+                                    text-align: center;
+                                    font-size: 18px;
+                                    line-height: 22px;
+                                    font-weight: 600;
+                                    letter-spacing: -0.02em;
+                                    width: 206px;
+                                    height: 120px;
+                                    padding: 49px 20px;
+                                    border-radius: var(--border-radius-medium);
+                                    outline: var(--outline-light-gray);
+                                    box-shadow: inset 0 0 0 1px rgba(40,40,40,0.3);
+                                    color: var(--light-gray);
+                                    transition: var(--transition);
+                                    cursor: pointer;
+                                    &:focus {
+                                        outline: 2px solid var(--dark-gray);
+                                        border-radius: var(--border-radius-medium);
+                                    }
+                                }
+                                .error {
+                                    outline: 1px solid var(--red);
+                                    &:focus {
+                                        outline: 2px solid var(--red);
+                                    }
+                                }
+                                .Questionnaire__contact-info-error {
+                                    width: 206px;
+                                    margin-top: 10px;
+                                    text-align: center;
+                                    font-weight: 600;
+                                    font-size: 14px;
+                                    line-height: 17px;
+                                    letter-spacing: -0.02em;
+                                    color: var(--red);
+                                }
+                            }
+                        }
+                    }
+
+                    // Откуда вы? Регион проживания
+                    .Questionnaire__region {
+                        display: flex;
+                        flex-direction: column;
+
+                        .Questionnaire__region-title {
+                            margin-bottom: 30px;
+                            font-weight: 600;
+                            font-size: 20px;
+                            line-height: 24px;
+                            letter-spacing: -0.04em;
+                            color: var(--light-gray);
+                        }
+                        .Questionnaire__region-group {
+                            display: flex;
+                            flex-direction: row;
+                            .Questionnaire__region-item {
+                                border-radius: var(--border-radius-medium);
+                                outline: var(--outline-light-gray);
+                                box-shadow: inset 0 0 0 1px rgba(40,40,40,0.3);
+                                font-size: 18px;
+                                line-height: 20px;
+                                font-weight: 600;
+                                letter-spacing: -0.02em;
+                                padding: 27px 25px;
+                                width: 206px;
+                                height: 120px;
+                                text-align: center;
+                                transition: var(--transition);
+                                cursor: pointer;
+                                &:nth-child(n):not(:last-child) {
+                                    margin-right: 16px;
+                                }
+                                &:hover {
+                                    outline: 2px solid var(--dark-gray);
+                                }
+                                
+                            }
+                            .selected {
+                                outline: 2px solid var(--dark-gray);
+                            }
+                            .Questionnaire__btn-filling-questionnaire {
+                                width: 350px;
+                                color: var(--white);
+                                background: var(--radial-gradient-red-orange);
+                                transition: var(--transition);
+                                &:hover {
+                                    outline: none;
+                                    background: radial-gradient(110% 500% at 60% 310%, var(--red), var(--orange));
+
+                                }
+                            }
+                        }
+                    }
+
+                    // Секция 2.
+                    
+
+                }
+            }
+        }
+    }
+
+}

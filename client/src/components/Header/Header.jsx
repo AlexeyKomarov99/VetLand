@@ -63,7 +63,7 @@ const Header = () => {
                 >
                   Войти
                 </button>
-                <Link to='/help-animals' className='Header__Link'>
+                <Link to='/help-us' className='Header__Link'>
                   <span className="Header__Link-descr">Финансово помочь питомцам</span>
                   <ArrowRightIcon className='icon'/>
                 </Link>

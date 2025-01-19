@@ -18,6 +18,7 @@
   --dark-gray: rgb(40, 40, 40);
   --light-gray: rgb(28,28,28);
   --indigo: rgb(0, 84, 238);
+  --green: rgb(50, 167, 40);
 
   /* Р“СЂР°РґРёРµРЅС‚С‹ Рё С„РѕРЅС‹ */
   --radial-gradient-red-orange: radial-gradient(101.11% 487.04% at 57.61% 304.32%, var(--orange), var(--red));
