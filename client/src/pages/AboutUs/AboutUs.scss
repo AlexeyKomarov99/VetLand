@@ -11,13 +11,14 @@
 }
 
 .AboutUs {
-
+    background-color: var(--white);
+    border-radius: var(--border-radius-high);
+    overflow: hidden;
     // Секция 1. О Vetland Adoption
     .Introduction {
         position: relative;
         z-index: 10;
         background-color: var(--white);
-        border-radius: var(--border-radius-high);
         padding-top: 112px;
         .Introduction__wrapper {
             width: 100%;
@@ -68,7 +69,7 @@
                             }
                         }
                         .Introduction__current-page {
-                            color: rgba(40, 40, 40, 0.5);
+                            color: var(--dark-gray);
                             font-weight: 500;
                             font-size: 12px;
                             line-height: 14px;
@@ -421,8 +422,6 @@
     // Секция 5. Документы
     .Documents {
         background-color: var(--white);
-        border-bottom-left-radius: var(--border-radius-high);
-        border-bottom-right-radius: var(--border-radius-high);
         .Documents__wrapper {
             width: 100%;
             max-width: 1440px;
