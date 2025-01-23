@@ -18,19 +18,33 @@ const HelpAnimals = () => {
   const predefinedSums = ['1000', '3000', '12000'];
 
   const [activeSection, setActiveSection] = useState('sum');
-  const [sumSectionStatus, setSumSectionStatus] = useState(false);
+  const [sumSectionStatus, setSumSectionStatus] = useState(true);
   const [periodicitySection, setPeriodicitySection] = useState(false);
   const [userDataSection, setUserDataSection] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState(false);
+  const [userForm, setUserForm] = useState({
+    name: '',
+    surname: '',
+    phone: '',
+    email: '',
+    displayDonationRanking: false,
+    sum: '1000',
+    period: 'Ежемесячное',
+  })
+  const [error, setError] = useState('');
 
   const toggleActiveSection = (sectionName) => {
     setActiveSection((prevState) => {
       if (sectionName === 'sum' && prevState !== 'sum') {
         setActiveSection('sum');
+        setUserDataSection(false);
       } else if (sectionName === 'period' && prevState !== 'period') {
         setActiveSection('period');
+        setPeriodicitySection(true);
+        setUserDataSection(false);
       } else if (sectionName === 'user-data' && prevState !== 'user-data') {
         setActiveSection('user-data');
+        setUserDataSection(true);
       } else if (sectionName === 'payment-method' && prevState !== 'payment-method') {
         setActiveSection('payment-method');
       } else {
@@ -38,40 +52,75 @@ const HelpAnimals = () => {
       }
     })
   }
-
-  const [userForm, setUserForm] = useState({
-    name: '',
-    surname: '',
-    phone: '',
-    email: '',
-    sum: '1000',
-    period: 'ежемесячное',
-  })
   
+  // Функция для форматирования телефона
+  const formatPhoneNumber = (value) => {
+    // Очищаем строку от всего, кроме цифр
+    const cleaned = value.replace(/\D/g, "");
+
+    // Форматируем строку в виде +7 (XXX) XXX-XX-XX
+    const match = cleaned.match(/^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/);
+    if (match) {
+      return `+${match[1]} (${match[2]}) ${match[3]}-${match[4]}-${match[5]}`;
+    }
+
+    // При неполном вводе возвращаем текущую строку
+    return cleaned.length > 1
+      ? `+7 (${cleaned.slice(1, 4) || ""}) ${cleaned.slice(4, 7) || ""}${
+          cleaned.length > 7 ? "-" : ""
+        }${cleaned.slice(7, 9) || ""}${
+          cleaned.length > 9 ? "-" : ""
+        }${cleaned.slice(9, 11) || ""}`
+      : "+7";
+  };
+  
+  // Функция валидации заполнения форм
+  const validateInputFilled = () => {
+    const newError = {};
+
+    if(!userForm.name.trim()) {
+      newError.name = 'Укажите имя';
+    }
+
+    if(!userForm.surname.trim()) {
+      newError.surname = 'Укажите фамилию';
+    }
+
+    if(!userForm.phone.trim()) {
+      newError.phone = 'Укажите номер телефона';
+    }
+
+    if(!userForm.email.trim()) {
+      newError.email = 'Укажите почту';
+    }
+
+    setError(newError);
+
+  }
+
+  // Обработчик заполнения полей форм
   const handleChangeUserForm = (event) => {
     const { name, value, type } = event.target;
+    let newValue = value;
+
+    if (name === 'phone') {
+      newValue = formatPhoneNumber(value);
+    }
 
     if (name === 'sum') {
       if (type === 'text') {
-        // Разрешить только числа
-        if (/^\d*$/.test(value)) {
-          setUserForm((prevState) => ({
-            ...prevState,
-            sum: value
-          }));
+        if (!/^\d*$/.test(value)) {
+            // Возможно, показать ошибку или игнорировать изменение
+            return;
         }
-      } else {
-        setUserForm((prevState) => ({
-          ...prevState,
-          sum: value
-        }));
       }
-    } else {
-      setUserForm((prevState) => ({
-        ...prevState,
-        [name]: value
-      }));
     }
+
+    setUserForm((prevState) => ({
+      ...prevState,
+      [name]: newValue
+    }))
+
   };
 
   return (
@@ -121,39 +170,62 @@ const HelpAnimals = () => {
 
               {/* Левая часть. Информация о пожертвовании */}
               <div className="FinancialAid__total-card">
-                <div className="FinancialAid__total-card-item">
-                  <h3 className="FinancialAid__total-card-title">Цель пожертвования</h3>
-                  <span className="FinancialAid__total-card-text">Финансовая поддержка фонда</span>
+                <div className="FinancialAid__total-card-wrapper">
+                  
+                  <div className="FinancialAid__total-card-item">
+                    <h3 className="FinancialAid__total-card-title">Цель пожертвования</h3>
+                    <span className="FinancialAid__total-card-text">Финансовая поддержка фонда</span>
+                  </div>
+
+                  {/* Сумма */}
+                  { sumSectionStatus && (
+                    <div className="FinancialAid__total-card-item">
+                      <h3 className="FinancialAid__total-card-title">Сумма</h3>
+                      <span className="FinancialAid__total-card-text">
+                        {userForm.sum} ₽
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Периодичность */}
+                  { periodicitySection && (
+                    <div className="FinancialAid__total-card-item">
+                      <h3 className="FinancialAid__total-card-title">Периодичность</h3>
+                      <span className="FinancialAid__total-card-text">
+                        {userForm.period}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Личные данные */}
+                  { userDataSection && (
+                    <div className="FinancialAid__total-card-item">
+                      <h3 className="FinancialAid__total-card-title">Личные данные</h3>
+                      <div className="FinancialAid__total-card-group">
+                        <span className="FinancialAid__total-card-text">
+                          {userForm.name}
+                        </span>
+                        <span className="FinancialAid__total-card-text">
+                          {userForm.surname}
+                        </span>
+                        <span className="FinancialAid__total-card-text">
+                          {userForm.phone}
+                        </span>
+                        <span className="FinancialAid__total-card-text">
+                          {userForm.email}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
                 </div>
-
-                {/* Сумма */}
-                { userForm.sum && (
-                  <div className="FinancialAid__total-card-item">
-                    <h3 className="FinancialAid__total-card-title">Сумма</h3>
-                    <span className="FinancialAid__total-card-text">
-                      {userForm.sum} ₽
-                    </span>
-                  </div>
-                )}
-
-                {/* Периодичность */}
-                { userForm.period && (
-                  <div className="FinancialAid__total-card-item">
-                    <h3 className="FinancialAid__total-card-title">Периодичность</h3>
-                    <span className="FinancialAid__total-card-text">
-                      {userForm.period}
-                    </span>
-                  </div>
-                )}
-
-                {/* Личные данные */}
-                
 
               </div>
 
               {/* Правая часть. Карточки для заполнения данных */}
               <div className="FinancialAid__user-info">
 
+                {/* Группа кнопок для смены секции заполнения данных */}
                 <div className="FinancialAid__header-btn-group">
                   
                   <button 
@@ -192,90 +264,231 @@ const HelpAnimals = () => {
                 <div className="FinancialAid__content-body">
 
                   {/* Карточки с суммой денег на пожертвование */}
-                  <div className="FinancialAid__donations">
-                    <div className="FinancialAid__donations-cards">
-                      
-                      <div className="FinancialAid__donations-card-group">
-                        <label className="FinancialAid__donations-card-label radio">
-                          <input 
-                            className="FinancialAid__donations-card-input" 
-                            type="radio"
-                            name='sum'
-                            value={1000}
-                            checked={userForm.sum === '1000'}
-                            onChange={handleChangeUserForm}
-                          />
-                          <span className="FinancialAid__donations-card-sum">1000 ₽</span>
-                        </label>
-                        <span className="FinancialAid__donations-card-descr">
-                          5 животных, обработанных от клещей и блох
-                        </span>
-                      </div>
+                  {activeSection === 'sum' && (
+                      <div className="FinancialAid__donations">
+                        <div className="FinancialAid__donations-cards">
+                          
+                          <div className="FinancialAid__donations-card-group">
+                            <label className="FinancialAid__donations-card-label radio">
+                              <input 
+                                className="FinancialAid__donations-card-input" 
+                                type="radio"
+                                name='sum'
+                                value={1000}
+                                checked={userForm.sum === '1000'}
+                                onChange={handleChangeUserForm}
+                              />
+                              <span className="FinancialAid__donations-card-sum">1000 ₽</span>
+                            </label>
+                            <span className="FinancialAid__donations-card-descr">
+                              5 животных, обработанных от клещей и блох
+                            </span>
+                          </div>
 
-                      <div className="FinancialAid__donations-card-group">
-                        <label className="FinancialAid__donations-card-label radio">
-                          <input 
-                            className="FinancialAid__donations-card-input" 
-                            type="radio"
-                            name='sum'
-                            value={3000}
-                            checked={userForm.sum === '3000'}
-                            onChange={handleChangeUserForm}
-                          />
-                          <span className="FinancialAid__donations-card-sum">3000 ₽</span>
-                        </label>
-                        <span className="FinancialAid__donations-card-descr">
-                          это 25 кг корма для наших подопечных
-                        </span>
-                      </div>
+                          <div className="FinancialAid__donations-card-group">
+                            <label className="FinancialAid__donations-card-label radio">
+                              <input 
+                                className="FinancialAid__donations-card-input" 
+                                type="radio"
+                                name='sum'
+                                value={3000}
+                                checked={userForm.sum === '3000'}
+                                onChange={handleChangeUserForm}
+                              />
+                              <span className="FinancialAid__donations-card-sum">3000 ₽</span>
+                            </label>
+                            <span className="FinancialAid__donations-card-descr">
+                              это 25 кг корма для наших подопечных
+                            </span>
+                          </div>
 
-                      <div className="FinancialAid__donations-card-group">
-                        <label className="FinancialAid__donations-card-label radio">
-                          <input 
-                            className="FinancialAid__donations-card-input" 
-                            type="radio"
-                            name='sum'
-                            value={12000}
-                            checked={userForm.sum === '12000'}
-                            onChange={handleChangeUserForm}
-                          />
-                          <span className="FinancialAid__donations-card-sum">12000 ₽</span>
-                        </label>
-                        <span className="FinancialAid__donations-card-descr">
-                         курс занятий с кинологом по социализации сложной собаки
-                        </span>
-                      </div>
+                          <div className="FinancialAid__donations-card-group">
+                            <label className="FinancialAid__donations-card-label radio">
+                              <input 
+                                className="FinancialAid__donations-card-input" 
+                                type="radio"
+                                name='sum'
+                                value={12000}
+                                checked={userForm.sum === '12000'}
+                                onChange={handleChangeUserForm}
+                              />
+                              <span className="FinancialAid__donations-card-sum">12000 ₽</span>
+                            </label>
+                            <span className="FinancialAid__donations-card-descr">
+                              курс занятий с кинологом по социализации сложной собаки
+                            </span>
+                          </div>
 
-                      <div className="FinancialAid__donations-card-group">
-                        <label
-                          className={`FinancialAid__donations-card-label label ${
-                            predefinedSums.includes(userForm.sum) || userForm.sum ? 'filled' : ''
-                          }`}
+                          <div className="FinancialAid__donations-card-group">
+                            <label
+                              className={`FinancialAid__donations-card-label label ${
+                                !predefinedSums.includes(userForm.sum) && userForm.sum ? 'filled' : ''
+                              }`}
+                            >
+                              <input 
+                                className="FinancialAid__donations-card-input custom-input" 
+                                type="text"
+                                name='sum'
+                                value={predefinedSums.includes(userForm.sum) ? '' : userForm.sum}
+                                onChange={handleChangeUserForm}
+                              />
+                              <span className="custom-span">Ваша сумма</span>
+                            </label>
+                          </div>
+
+                        </div>
+
+                        <button 
+                          className="FinancialAid__donations-btn"
+                          onClick={() => toggleActiveSection('period')}
                         >
-                          <input 
-                            className="FinancialAid__donations-card-input custom-input" 
-                            type="text"
-                            name='sum'
-                            value={predefinedSums.includes(userForm.sum) ? '' : userForm.sum}
-                            onChange={handleChangeUserForm}
-                          />
-                          <span className="custom-span">Ваша сумма</span>
-                        </label>
+                          Перейти к периодичности пожертвования
+                        </button>
                       </div>
-
-                    </div>
-
-                    <button className="FinancialAid__donations-btn">
-                      Перейти к периодичности пожертвования
-                    </button>
-                  </div>
-
+                  )}
+                  
+                  {/* Карточки с выбором периода пожертвований */}
                   {activeSection === 'period' && (
-                    <div className="">Секция с периодом</div>
+                    <div className="FinancialAid__period">
+                      <div className="FinancialAid__period-cards">
+                        
+                        <label className="FinancialAid__period-card-label .radio">
+                          <input 
+                            type="radio"
+                            name='period'
+                            value='Ежемесячное'
+                            checked={userForm.period === 'Ежемесячное'}
+                            onChange={handleChangeUserForm}
+                            className="FinancialAid__period-card-input" 
+                          />
+                          <span className="FinancialAid__period-card-span">Ежемесячное</span>
+                        </label>
+
+                        <label className="FinancialAid__period-card-label">
+                          <input 
+                            type="radio"
+                            name='period'
+                            value='Ежеквартальное'
+                            checked={userForm.period === 'Ежеквартальное'}
+                            onChange={handleChangeUserForm}
+                            className="FinancialAid__period-card-input" 
+                          />
+                          <span className="FinancialAid__period-card-span">Ежеквартальное</span>
+                        </label>
+
+                        <label className="FinancialAid__period-card-label">
+                          <input 
+                            type="radio"
+                            name='period'
+                            value='Ежегодное'
+                            checked={userForm.period === 'Ежегодное'}
+                            onChange={handleChangeUserForm}
+                            className="FinancialAid__period-card-input" 
+                          />
+                          <span className="FinancialAid__period-card-span">Ежегодное</span>
+                        </label>
+
+                        <label className="FinancialAid__period-card-label">
+                          <input 
+                            type="radio"
+                            name='period'
+                            value='Разовое'
+                            checked={userForm.period === 'Разовое'}
+                            onChange={handleChangeUserForm}
+                            className="FinancialAid__period-card-input" 
+                          />
+                          <span className="FinancialAid__period-card-span">Разовое</span>
+                        </label>         
+
+                      </div>
+                      <button 
+                        className="FinancialAid__period-btn"
+                        onClick={() => toggleActiveSection('user-data')}
+                      >
+                        Перейти к заполнению данных
+                      </button>
+                    </div>
                   )}
 
                   {activeSection === 'user-data' && (
-                    <div className="">Секция с данными пользователя</div>
+                    <div className="FinancialAid__user-data">
+
+                      {/* Данные пользователя */}
+                      <div className="FinancialAid__user-data-cards">
+                        
+                        <label className={`FinancialAid__user-data-card-label ${userForm.name ? 'filled' : ''}`}>
+                          <input 
+                            className="FinancialAid__user-data-card-input" 
+                            type="text"
+                            name='name'
+                            value={userForm.name}
+                            onChange={handleChangeUserForm}
+                            autoComplete='off'
+                          />
+                          <span className="FinancialAid__user-data-card-span">
+                            Имя
+                          </span>
+                        </label>
+
+                        <label className={`FinancialAid__user-data-card-label ${userForm.surname ? 'filled' : ''}`}>
+                          <input 
+                            className="FinancialAid__user-data-card-input" 
+                            type="text"
+                            name='surname'
+                            value={userForm.surname}
+                            onChange={handleChangeUserForm}
+                            autoComplete='off'
+                          />
+                          <span className="FinancialAid__user-data-card-span">
+                            Фамилия
+                          </span>
+                        </label>
+
+                        <label className={`FinancialAid__user-data-card-label ${userForm.phone ? 'filled' : ''}`}>
+                          <input 
+                            className="FinancialAid__user-data-card-input" 
+                            type="text"
+                            name='phone'
+                            value={userForm.phone}
+                            onChange={handleChangeUserForm}
+                            placeholder="+7 (___) ___-__-__"
+                            maxLength={18} // Ограничение входа
+                          />
+                          <span className="FinancialAid__user-data-card-span">
+                            Телефон
+                          </span>
+                        </label>
+
+                        <label className={`FinancialAid__user-data-card-label ${userForm.email ? 'filled' : ''}`}>
+                          <input 
+                            className="FinancialAid__user-data-card-input" 
+                            type="email"
+                            name='email'
+                            value={userForm.email}
+                            onChange={handleChangeUserForm}
+                          />
+                          <span className="FinancialAid__user-data-card-span">
+                            Email
+                          </span>
+                        </label>
+
+                      </div>
+
+                      {/* Переход к следующему разделу */}
+                      <button 
+                        className="FinancialAid__user-data-btn"
+                        onClick={() => toggleActiveSection('payment-method')}
+                      >
+                        Перейти к способу оплаты
+                      </button>
+
+                      {/* Разрешение на отображение данных пользователя в рейтинге по донатам */}
+                      <input 
+                        type="radio" 
+                        name='displayDonationRanking'
+                        className="FinancialAid__user-data-agreement" 
+                      />
+                    </div>
                   )}
 
                   {activeSection === 'payment-method' && (
