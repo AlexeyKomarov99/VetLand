@@ -46,7 +46,12 @@ const HelpAnimals = () => {
         setActiveSection('user-data');
         setUserDataSection(true);
       } else if (sectionName === 'payment-method' && prevState !== 'payment-method') {
-        setActiveSection('payment-method');
+        if (!validateInputFilled()) {
+          return;
+        } else {
+          setActiveSection('payment-method');
+          setPaymentMethod(true);
+        }
       } else {
         return prevState;
       }
@@ -95,7 +100,7 @@ const HelpAnimals = () => {
     }
 
     setError(newError);
-
+    return Object.keys(newError).length === 0;
   }
 
   // Обработчик заполнения полей форм
@@ -119,6 +124,12 @@ const HelpAnimals = () => {
     setUserForm((prevState) => ({
       ...prevState,
       [name]: newValue
+    }))
+
+    // Изменение состояния ошибок при вводе текста
+    setError((prevState) => ({
+      ...prevState,
+      [name]: value
     }))
 
   };
@@ -415,62 +426,74 @@ const HelpAnimals = () => {
 
                       {/* Данные пользователя */}
                       <div className="FinancialAid__user-data-cards">
-                        
-                        <label className={`FinancialAid__user-data-card-label ${userForm.name ? 'filled' : ''}`}>
-                          <input 
-                            className="FinancialAid__user-data-card-input" 
-                            type="text"
-                            name='name'
-                            value={userForm.name}
-                            onChange={handleChangeUserForm}
-                            autoComplete='off'
-                          />
-                          <span className="FinancialAid__user-data-card-span">
-                            Имя
-                          </span>
-                        </label>
 
-                        <label className={`FinancialAid__user-data-card-label ${userForm.surname ? 'filled' : ''}`}>
-                          <input 
-                            className="FinancialAid__user-data-card-input" 
-                            type="text"
-                            name='surname'
-                            value={userForm.surname}
-                            onChange={handleChangeUserForm}
-                            autoComplete='off'
-                          />
-                          <span className="FinancialAid__user-data-card-span">
-                            Фамилия
-                          </span>
-                        </label>
+                        <div className="FinancialAid__user-data-card-group">
+                          <label className={`FinancialAid__user-data-card-label ${userForm.name ? 'filled' : ''}`}>
+                            <input 
+                              className={`FinancialAid__user-data-card-input ${error.name ? 'error' : ''}`}
+                              type="text"
+                              name='name'
+                              value={userForm.name}
+                              onChange={handleChangeUserForm}
+                              autoComplete='off'
+                            />
+                            <span className={`FinancialAid__user-data-card-span ${error.name ? 'error' : ''}`}>
+                              Имя
+                            </span>
+                          </label>
+                          {error.name && <span className="FinancialAid__user-data-card-error">Укажите имя</span> }
+                        </div>
 
-                        <label className={`FinancialAid__user-data-card-label ${userForm.phone ? 'filled' : ''}`}>
-                          <input 
-                            className="FinancialAid__user-data-card-input" 
-                            type="text"
-                            name='phone'
-                            value={userForm.phone}
-                            onChange={handleChangeUserForm}
-                            placeholder="+7 (___) ___-__-__"
-                            maxLength={18} // Ограничение входа
-                          />
-                          <span className="FinancialAid__user-data-card-span">
-                            Телефон
-                          </span>
-                        </label>
+                        <div className="FinancialAid__user-data-card-group">
+                          <label className={`FinancialAid__user-data-card-label ${userForm.surname ? 'filled' : ''}`}>
+                            <input 
+                              className={`FinancialAid__user-data-card-input ${error.surname ? 'error' : ''}`}
+                              type="text"
+                              name='surname'
+                              value={userForm.surname}
+                              onChange={handleChangeUserForm}
+                              autoComplete='off'
+                            />
+                            <span className={`FinancialAid__user-data-card-span ${error.surname ? 'error' : ''}`}>
+                              Фамилия
+                            </span>
+                          </label>
+                          {error.surname && <span className="FinancialAid__user-data-card-error">Укажите фамилию</span> }
+                        </div>
 
-                        <label className={`FinancialAid__user-data-card-label ${userForm.email ? 'filled' : ''}`}>
-                          <input 
-                            className="FinancialAid__user-data-card-input" 
-                            type="email"
-                            name='email'
-                            value={userForm.email}
-                            onChange={handleChangeUserForm}
-                          />
-                          <span className="FinancialAid__user-data-card-span">
-                            Email
-                          </span>
-                        </label>
+                        <div className="FinancialAid__user-data-card-group">
+                          <label className={`FinancialAid__user-data-card-label ${userForm.phone ? 'filled' : ''}`}>
+                            <input 
+                              className={`FinancialAid__user-data-card-input ${error.phone ? 'error' : ''}`}
+                              type="text"
+                              name='phone'
+                              value={userForm.phone}
+                              onChange={handleChangeUserForm}
+                              placeholder="+7 (___) ___-__-__"
+                              maxLength={18} // Ограничение входа
+                            />
+                            <span className={`FinancialAid__user-data-card-span ${error.phone ? 'error' : ''}`}>
+                              Телефон
+                            </span>
+                          </label>
+                          {error.phone && <span className="FinancialAid__user-data-card-error">Укажите номер телефона</span> }
+                        </div>
+
+                        <div className="FinancialAid__user-data-card-group">
+                          <label className={`FinancialAid__user-data-card-label ${userForm.email ? 'filled' : ''}`}>
+                            <input 
+                              className={`FinancialAid__user-data-card-input ${error.email ? 'error' : ''}`}
+                              type="email"
+                              name='email'
+                              value={userForm.email}
+                              onChange={handleChangeUserForm}
+                            />
+                            <span className={`FinancialAid__user-data-card-span ${error.email ? 'error' : ''}`}>
+                              Email
+                            </span>
+                          </label>
+                          {error.email && <span className="FinancialAid__user-data-card-error">Укажите почту</span> }
+                        </div>
 
                       </div>
 
