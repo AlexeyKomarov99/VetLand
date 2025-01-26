@@ -8,7 +8,4 @@ router.get('./list-animals-shelter-where-doctor-works/:id', DoctorController.lis
 // 2. Медицинские записи врача
 router.get('./medical-records-doctor/:id', DoctorController.medicalRecordsDoctor);
 
-// 3. Изменение статуса животного
-router.patch('./change-animal-status/:id', DoctorController.changeAnimalStatus);
-
 module.exports = router;

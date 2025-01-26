@@ -18,16 +18,6 @@ class DoctorController {
         }
     }
 
-    // 3. Изменение статуса животного
-    async changeAnimalStatus(req, res) {
-        try {
-            
-        } catch (error) {
-            return req.status(500).json({message: 'Ошибка обновления статуса животного доктором'});
-        }
-    }
-
-    
 }
 
 module.exports = new DoctorController;
