@@ -28,12 +28,12 @@ const User = sequelize.define('User', {
     gender: {
         type: DataTypes.STRING,
         allowNull: true,
-        defaultValue: '',
+        defaultValue: null,
     },
     region: {
         type: DataTypes.STRING,
         allowNull: true,
-        defaultValue: '',
+        defaultValue: null,
     },
     email: {
         type: DataTypes.STRING,
