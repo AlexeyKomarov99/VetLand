@@ -15,7 +15,7 @@ router.post('/logout', UserAuthController.logout);
 router.patch('/password-update', UserAuthController.passwordUpdate);
 
 // 5. Обновить пароль
-router.post('/password-recovery', UserAuthController.passwordRecovery);
+router.patch('/password-recovery', UserAuthController.passwordRecovery);
 
 // 6. Подтверждение электронной почты
 router.get('./email-confirmation', UserAuthController.emailConfirmation);

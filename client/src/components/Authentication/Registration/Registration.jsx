@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { IoCheckmark as CheckMarkIcon } from "react-icons/io5";
 import "./Registration.scss";
 
-const Registration = () => {
+const Registration = ({closeWindowAuthentication}) => {
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
@@ -150,6 +150,9 @@ const Registration = () => {
         repeatPassword: "",
       });
       setError({});
+      
+      // Закрытие модального окна
+      closeWindowAuthentication();
 
     } catch (error) {
       console.error("Ошибка регистрации", error);
@@ -217,7 +220,7 @@ const Registration = () => {
           />
 
           <input
-            type="text"
+            type="password"
             className="input"
             name="repeatPassword"
             value={formData.repeatPassword}

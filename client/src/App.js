@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //===== Ресурсы =====//
 import './App.css';
 
 //===== Компоненты =====//
-
 import Header from './components/Header/Header';
 import AboutUs from './pages/AboutUs/AboutUs';
 import AlreadyHome from './pages/AlreadyHome/AlreadyHome'; // Уже дома
@@ -21,8 +20,9 @@ import AnimalInfo from './pages/AnimalInfo/AnimalInfo'; // Подробная и
 import Footer from './components/Footer/Footer';
 
 const App = () => {
+  
   return (
-    
+
     <div className='App'>
       <Router>
 

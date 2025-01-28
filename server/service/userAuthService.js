@@ -72,13 +72,47 @@ class UserAuthService {
     }
 
     // 2. Вход
-    async login(req, res) {
+    async login(email, password) {
+        const user = await UserModel.findOne({where: {email}});
+        if(!user) {
+            throw new Error(`Пользователь с такой почтой ${email} не найден`);
+        }
 
+        const passwordCheck = await bcrypt.compare(password, user.password);
+        if(!passwordCheck) {
+            throw new Error("Пароли не совпадают");
+        }
+
+        // Получение новго объекта пользователя, включая его id после добавления новой записи в таблицу
+        const userDto = new UserDto(user);
+
+        // Генерация access и refresh токенов
+        const tokens = TokenService.generateTokens({...userDto});
+
+        // Сохранение сгенерированных токенов в базу данных Tokens
+        await TokenService.saveTokens(userDto.id, tokens.refreshToken);
+
+        // Результат входа пользователя
+        return {
+            message: "Пользователь авторизован",
+            accessToken: tokens.accessToken,
+            refreshToken: tokens.refreshToken,
+            userDto,
+        }
     }
 
     // 3. Выход
-    async logout(req, res) {
+    async logout(refreshToken) {
+        
+        if(!refreshToken) {
+            throw new Error('RefreshToken не найден');
+        }
 
+        const token = await TokenService.deleteToken(refreshToken);
+        return {
+            message: "Пользователь вышел из системы, а refreshToken удален из cookie своего браузера",
+            token,
+        }
     }
 
     // 4. Восстановление пароля
@@ -87,8 +121,32 @@ class UserAuthService {
     }
 
     // 5. Обновить пароль
-    async passwordUpdate(req, res) {
+    async passwordUpdate(email, currentPassword, newPassword) {
 
+        // Поиск пользователя в БД
+        const user = await UserModel.findOne({where: {email}});
+        if(!user) {
+            throw new Error(`Пользователь с почтой ${email} не найден`);
+        }
+
+        // Проверка текущего пароля и пароля с БД
+        const passwordCheck = await bcrypt.compare(currentPassword, user.password);
+
+        if(!passwordCheck) {
+            throw new Error('Неверный пароль');
+        }
+
+        // Хэширование нового пароля
+        const hashedPassword = await bcrypt.hash(newPassword, 3);
+        user.password = hashedPassword;
+
+        // Сохранение обновленного пароля объекта user в UserModel
+        await user.save();
+
+        return {
+            message: 'Обновленный пароль',
+            password: user.password,
+        }
     }
 
     // 6. Подтверждение электронной почты
