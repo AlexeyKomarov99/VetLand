@@ -50,7 +50,9 @@ const AppContent = () => {
         <Route path='/happy-stories' element={<AlreadyHome />} />
 
         {/* Профиль */}
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/profile/*' element={<Profile />} >
+          
+        </Route>
 
         {/* Помощь животным */}
         <Route path='/help-us' element={<HelpAnimals />} />
