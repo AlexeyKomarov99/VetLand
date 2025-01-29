@@ -11,6 +11,15 @@ import AlreadyHome from './pages/AlreadyHome/AlreadyHome'; // Уже дома
 import Animals from './pages/Animals/Animals'; // Животные
 import HelpAnimals from './pages/HelpAnimals/HelpAnimals'; // Помощь животным
 import Profile from './pages/Profile/Profile'; // Профиль
+//=== Вложенные страницы раздела "Профиль" ===//
+import AnimalsInfo from './components/Profile/ProfilePages/AnimalsInfo/AnimalsInfo';
+import Applications from './components/Profile/ProfilePages/Applications/Applications';
+import Donations from './components/Profile/ProfilePages/Donations/Donations';
+import PersonalData from './components/Profile/ProfilePages/PersonalData/PersonalData';
+import ShelterManagement from './components/Profile/ProfilePages/ShelterManagement/ShelterManagement';
+import Statistics from './components/Profile/ProfilePages/Statistics/Statistics';
+import UserProfiles from './components/Profile/ProfilePages/UserProfiles/UserProfiles';
+//=== = ===//
 import RecoverPassword from './pages/RecoverPassword/RecoverPassword'; // Восстановление пароля
 import TakeHomeAlgorithm from './pages/TakeHomeAlgorithm/TakeHomeAlgorithm'; // Алгоритм как забрать домой
 import TakeHomeQuestionnaire from './pages/TakeHomeQuestionnaire/TakeHomeQuestionnaire'; // Анкета забрать домой
@@ -51,7 +60,13 @@ const AppContent = () => {
 
         {/* Профиль */}
         <Route path='/profile/*' element={<Profile />} >
-          
+          <Route path='personal-data' element={<PersonalData />} />
+          <Route path='user-profiles' element={<UserProfiles />} />
+          <Route path='applications' element={<Applications />} />
+          <Route path='animals-info' element={<AnimalInfo />} />
+          <Route path='donations' element={<Donations />} />
+          <Route path='statistics' element={<Statistics />} />
+          <Route path='shelter-management' element={<ShelterManagement />} />
         </Route>
 
         {/* Помощь животным */}
