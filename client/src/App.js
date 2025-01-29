@@ -10,15 +10,19 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import AlreadyHome from './pages/AlreadyHome/AlreadyHome'; // Уже дома
 import Animals from './pages/Animals/Animals'; // Животные
 import HelpAnimals from './pages/HelpAnimals/HelpAnimals'; // Помощь животным
-import Profile from './pages/Profile/Profile'; // Профиль
+import Profile from './pages/Profile/Profile/Profile'; // Профиль
 //=== Вложенные страницы раздела "Профиль" ===//
-import AnimalsInfo from './components/Profile/ProfilePages/AnimalsInfo/AnimalsInfo';
+import AnimalInfoShelter from './components/Profile/ProfilePages/AnimalInfoShelter/AnimalInfoShelter';
+import AnimalAdoptedInfo from './components/Profile/ProfilePages/AnimalAdoptedInfo/AnimalAdoptedInfo';
 import Applications from './components/Profile/ProfilePages/Applications/Applications';
 import Donations from './components/Profile/ProfilePages/Donations/Donations';
 import PersonalData from './components/Profile/ProfilePages/PersonalData/PersonalData';
 import ShelterManagement from './components/Profile/ProfilePages/ShelterManagement/ShelterManagement';
 import Statistics from './components/Profile/ProfilePages/Statistics/Statistics';
 import UserProfiles from './components/Profile/ProfilePages/UserProfiles/UserProfiles';
+import Volunteering from './components/Profile/ProfilePages/Volunteering/Volunteering';
+import MedicalRecords from './components/Profile/ProfilePages/MedicalRecords/MedicalRecords';
+import UserAdoptedAnimal from './components/Profile/ProfilePages/AnimalAdoptedInfo/AnimalAdoptedInfo';
 //=== = ===//
 import RecoverPassword from './pages/RecoverPassword/RecoverPassword'; // Восстановление пароля
 import TakeHomeAlgorithm from './pages/TakeHomeAlgorithm/TakeHomeAlgorithm'; // Алгоритм как забрать домой
@@ -33,7 +37,7 @@ const AppContent = () => {
   // Получаем информацию о текущем маршруте
   const location = useLocation();
   // Определяем нужно ли показывать Header и Footer
-  const shouldShowHeaderAndFooter = location.pathname !== '/profile';
+  const shouldShowHeaderAndFooter = !location.pathname.startsWith('/profile');
 
   return (
     <div className='container'>
@@ -61,12 +65,16 @@ const AppContent = () => {
         {/* Профиль */}
         <Route path='/profile/*' element={<Profile />} >
           <Route path='personal-data' element={<PersonalData />} />
+          <Route path='donations' element={<Donations />} />
+          <Route path='volunteering' element={<Volunteering />} />
           <Route path='user-profiles' element={<UserProfiles />} />
           <Route path='applications' element={<Applications />} />
-          <Route path='animals-info' element={<AnimalInfo />} />
-          <Route path='donations' element={<Donations />} />
           <Route path='statistics' element={<Statistics />} />
           <Route path='shelter-management' element={<ShelterManagement />} />
+          <Route path='animal-info-shelter' element={<AnimalInfoShelter />} />
+          <Route path='animal-adopted-info' element={<AnimalAdoptedInfo />} />
+          <Route path='user-adopted-animal' element={<UserAdoptedAnimal />} />
+          <Route path='medical-records' element={<MedicalRecords />} />
         </Route>
 
         {/* Помощь животным */}

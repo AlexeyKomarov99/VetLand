@@ -1,5 +1,5 @@
 import React, {useEffect, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 //===== Контекст =====//
 import {AuthContext} from '../../../../contexts/AuthContext';
@@ -7,23 +7,27 @@ import {AuthContext} from '../../../../contexts/AuthContext';
 const userNavigation = [
     {
       role: "user",
-      listPages: ['Личные данные', 'Усыновление', 'Пожертвование', 'Волонтерство', 'Ваши усыновленные животные']
+      listPages: ['Личные данные', 'Волонтерство', 'Пожертвование', 'Ваши усыновленные животные'],
+      listLinks: ['/profile/personal-data', '/profile/volunteering', '/profile/donations', '/profile/user-adopted-animal'],
     },
     {
       role: "doctor",
-      listPages: ['Личные данные', 'Медицинские записи']
+      listPages: ['Личные данные', 'Медицинские записи'],
+      listLinks: ['/profile/personal-data', '/profile/medical-records'],
     },
     {
       role: "manager",
-      listPages: ['Личные данные', 'Профили пользователей', 'Заявки', 'Животные', 'Пожертвования', 'Статистика']
+      listPages: ['Личные данные', 'Заявки', 'Профили пользователей', 'Животные приюта', 'Усыновленные животные', 'Статистика', 'Пожертвования'],
+      listLinks: ['/profile/personal-data', '/profile/applications', '/profile/user-profiles', '/profile/animal-info-shelter', '/profile/animal-adopted-info', '/profile/statistics', '/profile/donations']
     },
     {
       role: "admin",
-      listPages: ['Личные данные', 'Профили пользователей', 'Заявки', 'Животные', 'Пожертвования', 'Статистика', 'Управление приютами']
+      listPages: ['Личные данные', 'Заявки', 'Профили пользователей', 'Животные приюта', 'Усыновленные животные', 'Статистика', 'Пожертвования', 'Управление приютами'],
+      listLinks: ['/profile/personal-data', '/profile/applications', '/profile/user-profiles', '/profile/animal-info-shelter', '/profile/animal-adopted-info', '/profile/statistics', '/profile/donations', '/profile/shelter-management'],
     },
 ]
 
-const PersonalAccountNavigation = ({toggleActivePage}) => {
+const PersonalAccountNavigation = () => {
 
   const {user} = useContext(AuthContext);
 
@@ -36,11 +40,15 @@ const PersonalAccountNavigation = ({toggleActivePage}) => {
           <ul className="PersonalAccountNavigation__ul-group">
             {navigationsItems.listPages.map((page, index) => (
               <li
-                key={index}
+                key={index} 
                 className="PersonalAccountNavigation__li-item"
-                onClick={() => toggleActivePage(`${page}`)}
               >
-                {page}
+                <NavLink
+                  to={navigationsItems.listLinks[index]}
+                  className="PersonalAccountNavigation__NavLink-item"
+                >
+                  {page}
+                </NavLink>  
               </li>
             ))}
           </ul>

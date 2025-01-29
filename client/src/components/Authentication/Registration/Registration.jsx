@@ -140,7 +140,7 @@ const Registration = ({closeWindowAuthentication}) => {
 
     try {
       await handleRegister(formData);
-      navigate('/profile');
+      navigate('/profile/personal-data');
       setFormData({
         name: "",
         surname: "",
