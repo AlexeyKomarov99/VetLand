@@ -12,17 +12,17 @@ import Animals from './pages/Animals/Animals'; // Животные
 import HelpAnimals from './pages/HelpAnimals/HelpAnimals'; // Помощь животным
 import Profile from './pages/Profile/Profile/Profile'; // Профиль
 //=== Вложенные страницы раздела "Профиль" ===//
-import AnimalInfoShelter from './components/Profile/ProfilePages/AnimalInfoShelter/AnimalInfoShelter';
-import AnimalAdoptedInfo from './components/Profile/ProfilePages/AnimalAdoptedInfo/AnimalAdoptedInfo';
-import Applications from './components/Profile/ProfilePages/Applications/Applications';
-import Donations from './components/Profile/ProfilePages/Donations/Donations';
-import PersonalData from './components/Profile/ProfilePages/PersonalData/PersonalData';
-import ShelterManagement from './components/Profile/ProfilePages/ShelterManagement/ShelterManagement';
-import Statistics from './components/Profile/ProfilePages/Statistics/Statistics';
-import UserProfiles from './components/Profile/ProfilePages/UserProfiles/UserProfiles';
-import Volunteering from './components/Profile/ProfilePages/Volunteering/Volunteering';
-import MedicalRecords from './components/Profile/ProfilePages/MedicalRecords/MedicalRecords';
-import UserAdoptedAnimal from './components/Profile/ProfilePages/AnimalAdoptedInfo/AnimalAdoptedInfo';
+import AnimalInfoShelter from './pages/Profile/ProfilePages/AnimalInfoShelter/AnimalInfoShelter';
+import AnimalAdoptedInfo from './pages/Profile/ProfilePages/AnimalAdoptedInfo/AnimalAdoptedInfo';
+import Applications from './pages/Profile/ProfilePages/Applications/Applications';
+import Donations from './pages/Profile/ProfilePages/Donations/Donations';
+import PersonalData from './pages/Profile/ProfilePages/PersonalData/PersonalData';
+import ShelterManagement from './pages/Profile/ProfilePages/ShelterManagement/ShelterManagement';
+import Statistics from './pages/Profile/ProfilePages/Statistics/Statistics';
+import UserProfiles from './pages/Profile/ProfilePages/UserProfiles/UserProfiles';
+import Volunteering from './pages/Profile/ProfilePages/Volunteering/Volunteering';
+import MedicalRecords from './pages/Profile/ProfilePages/MedicalRecords/MedicalRecords';
+import UserAdoptedAnimal from './pages/Profile/ProfilePages/UserAdoptedAnimal/UserAdoptedAnimal';
 //=== = ===//
 import RecoverPassword from './pages/RecoverPassword/RecoverPassword'; // Восстановление пароля
 import TakeHomeAlgorithm from './pages/TakeHomeAlgorithm/TakeHomeAlgorithm'; // Алгоритм как забрать домой
