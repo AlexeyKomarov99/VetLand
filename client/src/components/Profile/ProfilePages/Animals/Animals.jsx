@@ -1,12 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react'
 
 const Animals = () => {
-  
-  const [active, setActive] = useState(false);
-  
   return (
     <div>
-      Animals
+      Animaaaaaaaaaaaaaals!!!
     </div>
   )
 }
