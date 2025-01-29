@@ -3,7 +3,7 @@ import React from 'react'
 const CreateVolunteerApplication = () => {
   return (
     <div>
-      
+      CreateVolunteerApplication
     </div>
   )
 }

@@ -67,8 +67,13 @@ const Profile = () => {
 
               {/* Личный кабинет */}
               {activePage === 'Личные данные' && <PersonalData />}
+              
+              {activePage === 'Волонтерство' && <CreateVolunteerApplication />}
+              {activePage === 'Усыновление' && <AnimalsAdoptedByUser />}
+              
 
-              {/*  */}
+              {activePage === 'Пожертвование' && (<DonationsAnimals /> && <DonationsShelter />)}
+
 
             </div>
 

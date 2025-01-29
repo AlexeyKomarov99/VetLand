@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 //===== Ресурсы =====//
 import './App.css';
@@ -19,61 +19,67 @@ import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy'; // Полити
 import AnimalInfo from './pages/AnimalInfo/AnimalInfo'; // Подробная информация о животном
 import Footer from './components/Footer/Footer';
 
-const App = () => {
-  
-  return (
+const AppContent = () => {
 
+  // Получаем информацию о текущем маршруте
+  const location = useLocation();
+  // Определяем нужно ли показывать Header и Footer
+  const shouldShowHeaderAndFooter = location.pathname !== '/profile';
+
+  return (
+    <div className='container'>
+
+      {shouldShowHeaderAndFooter && <Header />}
+      <Routes>
+
+        {/* Титульная страница - маршрут по умолчанию */}
+        <Route path='/' element={<TitlePage/>} />
+
+        {/* Забрать домой - Анкета будущего хозяина */}
+        <Route path='/questionnaire' element={<TakeHomeQuestionnaire />} />
+        
+        {/* Route path='/questionnaire/:id' */}
+
+        {/* Наши подопечные */}
+        <Route path='/animals' element={<Animals />} />
+
+        {/* О нас */}
+        <Route path='/about-us' element={<AboutUs />} />
+
+        {/* Уже дома */}
+        <Route path='/happy-stories' element={<AlreadyHome />} />
+
+        {/* Профиль */}
+        <Route path='/profile' element={<Profile />} />
+
+        {/* Помощь животным */}
+        <Route path='/help-us' element={<HelpAnimals />} />
+        
+        {/* Алгоритм, как забрать домой */}
+        <Route path='./how-take-home' element={<TakeHomeAlgorithm />} />
+
+        {/* Восстановление пароля */}
+        <Route path='/recover-password' element={<RecoverPassword />} />
+
+        {/* Политика конфиденциальности */}
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+        
+        {/* Подробная информация о животном */}
+        <Route path='/animal-info/:id' element={<AnimalInfo />} />
+
+      </Routes>
+
+      {shouldShowHeaderAndFooter && <Footer />}
+    </div>
+  )
+}
+
+const App = () => {
+  return (
     <div className='App'>
       <Router>
-
-        {/* Навигация */}
-        <div className='container'>
-          
-          <Header />
-          <Routes>
-
-            {/* Титульная страница - маршрут по умолчанию */}
-            <Route path='/' element={<TitlePage/>} />
-
-            {/* Забрать домой - Анкета будущего хозяина */}
-            <Route path='/questionnaire' element={<TakeHomeQuestionnaire />} />
-            
-            {/* Route path='/questionnaire/:id' */}
-
-            {/* Наши подопечные */}
-            <Route path='/animals' element={<Animals />} />
-
-            {/* О нас */}
-            <Route path='/about-us' element={<AboutUs />} />
-
-            {/* Уже дома */}
-            <Route path='/happy-stories' element={<AlreadyHome />} />
-
-            {/* Профиль */}
-            <Route path='/profile' element={<Profile />} />
-
-            {/* Помощь животным */}
-            <Route path='/help-us' element={<HelpAnimals />} />
-            
-            {/* Алгоритм, как забрать домой */}
-            <Route path='./how-take-home' element={<TakeHomeAlgorithm />} />
-
-            {/* Восстановление пароля */}
-            <Route path='/recover-password' element={<RecoverPassword />} />
-
-            {/* Политика конфиденциальности */}
-            <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-            
-            {/* Подробная информация о животном */}
-            <Route path='/animal-info/:id' element={<AnimalInfo />} />
-
-          </Routes>
-          <Footer />
-
-        </div>
-
+        <AppContent />
       </Router>
-
     </div>
   )
 }

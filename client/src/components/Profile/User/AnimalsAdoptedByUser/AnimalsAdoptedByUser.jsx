@@ -3,7 +3,7 @@ import React from 'react'
 const AnimalsAdoptedByUser = () => {
   return (
     <div>
-      
+      AnimalsAdoptedByUser
     </div>
   )
 }
