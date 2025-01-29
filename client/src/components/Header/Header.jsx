@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 
 //===== Компоненты =====//
@@ -10,8 +10,13 @@ import { FiArrowRight as ArrowRightIcon } from "react-icons/fi";
 import { IoMdHeartEmpty as HeartIcon } from "react-icons/io";
 import './Header.scss';
 
+//===== Контекст =====//
+import { AuthContext } from '../../contexts/AuthContext';
+
 const Header = () => {
   
+  const {user} = useContext(AuthContext);
+
   const [windowAuthentication, setWindowAuthentication] = useState(false);
   const openWindowAuthentication = () => setWindowAuthentication(true);
   const closeWindowAuthentication = () => setWindowAuthentication(false);
@@ -24,6 +29,7 @@ const Header = () => {
       <div className="Header__wrapper">
         <div className="Header__group">
           
+          {/* Титул название приюта */}
           <div className="Header__lefr">
             <Link to='/'>
               <svg xmlns="http://www.w3.org/2000/svg" width="170" height="43" viewBox="0 0 170 43" fill="none">
@@ -47,22 +53,31 @@ const Header = () => {
             </Link>
           </div>
 
+          {/* Навигация в середине */}
           <div className="Header__center">
             <Navbar />
           </div>
 
+          {/* Секция справа Войти и Финансовая помощь */}
           <div className="Header__right">
             <div className="Header__group">
 
               <div className="Header__left-part">
                 
                 {/* Условный рендеринг */}
-                <button 
-                  className="Header__authentication button"
-                  onClick={() => openWindowAuthentication()}
-                >
-                  Войти
-                </button>
+                {
+                  user ? (
+                    <Link to='/profile' className='Header__authentication button'>{user.name} {user.surname}</Link>
+                  ) : (
+                  <button 
+                    className="Header__authentication button"
+                    onClick={() => openWindowAuthentication()}
+                  >
+                    Войти
+                  </button>
+                  )
+                }
+
                 <Link to='/help-us' className='Header__Link'>
                   <span className="Header__Link-descr">Финансово помочь питомцам</span>
                   <ArrowRightIcon className='icon'/>

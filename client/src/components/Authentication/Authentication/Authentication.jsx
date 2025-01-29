@@ -61,8 +61,8 @@ const Authentication = ({windowAuthentication, closeWindowAuthentication}) => {
 
             {/* Тело МО */}
             <div className="Authentication__body">
-                {activatedButton === 'login' && <Login />}
-                {activatedButton === 'registration' && <Registration />}
+                {activatedButton === 'login' && <Login closeWindowAuthentication={closeWindowAuthentication} />}
+                {activatedButton === 'registration' && <Registration closeWindowAuthentication={closeWindowAuthentication} />}
             </div>
 
             {/* Ноги МО */}

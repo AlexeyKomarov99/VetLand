@@ -1,9 +1,16 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 //===== Ресурсы =====//
 import './Login.scss';
 
-const Login = () => {
+//===== Контекст =====//
+import { AuthContext } from '../../../contexts/AuthContext';
+
+const Login = ({closeWindowAuthentication}) => {
+  
+  const {handleLogin} = useContext(AuthContext); // Функция логина
+  const navigate = useNavigate(); // Переменная маршрутизации на страницу профиля
   
   const [formData, setFormData] = useState({
     email: '',
@@ -11,35 +18,86 @@ const Login = () => {
   })
   const [error, setError] = useState({});
 
-  // Фокусирование курсора в середине input
-  const loginRef = useRef();
-  const passwordRef = useRef();
+  // Обработка изменений в полях
+  const handleChange = (event) => {
+    const {name, value} = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }))
 
-  const handleFocus = (ref) => {
-      const length = ref.current.value.length;
-      const middlePosition = Math.floor(length / 2);
-      ref.current.setSelectionRange(middlePosition, middlePosition);
-  };
+    setError((prevStateError) => ({
+      ...prevStateError,
+      [name]: ''
+    }))
+  }
+
+  // Функция валидации заполнения всех полей данных
+  const validateForm = () => {
+    const newError = {};
+
+    // Валидация почты 
+    if(!formData.email.trim()) {
+      newError.email = 'Укажите почту';
+    }
+
+    // Валидация пароля
+    if(!formData.password.trim()) {
+      newError.password = 'Укажите пароль';
+    }
+
+    setError(newError);
+    return Object.keys(newError).length === 0;
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if(!validateForm()) {
+      alert('Заполните все поля!');
+      return;
+    }
+
+    try {
+      await handleLogin(formData);
+      navigate('/profile');
+      setFormData({
+        email: '',
+        password: '',
+      });
+      setError({});
+
+      // Закрытие модального окна
+      closeWindowAuthentication();
+    } catch (error) {
+      console.error("Ошибка входа", error);
+    }
+
+  }
 
   return (
     <form 
       className="Login"
-      // onSubmit={}
+      onSubmit={handleSubmit}
     >
       <div className="Login__group">
         <input 
-          type="text" 
+          type="email" 
           className="input"
+          name='email'
+          value={formData.email}
+          onChange={handleChange}
           placeholder='Email'
-          ref={loginRef}
-          onFocus={() => handleFocus(loginRef)}
+          autoComplete='off'
         />
         <input 
           type="password" 
           className="input"
+          name='password'
+          value={formData.password}
+          onChange={handleChange}
           placeholder='Пароль'
-          ref={passwordRef}
-          onFocus={() => handleFocus(passwordRef)}
+          autoComplete='off'
         />
       </div>
 

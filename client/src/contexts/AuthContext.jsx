@@ -8,7 +8,7 @@ const AuthProvider = ({children}) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false); // Для проверки входа пользователя в систему
 
     // Процедура регистрации
-    const handleRegistration = async(formData) => {
+    const handleRegister = async(formData) => {
       try {
         const userData = await registration(formData);
         setUser(userData.userDto);
@@ -49,7 +49,7 @@ const AuthProvider = ({children}) => {
     }
 
     return (
-      <AuthContext.Provider value={{user, isAuthenticated, handleRegistration, handleLogin, handleLogout}}>
+      <AuthContext.Provider value={{user, isAuthenticated, handleRegister, handleLogin, handleLogout}}>
         {children}
       </AuthContext.Provider>
     )
