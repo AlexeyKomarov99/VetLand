@@ -32,7 +32,7 @@ const Registration = () => {
   const navigate = useNavigate();
   
   // Функция регистрации
-  const { handleRegister } = useContext(AuthContext);
+  const { handleRegistration } = useContext(AuthContext);
 
   const [error, setError] = useState({});
 
@@ -139,7 +139,7 @@ const Registration = () => {
     }
 
     try {
-      await handleRegister(formData);
+      await handleRegistration(formData);
       navigate('/profile');
       setFormData({
         name: "",

@@ -1,5 +1,5 @@
 import {createContext, useState} from 'react';
-import {register, login, logout} from '../services/AuthService';
+import {registration, login, logout} from '../services/AuthService';
 
 const AuthContext = createContext();
 
@@ -8,9 +8,9 @@ const AuthProvider = ({children}) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false); // Для проверки входа пользователя в систему
 
     // Процедура регистрации
-    const handleRegister = async(formData) => {
+    const handleRegistration = async(formData) => {
       try {
-        const userData = await register(formData);
+        const userData = await registration(formData);
         setUser(userData.userDto);
         setIsAuthenticated(true);
         sessionStorage.setItem('accessToken', userData.accessToken);
@@ -49,7 +49,7 @@ const AuthProvider = ({children}) => {
     }
 
     return (
-      <AuthContext.Provider value={{user, isAuthenticated, handleRegister, handleLogin, handleLogout}}>
+      <AuthContext.Provider value={{user, isAuthenticated, handleRegistration, handleLogin, handleLogout}}>
         {children}
       </AuthContext.Provider>
     )
