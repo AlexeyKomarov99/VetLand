@@ -1,4 +1,5 @@
 import React, {useEffect, useContext} from 'react';
+
 import {NavLink} from 'react-router-dom';
 
 //===== Контекст =====//
@@ -49,6 +50,7 @@ const PersonalAccountNavigation = () => {
                 >
                   {page}
                 </NavLink>  
+                key={index}
               </li>
             ))}
           </ul>
