@@ -60,7 +60,11 @@ const Login = ({closeWindowAuthentication}) => {
 
     try {
       await handleLogin(formData);
+<<<<<<< HEAD
       navigate('/profile/personal-data');
+=======
+      navigate('/profile');
+>>>>>>> 27cef60 (1. Написание 4 end points из раздела 'Аутентификация'  на стороне сервера: registration, login, logout, updatePassword)
       setFormData({
         email: '',
         password: '',

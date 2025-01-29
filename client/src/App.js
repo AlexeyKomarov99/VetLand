@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 //===== Ресурсы =====//
@@ -100,8 +101,9 @@ const AppContent = () => {
 }
 
 const App = () => {
+  
   return (
-    <div className='App'>
+    <div>
       <Router>
         <AppContent />
       </Router>
