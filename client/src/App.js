@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 //===== Ресурсы =====//
@@ -39,6 +39,18 @@ const AppContent = () => {
   // Определяем нужно ли показывать Header и Footer
   const shouldShowHeaderAndFooter = !location.pathname.startsWith('/profile');
 
+  useEffect(() => {
+    if (location.pathname.startsWith('/profile')) {
+      document.body.style.backgroundColor = '#f0f0f0'; // пример цвета для профиля
+    } else {
+      document.body.style.backgroundColor = '#333333'; // темно-серый цвет по умолчанию
+    }
+
+    return () => {
+      document.body.style.backgroundColor = '';
+    };
+  }, [location.pathname]);
+
   return (
     <div className='container'>
 
@@ -63,6 +75,7 @@ const AppContent = () => {
         <Route path='/happy-stories' element={<AlreadyHome />} />
 
         {/* Профиль */}
+
         <Route path='/profile/*' element={<Profile />} >
           <Route path='personal-data' element={<PersonalData />} />
           <Route path='donations' element={<Donations />} />

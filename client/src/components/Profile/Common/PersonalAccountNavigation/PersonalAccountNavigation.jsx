@@ -1,6 +1,8 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import {NavLink} from 'react-router-dom';
 
+//===== Ресурсы =====//
+import './PersonalAccountNavigation.scss';
 
 //===== Контекст =====//
 import {AuthContext} from '../../../../contexts/AuthContext';
@@ -46,11 +48,11 @@ const PersonalAccountNavigation = () => {
               >
                 <NavLink
                   to={navigationsItems.listLinks[index]}
-                  className="PersonalAccountNavigation__NavLink-item"
+                  className={({isActive}) => 
+                  `PersonalAccountNavigation__NavLink-item ${isActive ? 'active' : ''}`}
                 >
                   {page}
                 </NavLink>  
-                key={index}
               </li>
             ))}
           </ul>
