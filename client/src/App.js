@@ -100,7 +100,6 @@ const AppContent = () => {
 }
 
 const App = () => {
-  
   return (
     <div className='App'>
       <Router>
