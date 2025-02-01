@@ -17,6 +17,7 @@
   --gray: rgb(214,214,214);
   --dark-gray: rgb(40, 40, 40);
   --light-gray: rgb(28,28,28);
+  --light-gray2: rgb(240, 240, 240);
   --indigo: rgb(0, 84, 238);
   --green: rgb(50, 167, 40);
 
@@ -126,4 +127,43 @@ span, p, a {
   box-shadow: var(--box-shadow);
   width: 875px;
   padding: 30px 40px;
+}
+
+/* Свойства таблицы */
+
+table {
+  border-collapse: collapse;
+  border-radius: 10px;
+  color: var(--light-gray);
+  outline: var(--outline-light-gray);
+  overflow: hidden;
+}
+
+thead {
+
+}
+
+tbody {
+
+}
+
+th,
+tr {
+  border-bottom: var(--outline-light-gray);
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+th, td {
+  text-align: center;
+}
+
+th {
+  padding: 1rem 0rem;
+}
+
+td {
+  padding: 0.5rem 0rem;
 }

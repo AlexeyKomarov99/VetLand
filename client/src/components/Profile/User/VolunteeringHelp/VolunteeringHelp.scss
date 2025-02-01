@@ -1,0 +1,104 @@
+@import '../../../../App.css';
+
+.VolunteeringHelp {
+    .VolunteeringHelp__content {
+
+        // Титул и навигация
+        .VolunteeringHelp__content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            .VolunteeringHelp__content-chapter {
+                font-size: 18px;
+                font-weight: 600;
+                color: var(--light-gray);
+                margin-bottom: 1rem;
+            }
+            .VolunteeringHelp__content-search-animal-group {
+                width: 40%;
+                display: flex;
+                align-items: center;
+                outline: var(--outline-light-gray);
+                border-radius: var(--border-radius-small);
+                transition: var(--transition);
+                &:hover {
+                    outline: 1px solid var(--light-gray);
+                }
+                .icon {
+                    min-width: 35px;
+                    min-height: 35px;
+                    background-color: transparent;
+                    padding: 0.5rem;
+                }
+                .VolunteeringHelp__content-search-animal {
+                    display: flex;
+                    width: 100%;
+                    outline: none;
+                    padding: 0.25rem 1.5rem 0.25rem 0.25rem;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        // Таблица с пагинацией
+        .VolunteeringHelp__content-body {
+
+            // Свойства таблицы
+            .VolunteeringHelp__animal-care-table{
+                width: 100%;
+                margin-bottom: 2rem;
+
+                th {
+                    font-size: 16px;
+                }
+
+                td {
+                    font-size: 13px;
+                    color: rgba(28,28,28, 0.5);
+                }
+
+                th:nth-child(n), td:nth-child(n) {
+                    width: 20%;
+                }
+
+                .VolunteeringHelp__animal-care-thead {
+                    .VolunteeringHelp__animal-care-tr {
+                        .VolunteeringHelp__animal-care-th {
+                            
+                        }
+                    }
+                }
+                .VolunteeringHelp__animal-care-tbody {
+                    .VolunteeringHelp__animal-care-tr {
+                        .VolunteeringHelp__animal-care-td {
+
+                        }
+                    }
+                }
+            }
+
+            // Свойства пагинации
+            .VolunteeringHelp__paginate {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+                .VolunteeringHelp__paginate-rows-per-page {
+                    .VolunteeringHelp__record {
+                        margin-right: 0.5rem;
+                        color: var(--text-primary);
+                        font-size: 14px;
+                    }
+                    .select-paginate {
+                        padding: 0.25rem 0.25rem;
+                        color: var(--heading-color);
+                        background-color: var(--background);
+                    }
+                }
+            }
+
+        }
+
+    }
+}

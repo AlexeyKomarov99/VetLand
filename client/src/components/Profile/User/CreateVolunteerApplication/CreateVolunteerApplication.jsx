@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
+import Modal from 'react-modal';
 
-const CreateVolunteerApplication = () => {
+const CreateVolunteerApplication = ({windowVolunteerApplication, closeWindowVolunteerApplication}) => {
   return (
-    <div>
-      CreateVolunteerApplication
-    </div>
+    <Modal 
+      className='CreateVolunteerApplication'
+      overlayClassName='CreateVolunteerApplication__overlay'
+      isOpen={windowVolunteerApplication}
+      onRequestClose={closeWindowVolunteerApplication}
+    >
+      
+    </Modal>
   )
 }
 
-export default CreateVolunteerApplication
+export default CreateVolunteerApplication;

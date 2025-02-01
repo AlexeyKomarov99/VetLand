@@ -1,0 +1,16 @@
+@import '../../../../App.css';
+
+.Donations {
+    .Donations__title {
+        font-size: 34px;
+        font-weight: 600;
+        line-height: 41px;
+        margin-bottom: 2rem;
+    }
+    .Donations__content {
+        background-color: var(--white);
+        border-radius: var(--border-radius-small);
+        padding: 2rem;
+        box-shadow: 1px 2px 5px rgb(0,0,0,0.3);
+    }
+}
