@@ -95,6 +95,18 @@ span, p, a {
   /* transform: translateY(-2px); */
 }
 
+.textarea {
+  background-color: var(--light-gray2);
+  color: var(--light-gray);
+  height: 7rem;
+  padding: 1rem;
+  font-size: 1rem;
+  outline: var(--outline-light-gray);
+  border-radius: var(--border-radius-small);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
 .input {
   background-color: var(--white);
   border-radius: var(--border-radius-small);

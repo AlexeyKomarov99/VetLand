@@ -19,6 +19,10 @@ const VolunteerApplication = sequelize.define('VolunteerApplication', {
         type: DataTypes.TEXT,
         allowNull: false,
     },
+    sendingRequest: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+    }
 }, {
     tableName: 'VolunteerApplications',
     timestamps: true,

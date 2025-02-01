@@ -20,6 +20,10 @@
                 color: var(--light-gray);
                 margin-bottom: 1rem;
             }
+            // Свойства текста описание, что заявка отправлена
+            .Volunteering__content-descr-sending-request {
+                font-size: 15px;
+            }
             .Volunteering__content-descr {
                 display: flex;
                 flex-direction: column;

@@ -1,0 +1,59 @@
+@import '../../../../App.css';
+
+.CreateVolunteerApplication {
+    .CreateVolunteerApplication__form {
+        display: flex;
+        flex-direction: column;
+
+        // Титул
+        .CreateVolunteerApplication__header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .CreateVolunteerApplication__header-title {
+                font-size: 18px;
+                font-weight: 600;
+                color: var(--light-gray);
+                margin-bottom: 2rem;
+            }
+        }
+
+        // Текст
+        .CreateVolunteerApplication__body {
+            width: 100%;
+            margin-bottom: 2rem;
+            .CreateVolunteerApplication__textarea {
+                width: 100%;
+            }
+        }
+
+        // Группа кнопок
+        .CreateVolunteerApplication__footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .CreateVolunteerApplication__btn-close {
+                background: var(--white);
+                color: var(--light-gray);
+                outline: var(--outline-light-gray);
+                &:hover {
+                    color: var(--white);
+                    background: var(--radial-gradient-red-orange);
+                }
+            }
+            .CreateVolunteerApplication__btn-send-app {
+
+            }
+        }
+    }
+}
+
+.CreateVolunteerApplication__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.4);
+}
