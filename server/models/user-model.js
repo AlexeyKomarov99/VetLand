@@ -21,7 +21,7 @@ const User = sequelize.define('User', {
         defaultValue: 'user'
     },
     age: {
-        type:DataTypes.INTEGER,
+        type:DataTypes.DATEONLY,
         allowNull: true,
         defaultValue: null,
     },

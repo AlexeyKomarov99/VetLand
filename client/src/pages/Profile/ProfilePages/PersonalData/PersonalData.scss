@@ -1,0 +1,173 @@
+@import '../../../../App.css';
+
+.PersonalData {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    // background-color: var(--white);
+    .PersonalData__title {
+        font-size: 34px;
+        font-weight: 600;
+        line-height: 41px;
+        margin-bottom: 2rem;
+    }
+
+    // Группа input и select
+    .PersonalData__content {
+        background-color: var(--white);
+        border-radius: var(--border-radius-small);
+        padding: 2rem;
+        box-shadow: 1px 2px 5px rgb(0,0,0,0.3);
+        .PersonalData__content-group {
+            display: flex;
+            flex-direction: column;
+            .PersonalData__content-row {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 2rem;
+                margin-bottom: 2rem;
+                .PersonalData__content-item {
+                    width: 100%;
+                    // border: 1px solid red;
+                    .PersonalData__content-item-title {
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: var(--light-gray);
+                        margin-bottom: 12px;
+                    }
+                    .PersonalData__content-item-select,
+                    .PersonalData__content-item-input {
+                        width: 100%;
+                        background-color: #f0f0f0;
+                        border-radius: 10px;
+                        padding: 14px 12px;
+                        outline: var(--outline-light-gray);
+                        color: var(--light-gray);
+                        box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+                        transition: var(--transition);
+                        letter-spacing: 0.02em;
+                        font-size: 16px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        &:hover, &:focus {
+                            outline: var(--outline-dark-gray);
+                        }
+                    }
+                    
+                    // Для группы input "Дата рождения"
+                    .PersonalData__content-item-group {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-gap: 1rem;
+                    }
+                }
+                .PersonalData__content-item--span-2 {
+                    grid-column: span 2;
+                }
+            }
+            
+            // Кнопка сохранения контента
+            .PersonalData__content-group-wrapper {
+                display: flex;
+                justify-content: end;
+                align-items: start;
+                margin-bottom: 2rem;
+                .PersonalData__content-group-btn {
+    
+                }
+            }   
+        }
+    }
+
+    // Подтверждение почты
+    .PersonalData__email-confirmation {
+        margin-bottom: 3rem;
+        .PersonalData__item-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--light-gray);
+            margin-bottom: 1.5rem;
+        }
+        .PersonalData__email-confirmation-group-wrapper {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            .PersonalData__email-confirmation-group {
+                .PersonalData__email-confirm-group {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .PersonalData__emailConfirmation-descr {
+                        color: var(--white);
+                    }
+                    .icon {
+                        color: var(--white);
+                        margin-left: 10px;
+                    }
+                }
+                .button-success {
+                    background-color: green;
+                    border-radius: var(--border-radius-small);
+                    color: var(--white);
+                    transition: var(--transition);
+                    outline: 0;
+                    box-shadow: 0;
+                    font-size: 16px;
+                    padding: 12px 15px;
+                    letter-spacing: .3px;
+                }
+            }
+        }
+    }
+
+    // Обновить пароль
+    .PersonalData__update-password {
+        .PersonalData__update-password-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--light-gray);
+            margin-bottom: 1.5rem;
+        }
+        // Группа паролей
+        .PersonalData__update-password-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 2rem;
+            margin-bottom: 2rem;
+            .PersonalData__update-password-item {
+                .PersonalData__update-password-item-title {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: var(--light-gray);
+                    margin-bottom: 12px;
+                }
+                .PersonalData__update-password-item-input {
+                    width: 100%;
+                    background-color: #f0f0f0;
+                    border-radius: 10px;
+                    padding: 14px 12px;
+                    outline: var(--outline-light-gray);
+                    color: var(--light-gray);
+                    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+                    transition: var(--transition);
+                    letter-spacing: 0.02em;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    &:hover, &:focus {
+                        outline: var(--outline-dark-gray);
+                    }
+                }
+            }
+        }
+        // Кнопка подтверждения обновления пароля
+        .PersonalData__update-password-btn-wrapper {
+            display: flex;
+            justify-content: end;
+            align-items: start;
+            .PersonalData__update-password-btn {
+
+            }
+        }
+    }
+}

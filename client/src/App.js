@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 //===== Ресурсы =====//
@@ -10,7 +10,20 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import AlreadyHome from './pages/AlreadyHome/AlreadyHome'; // Уже дома
 import Animals from './pages/Animals/Animals'; // Животные
 import HelpAnimals from './pages/HelpAnimals/HelpAnimals'; // Помощь животным
-import Profile from './pages/Profile/Profile'; // Профиль
+import Profile from './pages/Profile/Profile/Profile'; // Профиль
+//=== Вложенные страницы раздела "Профиль" ===//
+import AnimalInfoShelter from './pages/Profile/ProfilePages/AnimalInfoShelter/AnimalInfoShelter';
+import AnimalAdoptedInfo from './pages/Profile/ProfilePages/AnimalAdoptedInfo/AnimalAdoptedInfo';
+import Applications from './pages/Profile/ProfilePages/Applications/Applications';
+import Donations from './pages/Profile/ProfilePages/Donations/Donations';
+import PersonalData from './pages/Profile/ProfilePages/PersonalData/PersonalData';
+import ShelterManagement from './pages/Profile/ProfilePages/ShelterManagement/ShelterManagement';
+import Statistics from './pages/Profile/ProfilePages/Statistics/Statistics';
+import UserProfiles from './pages/Profile/ProfilePages/UserProfiles/UserProfiles';
+import Volunteering from './pages/Profile/ProfilePages/Volunteering/Volunteering';
+import MedicalRecords from './pages/Profile/ProfilePages/MedicalRecords/MedicalRecords';
+import UserAdoptedAnimal from './pages/Profile/ProfilePages/UserAdoptedAnimal/UserAdoptedAnimal';
+//=== = ===//
 import RecoverPassword from './pages/RecoverPassword/RecoverPassword'; // Восстановление пароля
 import TakeHomeAlgorithm from './pages/TakeHomeAlgorithm/TakeHomeAlgorithm'; // Алгоритм как забрать домой
 import TakeHomeQuestionnaire from './pages/TakeHomeQuestionnaire/TakeHomeQuestionnaire'; // Анкета забрать домой
@@ -24,7 +37,19 @@ const AppContent = () => {
   // Получаем информацию о текущем маршруте
   const location = useLocation();
   // Определяем нужно ли показывать Header и Footer
-  const shouldShowHeaderAndFooter = location.pathname !== '/profile';
+  const shouldShowHeaderAndFooter = !location.pathname.startsWith('/profile');
+
+  useEffect(() => {
+    if (location.pathname.startsWith('/profile')) {
+      document.body.style.backgroundColor = '#f0f0f0'; // пример цвета для профиля
+    } else {
+      document.body.style.backgroundColor = '#333333'; // темно-серый цвет по умолчанию
+    }
+
+    return () => {
+      document.body.style.backgroundColor = '';
+    };
+  }, [location.pathname]);
 
   return (
     <div className='container'>
@@ -50,7 +75,20 @@ const AppContent = () => {
         <Route path='/happy-stories' element={<AlreadyHome />} />
 
         {/* Профиль */}
-        <Route path='/profile' element={<Profile />} />
+
+        <Route path='/profile/*' element={<Profile />} >
+          <Route path='personal-data' element={<PersonalData />} />
+          <Route path='donations' element={<Donations />} />
+          <Route path='volunteering' element={<Volunteering />} />
+          <Route path='user-profiles' element={<UserProfiles />} />
+          <Route path='applications' element={<Applications />} />
+          <Route path='statistics' element={<Statistics />} />
+          <Route path='shelter-management' element={<ShelterManagement />} />
+          <Route path='animal-info-shelter' element={<AnimalInfoShelter />} />
+          <Route path='animal-adopted-info' element={<AnimalAdoptedInfo />} />
+          <Route path='user-adopted-animal' element={<UserAdoptedAnimal />} />
+          <Route path='medical-records' element={<MedicalRecords />} />
+        </Route>
 
         {/* Помощь животным */}
         <Route path='/help-us' element={<HelpAnimals />} />

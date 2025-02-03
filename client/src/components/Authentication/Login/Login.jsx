@@ -60,7 +60,7 @@ const Login = ({closeWindowAuthentication}) => {
 
     try {
       await handleLogin(formData);
-      navigate('/profile');
+      navigate('/profile/personal-data');
       setFormData({
         email: '',
         password: '',
