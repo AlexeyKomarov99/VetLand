@@ -10,6 +10,7 @@ const AdoptedAnimal = require('../models/adopted-animals-model');
 const ListAnimalType = require('../models/list-animal-types-model');
 const AnimalStatus = require('../models/animal-status-model');
 const AdoptionForm = require('../models/adoption-forms-model');
+const VolunteerApplication = require('../models/volunteer-applications');
 
 //========== Установка ассоциаций между таблицами ==========//
 
@@ -46,6 +47,12 @@ StagesAnimalAdoption.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as
 //=== Связи между "Пользователями" и "Усыновленными животными" ===//
 User.hasMany(AdoptedAnimal, {foreignKey: 'user_id', sourceKey: 'id', as: 'AdoptedAnimals'});
 AdoptedAnimal.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+
+//===== Заявления на волонтерство =====//
+
+//=== Связи между "Заявлениями на волонтерство" и "Пользователями" ===//
+VolunteerApplication.hasOne(User, {foreignKey: 'user_id', sourceKey: 'id', as: 'Users'});
+User.belongsTo(VolunteerApplication, {foreignKey: 'user_id', sourceKey: 'id', as: 'VolunteerApplications'});
 
 //===== Приют =====//
 

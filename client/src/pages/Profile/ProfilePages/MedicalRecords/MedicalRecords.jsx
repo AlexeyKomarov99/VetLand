@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 
 const MedicalRecords = () => {
@@ -8,4 +9,16 @@ const MedicalRecords = () => {
   )
 }
 
+=======
+import React from 'react';
+
+const MedicalRecords = () => {
+  return (
+    <div>
+      MedicalRecords
+    </div>
+  )
+}
+
+>>>>>>> refs/remotes/origin/main
 export default MedicalRecords;

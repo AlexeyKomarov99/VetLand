@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 
 const AnimalAdoptedInfo = () => {
@@ -8,4 +9,16 @@ const AnimalAdoptedInfo = () => {
   )
 }
 
+=======
+import React from 'react';
+
+const AnimalAdoptedInfo = () => {
+  return (
+    <div>
+      AnimalAdoptedInfo
+    </div>
+  )
+}
+
+>>>>>>> refs/remotes/origin/main
 export default AnimalAdoptedInfo;
