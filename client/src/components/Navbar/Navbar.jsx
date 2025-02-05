@@ -27,11 +27,6 @@ const Navbar = () => {
           <span className='icon'><ArrowDownIcon /></span>
         </Link>
 
-        <Link to='/profile' className='Navbar__Link'>
-          <span className="Navbar__Link-item">Профиль</span>
-          <span className='icon'><ArrowDownIcon /></span>
-        </Link>
-
         <a href="https://highpaw.vet.land" target="_blank" rel="noopener noreferrer" className='Navbar__Link'>
           <span className="Navbar__Link-item">Highpaw</span>
           <span className='icon'><ArrowDownIcon /></span>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @import '../../../App.css';
 
 .Profile {
@@ -15,22 +14,4 @@
             }
         }
     }
-=======
-@import '../../../App.css';
-
-.Profile {
-    .Profile__wrapper {
-        width: 100%;
-        max-width: 1440px;
-        padding: 0 60px;
-        .Profile__container {
-            padding: 60px 0 60px;
-            .Profile__content {
-                display: grid;
-                grid-template-columns: 82% 18%;
-                grid-gap: 1rem;
-            }
-        }
-    }
->>>>>>> refs/remotes/origin/main
 }
