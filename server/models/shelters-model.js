@@ -12,8 +12,12 @@ const Shelter = sequelize.define('Shelter', {
         allowNull: false,
     },
     region: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.UUID,
+        allowNull: true,
+        references: {
+            model: 'ListRegions',
+            key: 'id',
+        },
     },
     city: {
         type: DataTypes.STRING,

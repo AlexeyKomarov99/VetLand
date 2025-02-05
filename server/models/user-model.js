@@ -31,9 +31,12 @@ const User = sequelize.define('User', {
         defaultValue: null,
     },
     region: {
-        type: DataTypes.STRING,
+        type: DataTypes.UUID,
         allowNull: true,
-        defaultValue: null,
+        references: {
+            model: 'ListRegions',
+            key: 'id',
+       },
     },
     email: {
         type: DataTypes.STRING,

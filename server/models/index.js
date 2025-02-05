@@ -11,6 +11,7 @@ const ListAnimalType = require('../models/list-animal-types-model');
 const AnimalStatus = require('../models/animal-status-model');
 const AdoptionForm = require('../models/adoption-forms-model');
 const VolunteerApplication = require('../models/volunteer-applications');
+const ListRegions = require('../models/list-regions-model');
 
 //========== Установка ассоциаций между таблицами ==========//
 
@@ -44,9 +45,13 @@ AdoptionForm.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'
 User.hasMany(StagesAnimalAdoption, {foreignKey: 'user_id', sourceKey: 'id', as: 'StagesAnimalAdoptions'});
 StagesAnimalAdoption.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
 
-//=== Связи между "Пользователями" и "Усыновленными животными" ===//
+//=== Связь между "Пользователями" и "Усыновленными животными" ===//
 User.hasMany(AdoptedAnimal, {foreignKey: 'user_id', sourceKey: 'id', as: 'AdoptedAnimals'});
 AdoptedAnimal.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+
+//=== Связь между "Пользователями" и "Списком регионов" ===//
+User.hasOne(ListRegions, {foreignKey: 'user_id', sourceKey: 'id', as: 'ListRegions'});
+ListRegions.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
 
 //===== Заявления на волонтерство =====//
 
@@ -63,6 +68,10 @@ TransactionsShelter.belongsTo(Shelter, {foreignKey: 'shelter_id', targetKey: 'id
 //=== Связь между "Приютом" и "Животными" ===//
 Shelter.hasMany(Animal, {foreignKey: 'shelter_id', sourceKey: 'id', as: 'Animals'});
 Animal.belongsTo(Shelter, {foreignKey: 'shelter_id', targetKey: 'id', as: 'Shelter'});
+
+//=== Связь между "Приютом" и "Список регионов" ===//
+Shelter.hasOne(ListRegions, {foreignKey: 'shelter_id', sourceKey: 'id', as: 'ListRegions'});
+ListRegions.belongsTo(Shelter, {foreignKey: 'shelter_id', sourceKey: 'id', as: 'Shelters'})
 
 //===== Животные =====//
 
