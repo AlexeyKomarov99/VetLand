@@ -17,7 +17,7 @@ const AdoptionForm = sequelize.define('AdoptionForm', {
     },
     stagesAnimalAdoption_id: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: 'StagesAnimalAdoptions',
             key: 'id',

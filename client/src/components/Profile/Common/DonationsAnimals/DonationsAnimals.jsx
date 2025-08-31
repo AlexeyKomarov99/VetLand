@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const DonationsAnimals = () => {
   return (
-    <div>
-      DonationsAnimals
+    <div className='DonationsAnimals'>
+      
     </div>
   )
 }
 
-export default DonationsAnimals
+export default DonationsAnimals;

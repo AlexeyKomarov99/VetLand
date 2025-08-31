@@ -22,7 +22,7 @@ export const login = async (formData) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            withCredentials: true // позволяет отправлять куки на клиенте и получать их от сервера
+            withCredentials: true // позволяет отправлять куки на клиенте и получать их от сервера (содержит refresh токен)
         });
         return response.data;
     } catch (error) {

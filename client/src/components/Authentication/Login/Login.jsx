@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 //===== Ресурсы =====//
@@ -59,20 +59,20 @@ const Login = ({closeWindowAuthentication}) => {
     }
 
     try {
-      await handleLogin(formData);
-      navigate('/profile/personal-data');
-      setFormData({
-        email: '',
-        password: '',
-      });
-      setError({});
-
-      // Закрытие модального окна
-      closeWindowAuthentication();
+      const responseLogin = await handleLogin(formData);
+      if(responseLogin) {
+        navigate('/profile/personal-data');
+        setFormData({
+          email: '',
+          password: '',
+        });
+        setError({});
+        closeWindowAuthentication(); // Закрытие модального окна
+      }
+      
     } catch (error) {
       console.error("Ошибка входа", error);
     }
-
   }
 
   return (
@@ -82,7 +82,7 @@ const Login = ({closeWindowAuthentication}) => {
     >
       <div className="Login__group">
         <input 
-          type="email" 
+          type="text"
           className="input"
           name='email'
           value={formData.email}

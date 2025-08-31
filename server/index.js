@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const runAllSeeds = require('./seeders');
 
 const sequelize = require('./db');
 const router = require('./router/index');
@@ -23,7 +24,9 @@ app.use('/api', router); // Маршруты к end points
 const start = async () => {
     try {
         await sequelize.authenticate();
-        await sequelize.sync();
+        await sequelize.sync({ force: true });
+        await runAllSeeds();
+
         app.listen(PORT, () => {
             console.log(`Server started on PORT = ${PORT}`);
         })

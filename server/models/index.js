@@ -11,6 +11,7 @@ const ListAnimalType = require('../models/list-animal-types-model');
 const AnimalStatus = require('../models/animal-status-model');
 const AdoptionForm = require('../models/adoption-forms-model');
 const VolunteerApplication = require('../models/volunteer-applications');
+const StaffAssignment = require('../models/staff-assignment-model');
 
 //========== Установка ассоциаций между таблицами ==========//
 
@@ -85,7 +86,7 @@ AnimalStatus.belongsTo(Animal, {foreignKey: 'animal_id', targetKey: 'id', as: 'A
 //===== Анкета об усыновлении =====//
 
 //=== Связь между "Анкетой об усыновлении" и "Этапами усыновления животного" ===//
-AdoptionForm.hasOne(StagesAnimalAdoption, {foreignKey: 'adoptionForms_id', sourceKey: 'id', as: 'StagesAnimalAdoptions'});
+// AdoptionForm.hasOne(StagesAnimalAdoption, {foreignKey: 'adoptionForms_id', sourceKey: 'id', as: 'StagesAnimalAdoptions'});
 StagesAnimalAdoption.belongsTo(AdoptionForm, {foreignKey: 'adoptionForms_id', targetKey: 'id', as: 'AdoptionForms'});
 
 //=== Связь между "Анкетой об усыновлении" и "Животными" ===//
@@ -107,6 +108,25 @@ User.belongsTo(AdoptedAnimal, {foreignKey: 'adoptedAnimal_id', sourceKey: 'id', 
 //=== Связь между "Усыновленными животными" и "Животными" ===//
 AdoptedAnimal.hasOne(Animal, {foreignKey: 'adoptedAnimal_id', sourceKey: 'id', as: 'Animals'});
 Animal.belongsTo(AdoptedAnimal, {foreignKey: 'adoptedAnimal_id', sourceKey: 'id', as: 'AdoptedAnimals'});
+
+// Связь пользователей с приютами через StaffAssignment
+User.belongsToMany(Shelter, {
+    through: StaffAssignment,
+    foreignKey: 'user_id',
+    as: 'WorkShelters'
+});
+
+Shelter.belongsToMany(User, {
+    through: StaffAssignment,
+    foreignKey: 'shelter_id', 
+    as: 'StaffUsers'
+});
+
+// Прямые связи для удобства
+StaffAssignment.belongsTo(User, { foreignKey: 'user_id', as: 'User' });
+StaffAssignment.belongsTo(Shelter, { foreignKey: 'shelter_id', as: 'Shelter' });
+User.hasMany(StaffAssignment, { foreignKey: 'user_id', as: 'StaffAssignments' });
+Shelter.hasMany(StaffAssignment, { foreignKey: 'shelter_id', as: 'StaffAssignments' });
 
 module.exports = [
     User,

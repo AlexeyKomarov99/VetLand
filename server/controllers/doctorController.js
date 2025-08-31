@@ -1,9 +1,13 @@
+const DoctorService = require('../service/doctorService');
+
 class DoctorController {
 
     // 1. Список всех животных в приюте, где работает врач
     async listAnimalsShelterWhereDoctorWorks(req, res) {
         try {
-            
+            const { id } = req.params;
+            const animals = await DoctorService.listAnimalsShelterWhereDoctorWorks(id);
+            return res.status(200).json(animals);
         } catch (error) {
             return req.status(500).json({message: 'Ошибка получения списка всех животных, где работает доктор'});
         }

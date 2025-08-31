@@ -69,7 +69,6 @@ class UserAuthController {
     async passwordRecovery(req, res) {
         try {
             
-
         } catch (error) {
             return res.status(500).json({message: 'Ошибка восстановления пароля'});
         }
@@ -78,7 +77,6 @@ class UserAuthController {
     // 5. Обновить пароль
     async passwordUpdate(req, res) {
         try {
-            
             // Инициализация полей данных пользователя с тела запроса req.body
             const {email, currentPassword, newPassword} = req.body;
 
