@@ -5,10 +5,10 @@ const AdminController = require('../controllers/adminController');
 // ========= Маршруты, связанные с пользователями ========= //
 
 // 1. Просмотр всех зарегистрированных пользователей
-router.get('./list-all-users', AdminController.listAllUsers);
+router.get('/list-all-users', AdminController.listAllUsers);
 
 // 2. Просмотр информации одного пользователя
-router.get('./view-user-info/:id', AdminController.viewUserInformation);
+router.get('/view-user-info/:id', AdminController.viewUserInformation);
 
 // 3. Создание нового пользователя
 router.post('/create-new-user', AdminController.createNewUser);
@@ -71,6 +71,6 @@ router.post('/donate-money-animal/:id', AdminController.donateMoneyAnimal);
 router.get('/list-all-shelter', AdminController.listAllShelter);
 
 // 21. Добавление нового приюта
-router.post('./add-new-shelter', AdminController.addNewShelter);
+router.post('/add-new-shelter', AdminController.addNewShelter);
 
 module.exports = router;
