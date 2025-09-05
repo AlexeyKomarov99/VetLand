@@ -22,6 +22,7 @@ const AdoptedAnimal = sequelize.define('AdoptedAnimal', {
             model: 'Animals',
             key: 'id',
         },
+        onDelete: 'CASCADE'
     },
     adoptedAnimalPhotosData: {
         type: DataTypes.JSONB,

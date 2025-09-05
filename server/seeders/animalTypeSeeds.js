@@ -2,8 +2,8 @@ const ListAnimalType = require('../models/list-animal-types-model');
 
 const seedAnimalTypes = async () => {
     const types = [
-        { type: 'Собака' },
-        { type: 'Кот' },
+        {type: 'Собака'},
+        {type: 'Кот'},
         {type: 'Попугай'},
         {type: 'Хомяк'},
         {type: 'Кролик'}

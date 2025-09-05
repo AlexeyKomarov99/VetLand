@@ -94,7 +94,7 @@ class AdminController {
             const userData = req.body;
             const updateUserInfo = await AdminService.updateUserData(userId, userData);
 
-            return res.status(200).json({ // 200 вместо 201 (201 для создания)
+            return res.status(200).json({
                 message: 'Данные пользователя успешно обновлены!',
                 user: updateUserInfo
             });
@@ -111,11 +111,11 @@ class AdminController {
     async deleteUser(req, res) {
         try {
             const userId = req.params.id;
-            const deletedUser = await AdminService.deleteUser(userId);
+            const result = await AdminService.deleteUser(userId);
 
             return res.status(204).json({
                 message: 'Пользователь успешно удален!',
-                deletedUser: deletedUser
+                deletedUserId: result
             })
         } catch (error) {
             console.error(error);
@@ -170,7 +170,7 @@ class AdminController {
                 userRating
             })
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка получения данных о рейтинге пользователей по пожертвованиям'});
+            return res.status(500).json({message: 'Ошибка получения данных о рейтинге пользователей по пожертвованиям'});
         }
     }
 
@@ -212,72 +212,128 @@ class AdminController {
     // 11. Просмотр подробной информации о животном
     async viewDetailedInformationAnimal(req, res) {
         try {
-            
+            const animalId = req.params.id;
+            const animalInfo = await AdminService.viewDetailedInformationAnimal(animalId);
+            return res.status(200).json(animalInfo);
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка получения подробной информации о животном'});
+            return res.status(500).json({message: 'Ошибка получения подробной информации о животном'});
         }
     }
 
-
-
-
-
-
-
-
-
-    
-    // 12. Добавить животного в БД к конкретному приюту по id
+    // 12. Добавить животного в БД к конкретному приюту
     async addAnimalDBSpecificShelter(req, res) {
         try {
+            const { shelter_id, animalType_id, animalStatus_id, animalName, age, gender, animalPhotosData, amountTreatment } = req.body;
             
+            // Валидация обязательных полей
+            if (!shelter_id || !animalType_id || !animalStatus_id || !animalName || !age || !gender) {
+                return res.status(400).json({message: 'Отсутствуют обязательные поля'});
+            }
+
+            const newAnimal = await AdminService.addAnimalDBSpecificShelter({
+                shelter_id,
+                animalType_id, 
+                animalStatus_id,
+                animalName,
+                age,
+                gender,
+                animalPhotosData,
+                amountTreatment
+            });
+            return res.status(201).json({
+                message: 'Животное успешно добавлено в приют',
+                animal: newAnimal
+            });
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка добавления животного в БД к приюту № ... '});
+            console.error(error);
+            return res.status(500).json({message: 'Ошибка добавления животного в приют'});
         }
     }
 
-    // 13. Добавить животного в БД усыновленных животных
+    // 13. Добавить животного в БД усыновленных животных (перевод животного из Animals в AdoptedAnimals)
     async addAnimalDBAdoptedAnimals(req, res) {
         try {
+            const { animal_id, user_id, adoptedAnimalPhotosData } = req.body;
             
+            // Валидация обязательных полей
+            if (!animal_id || !user_id) {
+                return res.status(400).json({message: 'Отсутствуют animal_id или user_id'});
+            }
+
+            const adoptedAnimal = await AdminService.addAnimalDBAdoptedAnimals({
+                animal_id,
+                user_id,
+                adoptedAnimalPhotosData
+            });
+
+            return res.status(201).json({
+                message: 'Животное успешно усыновлено',
+                adoptedAnimal
+            });
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка добавления животного в БД к усыновленным животным'});
+            console.error(error);
+            return res.status(500).json({message: 'Ошибка оформления усыновления'});
         }
     }
 
     // 14. Обновление информации о животном
     async updateInformationAnimal(req, res) {
         try {
-            
+            const animalId = req.params.id;
+            const animalData = req.body;
+            const animalUpdateInfo = await AdminService.updateInformationAnimal(animalId, animalData);
+            return res.status(200).json(animalUpdateInfo);
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка обновления данных животного'});
+            return res.status(500).json({message: 'Ошибка обновления данных животного'});
         }
     }
     
     // 15. Удаление животного из БД
     async deleteAnimal(req, res) {
         try {
-            
+            const animalId = req.params.id;
+            const result = await AdminService.deleteAnimal(animalId);
+            return res.status(204).json({
+                message: 'Животное успешно удалено!',
+                deletedAnimalId: result
+            })
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка удаления животного из БД'});
+            return res.status(500).json({message: 'Ошибка удаления животного из БД'});
         }
     }
 
     // 16. Добавление нового типа животного
     async addNewTypeAnimal(req, res) {
         try {
+            // Первая буква должна быть заглавной
+            const {newTypeAnimal} = req.body;
+
+            if (!newTypeAnimal || typeof newTypeAnimal !== 'string') {
+                return res.status(400).json({message: 'Некорректное название типа животного'});
+            }
+
+            await AdminService.addNewTypeAnimal(newTypeAnimal);
             
+            return res.status(201).json({
+                message: `Добавлен новый тип животного: ${newTypeAnimal}`,
+            })
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка добавления нового типа животного в БД'});
+            return res.status(500).json({message: 'Ошибка добавления нового типа животного в БД'});
         }
     }
 
     // 17. Удаление типа животного из БД
     async deleteAnimalType(req, res) {
         try {
-            
+            const animalTypeId = req.params.id;
+            const result = await AdminService.deleteAnimalType(animalTypeId);
+            return res.status(200).json({
+                message: `Тип животного ${result} удален`
+            })
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка удаления типа животного из БД'});
+            return res.status(500).json({message: 'Ошибка удаления типа животного из БД'});
         }
     }
 

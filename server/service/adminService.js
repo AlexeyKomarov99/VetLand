@@ -1,11 +1,15 @@
 const UserModel = require('../models/user-model');
 const StagesAnimalAdoptionModel = require('../models/stages-animal-adoption-model');
-const VolunteerApplication = require('../models/volunteer-applications');
-const TransactionsShelter = require('../models/transactions-shelter-model');
-const Animal = require('../models/animals-model');
-const Shelter = require('../models/shelters-model');
+const VolunteerApplicationModel = require('../models/volunteer-applications');
+const TransactionsShelterModel = require('../models/transactions-shelter-model');
+const AnimalModel = require('../models/animals-model');
+const ShelterModel = require('../models/shelters-model');
+const ListAnimalTypesModel = require('../models/list-animal-types-model');
+const AnimalStatusesModel = require('../models/animal-status-model');
+const AdoptedAnimalsModel = require('../models/adopted-animals-model');
 
 const bcrypt = require('bcrypt');
+const sequelize = require('../db'); 
 
 class AdminService {
     
@@ -20,6 +24,11 @@ class AdminService {
     // 2. Просмотр информации одного пользователя
     async viewUserInformation(userId) {
         const userInfo = await UserModel.findOne({where: {id: userId}});
+
+        if(!userInfo) {
+            throw new Error('Ошибка получения информации о пользователе');
+        }
+        
         return userInfo;
     }
 
@@ -48,7 +57,7 @@ class AdminService {
             return userResponse;
 
         } catch (error) {
-            console.error('Ошибка в сервисе по созданию пользователя:', error);
+            console.error('Ошибка в сервисе:', error);
             throw error;
         }
     }
@@ -84,11 +93,11 @@ class AdminService {
             if(!user) {
                 throw new Error('Пользователь не найден');
             }
-            await user.destroy(user);
+            await user.destroy();
 
             return { 
                 id: userId, 
-                message: 'User deleted' 
+                message: 'Пользователь удален'
             };
 
         } catch (error) {
@@ -111,7 +120,7 @@ class AdminService {
     // 7. Список заявок на волонтерство
     async listVolunteerApplications() {
         try {
-            const applications = await VolunteerApplication.findAll();
+            const applications = await VolunteerApplicationModel.findAll();
             return applications;
         } catch (error) {
             console.error('Ошибка в сервисе: ', error);
@@ -122,7 +131,7 @@ class AdminService {
     // 8. Просмотр рейтинга пользователей по пожертвованиям (список)
     async userRatingByDonations() {
         try {
-            const userRating = await TransactionsShelter.findAll();
+            const userRating = await TransactionsShelterModel.findAll();
             return userRating;
         } catch (error) {
             console.error('Ошибка в сервисе: ', error);
@@ -135,7 +144,7 @@ class AdminService {
     // 9. Список всех животных
     async listAllAnimals() {
         try {
-            const animals = await Animal.findAll();
+            const animals = await AnimalModel.findAll();
             return animals;
         } catch (error) {
             console.error('Ошибка в сервисе: ', error);
@@ -146,12 +155,12 @@ class AdminService {
     // 10. Список всех животных, относящихся к конкретному приюту id
     async listAllAnimalsSpecificShelter(shelterId) {
         try {
-            const shelter = await Shelter.findByPk(shelterId);
+            const shelter = await ShelterModel.findByPk(shelterId);
             if(!shelter) {
                 throw new Error('Приют не найден');
             }
 
-            const animals = await Animal.findAll({where: {shelter_id: shelterId}});
+            const animals = await AnimalModel.findAll({where: {shelter_id: shelterId}});
             return animals;
 
         } catch (error) {
@@ -161,73 +170,200 @@ class AdminService {
     }
 
     // 11. Просмотр подробной информации о животном
-    async viewDetailedInformationAnimal(req, res) {
+    async viewDetailedInformationAnimal(animalId) {
         try {
-            
+            const animalInfo = await AnimalModel.findByPk(animalId);
+            if(!animalInfo) {
+                throw new Error('Животное в БД не найдено');
+            }
+            return animalInfo;
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка получения подробной информации о животном'});
+            console.error('Ошибка в сервисе: ', error);
+            throw error;
         }
     }
 
-
-
-
-
-
-
-
-    
-    // 12. Добавить животного в БД к конкретному приюту по id
-    async addAnimalDBSpecificShelter(req, res) {
+    // 12. Добавить животного в БД к конкретному приюту
+    async addAnimalDBSpecificShelter(animalData) {
         try {
-            
+            // Проверяем существование приюта
+            const shelter = await ShelterModel.findByPk(animalData.shelter_id);
+            if (!shelter) {
+                throw new Error('Приют не найден');
+            }
+
+            // Проверяем существование типа животного
+            const animalType = await ListAnimalTypesModel.findByPk(animalData.animalType_id);
+            if (!animalType) {
+                throw new Error('Тип животного не найден');
+            }
+
+            // Проверяем существование статуса
+            const animalStatus = await AnimalStatusesModel.findByPk(animalData.animalStatus_id);
+            if (!animalStatus) {
+                throw new Error('Статус животного не найден');
+            }
+
+            // Создаем животное
+            const newAnimal = await AnimalModel.create(animalData);
+            return newAnimal;
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка добавления животного в БД к приюту № ... '});
+            console.error('Ошибка в сервисе:', error);
+            throw error;
         }
     }
 
     // 13. Добавить животного в БД усыновленных животных
-    async addAnimalDBAdoptedAnimals(req, res) {
+    async addAnimalDBAdoptedAnimals(adoptionData) {
+        const transaction = await sequelize.transaction();
+        
         try {
+            // 1. Проверяем существование животного
+            const animal = await AnimalModel.findByPk(adoptionData.animal_id, { transaction });
+            if (!animal) {
+                throw new Error('Животное не найдено');
+            }
+
+            // 2. Проверяем существование пользователя
+            const user = await UserModel.findByPk(adoptionData.user_id, { transaction });
+            if (!user) {
+                throw new Error('Пользователь не найден');
+            }
+
+            // 3. Проверяем, не усыновлено ли уже животное
+            const existingAdoption = await AdoptedAnimalsModel.findOne({
+                where: { animal_id: adoptionData.animal_id },
+                transaction
+            });
+            if (existingAdoption) {
+                throw new Error('Животное уже усыновлено');
+            }
+
+            // 4. Создаем запись в усыновленных животных
+            const adoptedAnimal = await AdoptedAnimalsModel.create({
+                animal_id: adoptionData.animal_id,
+                user_id: adoptionData.user_id,
+                adoptedAnimalPhotosData: adoptionData.adoptedAnimalPhotosData || animal.animalPhotosData
+            }, { transaction });
+
+            // 5. Удаляем животное из основной таблицы (или меняем статус)
+            await AnimalModel.destroy({
+                where: { id: adoptionData.animal_id },
+                transaction
+            });
+
+            // Вместо удаления:
+            // await animal.update({ 
+            //     animalStatus_id: 'ID_СТАТУСА_УСЫНОВЛЕН' 
+            // }, { transaction });
+
+            await transaction.commit();
             
+            return adoptedAnimal;
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка добавления животного в БД к усыновленным животным'});
+            await transaction.rollback();
+            console.error('Ошибка в сервисе:', error);
+            throw error;
         }
     }
 
     // 14. Обновление информации о животном
-    async updateInformationAnimal(req, res) {
+    async updateInformationAnimal(animalId, animalData) {
         try {
+            const animal = await AnimalModel.findByPk(animalId);
+            if(!animal) {
+                throw new Error('Животное в БД не найдено');
+            }
+
+            // Проверяем существование связанных сущностей (рекомендуется)
+            if (animalData.shelter_id) {
+                const shelter = await ShelterModel.findByPk(animalData.shelter_id);
+                if (!shelter) throw new Error('Приют не найден');
+            }
+
+            if (animalData.animalType_id) {
+                const animalType = await ListAnimalTypeModel.findByPk(animalData.animalType_id);
+                if (!animalType) throw new Error('Тип животного не найден');
+            }
+
+            await animal.update(animalData);
             
+            const animalResponse = animal.toJSON();
+            return animalResponse;
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка обновления данных животного'});
+            console.error('Ошибка в сервисе: ', error);
+            throw error;
         }
     }
     
     // 15. Удаление животного из БД
-    async deleteAnimal(req, res) {
+    async deleteAnimal(animalId) {
         try {
+            const animal = await AnimalModel.findByPk(animalId);
             
+            if(!animal) {
+                throw new Error('Животное в БД не найдено');
+            }
+            
+            await animal.destroy();
+
+            return {
+                id: animalId,
+                message: 'Животное удалено из БД'
+            }
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка удаления животного из БД'});
+            console.error('Ошибка в сервисе: ', error);
+            throw error;
         }
     }
 
     // 16. Добавление нового типа животного
-    async addNewTypeAnimal(req, res) {
+    async addNewTypeAnimal(newTypeAnimal) {
         try {
-            
+            const formattedType = newTypeAnimal.charAt(0).toUpperCase() + newTypeAnimal.slice(1).toLowerCase();
+            const existingType = await ListAnimalTypesModel.findOne({
+                where:{type:formattedType}
+            });
+
+            if(existingType) {
+                throw new Error(`Тип ${formattedType} уже в базе существует`);
+            }
+            const newType = await ListAnimalTypesModel.create({
+                type: formattedType
+            });
+
+            return newType;
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка добавления нового типа животного в БД'});
+            console.error('Ошибка в сервисе:', error);
+            throw error;
         }
     }
 
     // 17. Удаление типа животного из БД
-    async deleteAnimalType(req, res) {
+    async deleteAnimalType(animalTypeId) {
         try {
-            
+            const animalType = await ListAnimalTypesModel.findByPk(animalTypeId);
+
+            if(!animalType) {
+                throw new Error('Тип животного не найден');
+            }
+
+            const typeAnimalName = animalType.type;
+
+            await ListAnimalTypesModel.destroy({
+                where: {id: animalTypeId}
+            })
+
+            return typeAnimalName;
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка удаления типа животного из БД'});
+            console.error('Ошибка в сервисе:', error);
+            throw error;
         }
     }
 
