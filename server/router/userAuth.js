@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = new Router;
+const authMiddleware = require('../middleware/auth');
 const UserAuthController = require('../controllers/userAuthController');
 
 // 1. Регистрация
@@ -9,15 +10,21 @@ router.post('/registration', UserAuthController.registration);
 router.post('/login', UserAuthController.login);
 
 // 3. Выход
-router.post('/logout', UserAuthController.logout);
+router.post('/logout', 
+    authMiddleware, 
+    UserAuthController.logout
+);
 
-// 4. Восстановление пароля
-router.patch('/password-update', UserAuthController.passwordUpdate);
+// 4. Запрос на восстановление пароля
+router.post('/password-recovery-request', UserAuthController.passwordRecoveryRequest);
 
 // 5. Обновить пароль
-router.patch('/password-recovery', UserAuthController.passwordRecovery);
+router.patch('/password-update', 
+    authMiddleware, 
+    UserAuthController.passwordUpdate
+);
 
 // 6. Подтверждение электронной почты
-router.get('./email-confirmation', UserAuthController.emailConfirmation);
+router.get('/email-confirmation/:token', UserAuthController.emailConfirmation);
 
 module.exports = router;

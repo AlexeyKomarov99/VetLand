@@ -116,36 +116,32 @@ class UserAuthService {
     }
 
     // 4. Восстановление пароля
-    async passwordRecovery(req, res) {
+    async passwordRecoveryRequest(req, res) {
 
     }
 
     // 5. Обновить пароль
-    async passwordUpdate(email, currentPassword, newPassword) {
-
-        // Поиск пользователя в БД
-        const user = await UserModel.findOne({where: {email}});
+    async passwordUpdate(userId, currentPassword, newPassword) {
+        // Поиск пользователя в БД по ID (из токена)
+        const user = await UserModel.findByPk(userId);
         if(!user) {
-            throw new Error(`Пользователь с почтой ${email} не найден`);
+            throw new Error('Пользователь не найден');
         }
 
-        // Проверка текущего пароля и пароля с БД
+        // Проверка текущего пароля
         const passwordCheck = await bcrypt.compare(currentPassword, user.password);
-
         if(!passwordCheck) {
-            throw new Error('Неверный пароль');
+            throw new Error('Неверный текущий пароль');
         }
 
         // Хэширование нового пароля
         const hashedPassword = await bcrypt.hash(newPassword, 3);
         user.password = hashedPassword;
 
-        // Сохранение обновленного пароля объекта user в UserModel
         await user.save();
 
         return {
-            message: 'Обновленный пароль',
-            password: user.password,
+            message: 'Пароль успешно обновлен'
         }
     }
 

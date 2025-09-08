@@ -6,18 +6,19 @@ class UserAuthController {
     // 1. Регистрация
     async registration(req, res) {
         try {
-
-            // Инициализация полей данных пользователя с тела запроса req.body 
             const {name, surname, email, phone, password} = req.body;
-            
-            // Процедура регистрации/добавления пользователя в базу данных
+
+            if (!name || !surname || !email || !phone || !password) {
+                return res.status(400).json({
+                    message: 'Все поля обязательны для заполнения'
+                });
+            }
+
             const newUser = await UserAuthService.registration(name, surname, email, phone, password);
 
-            // Создание и установка куки в ответе
             res.cookie('refreshToken', newUser.refreshToken, {maxAge: 30* 24 * 60 * 60 * 1000, httpOnly: true});
 
-            // Отправка данных клиенту
-            return res.status(200).json(newUser);
+            return res.status(201).json(newUser);
 
         } catch (error) {
             console.error("Ошибка регистрации", error);
@@ -28,11 +29,14 @@ class UserAuthController {
     // 2. Вход
     async login(req, res) {
         try {
-
-            // Инициализация полей данных пользователя с тела запроса req.body 
             const {email, password} = req.body;
 
-            // Процедура входа пользователя в информационную систему
+            if (!email || !password) {
+                return res.status(400).json({
+                    message: 'Email и пароль обязательны'
+                });
+            }
+
             const userData = await UserAuthService.login(email, password);
             
             // Создание и установка куки в ответе
@@ -50,7 +54,6 @@ class UserAuthController {
     // 3. Выход
     async logout(req, res) {
         try {
-
             // Получение refreshToken из куки
             const {refreshToken} = req.cookies;
             const token = await UserAuthService.logout(refreshToken);
@@ -65,28 +68,48 @@ class UserAuthController {
         }
     }
 
-    // 4. Восстановление пароля
-    async passwordRecovery(req, res) {
+    // 4. Запрос на восстановление пароля
+    async passwordRecoveryRequest(req, res) {
         try {
+            const { email } = req.body;
             
+            if (!email) {
+                return res.status(400).json({ message: 'Email обязателен' });
+            }
+
+            const result = await UserAuthService.passwordRecoveryRequest(email);
+            return res.status(200).json(result);
+
         } catch (error) {
-            return res.status(500).json({message: 'Ошибка восстановления пароля'});
+            console.error('Ошибка восстановления пароля:', error);
+            
+            if (error.message.includes('не найден')) {
+                return res.status(404).json({ message: error.message });
+            }
+            
+            return res.status(500).json({ message: 'Ошибка восстановления пароля' });
         }
     }
 
     // 5. Обновить пароль
     async passwordUpdate(req, res) {
         try {
-            // Инициализация полей данных пользователя с тела запроса req.body
-            const {email, currentPassword, newPassword} = req.body;
+            const userId = req.user.id; // Берем из токена!
+            const { currentPassword, newPassword } = req.body;
 
-            //  Обновление пароля
-            const updatePassword = await UserAuthService.passwordUpdate(email, currentPassword, newPassword);
+            const result = await UserAuthService.passwordUpdate(
+                userId, 
+                currentPassword, 
+                newPassword
+            );
 
-            return res.status(200).json(updatePassword);
+            return res.status(200).json(result);
 
         } catch (error) {
-            console.log("Ошибка выхода из приложения:", error);
+            console.log("Ошибка обновления пароля:", error);
+            if (error.message.includes('Неверный текущий пароль')) {
+                return res.status(400).json({message: error.message});
+            }
             return res.status(500).json({message: 'Ошибка обновления пароля'});
         }
     }
