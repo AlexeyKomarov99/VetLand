@@ -2,26 +2,58 @@ const DoctorService = require('../service/doctorService');
 
 class DoctorController {
 
-    // 1. Список всех животных в приюте, где работает врач
-    async listAnimalsShelterWhereDoctorWorks(req, res) {
+    // 1. Медицинские записи, сделанные ТЕКУЩИМ врачом
+    async myMedicalRecords(req, res) {
         try {
-            const { id } = req.params;
-            const animals = await DoctorService.listAnimalsShelterWhereDoctorWorks(id);
-            return res.status(200).json(animals);
+            const doctorId = req.user.id;
+            const medicalRecords = await DoctorService.medicalRecordsDoctor(doctorId);
+            return res.status(200).json({
+                message: medicalRecords.length === 0
+                    ? 'У вас нет медицинских записей'
+                    : 'Записи врача',
+                count: medicalRecords.length,
+                medicalRecords
+            })
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка получения списка всех животных, где работает доктор'});
+            return res.status(500).json({message: 'Ошибка получения медицинских записок доктора'});
         }
     }
 
-    // 2. Медицинские записи врача
-    async medicalRecordsDoctor(req, res) {
+    // 2. Сделать медицинскую запись о состоянии животного (от имени текущего врача)
+    async createMedicalRecord(req, res) {
         try {
+            const user_id = req.user.id; 
+            const { animal_id, animalStatus_id, medicalReport } = req.body;
             
+            // Валидация обязательных полей
+            if (!animal_id || !animalStatus_id || !medicalReport) {
+                return res.status(400).json({
+                    message: 'Отсутствуют обязательные поля: user_id, animal_id, animalStatus_id, medicalReport'
+                });
+            }
+
+            const medicalRecord = await DoctorService.createMedicalRecord({
+                user_id,
+                animal_id, 
+                animalStatus_id,
+                medicalReport
+            });
+
+            return res.status(201).json({
+                message: 'Медицинская запись успешно создана',
+                medicalRecord
+            });
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка получения медицинских записок доктора'});
+            console.error(error);
+            
+            if (error.message.includes('не найден') || error.message.includes('не является')) {
+                return res.status(404).json({message: error.message});
+            }
+            
+            return res.status(500).json({message: 'Ошибка создания медицинской записи'});
         }
     }
-
 }
 
 module.exports = new DoctorController;

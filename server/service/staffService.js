@@ -7,29 +7,40 @@ const ShelterModel = require('../models/shelters-model');
 const ListAnimalTypesModel = require('../models/list-animal-types-model');
 const AnimalStatusesModel = require('../models/animal-status-model');
 const AdoptedAnimalsModel = require('../models/adopted-animals-model');
+const MedicalRecordModel = require('../models/medical-records-model');
 
 const bcrypt = require('bcrypt');
 const sequelize = require('../db'); 
 
-class AdminService {
+class StaffService {
     
     //========== API связанные с пользователями ==========//
 
     // 1. Просмотр всех зарегистрированных пользователей
     async listAllUsers() {
-        const users = await UserModel.findAll();
-        return users;
+        try {
+            const users = await UserModel.findAll();
+            return users;
+        } catch (error) {
+            console.error('Ошибка в сервисе listAllUsers:', error);
+            throw error;
+        }
     }
 
     // 2. Просмотр информации одного пользователя
     async viewUserInformation(userId) {
-        const userInfo = await UserModel.findOne({where: {id: userId}});
+        try {
+            const userInfo = await UserModel.findOne({where: {id: userId}});
+            if(!userInfo) {
+                throw new Error('Ошибка получения информации о пользователе');
+            }
 
-        if(!userInfo) {
-            throw new Error('Ошибка получения информации о пользователе');
+            return userInfo;
+
+        } catch (error) {
+            console.error('Ошибка в сервисе viewUserInformation:', error);
+            throw error;
         }
-        
-        return userInfo;
     }
 
     // 3. Создание нового пользователя
@@ -57,7 +68,7 @@ class AdminService {
             return userResponse;
 
         } catch (error) {
-            console.error('Ошибка в сервисе:', error);
+            console.error('Ошибка в сервисе createNewUser:', error);
             throw error;
         }
     }
@@ -81,7 +92,7 @@ class AdminService {
             return userResponse;
 
         } catch (error) {
-            console.error('Ошибка в сервисе:', error);
+            console.error('Ошибка в сервисе updateUserData:', error);
             throw error;
         }
     }
@@ -101,7 +112,7 @@ class AdminService {
             };
 
         } catch (error) {
-            console.error('Ошибка в сервисе: ', error);
+            console.error('Ошибка в сервисе deleteUser: ', error);
             throw error;
         }
     }
@@ -112,7 +123,7 @@ class AdminService {
             const listQuestionnaires = await StagesAnimalAdoptionModel.findAll();
             return listQuestionnaires;
         } catch (error) {
-            console.error('Ошибка в сервисе: ', error);
+            console.error('Ошибка в сервисе listUserQuestionnairesAnimalAdoption: ', error);
             throw error;
         }
     }
@@ -123,7 +134,7 @@ class AdminService {
             const applications = await VolunteerApplicationModel.findAll();
             return applications;
         } catch (error) {
-            console.error('Ошибка в сервисе: ', error);
+            console.error('Ошибка в сервисе listVolunteerApplications: ', error);
             throw error;
         }
     }
@@ -134,7 +145,7 @@ class AdminService {
             const userRating = await TransactionsShelterModel.findAll();
             return userRating;
         } catch (error) {
-            console.error('Ошибка в сервисе: ', error);
+            console.error('Ошибка в сервисе userRatingByDonations: ', error);
             throw error;
         }
     }
@@ -147,7 +158,7 @@ class AdminService {
             const animals = await AnimalModel.findAll();
             return animals;
         } catch (error) {
-            console.error('Ошибка в сервисе: ', error);
+            console.error('Ошибка в сервисе listAllAnimals: ', error);
             throw error;
         }
     }
@@ -164,7 +175,7 @@ class AdminService {
             return animals;
 
         } catch (error) {
-            console.error('Ошибка в сервисе: ', error);
+            console.error('Ошибка в сервисе listAllAnimalsSpecificShelter: ', error);
             throw error;
         }
     }
@@ -178,7 +189,7 @@ class AdminService {
             }
             return animalInfo;
         } catch (error) {
-            console.error('Ошибка в сервисе: ', error);
+            console.error('Ошибка в сервисе viewDetailedInformationAnimal: ', error);
             throw error;
         }
     }
@@ -209,7 +220,7 @@ class AdminService {
             return newAnimal;
 
         } catch (error) {
-            console.error('Ошибка в сервисе:', error);
+            console.error('Ошибка в сервисе addAnimalDBSpecificShelter:', error);
             throw error;
         }
     }
@@ -264,7 +275,7 @@ class AdminService {
 
         } catch (error) {
             await transaction.rollback();
-            console.error('Ошибка в сервисе:', error);
+            console.error('Ошибка в сервисе addAnimalDBAdoptedAnimals:', error);
             throw error;
         }
     }
@@ -294,7 +305,7 @@ class AdminService {
             return animalResponse;
 
         } catch (error) {
-            console.error('Ошибка в сервисе: ', error);
+            console.error('Ошибка в сервисе updateInformationAnimal: ', error);
             throw error;
         }
     }
@@ -316,7 +327,7 @@ class AdminService {
             }
 
         } catch (error) {
-            console.error('Ошибка в сервисе: ', error);
+            console.error('Ошибка в сервисе deleteAnimal: ', error);
             throw error;
         }
     }
@@ -339,7 +350,7 @@ class AdminService {
             return newType;
 
         } catch (error) {
-            console.error('Ошибка в сервисе:', error);
+            console.error('Ошибка в сервисе addNewTypeAnimal:', error);
             throw error;
         }
     }
@@ -362,48 +373,103 @@ class AdminService {
             return typeAnimalName;
 
         } catch (error) {
-            console.error('Ошибка в сервисе:', error);
+            console.error('Ошибка в сервисе deleteAnimalType:', error);
             throw error;
         }
     }
 
-    //========== Прочие API ==========//
-
-    // 18.	Пожертвовать денег в фонд
-    async donateMoneyShelter(req, res) {
+    // 18.	Список всех приютов
+    async listAllShelter() {
         try {
-            
+            const shelters = await ShelterModel.findAll();
+            return shelters;
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка отправки средств приюту'});
+            console.error('Ошибка в сервисе listAllShelter:', error);
+            throw error;
         }
     }
 
-    // 19.	Пожертвовать денег животному по id
-    async donateMoneyAnimal(req, res) {
+    // 19. Добавление нового приюта
+    async addNewShelter(shelterData) {
         try {
+            const existingShelter = await ShelterModel.findOne({
+                where: { email: shelterData.email }
+            });
             
+            if (existingShelter) {
+                throw new Error('Приют с таким email уже существует');
+            }
+
+            // Создаем новый приют
+            const newShelter = await ShelterModel.create(shelterData);
+            return newShelter;
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка отправки средств животному'});
+            console.error('Ошибка в сервисе addNewShelter:', error);
+            throw error;
         }
     }
 
-    // 20.	Список всех приютов
-    async listAllShelter(req, res) {
+    // 20. Удаление медицинской записи
+    async deleteMedicalRecord(recordId, currentUserId, currentUserRole) {
         try {
-            
+            const record = await MedicalRecordModel.findByPk(recordId);
+            if (!record) {
+                throw new Error('Медицинская запись не найдена');
+            }
+
+            // Проверка прав: если пользователь не админ и не менеджер, проверяем, что он автор записи
+            if (!['admin', 'manager'].includes(currentUserRole)) {
+                if (record.user_id !== currentUserId) {
+                    throw new Error('Недостаточно прав для удаления этой записи');
+                }
+            }
+
+            await record.destroy();
+            return { id: recordId };
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка получения списка всех приютов'});
+            console.error('Ошибка в сервисе deleteMedicalRecord:', error);
+            throw error;
         }
     }
 
-    // 21. Добавление нового приюта
-    async addNewShelter(req, res) {
+    // 21. Редактирование медицинской записи
+    async editMedicalRecord(recordId, currentUserId, currentUserRole, updateData) {
         try {
-            
+            const record = await MedicalRecordModel.findByPk(recordId);
+            if(!record) {
+                throw new Error('Медицинская запись не найдена');
+            }
+
+            // Проверка прав: если пользователь не админ и не менеджер, проверяем, что он автор записи
+            if(!['admin', 'manager'].includes(currentUserRole)) {
+                if(record.user_id !== currentUserId) {
+                    throw new Error('Недостаточно прав для редактирования этой записи');
+                }
+            }
+
+            // Обновляем запись
+            await record.update(updateData);
+
+            // Возвращаем обновленную запись
+            return record;
+
         } catch (error) {
-            return req.status(500).json({message: 'Ошибка добавления нового приюта'});
+            console.error('Ошибка в сервисе editMedicalRecord:', error);
+            throw error;
+        }
+    }
+
+    // 22. Получить все медицинские записи
+    async listAllMedicalRecords() {
+        try {
+            const medicalRecords = await MedicalRecordModel.findAll();
+            return medicalRecords;
+        } catch (error) {
+            console.error('Ошибка в сервисе listAllMedicalRecords:', error);
         }
     }
 }
 
-module.exports = new AdminService;
+module.exports = new StaffService;

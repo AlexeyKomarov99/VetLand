@@ -1,11 +1,21 @@
 const { Router } = require('express');
 const router = new Router;
+const authMiddleware = require('../middleware/auth');
+const roleMiddleware = require('../middleware/roleAuth');
 const DoctorController = require('../controllers/doctorController');
 
-// 1. Список всех животных в приюте, где работает врач
-router.get('./list-animals-shelter-where-doctor-works/:id', DoctorController.listAnimalsShelterWhereDoctorWorks);
+// 1. Медицинские записи, сделанные ТЕКУЩИМ врачом
+router.get('/my-medical-records',
+    authMiddleware,
+    roleMiddleware(['doctor']),
+    DoctorController.myMedicalRecords
+);
 
-// 2. Медицинские записи врача
-router.get('./medical-records-doctor/:id', DoctorController.medicalRecordsDoctor);
+// 2. Сделать медицинскую запись о состоянии животного (от имени текущего врача)
+router.post('/create-medical-record',
+    authMiddleware,
+    roleMiddleware(['doctor']),
+    DoctorController.createMedicalRecord
+);
 
 module.exports = router;
