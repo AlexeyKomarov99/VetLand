@@ -4,35 +4,21 @@ const AnimalStatus = require('../models/animal-status-model');
 const Shelter = require('../models/shelters-model');
 
 const getAnimalPhotos = (animalType, animalName, index) => {
-    // Фиксированные ID изображений с Unsplash Source для каждого типа
-    const photoCollections = {
-        'Собака': {
-            ids: ['eBmyH7oO5wY', 'Qy4kL6BU2Wg', 'hXUZwp6q_2s', 'dYEuFB8KQJk'],
-            base: 'https://images.unsplash.com/photo-'
-        },
-        'Кот': {
-            ids: ['wJ1lOWqqK7o', 'J2oNHYSwVtM', 'YCPkW_r_6uA', 'so5nsYDOdxw'],
-            base: 'https://images.unsplash.com/photo-'
-        },
-        'Попугай': {
-            ids: ['rRiNtQvqBr4', 'rRiNtQvqBr4', '6R2uhb7zZgA', '6R2uhb7zZgA'],
-            base: 'https://images.unsplash.com/photo-'
-        },
-        'Кролик': {
-            ids: ['K9olx8OF36A', 'K9olx8OF36A', 'ndC6oLyV6C8', 'ndC6oLyV6C8'],
-            base: 'https://images.unsplash.com/photo-'
-        }
+    // Генерация уникальных фото на основе индекса животного
+    const getUniquePhoto = (seed, width = 600, height = 400) => {
+        return `https://picsum.photos/seed/${seed}/${width}/${height}`;
     };
 
-    const collection = photoCollections[animalType] || photoCollections['Собака'];
-    
     return {
-        photos: collection.ids.map((id, i) => ({
-            url: `${collection.base}${id}?auto=format&fit=crop&w=600&h=400`,
-            description: `${animalType} ${animalName} - фото ${i + 1}`,
-            isMain: i === 0,
-            uploadDate: new Date()
-        }))
+        photos: Array(4).fill(0).map((_, i) => {
+            const uniqueSeed = `${animalType}-${animalName}-${index}-${i}`;
+            return {
+                url: getUniquePhoto(uniqueSeed),
+                description: `${animalType} ${animalName} - фото ${i + 1}`,
+                isMain: i === 0,
+                uploadDate: new Date()
+            };
+        })
     };
 };
 

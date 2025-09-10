@@ -18,7 +18,7 @@ app.use(cors({
 app.use(express.json()); // Парсинг тела запросов req.body в формате json
 app.use(cookieParser()); // Получаем доступ к cookies через объект req.cookies в обработчиках маршрутов
 
-app.use('/api', router); // Маршруты к end points
+app.use('/api', router);
 
 
 const start = async () => {
