@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { authApi } from './api/authApi'
 import { doctorApi } from './api/doctorApi'
 import { staffApi } from './api/staffApi'
+import { publicApi } from './api/publicApi'
 import authSlice from './slices/authSlice'
 import doctorSlice from './slices/doctorSlice'
 import staffSlice from './slices/staffSlice'
@@ -21,11 +22,13 @@ export const store = configureStore({
     medical: medicalSlice,
     [authApi.reducerPath]: authApi.reducer,
     [doctorApi.reducerPath]: doctorApi.reducer,
-    [staffApi.reducerPath]: staffApi.reducer
+    [staffApi.reducerPath]: staffApi.reducer,
+    [publicApi.reducerPath]: publicApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
       .concat(authApi.middleware)
       .concat(doctorApi.middleware)
       .concat(staffApi.middleware)
+      .concat(publicApi.middleware)
 })

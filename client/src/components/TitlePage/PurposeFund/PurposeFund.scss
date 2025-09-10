@@ -1,0 +1,133 @@
+@import '../../../App.css';
+
+/* Адаптация для экранов выше 1920px */
+.PurposeFund {
+    position: relative;
+    // height: 940px;
+    margin-top: 0.35rem;
+    .PurposeFund__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        .PurposeFund__container {
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            border-radius: var(--border-radius-high);
+            .PurposeFund__content {
+                padding: 3.75rem 0;
+                width: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                // Цель фонда
+                .PurposeFund__purpose-fund {
+                    display: flex;
+                    justify-content: start;
+                    align-items: start;
+                    .PurposeFund__purpose-title {
+                        width: 50%;
+                        font-weight: 600;
+                        font-size: 34px;
+                        line-height: 41px;
+                        letter-spacing: -0.04em;
+                        padding-right: 8px;
+                    }
+                    .PurposeFund__purpose-fund-descr {
+                        width: 50%;
+                        font-weight: 400;
+                        font-size: 34px;
+                        line-height: 41px;
+                        letter-spacing: -0.04em;
+                        padding-top: 8px;
+                        padding-left: 8px;
+                    }
+                }
+
+                // Титул
+                .PurposeFund__title {
+                    color: transparent;
+                    background: var(--radial-gradient-red-orange);
+                    background-clip: text;
+
+                    margin-bottom: 48px;
+                    font-size: 78px;
+                    font-weight: 600;
+                    line-height: 74px;
+                    letter-spacing: -0.05em;
+                    .PurposeFund__title-animal-color {
+                        color: var(--light-gray);
+                        margin-bottom: 48px;
+                        font-size: 78px;
+                        font-weight: 600;
+                        line-height: 74px;
+                        letter-spacing: -0.05em;
+                    }
+                }
+
+                // Группа карточек
+                .PurposeFund__cards-group {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    grid-gap: 1rem;
+                    .PurposeFund__card-wrapper {
+                        border-radius: var(--border-radius-medium);
+                        overflow: hidden;
+                        .PurposeFund__card-img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                    .PurposeFund__card-our-team-descr {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 100%;
+                        height: 100%;
+                        padding: 30px 34px;
+                        transition: var(--transition);
+                        background: var(--radial-gradient--white-gray);
+                        border-radius: var(--border-radius-medium);
+
+                        &:hover {
+                            transform: translateY(-10px);
+                            .PurposeFund__card-icon {
+                                .icon {
+                                    background: var(--radial-gradient-red-orange);
+                                    color: var(--white);
+                                    border-radius: 50%;
+                                }
+                            }
+                        }
+                        .PurposeFund__header-group {
+                            .PurposeFund__card-title {
+                                margin-bottom: 30px;
+                                font-size: 34px;
+                                font-weight: 600;
+                                line-height: 41px;
+                                letter-spacing: -0.04em;
+                            }
+                            .PurposeFund__card-descr {
+                                font-size: 14px;
+                                font-weight: 500;
+                                line-height: 18px;
+                                letter-spacing: -0.02em;
+                            }
+                        }
+                        .PurposeFund__card-icon {
+                            display: flex;
+                            justify-content: end;
+                            align-items: end;
+                            .icon {
+                                color: red;
+                                width: 30px;
+                                height: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

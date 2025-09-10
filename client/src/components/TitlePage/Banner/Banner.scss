@@ -1,0 +1,329 @@
+@import '../../../App.css';
+
+/* Адаптация для экранов выше 1920px */
+.Banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    .Banner__wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        object-fit: cover;
+        background-image: url('../../../assets/background/banner.jpg');
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .Banner__container {
+            width: 100%;
+            height: 100%;
+            padding: 10rem 0 7.5rem;
+            .Banner__content {
+                // Тест с шириной контента
+                position: relative;
+                z-index: 1000;
+                width: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                // Окно с числом людей онлайн
+                .Banner__window-people-online {
+                    width: 100%;
+                    z-index: 110;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: 256px;
+                    height: 118px;
+                    padding: 0.75rem 1rem;
+                    background: var(--light-gray);
+                    border-radius: var(--border-radius-small);
+                    .Banner__window-header-group {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 0.4375rem;
+                        height: 3rem;
+                        .Banner__count {
+                            display: inline-block;
+                            font-size: 2.5rem;
+                            font-weight: 700;
+                            line-height: 3rem;
+                            color: var(--red);
+                            background-image: var(--radial-gradient-red-orange);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                        }
+                        .Banner__circles-group {
+                            display: flex;
+                            :nth-child(1) {
+                                background-color: #FF43F7;
+                            }
+                            :nth-child(2) {
+                                background-color: #4B52FB;
+                                margin-left: -5px;
+                            }
+                            :nth-child(3) {
+                                background-color: #EC4B4B;
+                                margin-left: -5px;
+                            }
+                            .Banner__circle-item {
+                                position: relative;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 30px;
+                                height: 30px;
+                                border-radius: 50%;
+                                border: 2px solid var(--light-gray);
+                                font-size: 0.75rem;
+                                font-weight: 600;
+                                overflow: hidden;
+                                color: var(--white);
+                            }
+                        }
+                    }
+                    .Banner__window-footer {
+                        font-size: 0.75rem;
+                        font-weight: 500;
+                        color: var(--white);
+                        .Banner__Link-take-animals {
+                            color: var(--white);
+                            text-decoration: underline;
+                        }
+                    }
+                }
+                // Иконки мы тут
+                .Banner__we-here {
+                    width: 100%;
+                    z-index: 110;
+
+                    display: flex;
+                    justify-content: end;
+                    align-items: start;
+                    margin-top: -3.4375rem;
+                    margin-right: -3.125rem;
+                    .content-2 {
+                        margin-top: 3.125rem;
+                    }
+                }
+                // Контент баннера
+                .Banner__content-group {
+                    width: 100%;
+                    z-index: 110;
+                    display: flex;
+                    justify-content: space-between;
+                    // Контент слева
+                    .Banner__content-left {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        height: 296px;
+                        // Контент сверху
+                        .Banner__content-left-top {
+                            display: flex;
+                            flex-direction: column;
+                            .Banner__content-left-top-item {
+                                border-radius: var(--border-radius-small);
+                                font-size: 1.5rem;
+                                color: var(--white);
+                                font-weight: 600;
+                                line-height: 1.875rem;
+                                letter-spacing: -0.7px;
+                                margin: 0 0.625rem 0.625rem 0;
+
+                                .Banner__content-left-top-adoption {
+                                    display: inline-block;
+                                    background: var(--radial-gradient-red-orange);
+                                    border-radius: var(--border-radius-small);
+                                    margin-left: 5.75rem;
+                                    padding: 0.3125rem 0.5rem;
+                                }
+                                .Banner__content-left-top-temp-home {
+                                    display: inline-block;
+                                    background: var(--radial-gradient-red-orange);
+                                    border-radius: var(--border-radius-small);
+                                    padding: 0.3125rem 0.5rem;
+                                }
+                                .Banner__content-left-top-dog-cat {
+                                    display: inline-block;
+                                    color: var(--light-gray);
+                                    background-color: var(--white);
+                                    border-radius: var(--border-radius-small);
+                                    padding: 0.3125rem 0.5rem;
+                                }
+                                .Banner__content-left-top-seacrh-people {
+                                    display: inline-block;
+                                    color: var(--white);
+                                    background-color: black;
+                                    border-radius: var(--border-radius-small);
+                                    padding: 0.3125rem 0.5rem;
+                                }
+                            }
+                            .item2 {
+                                display: flex;
+                                :nth-child(1) {
+                                    margin-right: 0.625rem;
+                                }
+                            }
+                            .item3 {
+                                display: flex;
+                                :nth-child(1) {
+                                    margin-right: 0.625rem;
+                                }
+                            }
+                        }
+
+                        // Контент снизу
+                        .Banner__content-left-bottom {
+                            // display: inline-block;
+                            width: 75px;
+                            padding: 0.75rem 1.125rem;
+                            font-size: 0.75rem;
+                            line-height: 0.875rem;
+                            letter-spacing: .3px;
+                            border-radius: var(--border-radius-small);
+                            outline: var(--outline-white);
+                            background: transparent;
+                            transition: outline 0.3s;
+                            &:hover {
+                                outline: 2px solid var(--white);
+                            }
+                            cursor: pointer;
+                            .Banner__Link-about-us {
+                                color: var(--white);
+                            }
+                        }
+                    }
+                    // Контент справа
+                    .Banner__content-right {
+                        display: flex;
+                        justify-content: end;
+                        align-items: end;
+                        .Banner__content-right-group {
+                            display: flex;
+
+                            // 2 темные карточки
+                            .Banner__content-right-group-cards {
+                                display: flex;
+                                :nth-child(2) {
+                                    margin-left: 0.875rem;
+                                }
+                                .Banner__content-right-item {
+                                    position: relative;
+                                    width: 152px;
+                                    height: 170px;
+                                    background: rgba(0,0,0, 0.5);
+                                    border-radius: var(--border-radius-medium);
+                                    transition: background .3s;
+                                    padding: 1.25rem 1.25rem 3.125rem;
+                                    cursor: pointer;
+                                    &:hover {
+                                        background: rgba(0,0,0, 0.9);
+                                        .icon {
+                                            border-radius: 50%;
+                                            background-color: var(--white);
+                                            color: var(--black);
+                                        }
+                                    }
+
+                                    .Banner__content-right-left-part {
+                                        display: flex;
+                                        flex-direction: column;
+                                        .Banner__content-right-item-title {
+                                            color: var(--white);
+                                            font-size: 0.875rem;
+                                            font-weight: 600;
+                                            line-height: 1rem;
+                                            margin-bottom: 0.875rem;
+                                        }
+                                        .Banner__content-right-steps {
+                                            display: inline-block;
+                                            padding: 0.3125rem 0.5rem;
+                                            font-weight: 600;
+                                            margin-top: 0.875rem;
+                                            color: var(--white);
+                                            border-radius: var(--border-radius-small);
+                                            font-size: 0.75rem;
+                                            line-height: 0.875rem;
+                                            text-transform: uppercase;
+                                            letter-spacing: -.2px;
+                                            border: 1px solid rgba(white, 0.5);
+                                        }
+                                    }
+                                    .Banner__content-right-right-part {
+                                        display: flex;
+                                        align-items: end;
+                                        justify-content: end;    
+                                        color: var(--white);
+                                        margin-top: 0.625rem;
+                                        .icon {
+                                            width: 24px;
+                                            height: 24px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Highpaw
+                            .Banner__content-right-item-highpow {
+                                position: relative;
+                                width: 207px;
+                                height: 170px;
+                                background: var(--white);
+                                border-radius: var(--border-radius-medium);
+                                transition: background .3s;
+                                padding: 1.25rem 1.25rem 3.125rem;
+                                margin-left: 0.875rem;
+                                cursor: pointer;
+                                .Banner__content-right-left-part {
+                                    
+                                    display: flex;
+                                    flex-direction: column;
+                                }
+                                .Banner__content-right-steps {
+                                    display: inline-block;
+                                    padding: 0.3125rem 0.5rem;
+                                    font-weight: 600;
+                                    color: var(--black);
+                                    border-radius: var(--border-radius-small);
+                                    font-size: 0.75rem;
+                                    line-height: 0.875rem;
+                                    text-transform: uppercase;
+                                    letter-spacing: -.2px;
+                                    border: 1px solid rgba(black, 0.5);
+                                    margin-top: 0.875rem;
+                                }
+                                .Banner__content-right-right-part {
+                                display: flex;
+                                align-items: end;
+                                justify-content: end;    
+                                color: var(--black);
+                                margin-top: 0.625rem;
+                                
+                                .icon {
+                                    width: 24px;
+                                    height: 24px;
+                                }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

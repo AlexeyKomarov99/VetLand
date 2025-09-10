@@ -6,14 +6,14 @@
   outline: 0;
   list-style-type: none;
   text-decoration: none;
+  user-select: none;
 }
 
 :root {
-  /* РћРїСЂРµРґРµР»РµРЅРёРµ С†РІРµС‚РѕРІ */
-  --orange: rgb(255, 125, 66);
-  --red: rgb(253, 5, 88);
-  --black: rgb(0,0,0);
   --white: rgb(255,255,255);
+  --orange: rgb(255, 125, 66);
+  --black: rgb(0,0,0);
+  --red: rgb(253, 5, 88);
   --gray: rgb(214,214,214);
   --dark-gray: rgb(40, 40, 40);
   --light-gray: rgb(28,28,28);
@@ -21,13 +21,11 @@
   --indigo: rgb(0, 84, 238);
   --green: rgb(50, 167, 40);
 
-  /* Р“СЂР°РґРёРµРЅС‚С‹ Рё С„РѕРЅС‹ */
   --radial-gradient-red-orange: radial-gradient(101.11% 487.04% at 57.61% 304.32%, var(--orange), var(--red));
   --linear-gradient-red-orange: linear-gradient(90deg, var(--red) 0%, var(--orange) 100%);
   --radial-gradient--white-gray: radial-gradient(209.26% 182.84% at -16.46% -25.14%, var(--white) 7.81%, var(--gray) 100%);
   --transparent-black: rgba(var(--black), 0.5);
 
-  /* Р“СЂР°РЅРёС†С‹ Рё СѓРіР»С‹ */
   --border-radius-small: 15px;
   --border-radius-medium: 30px;
   --border-radius-high: 60px;
@@ -38,11 +36,9 @@
 
   --box-shadow: 2px 2px 10px rgba(var(--black), 0.5);
 
-  /* РљРѕРЅС‚РµР№РЅРµСЂ */
   --container-width: 82.5%;
 
-  /* РђРЅРёРјР°С†РёСЏ */
-  --transition: all 0.3s ease;
+  --transition: all 0.3s ease-out;
 
 }
 
@@ -53,11 +49,6 @@ body {
   font-size: 10px;
   font-weight: 500;
   line-height: 14px;
-}
-
-.container {
-  width: 1440px;
-  margin: 0 auto;
 }
 
 h1 {

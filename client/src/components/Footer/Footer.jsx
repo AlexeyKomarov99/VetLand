@@ -12,6 +12,7 @@ const Footer = () => {
             {/* Контейнер ссылок */}
             <div className="Footer__container">
                 
+                
                 {/* Группа с ссылками */}
                 <div className="Footer__links-group">
 

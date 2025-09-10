@@ -1,0 +1,253 @@
+@import '../../../App.css';
+
+/* Адаптация для экранов выше 1920px */
+.Connect {
+    position: relative;
+    margin-top: 0.35rem;
+    overflow: hidden;
+    height: 940px;
+    .Connect__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        background-color: var(--white);
+        border-radius: var(--border-radius-high);
+        overflow: hidden;
+        .Connect__container {
+            width: 100%;
+            height: 100%;
+            padding: 3.75rem 0 2.8125rem;
+            .Connect__content {
+                width: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                .Connect__photo-cat-wrapper {
+                    position: absolute;
+                    top: 15%;
+                    left: -8%;
+                    z-index: 1000;
+                }
+                .Connect__title {
+                    position: relative;
+                    width: 100%;
+                    font-size: 17.5rem;
+                    line-height: 15.625rem;
+                    font-weight: 700;
+                    text-align: center;
+                    letter-spacing: -0.06em;
+                    background: var(--linear-gradient-red-orange);
+                    background-clip: text;
+                    color: transparent;
+                    z-index: 500;
+                }
+                .Connect__descr {
+                    position: relative;
+                    width: 21.125rem;
+                    font-weight: 600;
+                    font-size: 2.8125rem;
+                    line-height: 3.4375rem;
+                    letter-spacing: -0.03em;
+                    margin-top: 3.125rem;
+                    margin-bottom: 5.625rem;
+                    z-index: 500;
+                }
+                .Connect__cards-group {
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: end;
+                    height: 210px;
+                    z-index: 1500;
+                    :nth-child(n):not(:last-child) {
+                        margin-right: 0.625rem;
+                    }
+
+                    // card-1
+                    .Connect__take-friend {
+                        .Connect__take-friend-group {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            width: 9.5rem;
+                            height: 100%;
+                            background: rgba(0,0,0, 0.5);
+                            border-radius: var(--border-radius-medium);
+                            transition: background .3s;
+                            padding: 1.25rem 1.25rem 2.125rem;
+                            cursor: pointer;
+                            &:hover {
+                                background: rgba(0,0,0, 0.9);
+                                .icon {
+                                    border-radius: 50%;
+                                    background-color: var(--white);
+                                    color: var(--black);
+                                }
+                            }
+                            .Connect__take-friend-header {
+                                margin-bottom: 0.875rem;
+                                color: var(--white);
+                                font-size: 0.875rem;
+                                font-weight: 600;
+                                line-height: 1rem;
+                            }
+                            .Connect__take-friend-footer {
+                                display: flex;
+                                align-items: end;
+                                justify-content: end;
+                                width: 100%;
+                                color: var(--white);
+                                .icon {
+                                    width: 24px;
+                                    height: 24px;
+                                }
+                            }
+                        }
+                    }
+
+                    // card-2
+                    .Connect__knowledge {
+                        .Connect__knowledge-group {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            width: 9.5rem;
+                            height: 100%;
+                            background: rgba(0,0,0, 0.5);
+                            border-radius: var(--border-radius-medium);
+                            transition: background .3s;
+                            padding: 1.25rem 1.25rem 2.125rem;
+                            cursor: pointer;
+                            &:hover {
+                                background: rgba(0,0,0, 0.9);
+                                .icon {
+                                    border-radius: 50%;
+                                    background-color: var(--white);
+                                    color: var(--black);
+                                }
+                            }
+                            .Connect__knowledge-header-group {
+                                display: flex;
+                                flex-direction: column;
+                                .Connect__knowledge-title {
+                                    margin-bottom: 0.875rem;
+                                    color: var(--white);
+                                    font-size: 0.875rem;
+                                    font-weight: 600;
+                                    line-height: 1rem;
+                                }
+                                .Connect__knowledge-descr {
+                                    color: var(--white);
+                                    font-size: 0.625rem;
+                                    font-weight: 500;
+                                    line-height: 0.8125rem;
+                                }
+                            }
+                            .Connect__knowledge-body-group {
+                                color: #FFFFFF;
+                                font-size: 0.875rem;
+                                font-weight: 600;
+                                line-height: 1rem;
+                                letter-spacing: -0.02em;
+                            }
+                        }
+                    }
+
+                    // card-3
+                    .Connect__guardian {
+                        .Connect__guardian-group {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            width: 16.25rem;
+                            height: 100%;
+                            background: var(--radial-gradient--white-gray);
+                            border-radius: var(--border-radius-medium);
+                            transition: var(--transition);
+                            padding: 1.25rem 1.25rem 2.125rem;
+                            
+                            &:hover {
+                                transform: translateY(-10px);
+                                .Connect__guardian-body-group {
+                                    .icon {
+                                        background: var(--radial-gradient-red-orange);
+                                        color: var(--white);
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                            .Connect__guardian-header-group {
+                                display: flex;
+                                flex-direction: column;
+                                .Connect__guardian-title {
+                                    margin-bottom: 0.875rem;
+                                    font-size: 1.125rem;
+                                    line-height: 1.375rem;
+                                    font-weight: 600;
+                                }
+                                .Connect__guardian-descr {
+                                    font-size: 0.625rem;
+                                    font-weight: 500;
+                                    line-height: 0.8125rem;
+                                }
+                            }
+                            .Connect__guardian-body-group {
+                                display: flex;
+                                align-items: end;
+                                justify-content: end;
+                                width: 100%;
+                                color: var(--red);
+                                .icon {
+                                    width: 24px;
+                                    height: 24px;
+                                }
+                            }
+                        }
+                    }
+
+                    // card-4
+                    .Connect__movement {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 12.5rem;
+                        height: 100%;
+                        background: rgba(0,0,0, 0.5);
+                        border-radius: var(--border-radius-medium);
+                        transition: background .3s;
+                        padding: 1.25rem 1.25rem 2.125rem;
+                        cursor: pointer;
+                        &:hover {
+                            background: rgba(0,0,0, 0.9);
+                            .icon {
+                                border-radius: 50%;
+                                background-color: var(--white);
+                                color: var(--black);
+                            }
+                        }
+                        .Connect__movement-group {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            height: 100%;
+                            .Connect__movement-header {
+                                font-size: 1.125rem;
+                                line-height: 1.375rem;
+                                font-weight: 600;
+                                color: var(--white);
+                            }
+                            .Connect__movement-footer {
+                                color: #FFFFFF;
+                                font-size: 0.875rem;
+                                font-weight: 600;
+                                line-height: 1rem;
+                                letter-spacing: -0.02em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -54,8 +54,10 @@ const AppContent = () => {
   return (
     <div className='container'>
 
-      {shouldShowHeaderAndFooter && <Header />}
+      {/* {shouldShowHeaderAndFooter && <Header />} */}
       <Routes>
+
+        <Route path='/test' element={<TitlePage />} />
 
         {/* Титульная страница - маршрут по умолчанию */}
         <Route path='/' element={<TitlePage/>} />

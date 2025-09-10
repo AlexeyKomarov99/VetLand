@@ -1,0 +1,170 @@
+@import '../../../App.css';
+
+/* Адаптация для экранов выше 1920px */
+.AnimalTreatment{
+    position: relative;
+    overflow: hidden;
+    .AnimalTreatment__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 3.75rem 0 3.125rem;
+        background-color: var(--white);
+        border-radius: var(--border-radius-high);
+        .AnimalTreatment__container {
+            width: 100%;
+            height: 100%;
+            .AnimalTreatment__content {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                z-index: 1000;
+                width: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                .AnimalTreatment__title {
+                    font-size: 2.125rem;
+                    line-height: 2.5rem;
+                    letter-spacing: -0.04em;
+                    font-weight: 600;
+                    margin-bottom: 3.3125rem;
+                }
+                .AnimalTreatment__description {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .AnimalTreatment__cards-group {
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        grid-gap: 1rem;
+
+                        // Свойства одной карточки
+                        .AnimalTreatment__animal-item {
+                            position: relative;
+                            width: 200px;
+                            height: 240px;
+                            border-radius: var(--border-radius-medium);
+                            overflow: hidden;
+                            .ReadyGoHome__animal-img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+                        .AnimalTreatment__animal-descr {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: end;
+                            
+                            width: 100%;
+                            height: 100%;
+                            padding: 1.25rem;
+                            opacity: 0;
+                            background-color: rgba(0, 0, 0, 0.5);
+                            transition: opacity 0.3s ease-out;
+                            &:hover {
+                                opacity: 1;
+                            }
+                            .AnimalTreatment__name {
+                                color: var(--white);
+                                font-size: 1.5rem;
+                                line-height: 1.625rem;
+                                margin-bottom: 1.5rem;
+                            }
+
+                            .AnimalTreatment__age {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: end;
+                                margin-bottom: 1.5rem;
+                                .AnimalTreatment__age-group {
+                                    display: flex;
+                                    flex-direction: column;
+                                    .AnimalTreatment__age-title {
+                                        color: var(--white);
+                                        font-size: 0.75rem;
+                                        line-height: 0.9375rem;
+                                    }
+                                    .AnimalTreatment__age-number {
+                                        color: var(--white);
+                                        font-size: 0.75rem;
+                                        line-height: 0.9375rem;
+                                    }
+                                }
+                                .AnimalTreatment__icon-wrapper {
+                                    .icon {
+                                        width: 30px;
+                                        height: 30px;
+                                        background-color: var(--white);
+                                        border-radius: var(--border-radius-medium);
+                                    }
+                                }
+                            }
+
+                            .AnimalTreatment__button-group {
+                                display: flex;
+                                justify-content: space-between;
+                                gap: 0.625rem;
+                                .AnimalTreatment__take-animal {
+
+                                }
+                                .AnimalTreatment__help-animal {
+
+                                }
+                            }
+
+                        }
+
+                    }
+                    .AnimalTreatment__yet {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 20.625rem;
+                        .AnimalTreatment__yet-text {
+                            font-size: 2.125rem;
+                            line-height: 2.5625rem;
+                            letter-spacing: -0.04em;
+                            font-weight: 600;
+                        }
+                        .AnimalTreatment__yet-number {
+                            font-size: 8.4375rem;
+                            line-height: 2.5625rem;
+                            letter-spacing: -0.05em;
+                            font-weight: 600;
+                            color: #0054EE;
+                        }
+                        .AnimalTreatment__yet-group {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .AnimalTreatment__yet-descr {
+                                font-size: 1.125rem;
+                                line-height: 1.375rem;
+                                letter-spacing: -0.02em;
+                                font-weight: 600;
+                                color: var(--black);
+                            }
+                            .AnimalTreatment__Link {
+                                .icon {
+                                    width: 52px;
+                                    height: 52px;
+                                    &:hover {
+                                        background: var(--radial-gradient-red-orange);
+                                        color: var(--white);
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

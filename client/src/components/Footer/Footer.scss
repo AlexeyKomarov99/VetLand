@@ -1,25 +1,28 @@
 @import '../../App.css';
 
+/* Адаптация для экранов выше 1920px */
 .Footer {
-    padding-top: 50px;
+    padding-top: 3.125rem;
     width: 100%;
-    background-color: var(--dark-gray);
     .Footer__wrapper {
         width: 100%;
-        max-width: 1440px;
+        max-width: 1600px;
         margin: 0 auto;
-        padding: 0 50px;
+        padding: 0 3.125rem;
         .Footer__container {
             display: flex;
             justify-content: space-between;
-            padding-bottom: 12px;
+            padding-bottom: 0.75rem;
             border-bottom: 1px dashed var(--white);
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
 
             // Группа ссылок про животных
             .Footer__links-group {
                 display: flex;
                 :not(:last-child) {
-                    margin-right: 62px;
+                    margin-right: 3.875rem;
                 }
 
                 .Footer__links-group-animals,
@@ -29,11 +32,11 @@
                     flex-direction: column;
 
                     .Footer__link-title {
-                        margin-bottom: 40px;
+                        margin-bottom: 2.5rem;
                         color: rgba(255,255,255,0.3);
                         font-weight: 600;
-                        font-size: 14px;
-                        line-height: 18px;
+                        font-size: 0.875rem;
+                        line-height: 1.125rem;
                         letter-spacing: -0.02em;
                     }
                     .Footer__links-group {
@@ -44,9 +47,9 @@
                             color: var(--white);
                             text-transform: uppercase;
                             font-weight: 500;
-                            font-size: 10px;
-                            line-height: 12px;
-                            margin-bottom: 16px;
+                            font-size: 0.625rem;
+                            line-height: 0.75rem;
+                            margin-bottom: 1rem;
                             -webkit-font-smoothing: antialiased;
                             &:hover {
                                 color: transparent;
@@ -68,11 +71,11 @@
             display: flex;
             flex-direction: column;
             .Footer__partners-title {
-                margin-bottom: 40px;
+                margin-bottom: 2.5rem;
                 color: rgba(255,255,255,0.3);
                 font-weight: 600;
-                font-size: 14px;
-                line-height: 18px;
+                font-size: 0.875rem;
+                line-height: 1.125rem;
                 letter-spacing: -0.02em;
             }
             .Footer__partners-icon-group {
@@ -84,16 +87,16 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    height: 106px;
+                    height: 6.625rem;
                 }
             }
         }
         .subscribe-section {
-            padding: 55px 0 42px 0;
+            padding: 3.4375rem 0 2.625rem 0;
             .Footer__subscribe-title {
                 font-weight: 600;
-                font-size: 28px;
-                line-height: 34px;
+                font-size: 1.75rem;
+                line-height: 2.125rem;
                 letter-spacing: -0.04em;
                 color: var(--white);
                 -webkit-font-smoothing: antialiased;
@@ -101,8 +104,8 @@
             .Footer__vetland-hash {
                 margin-top: 2px;
                 font-weight: 600;
-                font-size: 54px;
-                line-height: 66px;
+                font-size: 3.375rem;
+                line-height: 4.125rem;
                 letter-spacing: -0.03em;
                 color: transparent;
                 background: var(--linear-gradient-red-orange);
@@ -110,12 +113,12 @@
             }
         }
         .developer {
-            padding: 55px 0 42px 0;
+            padding: 3.4375rem 0 2.625rem 0;
             border-bottom: none;
             .Footer__developer-title {
                 font-weight: 500;
-                font-size: 14px;
-                line-height: 17px;
+                font-size: 0.875rem;
+                line-height: 1.0625rem;
                 color: var(--white);
             }
             .Footer__developer-group {
@@ -127,14 +130,14 @@
                     color: var(--white);
 
                     &:not(:last-child) {
-                        margin-right: 47px;
+                        margin-right: 2.9375rem;
                     }
 
                     .Footer__developer-text {
-                        margin-right: 14px;
+                        margin-right: 0.875rem;
                         font-weight: 500;
-                        font-size: 12px;
-                        line-height: 17px;
+                        font-size: 0.75rem;
+                        line-height: 1.0625rem;
                         text-transform: uppercase;
 
                     }

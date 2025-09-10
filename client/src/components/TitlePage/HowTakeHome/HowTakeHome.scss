@@ -1,0 +1,154 @@
+@import '../../../App.css';
+
+/* Адаптация для экранов выше 1920px */
+.HowTakeHome {
+    margin-top: 0.35rem;
+    .HowTakeHome__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        background-color: var(--white);
+        border-radius: var(--border-radius-high);
+        .HowTakeHome__container {
+            width: 100%;
+            height: 100%;
+            padding: 5.625rem 0 3.75rem;
+            .HowTakeHome__content {
+                width: 100%;
+                height: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                // Оглавление раздела
+                .TakeHome__header {
+                    display: flex;
+                    justify-content: start;
+                    align-items: start;
+                    margin-bottom: 114px;
+                    .TakeHome__title {
+                        width: 50%;
+                        font-size: 100px;
+                        line-height: 95px;
+                        letter-spacing: -0.05em;
+                        font-weight: 600;
+                        .TakeHome__title-background {
+                            color: transparent;
+                            background: var(--radial-gradient-red-orange);
+                            background-clip: text;
+                            font-size: 100px;
+                            line-height: 95px;
+                            letter-spacing: -0.05em;
+                            font-weight: 600;
+                        }
+                    }
+                    .TakeHome__descr {
+                        width: 50%;
+                        padding-top: 9px;
+                        padding-left: 12px;
+                        font-weight: 400;
+                        font-size: 34px;
+                        line-height: 41px;
+                        letter-spacing: -0.04em;
+                    }
+                }
+
+                // Группа карточек
+                .TakeHome__cards-group {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    grid-gap: 1rem;
+                    margin-bottom: 100px;
+
+                    .TakeHome__card-item {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: start;
+                        height: 370px;
+                        padding: 23px 37.5px 36px;
+                        background: var(--radial-gradient-red-orange);
+                        border-radius: var(--border-radius-medium);
+                        transition: var(--transition);
+                        &:hover {
+                            transform: translateY(-10px);
+                            .TakeHome__card-body {
+                                .TakeHome__card-body-arrow {
+                                    .icon {
+                                        background-color: var(--white);
+                                        color: red;
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Шапка карточки
+                        .TakeHome__card-header {
+                            display: flex;
+                            flex-direction: column;
+                            color: var(--white);
+                            .TakeHome__card-header-number {
+                                font-size: 100px;
+                                font-weight: 600;
+                                line-height: 95px;
+                                letter-spacing: -0.05em;
+                            }
+                            .TakeHome__card-header-descr {
+                                padding-top: 12px;
+                                font-size: 20px;
+                                font-weight: 600;
+                                line-height: 26px;
+                                letter-spacing: -0.03em;
+                                text-transform: uppercase;
+                            }
+                        }
+
+                        // Тело карточки
+                        .TakeHome__card-body {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: end;
+                            color: var(--white);
+                            .TakeHome__card-body-descr {
+                                font-size: 18px;
+                                font-weight: 500;
+                                line-height: 22px;
+                                letter-spacing: -0.02em;
+                            }
+                            .TakeHome__card-body-arrow {
+                                .icon {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+                // Ссылка на всех животных
+                .TakeHome__take-home-animal {
+                    display: flex;
+                    justify-content: center;
+                    align-items: end;
+                    &:hover {
+                        .icon {
+                            fill: var(--black);
+                        }
+                    }
+                    .TakeHome__take-home-animal-descr {
+                        margin-right: 27px;
+                        font-size: 22px;
+                        font-weight: 600;
+                        line-height: 36px;
+                        letter-spacing: -0.03em;
+                    }
+                    .icon {
+                        width: 77px;
+                        height: 77px;
+                    }
+                }
+            }
+        }
+    }
+}

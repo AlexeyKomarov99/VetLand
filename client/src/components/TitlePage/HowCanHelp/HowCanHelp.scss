@@ -1,0 +1,200 @@
+@import '../../../App.css';
+
+/* Адаптация для экранов выше 1920px */
+.HowCanHelp {
+    margin-top: 0.35rem;
+    height: 815px;
+    .HowCanHelp__wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        overflow: hidden;
+        margin-bottom: 15px;
+        .HowCanHelp__container {
+            width: 100%;
+            height: 100%;
+            .HowCanHelp__content {
+                width: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+
+                // Блок с видео
+                .HowCanHelp__video-wrapper {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: var(--border-radius-high);
+                    overflow: hidden;
+                    &::after {
+                        position: absolute;
+                        content: '';
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0,0,0,0.3);
+                    }
+                    .HowCanHelp__video {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(-50%);
+                        width: 1920px;
+                        height: 1080px;
+                        object-fit: cover;
+                        content: normal;
+                    }
+                }
+
+                // Блок с контентом
+                .HowCanHelp__body-content {
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    .HowCanHelp__body-wrapper {
+                        width: 100%;
+                        // max-width: 1440px;
+                        // margin: 0 auto;
+                        // padding: 0 60px;
+                        .HowCanHelp__content {
+                            position: relative;
+                            
+                            // Заголовок
+                            .HowCanHelp__header {
+                                margin: 60px auto 20px;
+                                text-align: center;
+                                .HowCanHelp__header-text {
+                                    display: inline-block;
+                                    font-size: 161px;
+                                    font-weight: 700;
+                                    line-height: 146px;
+                                    letter-spacing: -0.06em;
+                                    padding-right: 0.06em;
+                                    color: var(--white);
+                                }
+                            }
+
+                            // Туловище контента
+                            .HowCanHelp__body {
+                                .HowCanHelp__body-descr {
+                                    font-size: 24px;
+                                    font-weight: 600;
+                                    line-height: 26px;
+                                    letter-spacing: -0.03em;
+                                    margin-bottom: 59px;
+                                    color: var(--white);
+                                }
+                            }
+
+                            // Ноги контента
+                            .HowCanHelp__footer {
+                                display: grid;
+                                grid-template-columns: repeat(5, 1fr);
+
+                                .HowCanHelp__card-item {
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: space-between;
+                                    background-color: transparent;
+                                    transition: var(--transition);
+                                    border-radius: var(--border-radius-medium);
+                                    border: 2px solid var(--white);
+                                    width: 254px;
+                                    height: 270px;
+                                    padding: 25px 24px;
+                                    cursor: pointer;
+
+                                    &:hover {
+                                        background-color: var(--white);
+                                        .HowCanHelp__card-header {
+                                            color: var(--black);
+                                        }
+                                        .HowCanHelp__icons-group {
+                                            .icon {
+                                                color: var(--light-gray);
+                                                outline: 1px solid var(--light-gray);
+                                            }
+                                        }
+                                        
+                                        .HowCanHelp__card-footer {
+                                            .icon {
+                                                color: var(--white);
+                                                background: var(--radial-gradient-red-orange);
+                                                border-radius: 50%;
+                                            }
+                                            .icon-ozon {
+                                                color: #0054EE;
+                                            }
+                                        }
+                                    }
+                                    .HowCanHelp__card-header {
+                                        color: var(--white);
+                                        max-width: 182px;
+                                        font-size: 22px;
+                                        font-weight: 700;
+                                        line-height: 26px;
+                                        letter-spacing: -0.03em;
+                                        text-transform: uppercase;
+                                    }
+                                    .HowCanHelp__card-footer {
+                                        display: flex;
+                                        justify-content: end;
+                                        align-items: end;
+                                        .icon {
+                                            width: 30px;
+                                            height: 30px;
+                                            color: var(--white);
+                                        }
+                                    }
+                                    .HowCanHelp__icons-group {
+                                        display: flex;
+                                        .icon {
+                                            display: inline-flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            width: 30px;
+                                            height: 30px;
+                                            border-radius: 11px;
+                                            color: var(--white);
+                                            padding: 0.5rem;
+                                            outline: 1px solid rgba(255,255,255,0.3);
+                                            &:not(:last-child) {
+                                                margin-right: 7.5px;
+                                            }
+                                            &:hover {
+                                                color: var(--white);
+                                                background: var(--radial-gradient-red-orange);
+                                                outline: 1px solid var(--white);
+                                            }
+                                        }
+                                    }
+                                    .icon-ozon {
+                                        color: var(--white);
+                                    }
+                                    .card-footer-ozon {
+                                        display: flex;
+                                        justify-content: start;
+                                        align-items: start;
+                                    }
+                                }
+
+                                .card-transform {
+                                    transition: var(--transition);
+                                    &:hover {
+                                        transform: translateY(-10px);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
