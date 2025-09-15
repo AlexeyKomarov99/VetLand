@@ -8,7 +8,10 @@ import { FiEdit3 as EditIcon } from "react-icons/fi";
 import PrivacyPolicy from '../../Common/PrivacyPolicy/PrivacyPolicy';
 import CircularProgress from '../CircularProgress/CircularProgress';
 
-const VirtualAssistant = () => {
+const VirtualAssistant = ({
+    setOwnerQuestionnaire,
+    handleSubmitAdoptionForm
+}) => {
     const [isQuestionnaireComplete, setIsQuestionnaireComplete] = useState(false);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [userAnswers, setUserAnswers] = useState({});
@@ -26,6 +29,27 @@ const VirtualAssistant = () => {
             });
         });
     };
+
+    // Эффект для синхронизации userAnswers с ownerQuestionnaire
+    useEffect(() => {
+        if (Object.keys(userAnswers).length > 0) {
+            const updatedQuestionnaire = {
+                fullAddress: userAnswers[0] || '',
+                profileSocialNetwork: userAnswers[1] || '',
+                typeAndNameAnimalYouLiked: userAnswers[2] || '',
+                doYouHavePet: userAnswers[3] || '',
+                yourAttitudeTowardsCastrationSterilization: userAnswers[4] || '',
+                whoWillLiveWithYou: userAnswers[5] || '',
+                whoWillStayWithPetInCaseSeparation: userAnswers[6] || '',
+                petCareDuringBusinessTrips: userAnswers[7] || '',
+                reasonForRefusingLiveTogetherWithAnimal: userAnswers[8] || '',
+                consentForFeedbackFromShelter: userAnswers[9] || '',
+                howDidYouHearAboutOurFoundation: userAnswers[10] || '',
+            };
+            
+            setOwnerQuestionnaire(updatedQuestionnaire);
+        }
+    }, [userAnswers, setOwnerQuestionnaire]);
 
     useEffect(() => {
         scrollToBottom();
@@ -81,37 +105,6 @@ const VirtualAssistant = () => {
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
             handleSubmitAnswer();
-        }
-    };
-
-    // Отправка анкеты
-    const handleSubmitForm = async () => {
-        if (Object.keys(userAnswers).length !== questions.length) {
-            alert('Пожалуйста, ответьте на все вопросы перед отправкой');
-            return;
-        }
-
-        try {
-            const formData = {
-                fullAddress: userAnswers[0] || '',
-                profileSocialNetwork: userAnswers[1] || '',
-                typeAndNameAnimalYouLiked: userAnswers[2] || '',
-                doYouHavePet: userAnswers[3] || '',
-                yourAttitudeTowardsCastrationSterilization: userAnswers[4] || '',
-                whoWillLiveWithYou: userAnswers[5] || '',
-                whoWillStayWithPetInCaseSeparation: userAnswers[6] || '',
-                reasonForRefusingLiveTogetherWithAnimal: userAnswers[7] || '',
-                consentForFeedbackFromShelter: userAnswers[8] || '',
-                howDidYouHearAboutOurFoundation: userAnswers[9] || '',
-            };
-
-            // Здесь будет запрос к API
-            console.log('Отправка данных:', formData);
-            alert('Анкета успешно отправлена!');
-        
-        } catch (error) {
-            console.error('Ошибка при отправке анкеты:', error);
-            alert('Произошла ошибка при отправке анкеты');
         }
     };
 
@@ -186,7 +179,7 @@ const VirtualAssistant = () => {
                         />
                         <span 
                             className={`VirtualAssistant__btn ${!isQuestionnaireComplete ? 'VirtualAssistant__btn--disabled' : ''}`}
-                            onClick={isQuestionnaireComplete ? handleSubmitForm : undefined}
+                            onClick={isQuestionnaireComplete ? () => handleSubmitAdoptionForm(userAnswers) : undefined}
                         >
                             Отправить анкету
                         </span>

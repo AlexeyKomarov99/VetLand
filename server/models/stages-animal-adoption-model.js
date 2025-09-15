@@ -27,22 +27,27 @@ const StagesAnimalAdoption = sequelize.define('StagesAnimalAdoption', {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
+    // Заполнение анкеты
     fillingOutQuestionnaire: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
+    // Интервью
     interview: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
+    // Знакомство
     acquaintance: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
+    // Решение
     decision: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
+    // Путешествие домой
     tripHome: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,

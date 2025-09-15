@@ -6,8 +6,12 @@ import { LuPencilLine as PenIcon } from "react-icons/lu";
 import VirtualAssistant from '../VirtualAssistant/VirtualAssistant';
 
 const OwnerQuestionnaire = ({
+  ownerQuestionnaire,
+  setOwnerQuestionnaire,
   contactInformation,
-  toggleActiveSection
+  toggleActiveSection,
+  handleSubmitAdoptionForm,
+  resetForm
 }) => {
   return (
     <section className="OwnerQuestionnaire">
@@ -34,7 +38,12 @@ const OwnerQuestionnaire = ({
               </div>
             </div>
 
-            <VirtualAssistant />
+            <VirtualAssistant 
+              ownerQuestionnaire={ownerQuestionnaire}
+              setOwnerQuestionnaire={setOwnerQuestionnaire}
+              handleSubmitAdoptionForm={handleSubmitAdoptionForm}
+              resetForm={resetForm}
+            />
 
           </div>
         </div>

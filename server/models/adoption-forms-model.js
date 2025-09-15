@@ -9,7 +9,7 @@ const AdoptionForm = sequelize.define('AdoptionForm', {
     },
     user_id: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true, // Делаем необязательным
         references: {
             model: 'Users',
             key: 'id',
@@ -25,12 +25,38 @@ const AdoptionForm = sequelize.define('AdoptionForm', {
     },
     animal_id: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true, // Делаем необязательным
         references: {
             model: 'Animals',
             key: 'id',
         },
     },
+    // Контактная информация для незарегистрированных пользователей
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    surname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    phone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    age: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    region: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    // Данные анкеты
     fullAddress: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -47,32 +73,30 @@ const AdoptionForm = sequelize.define('AdoptionForm', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // Ваше отношение к кастрации и стерилизации ?
     yourAttitudeTowardsCastrationSterilization: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // Кто будет жить с тобой ?
     whoWillLiveWithYou: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // Кто останется с питомцем в случае разлуки ?
     whoWillStayWithPetInCaseSeparation: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // Причина отказа жить вместе с животным ?
+    petCareDuringBusinessTrips: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     reasonForRefusingLiveTogetherWithAnimal: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // Cогласие на обратную связь от приюта
     consentForFeedbackFromShelter: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // Как вы узнали о нашем фонде ?
     howDidYouHearAboutOurFoundation: {
         type: DataTypes.STRING,
         allowNull: false,
