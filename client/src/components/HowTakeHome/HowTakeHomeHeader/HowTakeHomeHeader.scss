@@ -1,0 +1,58 @@
+@import '../../../App.css';
+
+/* Адаптация для экранов выше 1920px */
+.HowTakeHomeHeader {
+    position: relative;
+    z-index: 15;
+    margin-top: -300px;
+    .HowTakeHomeHeader__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        border-top-left-radius: var(--border-radius-high);
+        border-top-right-radius: var(--border-radius-high);
+        background-color: var(--white);
+        .HowTakeHomeHeader__container {
+            width: 100%;
+            height: 100%;
+            padding: 60px 0 45px;
+            .HowTakeHomeHeader__content {
+                width: 100%;
+                height: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+                padding-bottom: 45px;
+                border-bottom: 2px solid var(--dark-gray);
+                .HowTakeHomeHeader__content-title {
+                    width: 60%;
+                    font-size: 34px;
+                    font-weight: 600;
+                    line-height: 41px;
+                    margin-bottom: 50px;
+                    color: var(--light-gray);
+                }
+                .HowTakeHomeHeader__content-descr {
+                    width: 40%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: start;
+                    align-items: start;
+                    .HowTakeHomeHeader__content-item {
+                        font-weight: 600;
+                        font-size: 18px;
+                        line-height: 120%;
+                        letter-spacing: -0.02em;
+                        color: var(--light-gray);
+                        &:nth-child(n):not(:last-child) {
+                            margin-bottom: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,136 @@
+@import '../../../App.css';
+
+/* Адаптация для экранов выше 1920px */
+.ContactInfo {
+    .ContactInfo__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        .ContactInfo__container {
+            width: 100%;
+            height: 100%;
+            padding-bottom: 60px;
+            border-bottom-left-radius: var(--border-radius-high);
+            border-bottom-right-radius: var(--border-radius-high);
+            background-color: var(--white);
+
+            .ContactInfo__content {
+                width: 100%;
+                height: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                // Первичные данные о пользователе
+                .ContactInfo__contact-info {
+                    display: flex;
+                    flex-direction: column;
+
+                    .ContactInfo__contact-info-group {
+                        display: flex;
+                        flex-direction: row;
+                        margin-bottom: 50px;
+                        .ContactInfo__contact-info-item {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            &:nth-child(n):not(:last-child) {
+                                margin-right: 16px;
+                            }
+                            .ContactInfo__contact-info-input {
+                                text-align: center;
+                                font-size: 18px;
+                                line-height: 22px;
+                                font-weight: 600;
+                                letter-spacing: -0.02em;
+                                width: 206px;
+                                height: 120px;
+                                padding: 49px 20px;
+                                border-radius: var(--border-radius-medium);
+                                outline: var(--outline-light-gray);
+                                box-shadow: inset 0 0 0 1px rgba(40,40,40,0.3);
+                                color: var(--light-gray);
+                                transition: var(--transition);
+                                cursor: pointer;
+                                &:focus {
+                                    outline: 2px solid var(--dark-gray);
+                                    border-radius: var(--border-radius-medium);
+                                }
+                            }
+                            .error {
+                                outline: 1px solid var(--red);
+                                &:focus {
+                                    outline: 2px solid var(--red);
+                                }
+                            }
+                            .ContactInfo__contact-info-error {
+                                width: 206px;
+                                margin-top: 10px;
+                                text-align: center;
+                                font-weight: 600;
+                                font-size: 14px;
+                                line-height: 17px;
+                                letter-spacing: -0.02em;
+                                color: var(--red);
+                            }
+                        }
+                    }
+                }
+
+                // Откуда вы? Регион проживания
+                .ContactInfo__region {
+                    display: flex;
+                    flex-direction: column;
+
+                    .ContactInfo__region-title {
+                        margin-bottom: 30px;
+                        font-weight: 600;
+                        font-size: 20px;
+                        line-height: 24px;
+                        letter-spacing: -0.04em;
+                        color: var(--light-gray);
+                    }
+                    .ContactInfo__region-group {
+                        display: flex;
+                        flex-direction: row;
+                        .ContactInfo__region-item {
+                            border-radius: var(--border-radius-medium);
+                            box-shadow: inset 0 0 0 1px rgba(40,40,40,0.3);
+                            font-size: 18px;
+                            line-height: 20px;
+                            font-weight: 600;
+                            letter-spacing: -0.02em;
+                            padding: 27px 25px;
+                            width: 206px;
+                            height: 120px;
+                            text-align: center;
+                            transition: var(--transition);
+                            cursor: pointer;
+                            &:nth-child(n):not(:last-child) {
+                                margin-right: 16px;
+                            }
+                            &:hover {
+                                box-shadow: inset 0 0 0 2px var(--dark-gray);
+                            }
+                            
+                        }
+                        .selected {
+                            box-shadow: inset 0 0 0 2px var(--dark-gray); // Изменяем внутреннюю тень
+                        }
+                        .ContactInfo__btn-filling-questionnaire {
+                            width: 350px;
+                            color: var(--white);
+                            background: var(--radial-gradient-red-orange);
+                            transition: var(--transition);
+                            &:hover {
+                                outline: none;
+                                background: radial-gradient(110% 500% at 60% 310%, var(--red), var(--orange));
+
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

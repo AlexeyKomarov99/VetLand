@@ -1,0 +1,68 @@
+@import '../../../App.css';
+.OwnerQuestionnaire {
+    .OwnerQuestionnaire__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        background-color: var(--white);
+        border-bottom-left-radius: var(--border-radius-high);
+        border-bottom-right-radius: var(--border-radius-high);
+        .OwnerQuestionnaire__container {
+            width: 100%;
+            height: 100%;
+            .OwnerQuestionnaire__content {
+                width: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                // Вступление
+                .OwnerQuestionnaire__header-info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: start;
+                    .OwnerQuestionnaire__contact-info-group {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: start;
+                        align-items: start;
+                        .OwnerQuestionnaire__name,
+                        .OwnerQuestionnaire__phone,
+                        .OwnerQuestionnaire__email,
+                        .OwnerQuestionnaire__region {
+                            display: block;
+                            font-weight: 600;
+                            font-size: 2.125rem;
+                            line-height: 2.5625rem;
+                            letter-spacing: -0.04em;
+                            color: var(--light-gray);
+                        }
+                        .OwnerQuestionnaire__content-edit {
+                            display: flex;
+                            align-items: center;
+                            justify-content: start;
+                            margin-top: 1rem;
+                            cursor: pointer;
+                            .icon-pen {
+                                width: 22px;
+                                height: 22px;
+                                font-size: 0.625rem;
+                                color: var(--light-gray);
+                                letter-spacing: 0.2;
+                                margin-right: 0.875rem;
+                            }
+                        }
+                    }
+                    .OwnerQuestionnaire__text {
+                        max-width: 500px;
+                        font-weight: 600;
+                        font-size: 18px;
+                        line-height: 120%;
+                        letter-spacing: -0.02em;
+                        color: #282828;
+                    }
+                }
+                // Опрос
+            }
+        }
+    }
+}

@@ -1,0 +1,95 @@
+@import '../../../App.css';
+
+/* Адаптация для экранов выше 1920px */
+.ButtonGroup {
+    .ButtonGroup__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        background-color: var(--white);
+        .ButtonGroup__container {
+            width: 100%;
+            height: 100%;
+            padding: 0 0 60px;
+            .ButtonGroup__content {
+                width: 100%;
+                height: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+
+                .ButtonGroup__section-questionnaire {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: start;
+                    margin-bottom: 100px;
+
+                    // Группа кнопок
+                    .ButtonGroup__btn-group {
+                        display: flex;
+                        margin-top: 1px;
+                        .ButtonGroup__btn-item {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: var(--border-radius-small);
+                            outline: var(--outline-light-gray);
+                            background-color: transparent;
+                            padding: 5px 8px;
+                            
+                            cursor: pointer;
+                            &:first-child {
+                                margin-right: 10px;
+                            }
+                            
+                            .ButtonGroup__btn-descr {
+                                font-size: 24px;
+                                line-height: 25px;
+                                font-weight: 600;
+                                letter-spacing: -0.03em;
+                                color: var(--gray);
+                            }
+                            
+                            .checkcircle-icon {
+                                display: inline-flex;
+                                width: 20px;
+                                height: 20px;
+                                margin-left: 8px;
+                            }
+                        }
+                        .pending {
+                            background: var(--radial-gradient-red-orange);
+                            color: var(--white);
+                        }
+                        .success {
+                            background: var(--green);
+                            color: var(--white);
+                        }
+                    }
+
+                    // Описание по времени заполнения анкеты
+                    .ButtonGroup__time-passage-group {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        :first-child {
+                            margin-right: 8px;
+                        }
+                        .icon {
+                            width: 20px;
+                            height: 20px;
+                            color: var(--light-gray);
+                        }
+                        .ButtonGroup__time-passage-text {
+                            font-weight: 600;
+                            font-size: 14px;
+                            line-height: 17px;
+                            letter-spacing: -0.02em;
+                            color: var(--light-gray);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,195 @@
+@import '../../../App.css';
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптация для экранов выше 1920px */
+.VirtualAssistant {
+    margin: 5rem 0 5rem 0;
+    background-color: var(--white);
+    border-bottom-left-radius: var(--border-radius-medium);
+    border-bottom-right-radius: var(--border-radius-medium);
+    overflow: hidden;
+
+    .VirtualAssistant__content {
+        display: grid;
+        grid-template-columns: 70% 30%;
+        background-color: #e5e5e5;
+        height: 900px;
+        border-radius: var(--border-radius-medium);
+        .VirtualAssistant__left {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(40,40,40,0.2);
+            .VirtualAssistant__questionnaire-field {
+                height: 800px;
+                border-bottom: 1px solid rgba(40,40,40,0.2);
+                padding: 44px 56px 0 56px;
+                overflow-y: auto;
+                ::-webkit-scrollbar-thumb {
+                    background-color: #FFC8C8;
+                }
+                .VirtualAssistant__dialog {
+                    .VirtualAssistant__messages {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1.5rem;
+
+                        .VirtualAssistant__message {
+                            display: flex;
+                        }
+
+                        // Вопросы
+                        .VirtualAssistant__message--question {
+                            justify-content: flex-start;
+                            .VirtualAssistant__bubble {
+                                max-width: 70%;
+                                padding: 1rem 1.5rem;
+                                border-radius: 20px;
+                                position: relative;
+                                animation: fadeInUp 0.5s ease-out;
+                            }
+                            .VirtualAssistant__bubble--question {
+                                background: #FFC8C8;
+                                .VirtualAssistant__message-text {
+                                    font-weight: 500;
+                                    font-size: 20px;
+                                    line-height: 1;
+                                    letter-spacing: -0.03em;
+                                    white-space: pre-wrap;
+                                    word-break: break-word;
+                                }
+                            }
+                        }
+                        
+                        // Ответы
+                        .VirtualAssistant__message--answer {
+                            justify-content: flex-end;
+                            .VirtualAssistant__bubble {
+                                max-width: 70%;
+                                padding: 1rem 1.5rem;
+                                border-radius: 20px;
+                                position: relative;
+                                animation: fadeInUp 0.5s ease-out;                                
+                            }
+                            .VirtualAssistant__bubble--answer {
+                                background: var(--white);
+                                color: var(--light-gray);
+                                display: flex;
+                                align-items: center;
+                                gap: 0.5rem;
+                                .VirtualAssistant__message-text {
+                                    font-weight: 500;
+                                    font-size: 20px;
+                                    line-height: 1.3%;
+                                    letter-spacing: -0.03em;
+                                    white-space: pre-wrap;
+                                    word-break: break-word;
+                                }
+                                .VirtualAssistant__edit-btn {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    font-size: 1.1rem;
+                                    background-color: transparent;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            .VirtualAssistant__fill-field {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 24px 56px 86px 56px;
+                .VirtualAssistant__fill-field-wrapper {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: var(--white);
+                    border-radius: var(--border-radius-small);
+                    cursor: pointer;
+                    .VirtualAssistant__input {
+                        position: relative;
+                        width: 90%;
+                        padding: 15px;
+                        margin-right: 1rem;
+                        color: var(--light-gray);
+                        font-weight: 500;
+                        font-size: 14px;
+                    }
+                    .VirtualAssistant__input--disabled {
+                        cursor: not-allowed;
+                        opacity: 0.6;
+                        pointer-events: none;
+                    }
+                    .arrow-right {
+                        border-radius: var(--border-radius-medium);
+                        background: var(--radial-gradient-red-orange);
+                        color: var(--white);
+                        width: 40px;
+                        height: 30px;
+                        padding: 5px;
+                    }
+                }
+            }
+        }
+        .VirtualAssistant__right {
+            padding: 2.75rem 3.5rem 5.375rem 3.5rem;
+            .VirtualAssistant__questionnaire-status {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--white);
+                border-radius: var(--border-radius-small);
+                padding: 1.875rem 2.5rem 3rem;
+                .VirtualAssistant__title {
+                    width: 100%;
+                    display: flex;
+                    justify-content: start;
+                    align-items: start;
+                    // margin-bottom: 2rem;
+                    font-weight: 500;
+                    font-size: 1.25rem;
+                    line-height: 1.2;
+                    letter-spacing: -0.03em;
+                    color: var(--light-gray);
+                }
+                .VirtualAssistant__btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    padding: 24px 0;
+                    font-size: 20px;
+                    background: var(--radial-gradient-red-orange);
+                    border-radius: var(--border-radius-medium);
+                    margin-bottom: 3rem;
+                    color: var(--white);
+                    cursor: pointer;
+                }
+                .VirtualAssistant__btn--disabled {
+                    cursor: not-allowed;
+                    opacity: 0.6;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}

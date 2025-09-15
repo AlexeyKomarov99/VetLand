@@ -1,0 +1,39 @@
+@import '../../../App.css';
+.PrivacyPolicy {
+    display: flex;
+    flex-direction: column;
+    .PrivacyPolicy__label-checkbox {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+
+        .PrivacyPolicy__checkbox {
+            display: none;
+        }
+    }
+
+    .checkbox-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 30px;
+        flex-shrink: 0;
+        height: 30px;
+        font-size: 1.25rem;
+        border-radius: 10px;
+        border: 1px solid var(--gray);
+        margin-right: 15px;
+    }
+    
+    .PrivacyPolicy__checkbox-descr {
+        font-size: 12px;
+        flex: 1;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
+    .PrivacyPolicy__checkbox:checked + .checkbox-box {
+        background: var(--radial-gradient-red-orange);
+    }
+}

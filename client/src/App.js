@@ -23,13 +23,15 @@ import UserProfiles from './pages/Profile/ProfilePages/UserProfiles/UserProfiles
 import Volunteering from './pages/Profile/ProfilePages/Volunteering/Volunteering';
 import MedicalRecords from './pages/Profile/ProfilePages/MedicalRecords/MedicalRecords';
 import UserAdoptedAnimal from './pages/Profile/ProfilePages/UserAdoptedAnimal/UserAdoptedAnimal';
+
 //=== = ===//
+import TitlePage from './pages/TitlePage/TitlePage'; // Титульная страница
+import HowTakeHome from './pages/HowTakeHome/HowTakeHome'; // Анкета забрать домой
+
+
 import RecoverPassword from './pages/RecoverPassword/RecoverPassword'; // Восстановление пароля
 import TakeHomeAlgorithm from './pages/TakeHomeAlgorithm/TakeHomeAlgorithm'; // Алгоритм как забрать домой
-import TakeHomeQuestionnaire from './pages/TakeHomeQuestionnaire/TakeHomeQuestionnaire'; // Анкета забрать домой
-import TitlePage from './pages/TitlePage/TitlePage'; // Титульная страница
-import PrivacyPolicy from './pages/PrivacyPolicy/PrivacyPolicy'; // Политика конфиденциальности
-import AnimalInfo from './pages/AnimalInfo/AnimalInfo'; // Подробная информация о животном
+import AnimalInfo from './pages/AnimalInfo/AnimalInfo';
 import Footer from './components/Footer/Footer';
 
 const AppContent = () => {
@@ -57,15 +59,11 @@ const AppContent = () => {
       {/* {shouldShowHeaderAndFooter && <Header />} */}
       <Routes>
 
-        <Route path='/test' element={<TitlePage />} />
-
         {/* Титульная страница - маршрут по умолчанию */}
         <Route path='/' element={<TitlePage/>} />
 
-        {/* Забрать домой - Анкета будущего хозяина */}
-        <Route path='/questionnaire' element={<TakeHomeQuestionnaire />} />
-        
-        {/* Route path='/questionnaire/:id' */}
+        {/* Как забрать домой - Анкета будущего хозяина */}
+        <Route path='/questionnaire' element={<HowTakeHome />} />
 
         {/* Наши подопечные */}
         <Route path='/animals' element={<Animals />} />
@@ -100,9 +98,6 @@ const AppContent = () => {
 
         {/* Восстановление пароля */}
         <Route path='/recover-password' element={<RecoverPassword />} />
-
-        {/* Политика конфиденциальности */}
-        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         
         {/* Подробная информация о животном */}
         <Route path='/animal-info/:id' element={<AnimalInfo />} />

@@ -57,7 +57,7 @@ const AdoptionForm = sequelize.define('AdoptionForm', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    // кто останется с питомцем в случае разлуки ?
+    // Кто останется с питомцем в случае разлуки ?
     whoWillStayWithPetInCaseSeparation: {
         type: DataTypes.STRING,
         allowNull: false,

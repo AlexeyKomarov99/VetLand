@@ -23,44 +23,6 @@
             }
         }
 
-        // Группа label
-        .Registration__label-group {
-            display: flex;
-            flex-direction: column;
-            margin-top: 30px;
-
-            .Registration__label-checkbox {
-                display: flex;
-                align-items: center;
-                margin-bottom: 0.5rem;
-                cursor: pointer;
-                
-                .Registration__checkbox {
-                    display: none;
-                }
-            }
-        
-            .checkbox-box {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 30px; 
-                height: 30px;
-                font-size: 1.25rem;
-                border-radius: 10px;
-                border: 1px solid var(--gray);
-                margin-right: 15px;
-            }
-            
-            .Registration__checkbox-descr {
-                font-size: 12px;
-            }
-
-            .Registration__checkbox:checked + .checkbox-box {
-                background: var(--radial-gradient-red-orange);
-            }
-        }
-
         // Кнопка
         .Registration__button-wrapper {
             display: flex;

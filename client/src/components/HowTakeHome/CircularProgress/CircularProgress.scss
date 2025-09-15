@@ -1,0 +1,49 @@
+@import '../../../App.css';
+
+.circular-progress {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+
+  &__svg {
+    transform: rotate(0deg);
+  }
+
+  &__background {
+    fill: none;
+    stroke: #f0f0f0;
+    stroke-linecap: round;
+  }
+
+  &__circle {
+    fill: none;
+    stroke: var(--red);
+
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.3s ease;
+  }
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  &__percentage {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  &__label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+  }
+}

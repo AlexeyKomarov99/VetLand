@@ -2,10 +2,11 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
-//===== Ресурсы =====//
+//===== assets =====//
 import { IoCheckmark as CheckMarkIcon } from "react-icons/io5";
 import "./Registration.scss";
+//===== components =====//
+import PrivacyPolicy from "../../Common/PrivacyPolicy/PrivacyPolicy";
 
 const Registration = ({closeWindowAuthentication}) => {
   const [formData, setFormData] = useState({
@@ -230,36 +231,7 @@ const Registration = ({closeWindowAuthentication}) => {
         </div>
 
         <div className="Registration__label-group">
-          <label className="Registration__label-checkbox">
-              <input 
-                type="checkbox" 
-                className="Registration__checkbox" 
-                checked={checked1}
-                onChange={handleChecked1}  
-              />
-              <div className="checkbox-box">
-                {checked1 && <CheckMarkIcon style={{color: 'white'}} />}
-              </div>
-              <span className="Registration__checkbox-descr">
-                  Я ознакомился (лась) с <Link style={{textDecoration: 'underline', fontSize: '12px'}} to='/privacy-policy'>
-                  политикой конфиденциальности</Link> и принимаю их условия
-              </span>
-          </label>
-
-          <label className="Registration__label-checkbox">
-              <input 
-                type="checkbox" 
-                className="Registration__checkbox" 
-                checked={checked2}
-                onChange={handleChecked2}
-              />
-              <div className="checkbox-box">
-                {checked2 && <CheckMarkIcon style={{color: 'white'}} />}
-              </div>
-              <span className="Registration__checkbox-descr">
-                  Хочу получать информацию от фонда vet.land
-              </span>
-          </label>
+          <PrivacyPolicy />
         </div>
 
         <div className="Registration__button-wrapper">
@@ -272,8 +244,6 @@ const Registration = ({closeWindowAuthentication}) => {
         </div>
 
       </div>
-
-      
 
     </form>
   );
