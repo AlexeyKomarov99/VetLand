@@ -1,0 +1,203 @@
+@import '../../../App.css';
+.MainAnimalFilter {
+    display: flex;
+    gap: 0.5rem;
+
+    // Тип животных
+    .MainAnimalFilter__animal-types {
+        display: flex;
+        gap: 0.5rem;
+        .MainAnimalFilter__animal-type {
+            padding: 0.75rem 1rem;
+            background-color: var(--white);
+            border-radius: var(--border-radius-small);
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
+            cursor: pointer;
+            &:hover {
+                background-color: var(--light-gray);
+                .MainAnimalFilter__animal-type-name {
+                    color: var(--white);
+                }
+            }
+            .MainAnimalFilter__animal-type-name {
+                font-size: 0.75rem;
+                line-height: 1rem;
+                font-weight: 500;
+            }
+        }
+    }
+
+    // Возраст
+    .MainAnimalFilter__age-range {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        transition: var(--transition);
+        background-color: var(--white);
+        border-radius: var(--border-radius-small);
+        border: 1px solid var(--light-gray);
+        cursor: pointer;
+        &:hover {
+            background: var(--radial-gradient-red-orange);
+            .MainAnimalFilter__age-range-text,
+            .MainAnimalFilter__age-range-icon {
+                color: var(--white);
+            }
+        }
+        .MainAnimalFilter__age-range-trigger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .MainAnimalFilter__age-range-text {
+                font-size: 0.75rem;
+                line-height: 1rem;
+                font-weight: 500;
+                margin-right: 0.5rem;
+            }
+            .MainAnimalFilter__age-range-icon {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+
+    // Статус
+    .MainAnimalFilter__status {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        transition: var(--transition);
+        background-color: var(--white);
+        border-radius: var(--border-radius-small);
+        border: 1px solid var(--light-gray);
+        cursor: pointer;
+        &:hover {
+            background: var(--radial-gradient-red-orange);
+            .MainAnimalFilter__title,
+            .MainAnimalFilter__status-icon {
+                color: var(--white);
+            }
+        }
+        .MainAnimalFilter__status-trigger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .MainAnimalFilter__title {
+                font-size: 0.75rem;
+                line-height: 1rem;
+                font-weight: 500;
+                margin-right: 0.5rem;
+            }
+            .MainAnimalFilter__status-icon {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+
+    // Модальное окно "Возраст"
+    .MainAnimalFilter__age-range-mw {
+        min-width: 200px;
+        position: absolute;
+        z-index: 1000;
+        top: 120%;
+        left: 0;
+        padding: 1.5rem;
+        background: var(--radial-gradient-red-orange);
+        color: var(--white);
+        border-radius: var(--border-radius-small);
+        .MainAnimalFilter__range {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--white);
+            .MainAnimalFilter__age-item {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 1rem;
+                &:nth-child(n):not(:last-child) {
+                    margin-bottom: 0.25rem;
+                }
+                .MainAnimalFilter__age-input {
+
+                }
+                .MainAnimalFilter__age-text {
+                    font-weight: 600;
+                    font-size: 12px;
+                    color: var(--white);
+                }
+            }
+        }
+        .MainAnimalFilter__age-btn {
+            display: inline-flex;
+            font-size: 12px;
+            margin-top: 1rem;
+            border: 1px solid var(--white);
+            color: var(--white);
+            border-radius: var(--border-radius-small);
+            padding: 0.75rem 1rem;
+            background: transparent;
+            cursor: pointer;
+        }
+    }
+
+
+    // Модальное окно "Особенности"
+    .MainAnimalFilter__status-mw {
+        min-width: 200px;
+        position: absolute;
+        z-index: 1000;
+        top: 120%;
+        left: 0;
+        padding: 1.5rem;
+        background: var(--radial-gradient-red-orange);
+        color: var(--white);
+        border-radius: var(--border-radius-small);
+        .MainAnimalFilter__status-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--white);
+            .MainAnimalFilter__status-item {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 1rem;
+                &:nth-child(n):not(:last-child) {
+                    margin-bottom: 0.25rem;
+                }
+                .MainAnimalFilter__status-input {
+
+                }
+                .MainAnimalFilter__status-text {
+                    font-weight: 600;
+                    font-size: 12px;
+                    color: var(--white);
+                }
+            }
+        }
+        .MainAnimalFilter__status-btn {
+            display: inline-flex;
+            font-size: 12px;
+            margin-top: 1rem;
+            border: 1px solid var(--white);
+            color: var(--white);
+            border-radius: var(--border-radius-small);
+            padding: 0.75rem 1rem;
+            background: transparent;
+            cursor: pointer;
+        }
+    }
+}

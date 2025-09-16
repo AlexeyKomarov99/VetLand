@@ -2,10 +2,7 @@ const AnimalModel = require('../models/animals-model');
 const AdoptionFormModel = require('../models/adoption-forms-model')
 const StagesAnimalAdoptionModel = require('../models/stages-animal-adoption-model');
 const UserModel = require('../models/user-model');
-const sequelize = require('../db'); 
-
-const path = require('path');
-const fs = require('fs').promises;
+const sequelize = require('../db');
 
 class PublicService {
 
@@ -36,7 +33,18 @@ class PublicService {
         }
     }
 
-    // 2. Составление анкеты об усыновлении животного
+    // 2. Список всех животных
+    async getListAllAnimals(req, res) {
+        try {
+            const animals = await AnimalModel.findAll();
+            return animals;
+        } catch (error) {
+            console.error('Ошибка в сервисе getListAllAnimals: ', error);
+            throw error;
+        }
+    }
+
+    // 3. Составление анкеты об усыновлении животного
     async fillOutApplicationAdoptAnimal(formData) {
         try {
             const {
@@ -122,7 +130,7 @@ class PublicService {
         }
     }
 
-    // 3. Подать заявку на волонтерство
+    // 4. Подать заявку на волонтерство
     async applyVolunteer() {
         try {
             

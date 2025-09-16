@@ -5,7 +5,7 @@ import {questions} from './data';
 import { FaArrowRight as ArrowRight } from "react-icons/fa6";
 import { FiEdit3 as EditIcon } from "react-icons/fi";
 //===== components =====//
-import PrivacyPolicy from '../../Common/PrivacyPolicy/PrivacyPolicy';
+import PrivacyPolicy from '../../UI/PrivacyPolicy/PrivacyPolicy';
 import CircularProgress from '../CircularProgress/CircularProgress';
 
 const VirtualAssistant = ({

@@ -12,7 +12,11 @@ export const publicApi = createApi({
             query: (limit = 10) => `/animals/random?limit=${limit}`,
             transformResponse: (response) => response.data, 
         }),
-        // 2. Составление анкеты об усыновлении животного
+        // 2. Список всех животных
+        getAnimalList: builder.query({
+            query: () => '/list-all-animals-public',
+        }),
+        // 3. Составление анкеты об усыновлении животного
         submitAppAdoptAnimal: builder.mutation({
             query: (formData) => ({
                 url: '/fill-out-application-adopt-animal',
@@ -20,7 +24,7 @@ export const publicApi = createApi({
                 body: formData
             })
         }),
-        // 3. Подать заявку на волонтерство
+        // 4. Подать заявку на волонтерство
         submitVolunteerApp: builder.mutation({
             query: (formData) => ({
                 url: '/apply-volunteer',
@@ -33,6 +37,7 @@ export const publicApi = createApi({
 
 export const { 
     useGetRandomAnimalsQuery,
+    useGetAnimalListQuery,
     useSubmitAppAdoptAnimalMutation,
     useSubmitVolunteerAppMutation,
 } = publicApi;

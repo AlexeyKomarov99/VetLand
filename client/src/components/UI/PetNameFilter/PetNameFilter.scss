@@ -1,0 +1,33 @@
+@import '../../../App.css';
+
+.PetNameFilter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-small);
+    border: 1px solid var(--light-gray);
+    .search-icon {
+        width: 40px;
+        height: 30px;
+        padding: 5px;
+    }
+    .PetNameFilter__input {
+        width: 85%;
+        padding: 7px;
+        margin-right: 1rem;
+        font-weight: 500;
+        font-size: 14px;
+        color: var(--light-gray);
+        cursor: pointer;
+    }
+    .arrow-icon {
+        border-radius: var(--border-radius-medium);
+        background: var(--radial-gradient-red-orange);
+        color: var(--white);
+        width: 40px;
+        height: 30px;
+        padding: 5px;
+        cursor: pointer;
+    }
+}

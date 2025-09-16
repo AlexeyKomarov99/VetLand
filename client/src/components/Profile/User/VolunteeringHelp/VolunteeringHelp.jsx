@@ -5,7 +5,7 @@ import './VolunteeringHelp.scss';
 import { IoIosSearch as SearchIcon } from "react-icons/io";
 
 //===== Компоненты =====//
-import Pagination from '../../../Pagination/Pagination';
+import Pagination from '../../../UI/Pagination/Pagination';
 
 //===== Контекст =====//
 import {AuthContext} from '../../../../contexts/AuthContext';

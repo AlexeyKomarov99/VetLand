@@ -11,6 +11,7 @@ const InternalNavbar = () => {
   const pageInfo = routes.filter(route => route.route === location.pathname);
   const link = pageInfo[0]?.linkName;
   const title = pageInfo[0]?.titlePage;
+  const descr = pageInfo[0]?.descr;
 
   return (
     <section className="InternalNavbar">
@@ -25,7 +26,10 @@ const InternalNavbar = () => {
                   </Link>
                   <span className="InternalNavbar__current-page">{link}</span>
                 </div>
-                <h2 className="InternalNavbar__header-title">{title}</h2>
+                <div className="InternalNavbar__title-group">
+                  <h2 className="InternalNavbar__header-title">{title}</h2>
+                  <span className="InternalNavbar__header-descr">{descr}</span>
+                </div>
             </div>
           </div>
         </div>

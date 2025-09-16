@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-
-//===== Ресурсы =====//
+//===== assets =====//
 import './App.css';
 
 //===== Компоненты =====//
-import Header from './components/Header/Header';
+import Header from './components/Common/Header/Header';
 import AboutUs from './pages/AboutUs/AboutUs';
 import AlreadyHome from './pages/AlreadyHome/AlreadyHome'; // Уже дома
 import Animals from './pages/Animals/Animals'; // Животные
@@ -32,7 +31,7 @@ import HowTakeHome from './pages/HowTakeHome/HowTakeHome'; // Анкета за�
 import RecoverPassword from './pages/RecoverPassword/RecoverPassword'; // Восстановление пароля
 import TakeHomeAlgorithm from './pages/TakeHomeAlgorithm/TakeHomeAlgorithm'; // Алгоритм как забрать домой
 import AnimalInfo from './pages/AnimalInfo/AnimalInfo';
-import Footer from './components/Footer/Footer';
+import Footer from './components/Common/Footer/Footer';
 
 const AppContent = () => {
 
@@ -74,8 +73,19 @@ const AppContent = () => {
         {/* Уже дома */}
         <Route path='/happy-stories' element={<AlreadyHome />} />
 
-        {/* Профиль */}
+        {/* Помощь животным */}
+        <Route path='/help-us' element={<HelpAnimals />} />
+        
+        {/* Алгоритм, как забрать домой */}
+        <Route path='./how-take-home' element={<TakeHomeAlgorithm />} />
 
+        {/* Восстановление пароля */}
+        <Route path='/recover-password' element={<RecoverPassword />} />
+        
+        {/* Подробная информация о животном */}
+        <Route path='/animal-info/:id' element={<AnimalInfo />} />
+
+        {/* Профиль */}
         <Route path='/profile/*' element={<Profile />} >
           <Route path='personal-data' element={<PersonalData />} />
           <Route path='donations' element={<Donations />} />
@@ -89,18 +99,6 @@ const AppContent = () => {
           <Route path='user-adopted-animal' element={<UserAdoptedAnimal />} />
           <Route path='medical-records' element={<MedicalRecords />} />
         </Route>
-
-        {/* Помощь животным */}
-        <Route path='/help-us' element={<HelpAnimals />} />
-        
-        {/* Алгоритм, как забрать домой */}
-        <Route path='./how-take-home' element={<TakeHomeAlgorithm />} />
-
-        {/* Восстановление пароля */}
-        <Route path='/recover-password' element={<RecoverPassword />} />
-        
-        {/* Подробная информация о животном */}
-        <Route path='/animal-info/:id' element={<AnimalInfo />} />
 
       </Routes>
 

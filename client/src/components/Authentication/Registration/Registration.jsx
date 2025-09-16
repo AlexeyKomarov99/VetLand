@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { IoCheckmark as CheckMarkIcon } from "react-icons/io5";
 import "./Registration.scss";
 //===== components =====//
-import PrivacyPolicy from "../../Common/PrivacyPolicy/PrivacyPolicy";
+import PrivacyPolicy from "../../UI/PrivacyPolicy/PrivacyPolicy";
 
 const Registration = ({closeWindowAuthentication}) => {
   const [formData, setFormData] = useState({

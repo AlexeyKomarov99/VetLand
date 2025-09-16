@@ -1,10 +1,10 @@
 @import '../../../App.css';
 
 /* Адаптация для экранов выше 1920px */
-.HowCanHelp {
+.HowCanHelpFund {
     margin-top: 0.35rem;
     height: 815px;
-    .HowCanHelp__wrapper {
+    .HowCanHelpFund__wrapper {
         position: relative;
         width: 100%;
         height: 100%;
@@ -12,16 +12,16 @@
         margin: 0 auto;
         overflow: hidden;
         margin-bottom: 15px;
-        .HowCanHelp__container {
+        .HowCanHelpFund__container {
             width: 100%;
             height: 100%;
-            .HowCanHelp__content {
+            .HowCanHelpFund__content {
                 width: 100%;
                 max-width: 1440px;
                 margin: 0 auto;
 
                 // Блок с видео
-                .HowCanHelp__video-wrapper {
+                .HowCanHelpFund__video-wrapper {
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -38,7 +38,7 @@
                         height: 100%;
                         background-color: rgba(0,0,0,0.3);
                     }
-                    .HowCanHelp__video {
+                    .HowCanHelpFund__video {
                         position: absolute;
                         top: 50%;
                         left: 50%;
@@ -51,24 +51,24 @@
                 }
 
                 // Блок с контентом
-                .HowCanHelp__body-content {
+                .HowCanHelpFund__body-content {
                     position: relative;
                     top: 0;
                     left: 0;
                     width: 100%;
-                    .HowCanHelp__body-wrapper {
+                    .HowCanHelpFund__body-wrapper {
                         width: 100%;
                         // max-width: 1440px;
                         // margin: 0 auto;
                         // padding: 0 60px;
-                        .HowCanHelp__content {
+                        .HowCanHelpFund__content {
                             position: relative;
                             
                             // Заголовок
-                            .HowCanHelp__header {
+                            .HowCanHelpFund__header {
                                 margin: 60px auto 20px;
                                 text-align: center;
-                                .HowCanHelp__header-text {
+                                .HowCanHelpFund__header-text {
                                     display: inline-block;
                                     font-size: 161px;
                                     font-weight: 700;
@@ -80,8 +80,8 @@
                             }
 
                             // Туловище контента
-                            .HowCanHelp__body {
-                                .HowCanHelp__body-descr {
+                            .HowCanHelpFund__body {
+                                .HowCanHelpFund__body-descr {
                                     font-size: 24px;
                                     font-weight: 600;
                                     line-height: 26px;
@@ -92,11 +92,11 @@
                             }
 
                             // Ноги контента
-                            .HowCanHelp__footer {
+                            .HowCanHelpFund__footer {
                                 display: grid;
                                 grid-template-columns: repeat(5, 1fr);
 
-                                .HowCanHelp__card-item {
+                                .HowCanHelpFund__card-item {
                                     display: flex;
                                     flex-direction: column;
                                     justify-content: space-between;
@@ -111,17 +111,17 @@
 
                                     &:hover {
                                         background-color: var(--white);
-                                        .HowCanHelp__card-header {
+                                        .HowCanHelpFund__card-header {
                                             color: var(--black);
                                         }
-                                        .HowCanHelp__icons-group {
+                                        .HowCanHelpFund__icons-group {
                                             .icon {
                                                 color: var(--light-gray);
                                                 outline: 1px solid var(--light-gray);
                                             }
                                         }
                                         
-                                        .HowCanHelp__card-footer {
+                                        .HowCanHelpFund__card-footer {
                                             .icon {
                                                 color: var(--white);
                                                 background: var(--radial-gradient-red-orange);
@@ -132,7 +132,7 @@
                                             }
                                         }
                                     }
-                                    .HowCanHelp__card-header {
+                                    .HowCanHelpFund__card-header {
                                         color: var(--white);
                                         max-width: 182px;
                                         font-size: 22px;
@@ -141,7 +141,7 @@
                                         letter-spacing: -0.03em;
                                         text-transform: uppercase;
                                     }
-                                    .HowCanHelp__card-footer {
+                                    .HowCanHelpFund__card-footer {
                                         display: flex;
                                         justify-content: end;
                                         align-items: end;
@@ -151,7 +151,7 @@
                                             color: var(--white);
                                         }
                                     }
-                                    .HowCanHelp__icons-group {
+                                    .HowCanHelpFund__icons-group {
                                         display: flex;
                                         .icon {
                                             display: inline-flex;

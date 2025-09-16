@@ -2,8 +2,8 @@ import React, {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 
 //===== Компоненты =====//
-import Navbar from '../Navbar/Navbar';
-import Authentication from '../Authentication/Authentication/Authentication';
+import Navbar from '../../Navbar/Navbar';
+import Authentication from '../../Authentication/Authentication/Authentication';
 
 //===== Ресурсы =====//
 import { FiArrowRight as ArrowRightIcon } from "react-icons/fi";
@@ -11,7 +11,7 @@ import { IoMdHeartEmpty as HeartIcon } from "react-icons/io";
 import './Header.scss';
 
 //===== Контекст =====//
-import { AuthContext } from '../../contexts/AuthContext';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 const Header = () => {
   

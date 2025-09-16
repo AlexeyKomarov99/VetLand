@@ -9,7 +9,7 @@ import AnimalTreatment from '../../components/TitlePage/AnimalTreatment/AnimalTr
 import Connect from '../../components/TitlePage/Connect/Connect';
 import PurposeFund from '../../components/TitlePage/PurposeFund/PurposeFund';
 import HowTakeHome from '../../components/TitlePage/HowTakeHome/HowTakeHome';
-import HowCanHelp from '../../components/TitlePage/HowCanHelp/HowCanHelp';
+import HowCanHelp from '../../components/TitlePage/HowCanHelpFund/HowCanHelpFund';
 
 const TitlePage = () => {
   

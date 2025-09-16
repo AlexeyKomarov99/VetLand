@@ -1,7 +1,7 @@
 import React from 'react';
 import './AboutUs.scss';
 //===== components =====//
-import InternalNavbar from '../../components/Common/InternalNavbar/InternalNavbar';
+import InternalNavbar from '../../components/UI/InternalNavbar/InternalNavbar';
 import AboutUsHeader from '../../components/AboutUs/AboutUsHeader/AboutUsHeader';
 import HowWeLive from '../../components/AboutUs/HowWeLive/HowWeLive';
 import OurTeam from '../../components/AboutUs/OurTeam/OurTeam';

@@ -1,0 +1,26 @@
+@import '../../../App.css';
+.FiltersGroup {
+    .FiltersGroup__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        background-color: var(--white);
+        .FiltersGroup__container {
+            width: 100%;
+            height: 100%;
+            padding: 1rem 0;
+            .FiltersGroup__content {
+                width: 100%;
+                height: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                .FiltersGroup__filters-group {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 10px;
+                }
+            }
+        }
+    }
+}
