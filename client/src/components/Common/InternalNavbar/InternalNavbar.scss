@@ -1,0 +1,81 @@
+@import '../../../App.css';
+.InternalNavbar {
+    .InternalNavbar__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        border-top-left-radius: var(--border-radius-high);
+        border-top-right-radius: var(--border-radius-high);
+        background-color: var(--white);
+        .InternalNavbar__container {
+            width: 100%;
+            height: 100%;
+            padding: 60px 0 60px;
+            .InternalNavbar__content {
+                width: 100%;
+                height: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                .InternalNavbar__header {
+                    display: flex;
+                    flex-direction: column;
+                    .InternalNavbar__header-nav {
+                        display: flex;
+                        border-bottom: 2px solid var(--dark-gray);
+                        padding-bottom: 37px;
+                        & > :last-child {
+                            margin-left: 10px;
+                        }
+                        .InternalNavbar__link-main {
+                            display: flex;
+                            justify-content: center;
+                            align-items: start;
+                            .InternalNavbar__link-text {
+                                position: relative;
+                                color: var(--light-gray);
+                                font-weight: 500;
+                                font-size: 12px;
+                                line-height: 14px;
+                                margin-right: 0.25rem;
+                                &:hover::after {
+                                    width: 0;
+                                }
+                                &::after {
+                                    content: '';
+                                    display: block;
+                                    position: absolute;
+                                    top: 100%;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 1px;
+                                    background-color: var(--light-gray);
+                                    transition: width .3s ease-in-out;
+                                }
+                                .icon {
+                                    width: 10px;
+                                    height: 10px;
+                                    margin-left: 5px;
+                                }
+                            }
+                        }
+                        .InternalNavbar__current-page {
+                            color: var(--dark-gray);
+                            font-weight: 500;
+                            font-size: 12px;
+                            line-height: 14px;
+                            opacity: 0.6;
+                        }
+                    }
+                    .InternalNavbar__header-title {
+                        padding-top: 25px;
+                        font-size: 34px;
+                        font-weight: 600;
+                        line-height: 41px;
+                        color: var(--light-gray);
+                    }
+                }
+            }
+        }
+    }
+}

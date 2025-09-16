@@ -27,7 +27,7 @@ export const publicApi = createApi({
                 method: 'POST',
                 body: formData
             })
-        })
+        }),
     })
 })
 

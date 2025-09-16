@@ -4,6 +4,9 @@ const StagesAnimalAdoptionModel = require('../models/stages-animal-adoption-mode
 const UserModel = require('../models/user-model');
 const sequelize = require('../db'); 
 
+const path = require('path');
+const fs = require('fs').promises;
+
 class PublicService {
 
     // 1. Рандомный список животных для Титульной страницы

@@ -1,0 +1,21 @@
+export const listFileNames = [
+  { id: 1, name: "Шаблон договора о передаче питомца", filename: "adoption_contract_template.doc" },
+  { id: 2, name: "Реквизиты Фонда", filename: "fund_requisites.pdf" },
+  { id: 3, name: "Отчет о целевом использовании д/с за 2020 г.", filename: "financial_report_2020.pdf" },
+  { id: 4, name: "Отчет о целевом использовании д/с за 2021 г.", filename: "financial_report_2021.pdf" },
+  { id: 5, name: "Свидетельство ОГРН", filename: "ogrn_certificate.pdf" },
+  { id: 6, name: "Свидетельство ИНН", filename: "inn_certificate.pdf" },
+  { id: 7, name: "Устав", filename: "charter.pdf" },
+  { id: 8, name: "Благотворительные программы", filename: "charity_programs.pdf" },
+  { id: 9, name: "Аудиторское заключение за 2021 г.", filename: "audit_report_2021.pdf" },
+  { id: 10, name: "Отчет о проделанной работе за 2022 г.", filename: "activity_report_2022.pdf" },
+  { id: 11, name: "Отчет о целевом использовании средств за 2022 г. БФ Ветгород", filename: "financial_report_2022.pdf" },
+  { id: 12, name: "Задачи и проекты на 2023 г. БФ Ветгород", filename: "plans_2023.pdf" },
+  { id: 13, name: "Отчет БФ о каналах поступления за 2022 г.", filename: "income_sources_2022.pdf" },
+  { id: 14, name: "Аудиторское заключение БФ за 2022 г.", filename: "audit_report_2022.pdf" },
+  { id: 15, name: "Отчет о проделанной работе за 2023 г. и план на 2024", filename: "activity_report_2023_plan_2024.pdf" },
+  { id: 16, name: "Аудиторское заключение БФ за 2023 г.", filename: "audit_report_2023.pdf" },
+  { id: 17, name: "Отчет о целевом использовании средств БФ Ветгород за 2023 г.", filename: "financial_report_2023.pdf" },
+  { id: 18, name: "Отчет о целевом использовании средств за 2024 г.", filename: "financial_report_2024.pdf" },
+  { id: 19, name: "Программа на 2025 и отчет о проделанной работе за 2024 г.", filename: "plan_2025_activity_report_2024.pdf" }
+]

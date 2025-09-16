@@ -1,0 +1,86 @@
+@import '../../../App.css';
+
+//
+.Documents {
+    .Documents__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        background-color: var(--white);
+        border-bottom-left-radius: var(--border-radius-high);
+        border-bottom-right-radius: var(--border-radius-high);
+        .Documents__container {
+            width: 100%;
+            height: 100%;
+            padding: 30px 0 60px;
+            .Documents__content {
+                width: 100%;
+                height: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                .Documents__header {
+                    font-size: 34px;
+                    font-weight: 600;
+                    line-height: 41px;
+                    margin-bottom: 50px;
+                    color: var(--light-gray);
+                }
+                .Documents__body-cards {
+                    display: grid;
+                    grid-template-columns: repeat(8, 1fr);
+                    grid-gap: 12px;
+                    .Documents__card-item {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        width: 152px;
+                        height: 180px;
+                        padding: 25px 30px;
+                        background: var(--radial-gradient--white-gray);
+                        border-radius: var(--border-radius-medium);
+                        transition: var(--transition);
+                        cursor: pointer;
+                        overflow: hidden;
+                        &:hover {
+                            transform: translateY(-7px);
+                            .Documents__card-footer {
+                                .icon {
+                                    background: var(--radial-gradient-red-orange);
+                                    color: var(--white);
+                                }
+                            }
+                        }
+                        .Documents__card-header {
+                            width: 100%;
+                            margin-bottom: 20px;
+                            font-size: 12px;
+                            font-weight: 700;
+                            line-height: 15px;
+                            text-decoration: none;
+                            color: #282828;
+                            word-wrap: break-word;
+                        }
+                        .Documents__card-footer {
+
+                            display: flex;
+                            justify-content: start;
+                            align-items: start;
+                            .icon {
+                                display: inline-flex;
+                                width: 32px;
+                                height: 32px;
+                                padding: 8px;
+                                outline: 1px solid var(--red);
+                                color: var(--red);
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
