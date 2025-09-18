@@ -36,8 +36,6 @@ export const useAnimalFilters = (animals = []) => {
   };
 
   const filteredAnimals = useMemo(() => {
-    console.log('Все животные:', animals);
-    console.log('Типы животных:', animals.map(a => a.animalType));
     if (!animals || !Array.isArray(animals)) return [];
 
     return animals.filter(animal => {

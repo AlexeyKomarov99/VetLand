@@ -1,4 +1,5 @@
 const AnimalModel = require('../models/animals-model');
+const AdoptedAnimalModel = require('../models/adopted-animals-model');
 const AdoptionFormModel = require('../models/adoption-forms-model')
 const StagesAnimalAdoptionModel = require('../models/stages-animal-adoption-model');
 const UserModel = require('../models/user-model');
@@ -64,6 +65,7 @@ class PublicService {
                 const animalData = animal.toJSON ? animal.toJSON() : animal.dataValues;
                 
                 return {
+                    // Данные о животном
                     id: animalData.id,
                     animalName: animalData.animalName,
                     age: animalData.age,
@@ -101,7 +103,100 @@ class PublicService {
         }
     }
 
-    // 3. Составление анкеты об усыновлении животного
+    // 3. Список всех усыновленных животных
+    async getListAllAdoptedAnimals() {
+        try {
+            const adoptedAnimals = await AdoptedAnimalModel.findAll({
+                include: [
+                    {
+                        model: AnimalModel,
+                        as: 'Pet', // Используем правильный алиас из ассоциации
+                        include: [
+                            {
+                                model: AnimalTypesModel,
+                                as: 'AnimalType',
+                                attributes: ['id', 'type']
+                            },
+                            {
+                                model: AnimalStatusModel,
+                                as: 'AnimalStatus',
+                                attributes: ['id', 'status']
+                            },
+                            {
+                                model: ShelterModel,
+                                as: 'Shelter',
+                                attributes: ['id', 'shelterName', 'city', 'region']
+                            }
+                        ]
+                    },
+                    {
+                        model: UserModel,
+                        as: 'Owner', // Используем правильный алиас из ассоциации
+                        attributes: ['id', 'name', 'surname', 'email', 'phone']
+                    }
+                ],
+                order: [['createdAt', 'DESC']]
+            });
+
+            const adoptedAnimalsFormatted = adoptedAnimals.map((adoptedAnimal) => {
+                const adoptedData = adoptedAnimal.toJSON ? adoptedAnimal.toJSON() : adoptedAnimal.dataValues;
+                const animalData = adoptedData.Pet; // Используем 'Pet' вместо 'Animal'
+                
+                return {
+                    // Данные об усыновлении
+                    adoptionId: adoptedData.id,
+                    adoptionDate: adoptedData.createdAt,
+                    adoptedAnimalPhotosData: adoptedData.adoptedAnimalPhotosData,
+                    
+                    // Данные о животном
+                    // animalId: animalData.id,
+                    id: animalData.id,
+                    animalName: animalData.animalName,
+                    age: animalData.age,
+                    amountTreatment: animalData.amountTreatment,
+                    gender: animalData.gender,
+                    animalPhotosData: animalData.animalPhotosData,
+                    
+                    // Читаемые значения вместо UUID
+                    animalType: animalData.AnimalType ? animalData.AnimalType.type : 'Не указан',
+                    animalStatus: animalData.AnimalStatus ? animalData.AnimalStatus.status : 'Не указан',
+                    shelter: animalData.Shelter ? animalData.Shelter.shelterName : 'Не указан',
+                    
+                    // Дополнительная информация о приюте
+                    shelterInfo: animalData.Shelter ? {
+                        city: animalData.Shelter.city,
+                        region: animalData.Shelter.region
+                    } : null,
+                    
+                    // Оригинальные UUID (если нужны на клиенте)
+                    animalTypeId: animalData.animalType_id,
+                    animalStatusId: animalData.animalStatus_id,
+                    shelterId: animalData.shelter_id,
+                    
+                    // Данные о пользователе, который усыновил
+                    adoptedBy: adoptedData.Owner ? { // Используем 'Owner' вместо 'User'
+                        userId: adoptedData.Owner.id,
+                        firstName: adoptedData.Owner.name,
+                        lastName: adoptedData.Owner.surname,
+                        email: adoptedData.Owner.email,
+                        phone: adoptedData.Owner.phone
+                    } : null,
+                    
+                    // Даты
+                    createdAt: adoptedData.createdAt,
+                    updatedAt: adoptedData.updatedAt
+                };
+            });
+
+            return adoptedAnimalsFormatted;
+
+        } catch (error) {
+            console.error('Ошибка в сервисе getListAllAdoptedAnimals: ', error);
+            throw error;
+        }
+    }
+
+    // 4. Составление анкеты об усыновлении животного
     async fillOutApplicationAdoptAnimal(formData) {
         try {
             const {
@@ -187,7 +282,7 @@ class PublicService {
         }
     }
 
-    // 4. Подать заявку на волонтерство
+    // 5. Подать заявку на волонтерство
     async applyVolunteer() {
         try {
             

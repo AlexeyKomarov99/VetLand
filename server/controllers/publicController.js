@@ -34,7 +34,25 @@ class PublicController {
         }
     }
 
-    // 3. Составление анкеты об усыновлении животного
+    // 3. Список всех усыновленных животных
+    async getListAllAdoptedAnimals(req, res) {
+        try {
+            const adoptedAnimals = await PublicService.getListAllAdoptedAnimals();
+            return res.status(200).json({
+                success: true,
+                data: adoptedAnimals,
+                count: adoptedAnimals.length
+            });
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                message: 'Ошибка получения списка всех усыновленных животных',
+                error: error.message
+            });
+        }
+    }
+
+    // 4. Составление анкеты об усыновлении животного
     async fillOutApplicationAdoptAnimal(req, res) {
         try {
             const formData = req.body;
@@ -80,7 +98,7 @@ class PublicController {
         }
     }
 
-    // 4. Подать заявку на волонтерство
+    // 5. Подать заявку на волонтерство
     async applyVolunteer(req, res) {
         try {
             
