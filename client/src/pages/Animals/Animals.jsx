@@ -7,17 +7,23 @@ import FiltersGroup from '../../components/Animals/FiltersGroup/FiltersGroup';
 import AnimalList from '../../components/UI/AnimalList/AnimalList';
 //===== api =====//
 import { useGetAnimalListQuery } from '../../store/api/publicApi';
+//===== hooks =====//
+import { useAnimalFilters } from '../../hooks/useAnimalFilters';
 
-const Animals = () => {
-  
+const Animals = () => {  
   const { data: animals, error, isLoading } = useGetAnimalListQuery();
+  const { filteredAnimals, filters, updateFilter, clearFilters } = useAnimalFilters(animals);
 
   return (
     <div className='Animals'>
       <InternalNavbar />
-      <FiltersGroup />
+      <FiltersGroup 
+        filters={filters}
+        onFilterChange={updateFilter}
+        onClearFilters={clearFilters}
+      />
       <AnimalList 
-        animals={animals}
+        animals={filteredAnimals}
       />
     </div>
   )

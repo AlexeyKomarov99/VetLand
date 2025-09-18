@@ -9,28 +9,22 @@ const AdoptionForm = sequelize.define('AdoptionForm', {
     },
     user_id: {
         type: DataTypes.UUID,
-        allowNull: true, // Делаем необязательным
+        allowNull: true,
         references: {
             model: 'Users',
             key: 'id',
         },
     },
-    stagesAnimalAdoption_id: {
-        type: DataTypes.UUID,
-        allowNull: true,
-        references: {
-            model: 'StagesAnimalAdoptions',
-            key: 'id',
-        },
-    },
     animal_id: {
         type: DataTypes.UUID,
-        allowNull: true, // Делаем необязательным
+        allowNull: false, // Теперь обязательное поле
         references: {
             model: 'Animals',
             key: 'id',
         },
     },
+    // УДАЛЕНО: stagesAnimalAdoption_id - связь в другую сторону
+    
     // Контактная информация для незарегистрированных пользователей
     name: {
         type: DataTypes.STRING,
@@ -56,6 +50,7 @@ const AdoptionForm = sequelize.define('AdoptionForm', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    
     // Данные анкеты
     fullAddress: {
         type: DataTypes.STRING,
@@ -101,6 +96,16 @@ const AdoptionForm = sequelize.define('AdoptionForm', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    
+    // Статус анкеты
+    status: {
+        type: DataTypes.ENUM('pending', 'approved', 'rejected', 'in_review'),
+        defaultValue: 'pending'
+    },
+    reviewNotes: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    }
 }, {
     tableName: 'AdoptionForms',
     timestamps: true,

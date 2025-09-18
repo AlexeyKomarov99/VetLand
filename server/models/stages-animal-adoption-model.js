@@ -15,43 +15,67 @@ const StagesAnimalAdoption = sequelize.define('StagesAnimalAdoption', {
             key: 'id',
         },
     },
-    adoptionForms_id: {
+    adoptionForm_id: {
         type: DataTypes.UUID,
-        allowNull: true,
+        allowNull: false, // Теперь обязательное поле
         references: {
             model: 'AdoptionForms',
             key: 'id',
         },
     },
+    
+    // Этапы усыновления
     choosingAnimal: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    // Заполнение анкеты
     fillingOutQuestionnaire: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    // Интервью
     interview: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    // Знакомство
     acquaintance: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    // Решение
     decision: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    // Путешествие домой
     tripHome: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
+    
+    // Дополнительные поля для отслеживания прогресса
+    currentStage: {
+        type: DataTypes.ENUM(
+            'choosing',
+            'questionnaire',
+            'interview',
+            'acquaintance',
+            'decision',
+            'completed'
+        ),
+        defaultValue: 'choosing'
+    },
+    isCompleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    completionDate: {
+        type: DataTypes.DATE,
+        allowNull: true
+    },
+    
+    // Примечания по этапам
+    stageNotes: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    }
 }, {
     tableName: 'StagesAnimalAdoptions',
     timestamps: true,

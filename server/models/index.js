@@ -15,120 +15,223 @@ const StaffAssignment = require('../models/staff-assignment-model');
 
 //========== Установка ассоциаций между таблицами ==========//
 
-//===== Пользователь =====//
+//===== ОСНОВНЫЕ СВЯЗИ ДЛЯ ЖИВОТНЫХ (ваш главный запрос) =====//
 
-//=== Связь между "Пользователями" и "Токенами" ===///
-User.hasOne(Token, {foreignKey: 'user_id', sourceKey: 'id', as: 'Tokens'});
-Token.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+Animal.belongsTo(ListAnimalType, { 
+    foreignKey: 'animalType_id', 
+    as: 'AnimalType' 
+});
+ListAnimalType.hasMany(Animal, { 
+    foreignKey: 'animalType_id', 
+    as: 'Animals' 
+});
 
-//=== Связь между "Пользователями" и "Приютами" (админ) ===//
-User.hasMany(Shelter, {foreignKey: 'user_id', sourceKey: 'id', as: 'Shelters'});
-Shelter.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+Animal.belongsTo(AnimalStatus, { 
+    foreignKey: 'animalStatus_id', 
+    as: 'AnimalStatus' 
+});
+AnimalStatus.hasMany(Animal, { 
+    foreignKey: 'animalStatus_id', 
+    as: 'Animals' 
+});
 
-//=== Связь между "Пользователями" и "Транзакциями приюту" ===//
-User.hasMany(TransactionsShelter, {foreignKey: 'user_id', sourceKey: 'id', as: 'TransactionsShelters'});
-TransactionsShelter.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+Animal.belongsTo(Shelter, { 
+    foreignKey: 'shelter_id', 
+    as: 'Shelter' 
+});
+Shelter.hasMany(Animal, { 
+    foreignKey: 'shelter_id', 
+    as: 'Animals' 
+});
 
-//=== Связь между "Пользователями" и "Транзакциями животных" ===//
-User.hasMany(TransactionsAnimal, {foreignKey: 'user_id', sourceKey: 'id', as: 'TransactionsAnimals'});
-TransactionsAnimal.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+//===== ПОЛЬЗОВАТЕЛИ И ТОКЕНЫ =====//
 
-//=== Связь между "Пользователями" и "Медицинскими записями" (доктор) ===//
-User.hasMany(MedicalRecord, {foreignKey: 'user_id', sourceKey: 'id', as: 'MedicalRecords'})
-MedicalRecord.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+User.hasOne(Token, { 
+    foreignKey: 'user_id', 
+    as: 'Token' 
+});
+Token.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'User' 
+});
 
-//=== Связь между "Пользователями" и "Формами усыновления" ===//
-User.hasMany(AdoptionForm, {foreignKey: 'user_id', sourceKey: 'id', as: 'AdoptionForms'});
-AdoptionForm.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+//===== ТРАНЗАКЦИИ =====//
 
-//=== Связь между "Пользователями" и "Этапы усыновления животных" ===//
-User.hasMany(StagesAnimalAdoption, {foreignKey: 'user_id', sourceKey: 'id', as: 'StagesAnimalAdoptions'});
-StagesAnimalAdoption.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+User.hasMany(TransactionsShelter, { 
+    foreignKey: 'user_id', 
+    as: 'ShelterTransactions' 
+});
+TransactionsShelter.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'Donor' 
+});
 
-//=== Связи между "Пользователями" и "Усыновленными животными" ===//
-User.hasMany(AdoptedAnimal, {foreignKey: 'user_id', sourceKey: 'id', as: 'AdoptedAnimals'});
-AdoptedAnimal.belongsTo(User, {foreignKey: 'user_id', targetKey: 'id', as: 'User'});
+Shelter.hasMany(TransactionsShelter, { 
+    foreignKey: 'shelter_id', 
+    as: 'ReceivedTransactions' 
+});
+TransactionsShelter.belongsTo(Shelter, { 
+    foreignKey: 'shelter_id', 
+    as: 'BeneficiaryShelter' 
+});
 
-//===== Заявления на волонтерство =====//
+User.hasMany(TransactionsAnimal, { 
+    foreignKey: 'user_id', 
+    as: 'AnimalTransactions' 
+});
+TransactionsAnimal.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'AnimalDonor' 
+});
 
-//=== Связи между "Заявлениями на волонтерство" и "Пользователями" ===//
-VolunteerApplication.hasOne(User, {foreignKey: 'user_id', sourceKey: 'id', as: 'Users'});
-User.belongsTo(VolunteerApplication, {foreignKey: 'user_id', sourceKey: 'id', as: 'VolunteerApplications'});
+Animal.hasMany(TransactionsAnimal, { 
+    foreignKey: 'animal_id', 
+    as: 'ReceivedDonations' 
+});
+TransactionsAnimal.belongsTo(Animal, { 
+    foreignKey: 'animal_id', 
+    as: 'BeneficiaryAnimal' 
+});
 
-//===== Приют =====//
+//===== МЕДИЦИНСКИЕ ЗАПИСИ =====//
 
-//=== Связь между "Приютом" и "Транзакциями денег приюту" ===//
-Shelter.hasMany(TransactionsShelter, {foreignKey: 'shelter_id', sourceKey: 'id', as: 'TransactionsShelters'});
-TransactionsShelter.belongsTo(Shelter, {foreignKey: 'shelter_id', targetKey: 'id', as: 'Shelters'});
+// УБИРАЕМ animalStatus_id из MedicalRecord - это ошибка!
+// Статус должен быть только у Animal
 
-//=== Связь между "Приютом" и "Животными" ===//
-Shelter.hasMany(Animal, {foreignKey: 'shelter_id', sourceKey: 'id', as: 'Animals'});
-Animal.belongsTo(Shelter, {foreignKey: 'shelter_id', targetKey: 'id', as: 'Shelter'});
+User.hasMany(MedicalRecord, { 
+    foreignKey: 'user_id', 
+    as: 'CreatedMedicalRecords' 
+});
+MedicalRecord.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'Doctor' 
+});
 
-//===== Животные =====//
+Animal.hasMany(MedicalRecord, { 
+    foreignKey: 'animal_id', 
+    as: 'MedicalHistory' 
+});
+MedicalRecord.belongsTo(Animal, { 
+    foreignKey: 'animal_id', 
+    as: 'Patient' 
+});
 
-//=== Связь между "Животными" и "Транзакциями денег животным" ===//
-Animal.hasMany(TransactionsAnimal, { foreignKey: 'animal_id', sourceKey: 'id', as: 'TransactionsAnimals'});
-TransactionsAnimal.belongsTo(Animal, {foreignKey: 'animal_id', targetKey: 'id', as: 'Animals'});
+//===== УСЫНОВЛЕНИЕ И АНКЕТЫ =====//
 
-//=== Связь между "Животными" и "Медицинскими записями" ===//
-Animal.hasMany(MedicalRecord, {foreignKey: 'animal_id', sourceKey: 'id', as: 'MedicalRecords'});
-MedicalRecord.belongsTo(Animal, {foreignKey: 'animal_id', targetKey: 'id', as: 'Animals'});
+// ИСПРАВЛЯЕМ: AdoptionForm -> StagesAnimalAdoption (а не наоборот)
+AdoptionForm.hasMany(StagesAnimalAdoption, { 
+    foreignKey: 'adoptionForm_id', 
+    as: 'AdoptionStages' 
+});
+StagesAnimalAdoption.belongsTo(AdoptionForm, { 
+    foreignKey: 'adoptionForm_id', 
+    as: 'Form' 
+});
 
-//=== Связь между "Животными" и "Списком типов животных" ===//
-Animal.hasOne(ListAnimalType, {foreignKey: 'animal_id', sourceKey: 'id', as: 'ListAnimalTypes'});
-ListAnimalType.belongsTo(Animal, {foreignKey: 'animal_id', targetKey: 'id', as: 'Animals'});
+// ИСПРАВЛЯЕМ: User -> StagesAnimalAdoption
+User.hasMany(StagesAnimalAdoption, { 
+    foreignKey: 'user_id', 
+    as: 'UserAdoptionStages' 
+});
+StagesAnimalAdoption.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'Applicant' 
+});
 
-//=== Связь между "Животными" и "Списком статусов животных" ===//
-Animal.hasOne(AnimalStatus, {foreignKey: 'animal_id', sourceKey: 'id', as: 'AnimalStatuses'});
-AnimalStatus.belongsTo(Animal, {foreignKey: 'animal_id', targetKey: 'id', as: 'Animals'});
+// ИСПРАВЛЯЕМ: Animal -> AdoptionForm (а не наоборот)
+Animal.hasOne(AdoptionForm, { 
+    foreignKey: 'animal_id', 
+    as: 'AdoptionForm' 
+});
+AdoptionForm.belongsTo(Animal, { 
+    foreignKey: 'animal_id', 
+    as: 'Animal' 
+});
 
-//===== Анкета об усыновлении =====//
+// User -> AdoptionForm
+User.hasMany(AdoptionForm, { 
+    foreignKey: 'user_id', 
+    as: 'SubmittedForms' 
+});
+AdoptionForm.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'Applicant' 
+});
 
-//=== Связь между "Анкетой об усыновлении" и "Этапами усыновления животного" ===//
-// AdoptionForm.hasOne(StagesAnimalAdoption, {foreignKey: 'adoptionForms_id', sourceKey: 'id', as: 'StagesAnimalAdoptions'});
-StagesAnimalAdoption.belongsTo(AdoptionForm, {foreignKey: 'adoptionForms_id', targetKey: 'id', as: 'AdoptionForms'});
+//===== УСЫНОВЛЕННЫЕ ЖИВОТНЫЕ =====//
 
-//=== Связь между "Анкетой об усыновлении" и "Животными" ===//
-AdoptionForm.hasOne(Animal, {foreignKey: 'adoptionForms_id', sourceKey: 'id', as: 'Animals'});
-Animal.belongsTo(AdoptionForm, {foreignKey: 'adoptionForms_id', targetKey: 'id', as: 'AdoptionForms'});
+User.hasMany(AdoptedAnimal, { 
+    foreignKey: 'user_id', 
+    as: 'AdoptedPets' 
+});
+AdoptedAnimal.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'Owner' 
+});
 
-//===== Этапы прохождения усыновления животного =====//
+Animal.hasOne(AdoptedAnimal, { 
+    foreignKey: 'animal_id', 
+    as: 'AdoptionRecord' 
+});
+AdoptedAnimal.belongsTo(Animal, { 
+    foreignKey: 'animal_id', 
+    as: 'Pet' 
+});
 
-//=== Связь между "Этапами усыновления животного" и "Пользователи" ===//
-StagesAnimalAdoption.hasMany(User, {foreignKey: 'stagesAnimalAdoption_id', sourceKey: 'id', as: 'Users'});
-User.belongsTo(StagesAnimalAdoption, {foreignKey: 'stagesAnimalAdoption_id', sourceKey: 'id', as: 'Users'});
+//===== ВОЛОНТЕРЫ И ПЕРСОНАЛ =====//
 
-//===== Усыновленные животные =====//
+User.hasOne(VolunteerApplication, { 
+    foreignKey: 'user_id', 
+    as: 'VolunteerApplication' 
+});
+VolunteerApplication.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'Applicant' 
+});
 
-//=== Связь между "Усыновленными животными" и "Пользователями" ===//
-AdoptedAnimal.hasMany(User, {foreignKey: 'adoptedAnimal_id', sourceKey: 'id', as: 'Users'});
-User.belongsTo(AdoptedAnimal, {foreignKey: 'adoptedAnimal_id', sourceKey: 'id', as: 'User'})
-
-//=== Связь между "Усыновленными животными" и "Животными" ===//
-AdoptedAnimal.hasOne(Animal, {foreignKey: 'adoptedAnimal_id', sourceKey: 'id', as: 'Animals'});
-Animal.belongsTo(AdoptedAnimal, {foreignKey: 'adoptedAnimal_id', sourceKey: 'id', as: 'AdoptedAnimals'});
-
-// Связь пользователей с приютами через StaffAssignment
+// Связь многие-ко-многим через StaffAssignment
 User.belongsToMany(Shelter, {
     through: StaffAssignment,
     foreignKey: 'user_id',
-    as: 'WorkShelters'
+    as: 'Workplaces'
 });
 
 Shelter.belongsToMany(User, {
     through: StaffAssignment,
     foreignKey: 'shelter_id', 
-    as: 'StaffUsers'
+    as: 'StaffMembers'
 });
 
 // Прямые связи для удобства
-StaffAssignment.belongsTo(User, { foreignKey: 'user_id', as: 'User' });
-StaffAssignment.belongsTo(Shelter, { foreignKey: 'shelter_id', as: 'Shelter' });
-User.hasMany(StaffAssignment, { foreignKey: 'user_id', as: 'StaffAssignments' });
-Shelter.hasMany(StaffAssignment, { foreignKey: 'shelter_id', as: 'StaffAssignments' });
+StaffAssignment.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'StaffUser' 
+});
+StaffAssignment.belongsTo(Shelter, { 
+    foreignKey: 'shelter_id', 
+    as: 'Workplace' 
+});
+User.hasMany(StaffAssignment, { 
+    foreignKey: 'user_id', 
+    as: 'JobAssignments' 
+});
+Shelter.hasMany(StaffAssignment, { 
+    foreignKey: 'shelter_id', 
+    as: 'StaffAssignments' 
+});
 
-module.exports = [
+//===== ПРИЮТЫ =====//
+
+User.hasMany(Shelter, { 
+    foreignKey: 'user_id', 
+    as: 'ManagedShelters' 
+});
+Shelter.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'Manager' 
+});
+
+module.exports = {
     User,
     Token,
     TransactionsShelter,
@@ -141,4 +244,6 @@ module.exports = [
     ListAnimalType,
     AnimalStatus,
     AdoptionForm,
-];
+    VolunteerApplication,
+    StaffAssignment
+};

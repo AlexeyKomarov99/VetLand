@@ -15,6 +15,7 @@ export const publicApi = createApi({
         // 2. Список всех животных
         getAnimalList: builder.query({
             query: () => '/list-all-animals-public',
+            transformResponse: (response) => response.data, 
         }),
         // 3. Составление анкеты об усыновлении животного
         submitAppAdoptAnimal: builder.mutation({

@@ -1,7 +1,6 @@
 const MedicalRecord = require('../models/medical-records-model');
 const User = require('../models/user-model');
 const Animal = require('../models/animals-model');
-const AnimalStatus = require('../models/animal-status-model');
 
 const seedMedicalRecords = async () => {
     const count = await MedicalRecord.count();
@@ -12,7 +11,6 @@ const seedMedicalRecords = async () => {
 
     const users = await User.findAll({ where: { role: 'doctor' } });
     const animals = await Animal.findAll();
-    const animalStatuses = await AnimalStatus.findAll();
 
     const medicalReports = [
         'Плановый осмотр - здоров',
@@ -27,23 +25,50 @@ const seedMedicalRecords = async () => {
         'Плановый осмотр после лечения'
     ];
 
+    const diagnoses = [
+        'Здоров',
+        'Гастрит',
+        'Аллергия',
+        'Травма',
+        'Инфекция',
+        'Паразиты',
+        'Послеоперационный период'
+    ];
+
+    const treatments = [
+        'Диета и покой',
+        'Курс антибиотиков 7 дней',
+        'Обработка раны',
+        'Вакцинация',
+        'Стерилизация',
+        'Антигистаминные препараты'
+    ];
+
     const medicalRecords = [];
 
-    // Для каждого животного создаем 1-2 медицинские записи
+    // Для каждого животного создаем 1-3 медицинские записи
     for (const animal of animals) {
-        const recordsCount = Math.floor(Math.random() * 2) + 1; // 1 или 2 записи
+        const recordsCount = Math.floor(Math.random() * 3) + 1; // 1-3 записи
         
         for (let i = 0; i < recordsCount; i++) {
             const randomDoctor = users[Math.floor(Math.random() * users.length)];
-            const randomStatus = animalStatuses[Math.floor(Math.random() * animalStatuses.length)];
             const randomReport = medicalReports[Math.floor(Math.random() * medicalReports.length)];
+            const randomDiagnosis = diagnoses[Math.floor(Math.random() * diagnoses.length)];
+            const randomTreatment = treatments[Math.floor(Math.random() * treatments.length)];
             
+            const recordDate = new Date(Date.now() - Math.floor(Math.random() * 365 * 24 * 60 * 60 * 1000));
+            const nextVisit = new Date(recordDate);
+            nextVisit.setDate(nextVisit.getDate() + Math.floor(Math.random() * 30) + 7);
+
             medicalRecords.push({
                 user_id: randomDoctor.id,
                 animal_id: animal.id,
-                animalStatus_id: randomStatus.id,
                 medicalReport: randomReport,
-                createdAt: new Date(Date.now() - Math.floor(Math.random() * 365 * 24 * 60 * 60 * 1000)) // случайная дата за последний год
+                diagnosis: randomDiagnosis !== 'Здоров' ? randomDiagnosis : null,
+                treatment: randomTreatment,
+                prescription: `Назначение: ${randomTreatment}. Дозировка согласно инструкции.`,
+                nextVisitDate: Math.random() > 0.5 ? nextVisit : null,
+                createdAt: recordDate
             });
         }
     }

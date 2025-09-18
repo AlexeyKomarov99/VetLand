@@ -20,9 +20,14 @@ class PublicController {
     async getListAllAnimals(req, res) {
         try {
             const animals = await PublicService.getListAllAnimals();
-            return res.status(200).json(animals);
+            return res.status(200).json({
+                success: true,
+                data: animals,
+                count: animals.length
+            });
         } catch (error) {
             return res.status(500).json({
+                success: false,
                 message: 'Ошибка получения списка всех животных',
                 error: error.message
             });

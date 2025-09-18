@@ -1,6 +1,5 @@
 @import '../../../App.css';
 
-/* Адаптация для экранов выше 1920px */
 .AnimalList {
     .AnimalList__wrapper {
         width: 100%;
@@ -19,30 +18,230 @@
                 height: 100%;
                 max-width: 1440px;
                 margin: 0 auto;
-                .AnimalList__photo-group {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); // адаптивные колонки
-                    gap: 10px;
-                    .AnimalList__item {
-                        position: relative;
-                        padding-bottom: 100%; // создает квадратный контейнер (1:1 соотношение)
-                        overflow: hidden;
-                        border-radius: 8px;
-                        img {
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover; // заполняет контейнер без искажений
-                            object-position: center; // центрирует изображение
-                            transition: transform 0.3s ease; // опционально: анимация при наведении
-                            
-                            &:hover {
-                                transform: scale(1.05); // опционально: увеличение при наведении
+                .AnimalList__photo-grid {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    
+                    .AnimalList__line {
+                        display: flex;
+                        gap: 10px;
+                        width: 100%;
+                        height: auto;
+                        
+                        .AnimalList__large-container {
+                            flex: 2;
+                            aspect-ratio: 1 / 1;
+                        }
+                        
+                        .AnimalList__small-grid {
+                            flex: 2;
+                            display: grid;
+                            grid-template-columns: repeat(2, 1fr);
+                            grid-template-rows: repeat(2, 1fr);
+                            gap: 10px;
+                        }
+                        
+                        &--type-1 {
+                            // Большая слева, потом 2 сетки по 4 маленьких
+                            .AnimalList__large-container {
+                                order: 1;
+                            }
+                            .AnimalList__small-grid:nth-child(2) {
+                                order: 2;
+                            }
+                            .AnimalList__small-grid:nth-child(3) {
+                                order: 3;
+                            }
+                        }
+                        
+                        &--type-2 {
+                            // 4 маленьких слева, большая в центре, 4 маленьких справа
+                            .AnimalList__small-grid:nth-child(1) {
+                                order: 1;
+                            }
+                            .AnimalList__large-container {
+                                order: 2;
+                            }
+                            .AnimalList__small-grid:nth-child(3) {
+                                order: 3;
+                            }
+                        }
+                        
+                        &--type-3 {
+                            // 8 маленьких слева, большая справа
+                            .AnimalList__small-grid:nth-child(1) {
+                                order: 1;
+                            }
+                            .AnimalList__small-grid:nth-child(2) {
+                                order: 2;
+                            }
+                            .AnimalList__large-container {
+                                order: 3;
                             }
                         }
                     }
+                    
+                    .AnimalList__item {
+                        position: relative;
+                        overflow: hidden;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: transform 0.3s ease;
+                        
+                        &--small {
+                            aspect-ratio: 1 / 1;
+                        }
+                        
+                        &--large {
+                            aspect-ratio: 1 / 1;
+                        }
+
+                        .AnimalList__image-container {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            overflow: hidden;
+                        }
+
+                        .AnimalList__image {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                            transition: all 0.3s ease;
+                        }
+
+                        .AnimalList__overlay {
+                            position: absolute;
+                            inset: 0;
+                            z-index: 10000;
+                            opacity: 0;
+                            transition: opacity 0.3s ease;
+                            background-color: rgba(0,0,0,0.5);
+                            .AnimalList__info {
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                                justify-content: flex-start;
+                                padding: 1rem;
+                                .AnimalList__name {
+                                    color: var(--white);
+                                    font-size: 1.5rem;
+                                    line-height: 1.625rem;
+                                    word-break: break-word;
+                                }
+                                .AnimalList__age-group {
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: flex-start;
+                                    margin-top: auto;
+                                    .AnimalList__age-left {
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: flex-start;
+                                        align-items: start;
+                                        .AnimalList__age-descr {
+                                            font-size: 0.625rem;
+                                            line-height: 1.25rem;
+                                            color: var(--white);
+                                        }
+                                        .AnimalList__age {
+                                            font-size: 0.875rem;
+                                            line-height: 1.25rem;
+                                            color: var(--white);
+                                        }
+                                    }
+                                    .arrow-right {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        width: 30px;
+                                        height: 30px;
+                                        border-radius: 10000px;
+                                        background-color: var(--white);
+                                    }
+                                }
+                                .AnimalList__btn-group {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: flex-start;
+                                    gap: 0.625rem;
+                                    color: var(--white);
+                                    margin-top: 10px;
+                                    .AnimalList__take-animal {
+                                        background: var(--radial-gradient-red-orange);
+                                        padding: 0.75rem 1rem;
+                                        border-radius: var(--border-radius-small);
+                                        cursor: pointer;
+                                        font-size: 0.875rem;
+                                    }
+                                    .AnimalList__help-animal {
+                                        background: transparent;
+                                        padding: 0.75rem 1rem;
+                                        border-radius: var(--border-radius-small);
+                                        border: 1px solid var(--white);
+                                        cursor: pointer;
+                                        font-size: 0.875rem;
+                                    }
+                                }
+                            }
+                        }
+                        .AnimalList__overlay--visible {
+                            opacity: 1;
+                        }
+                        
+                        &:hover {
+                            transform: scale(1.03);
+                            .AnimalList__image {
+                                transform: scale(1.1);
+                            }
+                        }
+                    }
+                }
+                
+                .AnimalList__load-more {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 30px;
+                    
+                    .AnimalList__load-more-btn {
+                        padding: 0.75rem 1.5rem;
+                        color: var(--light-gray);
+                        font-size: 1.5rem;
+                        line-height: 26px;
+                        font-weight: 600;
+                        background-color: transparent;
+                        border-bottom: 1px dashed var(--light-gray);
+                        transition: all 0.3s ease;
+                        cursor: pointer;
+                        &:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                        }
+                        .AnimalList__load-more-text-decor {
+                            background: var(--linear-gradient-red-orange);
+                            -webkit-background-clip: text;
+                            background-clip: text;
+                            color: transparent;
+                        }
+                    }
+                }
+
+                .AnimalList__empty {
+                    width: 100%;
+                    padding: 74px 0;
+                    background-color: #F6F6F6;
+                    border-radius: var(--border-radius-medium);
+                    color: var(--light-gray);
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    line-height: 26px;
+                    letter-spacing: -0.03em;
+                    text-align: center;
                 }
             }
         }

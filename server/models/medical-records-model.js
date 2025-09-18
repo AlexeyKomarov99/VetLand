@@ -23,17 +23,26 @@ const MedicalRecord = sequelize.define('MedicalRecord', {
             key: 'id'
         },
     },
-    animalStatus_id: {
-        type: DataTypes.UUID,
-        allowNull: false,
-        references: {
-            model: 'AnimalStatuses',
-            key: 'id',
-        },
-    },
+    // УДАЛЕНО: animalStatus_id - статус должен быть только у Animal
     medicalReport: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    diagnosis: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    treatment: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+    },
+    prescription: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+    },
+    nextVisitDate: {
+        type: DataTypes.DATE,
+        allowNull: true,
     }
 }, {
     tableName: 'MedicalRecords',

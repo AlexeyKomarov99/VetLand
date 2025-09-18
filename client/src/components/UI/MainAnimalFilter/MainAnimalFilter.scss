@@ -26,6 +26,12 @@
                 font-weight: 500;
             }
         }
+        .MainAnimalFilter__animal-type--active {
+            background-color: var(--light-gray);
+            .MainAnimalFilter__animal-type-name {
+                color: var(--white);
+            }
+        }
     }
 
     // Возраст

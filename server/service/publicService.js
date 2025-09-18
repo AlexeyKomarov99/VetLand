@@ -2,6 +2,9 @@ const AnimalModel = require('../models/animals-model');
 const AdoptionFormModel = require('../models/adoption-forms-model')
 const StagesAnimalAdoptionModel = require('../models/stages-animal-adoption-model');
 const UserModel = require('../models/user-model');
+const AnimalStatusModel = require('../models/animal-status-model');
+const AnimalTypesModel = require('../models/list-animal-types-model');
+const ShelterModel = require('../models/shelters-model')
 const sequelize = require('../db');
 
 class PublicService {
@@ -34,10 +37,64 @@ class PublicService {
     }
 
     // 2. Список всех животных
-    async getListAllAnimals(req, res) {
+    async getListAllAnimals() {
         try {
-            const animals = await AnimalModel.findAll();
-            return animals;
+            const animals = await AnimalModel.findAll({
+                include: [
+                    {
+                        model: AnimalTypesModel,
+                        as: 'AnimalType',
+                        attributes: ['id', 'type']
+                    },
+                    {
+                        model: AnimalStatusModel,
+                        as: 'AnimalStatus',
+                        attributes: ['id', 'status']
+                    },
+                    {
+                        model: ShelterModel,
+                        as: 'Shelter',
+                        attributes: ['id', 'shelterName', 'city', 'region']
+                    }
+                ],
+                order: [['createdAt', 'DESC']]
+            });
+
+            const animalsFormatted = animals.map((animal) => {
+                const animalData = animal.toJSON ? animal.toJSON() : animal.dataValues;
+                
+                return {
+                    id: animalData.id,
+                    animalName: animalData.animalName,
+                    age: animalData.age,
+                    amountTreatment: animalData.amountTreatment,
+                    gender: animalData.gender,
+                    animalPhotosData: animalData.animalPhotosData,
+                    
+                    // Читаемые значения вместо UUID
+                    animalType: animalData.AnimalType ? animalData.AnimalType.type : 'Не указан',
+                    animalStatus: animalData.AnimalStatus ? animalData.AnimalStatus.status : 'Не указан',
+                    shelter: animalData.Shelter ? animalData.Shelter.shelterName : 'Не указан',
+                    
+                    // Дополнительная информация о приюте
+                    shelterInfo: animalData.Shelter ? {
+                        city: animalData.Shelter.city,
+                        region: animalData.Shelter.region
+                    } : null,
+                    
+                    // Оригинальные UUID (если нужны на клиенте)
+                    animalTypeId: animalData.animalType_id,
+                    animalStatusId: animalData.animalStatus_id,
+                    shelterId: animalData.shelter_id,
+                    
+                    // Даты
+                    createdAt: animalData.createdAt,
+                    updatedAt: animalData.updatedAt
+                };
+            });
+
+            return animalsFormatted;
+
         } catch (error) {
             console.error('Ошибка в сервисе getListAllAnimals: ', error);
             throw error;
