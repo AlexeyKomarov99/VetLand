@@ -2,6 +2,7 @@
 .MainAnimalFilter {
     display: flex;
     gap: 0.5rem;
+    position: relative;
 
     // Тип животных
     .MainAnimalFilter__animal-types {
@@ -46,7 +47,9 @@
         border-radius: var(--border-radius-small);
         border: 1px solid var(--light-gray);
         cursor: pointer;
-        &:hover {
+
+        // Изменяем условие hover - только если модальное окно не открыто
+        &:hover:not(.MainAnimalFilter__age-range--modal-open) {
             background: var(--radial-gradient-red-orange);
             .MainAnimalFilter__age-range-text,
             .MainAnimalFilter__age-range-icon {
@@ -82,7 +85,9 @@
         border-radius: var(--border-radius-small);
         border: 1px solid var(--light-gray);
         cursor: pointer;
-        &:hover {
+
+        // Изменяем условие hover - только если модальное окно не открыто
+        &:hover:not(.MainAnimalFilter__status--modal-open) {
             background: var(--radial-gradient-red-orange);
             .MainAnimalFilter__title,
             .MainAnimalFilter__status-icon {
@@ -110,9 +115,9 @@
     .MainAnimalFilter__age-range-mw {
         min-width: 200px;
         position: absolute;
-        z-index: 1000;
+        z-index: 100000;
         top: 120%;
-        left: 0;
+        left: 33%;
         padding: 1.5rem;
         background: var(--radial-gradient-red-orange);
         color: var(--white);
@@ -161,9 +166,9 @@
     .MainAnimalFilter__status-mw {
         min-width: 200px;
         position: absolute;
-        z-index: 1000;
+        z-index: 100000;
         top: 120%;
-        left: 0;
+        left: 49%;
         padding: 1.5rem;
         background: var(--radial-gradient-red-orange);
         color: var(--white);

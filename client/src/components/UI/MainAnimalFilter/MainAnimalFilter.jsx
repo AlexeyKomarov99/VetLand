@@ -113,26 +113,6 @@ const MainAnimalFilter = ({
                     </span>
                     <CircleArrowIcon className='MainAnimalFilter__age-range-icon' />
                 </div>
-                {showAgeModal && (
-                    <div ref={ageModalRef} className="MainAnimalFilter__age-range-mw" onClick={handleModalClick}>
-                        <div className="MainAnimalFilter__range">
-                            {ageRange.map((age) => (
-                                <article key={age.id} className="MainAnimalFilter__age-item">
-                                    <input 
-                                        type="checkbox" 
-                                        className="MainAnimalFilter__age-input" 
-                                        checked={tempAgeRanges.includes(age.id)}
-                                        onChange={() => handleAgeSelect(age.id)}
-                                    />
-                                    <span className="MainAnimalFilter__age-text">{age.age}</span>
-                                </article>
-                            ))}
-                        </div>
-                        <div className="MainAnimalFilter__age-btn" onClick={applyAgeFilters}>
-                            Применить
-                        </div>
-                    </div>
-                )}
             </div>
 
             <div className="MainAnimalFilter__status" onClick={toggleStatusModal}>
@@ -142,27 +122,49 @@ const MainAnimalFilter = ({
                     </span>
                     <CircleArrowIcon className='MainAnimalFilter__status-icon' />
                 </div>
-                {showStatusModal && (
-                    <div ref={statusModalRef} className="MainAnimalFilter__status-mw" onClick={handleModalClick}>
-                        <div className="MainAnimalFilter__status-group">
-                            {animalStatus.map((status) => (
-                                <article key={status.id} className="MainAnimalFilter__status-item">
-                                    <input 
-                                        type="checkbox"
-                                        className="MainAnimalFilter__status-input" 
-                                        checked={tempStatuses.includes(status.id)}
-                                        onChange={() => handleStatusSelect(status.id)}
-                                    />
-                                    <span className="MainAnimalFilter__status-text">{status.name}</span>
-                                </article>
-                            ))}
-                        </div>
-                        <div className="MainAnimalFilter__status-btn" onClick={applyStatusFilters}>
-                            Применить
-                        </div>
-                    </div>
-                )}
             </div>
+                
+            {showAgeModal && (
+                <div ref={ageModalRef} className="MainAnimalFilter__age-range-mw" onClick={handleModalClick}>
+                    <div className="MainAnimalFilter__range">
+                        {ageRange.map((age) => (
+                            <article key={age.id} className="MainAnimalFilter__age-item">
+                                <input 
+                                    type="checkbox" 
+                                    className="MainAnimalFilter__age-input" 
+                                    checked={tempAgeRanges.includes(age.id)}
+                                    onChange={() => handleAgeSelect(age.id)}
+                                />
+                                <span className="MainAnimalFilter__age-text">{age.age}</span>
+                            </article>
+                        ))}
+                    </div>
+                    <div className="MainAnimalFilter__age-btn" onClick={applyAgeFilters}>
+                        Применить
+                    </div>
+                </div>
+            )}
+
+            {showStatusModal && (
+                <div ref={statusModalRef} className="MainAnimalFilter__status-mw" onClick={handleModalClick}>
+                    <div className="MainAnimalFilter__status-group">
+                        {animalStatus.map((status) => (
+                            <article key={status.id} className="MainAnimalFilter__status-item">
+                                <input 
+                                    type="checkbox"
+                                    className="MainAnimalFilter__status-input" 
+                                    checked={tempStatuses.includes(status.id)}
+                                    onChange={() => handleStatusSelect(status.id)}
+                                />
+                                <span className="MainAnimalFilter__status-text">{status.name}</span>
+                            </article>
+                        ))}
+                    </div>
+                    <div className="MainAnimalFilter__status-btn" onClick={applyStatusFilters}>
+                        Применить
+                    </div>
+                </div>
+            )}
 
         </section>
     );
