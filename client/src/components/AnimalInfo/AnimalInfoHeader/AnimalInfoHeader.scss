@@ -1,0 +1,101 @@
+@import '../../../App.css';
+
+.AnimalInfoHeader {
+    .AnimalInfoHeader__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        background-color: var(--white);
+        .AnimalInfoHeader__container {
+            width: 100%;
+            height: 100%;
+            margin-top: -30px;
+            .AnimalInfoHeader__content {
+                width: 100%;
+                height: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                .AnimalInfoHeader__content-left {
+                    display: flex;
+                    align-items: flex-start;
+                    .AnimalInfoHeader__animal-name {
+                        display: flex;
+                        flex-direction: column;
+                        min-width: 350px;
+                        .AnimalInfoHeader__animal-type,
+                        .AnimalInfoHeader__name {
+                            color: var(--light-gray);
+                            font-weight: 600;
+                            font-size: 54px;
+                            line-height: 60px;
+                        }
+                    }
+                    .AnimalInfoHeader__btn-group {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        align-items: flex-start;
+                        .AnimalInfoHeader__btn-take-home {
+                            color: var(--white);
+                            background: var(--radial-gradient-red-orange);
+                            padding: 12px 15px;
+                            border-radius: var(--border-radius-small);
+                            font-size: 12px;
+                            line-height: 14px;
+                            letter-spacing: .3px;
+                            margin-right: 0.625rem;
+                            cursor: pointer;
+                            &:hover {
+                                filter: brightness(1.5);
+                            }
+                        }
+                        .AnimalInfoHeader__become-guardian {
+                            border: 1px solid var(--red);
+                            color: var(--light-gray);
+                            background: transparent;
+                            border-radius: var(--border-radius-small);
+                            padding: 12px 15px;
+                            font-size: 12px;
+                            line-height: 14px;
+                            letter-spacing: .3px;
+                            cursor: pointer;
+                            &:hover {
+                                border: 2px solid var(--red);
+                            }
+                        }
+                    }
+
+                }
+
+                .AnimalInfoHeader__content-right {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 10000px;
+                    background-color: rgba(0,0,0,0.1);
+                    transition: var(--transition);
+                    cursor: pointer;
+                    .cross-icon {
+                        width: 24px;
+                        height: 24px;
+                        opacity: 0.5;
+                        transition: var(--transition);
+                    }
+                    &:hover {
+                        background: var(--radial-gradient-red-orange);
+                        .cross-icon {
+                            color: var(--white);
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

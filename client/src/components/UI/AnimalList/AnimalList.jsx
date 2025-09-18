@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './AnimalList.scss';
 import { LuArrowRight as ArrowRight } from "react-icons/lu";
 
@@ -134,35 +135,40 @@ const AnimalList = ({ animals }) => {
         onMouseEnter={() => handleMouseEnter(animal.id)}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="AnimalList__image-container">
-          <img 
-            src={animal?.animalPhotosData?.photos[0]?.url} 
-            alt={`Фото животного ${animal.animalName}`} 
-            className="AnimalList__image"
-          />
-          <div 
-            className={`AnimalList__overlay ${hoveredAnimal === animal.id ? 'AnimalList__overlay--visible' : ''}`}
-          >
-            <div className="AnimalList__info">
-              <div className="AnimalList__name">{animal.animalName}</div>
-              <div className="AnimalList__age-group">
-                <div className="AnimalList__age-left">
-                  <span className="AnimalList__age-descr">Возраст:</span>
-                  <span className="AnimalList__age"></span>
+        <Link
+          to={`/animal-info/${animal.id}`}
+          state={{animal}}
+        >
+          <div className="AnimalList__image-container">
+            <img 
+              src={animal?.animalPhotosData?.photos[0]?.url} 
+              alt={`Фото животного ${animal.animalName}`} 
+              className="AnimalList__image"
+            />
+            <div 
+              className={`AnimalList__overlay ${hoveredAnimal === animal.id ? 'AnimalList__overlay--visible' : ''}`}
+            >
+              <div className="AnimalList__info">
+                <div className="AnimalList__name">{animal.animalName}</div>
+                <div className="AnimalList__age-group">
+                  <div className="AnimalList__age-left">
+                    <span className="AnimalList__age-descr">Возраст:</span>
+                    <span className="AnimalList__age"></span>
+                  </div>
+                  <ArrowRight className='arrow-right' />
                 </div>
-                <ArrowRight className='arrow-right' />
-              </div>
-              <div className="AnimalList__btn-group">
-                <div className="AnimalList__take-animal">
-                  Забрать
-                </div>
-                <div className="AnimalList__help-animal">
-                  Помочь
+                <div className="AnimalList__btn-group">
+                  <div className="AnimalList__take-animal">
+                    Забрать
+                  </div>
+                  <div className="AnimalList__help-animal">
+                    Помочь
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Link>
       </article>
     );
   };

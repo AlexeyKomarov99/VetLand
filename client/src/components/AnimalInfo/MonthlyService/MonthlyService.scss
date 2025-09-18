@@ -1,0 +1,238 @@
+@import '../../../App.css';
+
+.MonthlyService {
+    .MonthlyService__content {
+        padding: 25px 38px;
+        border: 1px solid rgba(40,40,40,0.4);
+        border-radius: var(--border-radius-medium);
+        display: grid;
+        grid-template-columns: 45% 55%;
+        .MonthlyService__content-left {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            border-right: 1px solid rgba(40,40,40,0.2);
+            .MonthlyService__title {
+                font-weight: 600;
+                font-size: 0.875rem;
+                margin-bottom: 1.875rem;
+                color: var(--light-gray);
+            }
+            .MonthlyService__price-group {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0.875rem;
+                .MonthlyService__monthly-amount {
+                    font-weight: 600;
+                    font-size: 2.125rem;
+                    line-height: 2.5625rem;
+                    margin-right: 0.875rem;
+                    color: var(--light-gray);
+                }
+                .MonthlyService__question-info {
+                    position: relative;
+                    width: 20px;
+                    height: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: var(--white);
+                    background: var(--radial-gradient-red-orange);
+                    border-radius: 10000px;
+                    cursor: pointer;
+                    .MonthlyService__question-mw {
+                        position: absolute;
+                        top: 120%;
+                        left: 0;
+                        min-width: 150px;
+                        padding: 7px 11px;
+                        background: var(--radial-gradient-red-orange);
+                        border-radius: var(--border-radius-small);
+                        .MonthlyService__question-mw--text {
+                            font-size: 0.75rem;
+                            line-height: 15px;
+                            color: var(--white);
+                        }
+                    }
+                }
+            }
+            .MonthlyService__status-group {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                .MonthlyService__status-header {
+                    display: flex;
+                    flex-direction: row;
+                    margin-bottom: 0.625rem;
+                    .check-icon {
+                        width: 20px;
+                        height: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 10000px;
+                        background: var(--radial-gradient-red-orange);
+                        color: var(--white);
+                        padding: 2px;
+                        margin-right: 0.5rem;
+                    }
+                    .MonthlyService__fundraising-status {
+                        background: var(--linear-gradient-red-orange);
+                        background-clip: text;
+                        color: transparent;
+                        font-weight: 500;
+                        font-size: 0.875rem;
+                        margin-right: 0.25rem;
+                    }
+                    .MonthlyService__status-descr {
+                        font-weight: 500;
+                        font-size: 0.875rem;
+                        color: #A0A0A0;
+                    }
+                }
+                .MonthlyService__status-bottom {
+                    width: 75%;
+                    position: relative;
+                    border: 1px solid var(--red);
+                    padding: 5px 0;
+                    border-radius: var(--border-radius-small);
+                    .MonthlyService__status {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        height: 100%;
+                        background: var(--radial-gradient-red-orange);
+                        border-radius: var(--border-radius-small);
+                        transition: width 0.3s ease;
+                        min-width: 0%;
+                    }
+                }
+            }
+        }
+        .MonthlyService__content-right {
+            padding-left: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            .MonthlyService__title {
+                font-weight: 600;
+                font-size: 1.125rem;
+                margin-bottom: 2.875rem;
+            }
+            .MonthlyService__group {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                .MonthlyService__sum-group {
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.25rem;
+                    margin-bottom: 0.625rem;
+                    .MonthlyService__sum-item {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 0.5rem 0.25rem;
+                        border-radius: var(--border-radius-small);
+                        border: 1px solid var(--light-gray);
+                        font-size: 0.75rem;
+                        line-height: 0.875rem;
+                        letter-spacing: .3px;
+                        transition: var(--transition);
+                        background: transparent;
+                        cursor: pointer;
+                        flex-grow: 1;
+                        flex-basis: 0;
+                        height: 40px;
+                        &:nth-child(n):not(:last-child) {
+                            margin-right: 0.625rem;
+                        }
+                    }
+                    .all-sum {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: 1px solid var(--red);
+                        transition: var(--transition);
+                        &:hover {
+                            background: var(--radial-gradient-red-orange);
+                            .heart-icon {
+                                color: var(--white);
+                            }
+                            .MonthlyService__sum-text {
+                                color: var(--white);
+                            }
+                        }
+                        .heart-icon {
+                            width: 15px;
+                            height: 15px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: var(--red);
+                            margin-right: 0.25rem;
+                        }
+                        .MonthlyService__sum-text {
+                            color: var(--red);
+                        }
+                    }
+                    .selected-input {
+                        background-color: var(--light-gray);
+                        color: var(--white);
+                    }
+                    .seleceted-input-all {
+                        background: var(--radial-gradient-red-orange);
+                        .heart-icon {
+                            color: var(--white);
+                        }
+                        .MonthlyService__sum-text {
+                            color: var(--white);
+                        }
+                    }
+                }
+                .MonthlyService__input-btn-group {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    .MonthlyService__input {
+                        margin-right: 0.625rem;
+                        box-shadow: none;
+                        border: 1px solid var(--light-gray);
+                        border-radius: var(--border-radius-small);
+                        padding: 6px 15px;
+                        width: 176px;
+                        color: var(--light-gray);
+                        font-size: 0.75rem;
+                        font-weight: 500;
+                        line-height: 0.875rem;
+                        letter-spacing: -0.02em;
+                        height: 40px;
+                        flex-grow: 1;
+                        flex-shrink: 0;
+                    }
+                    .MonthlyService__btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-grow: 1;
+                        flex-shrink: 0;
+                        border-radius: var(--border-radius-small);
+                        padding: 6px 15px;
+                        font-size: 0.75rem;
+                        font-weight: 500;
+                        line-height: 0.875rem;
+                        letter-spacing: -0.02em;
+                        background: var(--radial-gradient-red-orange);
+                        color: var(--white);
+                        height: 40px;
+                    }
+                }
+            }
+        }
+    }    
+}

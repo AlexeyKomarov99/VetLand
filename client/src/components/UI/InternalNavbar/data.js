@@ -39,5 +39,12 @@ export const routes = [
         linkName: 'Как забрать домой?', 
         titlePage: 'Как забрать домой?',
         descr: <></>
+    },
+    {
+        id: 6,
+        route: '/animal-info',
+        linkName: '',
+        titlePage: '',
+        descr: <></>
     }
 ]

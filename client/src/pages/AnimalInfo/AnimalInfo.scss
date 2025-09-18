@@ -1,0 +1,33 @@
+@import '../../App.css';
+
+.AnimalInfo {
+    .AnimalInfo__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
+        border-bottom-left-radius: var(--border-radius-high);
+        border-bottom-right-radius: var(--border-radius-high);
+        background-color: var(--white);
+        .AnimalInfo__container {
+            width: 100%;
+            height: 100%;
+            padding: 60px 0;
+            .AnimalInfo__content {
+                width: 100%;
+                height: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 65% 35%;
+                gap: 0.625rem;
+                .AnimalInfo__content-left {
+
+                }
+                .AnimalInfo__content-right {
+
+                }
+            }
+        }
+    }
+}
