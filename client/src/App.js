@@ -77,7 +77,7 @@ const AppContent = () => {
         <Route path='/help-us' element={<HelpAnimals />} />
         
         {/* Алгоритм, как забрать домой */}
-        <Route path='./how-take-home' element={<TakeHomeAlgorithm />} />
+        <Route path='/how-take-home' element={<TakeHomeAlgorithm />} />
 
         {/* Восстановление пароля */}
         <Route path='/recover-password' element={<RecoverPassword />} />
