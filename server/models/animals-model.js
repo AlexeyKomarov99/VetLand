@@ -35,6 +35,10 @@ const Animal = sequelize.define('Animal', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    animalDescr: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+    },
     age: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -47,9 +51,17 @@ const Animal = sequelize.define('Animal', {
         type: DataTypes.JSONB,
         allowNull: true,
     },
-    amountTreatment: {
+    monthlyCareAmount: {
         type: DataTypes.DECIMAL(10, 2),
-        defaultValue: 0
+        defaultValue: 0,
+    },
+    fullTreatmentAmount: {
+        type: DataTypes.DECIMAL(10, 2),
+        defaultValue: 0,
+    },
+    donationsAmount: {
+        type: DataTypes.DECIMAL(10, 2),
+        defaultValue: 0,
     }
 }, {
     tableName: 'Animals',

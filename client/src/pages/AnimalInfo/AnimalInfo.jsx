@@ -6,6 +6,11 @@ import './AnimalInfo.scss';
 import InternalNavbar from '../../components/UI/InternalNavbar/InternalNavbar';
 import AnimalInfoHeader from '../../components/AnimalInfo/AnimalInfoHeader/AnimalInfoHeader';
 import MonthlyService from '../../components/AnimalInfo/MonthlyService/MonthlyService';
+import AnimalPhotos from '../../components/AnimalInfo/AnimalPhotos/AnimalPhotos';
+import TextDecor from '../../components/AnimalInfo/TextDecor/TextDecor';
+import AdoptionAlgorithm from '../../components/UI/AdoptionAlgorithm/AdoptionAlgorithm';
+import AnimalDescr from '../../components/AnimalInfo/AnimalDescr/AnimalDescr';
+import BecomeGuardian from '../../components/AnimalInfo/BecomeGuardian/BecomeGuardian';
 
 const AnimalInfo = () => {
   const location = useLocation();
@@ -26,10 +31,22 @@ const AnimalInfo = () => {
               <MonthlyService 
                 animal={animal}
               />
+              <AnimalPhotos 
+                animal={animal}
+              />
+              <TextDecor />
+              <AdoptionAlgorithm 
+                animal={animal}
+              />
             </div>
-            
-            <div className="AnimalInfo__content-right">
 
+            <div className="AnimalInfo__content-right">
+              <AnimalDescr 
+                animal={animal}
+              />
+              <BecomeGuardian 
+                animal={animal}
+              />
             </div>
 
           </div>

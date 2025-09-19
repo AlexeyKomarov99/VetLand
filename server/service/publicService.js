@@ -68,8 +68,12 @@ class PublicService {
                     // Данные о животном
                     id: animalData.id,
                     animalName: animalData.animalName,
+                    animalDescr: animalData.animalDescr,
                     age: animalData.age,
-                    amountTreatment: animalData.amountTreatment,
+                    monthlyCareAmount: animalData.monthlyCareAmount,
+                    fullTreatmentAmount: animalData.fullTreatmentAmount,
+                    donationsAmount: animalData.donationsAmount,
+                    
                     gender: animalData.gender,
                     animalPhotosData: animalData.animalPhotosData,
                     

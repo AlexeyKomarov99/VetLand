@@ -14,8 +14,6 @@ const InternalNavbar = ({
   const title = pageInfo[0]?.titlePage;
   const descr = pageInfo[0]?.descr;
 
-  console.log(animal)
-
   return (
     <section className="InternalNavbar">
       <div className="InternalNavbar__wrapper">

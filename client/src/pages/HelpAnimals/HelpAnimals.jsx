@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 //===== Ресурсы =====//
 import { MdSubdirectoryArrowRight as ArrowRightBottomIcon } from "react-icons/md";
@@ -14,9 +14,7 @@ const sumList = [
 ]
 
 const HelpAnimals = () => {
-  
   const predefinedSums = ['1000', '3000', '12000'];
-
   const [activeSection, setActiveSection] = useState('sum');
   const [sumSectionStatus, setSumSectionStatus] = useState(true);
   const [periodicitySection, setPeriodicitySection] = useState(false);
@@ -32,6 +30,10 @@ const HelpAnimals = () => {
     period: 'Ежемесячное',
   })
   const [error, setError] = useState('');
+
+  const location = useLocation();
+  const {donationForm} = location.state || {};
+  console.log('Данные полученные из AnimalInfo:', donationForm);
 
   const toggleActiveSection = (sectionName) => {
     setActiveSection((prevState) => {

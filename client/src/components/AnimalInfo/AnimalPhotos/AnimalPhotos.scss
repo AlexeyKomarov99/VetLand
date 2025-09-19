@@ -1,0 +1,85 @@
+@import '../../../App.css';
+
+// Анимация для плавного появления
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animal-photo-item {
+  animation: fadeIn 0.5s ease forwards;
+  
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+  &:nth-child(4) { animation-delay: 0.4s; }
+  &:nth-child(5) { animation-delay: 0.5s; }
+}
+
+.AnimalPhotos {
+    width: 100%;
+    .AnimalPhotos__container {
+        width: 100%;
+        height: 100%;
+        padding: 2rem 0;
+        .animal-photos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 0 auto;
+            aspect-ratio: 1 / 1;
+
+            .animal-photo-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: var(--border-radius-small);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+                &:hover {
+                    transform: scale(1.02);
+                    box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.45);
+                }
+        
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    transition: transform 0.3s ease;
+                }
+        
+                // Большая фотография (занимает 4 ячейки)
+                &.large-photo {
+                    grid-column: 1 / 3;
+                    grid-row: 1 / 3;
+                }
+        
+                // Фото в позиции 3
+                &.photo-3 {
+                    grid-column: 3 / 4;
+                    grid-row: 1 / 2;
+                }
+        
+                // Фото в позиции 6
+                &.photo-6 {
+                    grid-column: 3 / 4;
+                    grid-row: 2 / 3;
+                }
+            }
+        }
+        .animal-photos-empty {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-style: italic;
+        }
+    }
+}

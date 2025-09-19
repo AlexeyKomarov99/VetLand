@@ -1,0 +1,235 @@
+@import '../../../App.css';
+
+.BecomeGuardian {
+    max-width: 650px;
+    .BecomeGuardian__container {
+        width: 100%;
+        height: 100%;
+        padding-top: 1rem;
+        .BecomeGuardian__content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 32px 35px;
+            border: 3px solid var(--red);
+            border-radius: var(--border-radius-medium);
+
+            // Заголовок
+            .BecomeGuardian__header {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding-bottom: 1.5rem;
+                border-bottom: 1px solid rgba(40,40,40,0.2);
+                padding-bottom: 30px;
+                .BecomeGuardian__title {
+                    font-weight: 600;
+                    font-size: 1.5rem;
+                    line-height: 1.625rem;
+                    letter-spacing: -0.6;        
+                    background: var(--linear-gradient-red-orange);
+                    background-clip: text;
+                    color: transparent;
+                }
+                .BecomeGuardian__question {
+                    position: relative;
+                    width: 20px;
+                    height: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid var(--red);
+                    border-radius: 10000px;
+                    cursor: pointer;
+                    .BecomeGuardian__question-mw {
+                        position: absolute;
+                        top: 120%;
+                        left: -1000%;
+                        min-width: 250px;
+                        padding: 7px 11px;
+                        background: var(--radial-gradient-red-orange);
+                        border-radius: var(--border-radius-small);
+                        .BecomeGuardian__question-mw--text {
+                            font-size: 0.75rem;
+                            line-height: 15px;
+                            color: var(--white);
+                        }
+                    }
+                }
+            }
+
+            // 1. Периодичность пожертвования
+            .BecomeGuardian__frequency-donations {
+                width: 100%;
+                border-bottom: 1px solid rgba(40,40,40,0.2);
+                margin-top: 15px;
+                padding-bottom: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                .BecomeGuardian__frequency-donations-title {
+                    font-size: 0.875rem;
+                    line-height: 1.125rem;
+                    font-weight: 500;
+                    letter-spacing: -0.3px;
+                }
+                .BecomeGuardian__frequency-item {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 7px 15px;
+                    border-radius: var(--border-radius-small);
+                    border: 1px solid var(--red);
+                    margin-top: 30px;
+                    cursor: pointer;
+                    .BecomeGuardian__frequency-text {
+                        font-size: 0.75rem;
+                        line-height: 0.875rem;
+                        letter-spacing: .3px;
+                    }
+                }
+            }
+
+            // 2. Размер пожертвования
+            .BecomeGuardian__donation-amount {
+                width: 100%;
+                border-bottom: 1px solid rgba(40,40,40,0.2);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin-top: 15px;
+                padding-bottom: 30px;
+                .BecomeGuardian__donation-amount-title {
+                    font-size: 0.875rem;
+                    line-height: 1.125rem;
+                    font-weight: 500;
+                    letter-spacing: -0.3px;
+                }
+                .BecomeGuardian__donation-group {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 0.625rem;
+                    padding-bottom: 30px;
+                    .BecomeGuardian__donation-item {
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 7px 15px;
+                        border-radius: var(--border-radius-small);
+                        border: 1px solid var(--red);
+                        margin-top: 30px;
+                        cursor: pointer;
+                        .BecomeGuardian__donation-text {
+                            font-size: 0.75rem;
+                            line-height: 0.875rem;
+                            letter-spacing: .3px;
+                        }
+                        .heart-icon {
+                            width: 12px;
+                            height: 12px;
+                            color: var(--red);
+                            margin-right: 0.25rem;
+                            overflow: hidden;
+                        }
+                    }
+                    .active-input {
+                        background: var(--linear-gradient-red-orange);
+                        color: var(--white);
+                        border: none;
+                        .heart-icon {
+                            color: var(--white);
+                        }
+                        .BecomeGuardian__donation-text {
+                            color: var(--white);
+                        }
+                    }
+                }
+                .BecomeGuardian__donation-input {
+                    width: 100%;
+                    margin: 0;
+                    padding: 14px 15px;
+                    outline: none;
+                    border: none;
+                    border-radius: var(--border-radius-small);
+                    background-color: rgba(0,0,0,0.1);
+                    color: var(--light-gray);
+                    font-size: 0.75rem;
+                    font-weight: 500;
+                    line-height: 15px;
+                }
+            }
+
+            // 3. Ввести платежные данные
+            .BecomeGuardian__user-data {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                margin-top: 15px;
+                padding-bottom: 30px;
+                .BecomeGuardian__user-data-header {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    margin-bottom: 30px;
+                    .BecomeGuardian__user-data-header-title {
+                        color: var(--light-gray);
+                        font-size: 1rem;
+                        font-weight: 600;
+                        line-height: 19px;
+                        cursor: pointer;
+                    }
+                    .arrow-icon {
+                        width: 20px;
+                        height: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: var(--red);
+                    }
+                }
+                .BecomeGuardian__user-data-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.625rem;
+                    .BecomeGuardian__user-data-item {
+                        width: 100%;
+                        .BecomeGuardian__user-data-input {
+                            width: 100%;
+                            background-color: rgba(0,0,0,0.1);
+                            border-radius: var(--border-radius-small);
+                            padding: 14px 15px;
+                            font-size: 12px;
+                            font-weight: 500;
+                            line-height: 15px;
+                        }
+                    }
+                }
+            }
+
+            // 4. Перейти к форме оплаты
+            .BecomeGuardian__btn-confirm {
+                padding: 12px 15px;
+                border-radius: var(--border-radius-small);
+                color: var(--light-gray);
+                font-size: 0.75rem;
+                line-height: 14px;
+                letter-spacing: .3px;
+                background-color: transparent;
+                border: 1px solid var(--red);
+                cursor: pointer;
+            }
+            .BecomeGuardian__btn-confirm--disabled {
+                opacity: 0.5;
+                cursor: not-allowed !important;
+                pointer-events: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+@import '../../../App.css';
+
+.AnimalDescr {
+    max-width: 650px;
+    .AnimalDescr__container {
+        width: 100%;
+        height: 100%;
+        .AnimalDescr__header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-bottom: 2.5rem;
+            .AnimalDescr__header-descr {
+                font-weight: 500;
+                font-size: 0.875rem;
+                color: rgba(40,40,40,0.4);
+                margin-bottom: 10px;
+            }
+            .AnimalDescr__header-title {
+                font-weight: 600;
+                font-size: 24px;
+                color: var(--light-gray);
+            }
+        }
+        .AnimalDescr__cards-group {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 0.625rem;
+            margin-bottom: 2.5rem;
+            .AnimalDescr__card {
+                border: 1px solid rgba(40,40,40,0.6);
+                border-radius: var(--border-radius-small);
+                padding: 12.5px 15px;
+                transition: var(--transition);
+                .AnimalDescr__card-text {
+                    font-size: 12px;
+                    line-height: 15px;
+                    color: rgba(40,40,40,0.6);
+                }
+                &:hover {
+                    background-color: var(--light-gray);
+                    .AnimalDescr__card-text {
+                        color: var(--white);
+                    }
+                }
+            }
+        }
+        .AnimalDescr__animal-descr {
+            font-weight: 500;
+            font-size: 0.875rem;
+            line-height: 1.125rem;
+            margin-bottom: 2.5rem;
+            // max-width: 350px;
+        }
+        .AnimalDescr__social-netw-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            .AnimalDescr__social-netw-title {
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 22px;
+                color: var(--light-gray);
+                padding-bottom: 20px;
+            }
+            .SocialNetworksIcons__group {
+                display: flex;
+                gap: 7.5px;
+                .icon {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 7.5px;
+                    color: var(--light-gray);
+                    padding: 0.5rem;
+                    transition: var(--transition);
+                    border: 1px solid var(--light-gray);
+                    &:hover {
+                        color: var(--white);
+                        background: var(--radial-gradient-red-orange);
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -26,9 +26,9 @@ const MonthlyService = ({
         setQuestionInfo(false);
     }
 
-    const monthlyAmount = 4500;
-    const fundraisingAmount = animal ? animal.amountTreatment : 0;
-    const fundraisingStatus = Math.min(Math.round((fundraisingAmount / monthlyAmount) * 100), 100);
+    const monthlyCareAmount = animal ? animal?.monthlyCareAmount : 0;
+    const donationsAmount = animal ? animal.donationsAmount : 0;
+    const fundraisingStatus = Math.min(Math.round((donationsAmount / monthlyCareAmount) * 100), 100);
 
     return (
         <section className="MonthlyService">
@@ -36,7 +36,7 @@ const MonthlyService = ({
                 <div className="MonthlyService__content-left">
                     <span className="MonthlyService__title">На мое месячное содержание уходит:</span>
                     <div className="MonthlyService__price-group">
-                        <span className="MonthlyService__monthly-amount">{monthlyAmount} ₽</span>
+                        <span className="MonthlyService__monthly-amount">{monthlyCareAmount} ₽</span>
                         <span 
                             className="MonthlyService__question-info"
                             onMouseEnter={handleMouseEnter}
@@ -74,12 +74,12 @@ const MonthlyService = ({
                                     className={`MonthlyService__sum-item ${selectedInput === amount.amount ? 'selected-input' : ''}`}
                                     onClick={() => handleChangeAmount(amount.amount)}
                                 >
-                                    {amount.amount} ₽    
+                                    {amount.amount} ₽
                                 </article>
                             ))}
                             <article 
-                                className={`MonthlyService__sum-item all-sum ${selectedInput === monthlyAmount ? 'seleceted-input-all' : ''}`}
-                                onClick={() => handleChangeAmount(monthlyAmount)}
+                                className={`MonthlyService__sum-item all-sum ${selectedInput === monthlyCareAmount ? 'seleceted-input-all' : ''}`}
+                                onClick={() => handleChangeAmount(monthlyCareAmount)}
                             >
                                 <HeartIcon className='heart-icon' />
                                 <span className="MonthlyService__sum-text">Вся сумма</span>
