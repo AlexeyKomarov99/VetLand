@@ -13,9 +13,7 @@ import { animalAgeFormatting } from '../../../utils/animalAgeFormatting';
 const AnimalDescr = ({
   animal
 }) => {
-
-  console.log(animal);
-
+  
   const animalGender = (gender) => {
     const genderFormatted = 
       gender === 'Женский' ? 'Девочка' :

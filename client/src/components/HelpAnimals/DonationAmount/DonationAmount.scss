@@ -1,0 +1,86 @@
+@import '../../../App.css';
+
+.DonationAmount {
+    .DonationAmount__content {
+        display: flex;
+        flex-direction: column;
+        .DonationAmount__amounts-group {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            .DonationAmount__amount-item {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 0;
+                gap: 0.75rem;
+                .DonationAmount__amount-text,
+                .DonationAmount__amount-input {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 120px;
+                    font-size: 18px;
+                    line-height: 1.2;
+                    font-weight: 600;
+                    border-radius: var(--border-radius-medium);
+                    padding: 27px 25px;
+                    letter-spacing: -0.02em;
+                    box-shadow: inset 0 0 0 1px rgba(40,40,40,0.3);
+                    text-align: center;
+                    color: #bfbfbf;
+                    transition: var(--transition);
+                    cursor: pointer;
+                    &:hover {
+                        box-shadow: inset 0 0 0 3px rgba(40,40,40,1);
+                        color: var(--light-gray);
+                    }
+                    &:focus {
+                        color: var(--dark-gray);
+                    }
+                }
+                .active {
+                    color: var(--dark-gray);
+                    box-shadow: inset 0 0 0 3px rgba(40,40,40,1);
+                }
+                .DonationAmount__amount-descr {
+                    display: flex;
+                    align-items: stretch;
+                    width: 100%;
+                    height: 60px;
+                    border-radius: var(--border-radius-small);
+                    padding: 13px 17px;
+                    background: #F1F1F1;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 1.28;
+                    text-align: center;
+                    letter-spacing: -0.02em;
+                    color: var(--light-gray);
+                    white-space: pre-line;
+                }
+            }
+        }
+        .DonationAmount__btn {
+            margin-top: 50px;
+            max-width: 450px;
+            padding: 49px 40px;
+            background: var(--radial-gradient-red-orange);
+            border-radius: var(--border-radius-medium);
+            transition: var(--transition);
+            cursor: pointer;
+            &:hover {
+                box-shadow: 2px 4px 10px rgba(40,40,40,0.3);
+            }
+            .DonationAmount__btn-text {
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 1.35;
+                letter-spacing: -0.1;
+                color: var(--white);
+                border: none;
+            }
+        }
+    }
+}

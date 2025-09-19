@@ -1,553 +1,584 @@
 @import '../../App.css';
 
 .HelpAnimals {
-
-    // Секция 1. Вступление "Финансовая поддержка"
-    .Introduction {
-        background-color: var(--white);
-        border-top-left-radius: var(--border-radius-high);
-        border-top-right-radius: var(--border-radius-high);
-        padding-top: 112px;
-        .Introduction__wrapper {
-            width: 100%;
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 60px;
-            .Introduction__container {
-                padding: 60px 0 30px;
-                .Introduction__content {
-                    
-                    .Introduction__header {
-                        border-bottom: 2px solid var(--dark-gray);
-                        padding-bottom: 37px;
-                        .Introduction__header-nav {
-                            display: flex;
-                            & > :last-child {
-                                margin-left: 10px;
-                            }
-                            .Introduction__Link-main {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                .Introduction__Link-text {
-                                    position: relative;
-                                    color: var(--light-gray);
-                                    font-weight: 500;
-                                    font-size: 12px;
-                                    line-height: 14px;
-                                    &:hover::after {
-                                        width: 0;
-                                    }
-                                    &::after {
-                                        content: '';
-                                        position: absolute;
-                                        top: 100%;
-                                        left: 0;
-                                        width: 100%;
-                                        height: 1px;
-                                        background-color: var(--light-gray);
-                                        transition: width .3s ease-in-out;
-                                    }
-                                }
-                                .icon {
-                                    width: 10px;
-                                    height: 10px;
-                                    margin-left: 5px;
-                                }
-                            }
-                            .Introduction__current-page {
-                                color: rgba(40, 40, 40, 0.5);
-                                font-weight: 500;
-                                font-size: 12px;
-                                line-height: 14px;
-                            }
-                        }
-                    }
-
-                    .Introduction__body {
-                        display: flex;
-                        justify-content: start;
-                        align-items: start;
-                        padding-top: 25px;
-                        padding-bottom: 40px;
-                        border-bottom: 2px solid var(--dark-gray);
-                        .Introduction__title {
-                            width: 50%;
-                            font-size: 34px;
-                            font-weight: 600;
-                            line-height: 41px;
-                            color: var(--light-gray);
-                        }
-                        .Introduction__descr {
-                            width: 50%;
-                            display: flex;
-                            flex-direction: column;
-                            .Introduction__descr-item {
-                                max-width: 500px;
-                                font-weight: 600;
-                                font-size: 18px;
-                                line-height: 120%;
-                                letter-spacing: -0.02em;
-                                margin-top: 16px;
-                                color: var(--light-gray);
-                            }
-                            .gradient-item {
-                                color: transparent;
-                                background: var(--radial-gradient-red-orange);
-                                background-clip: text;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // Секция 2. Заполнение данных для финансовой помощи
-    .FinancialAid {
+    .HelpAnimals__wrapper {
+        width: 100%;
+        height: 100%;
+        max-width: 1600px;
+        margin: 0 auto;
         background-color: var(--white);
         border-bottom-left-radius: var(--border-radius-high);
         border-bottom-right-radius: var(--border-radius-high);
-        .FinancialAid__wrapper {
+        .HelpAnimals__container {
             width: 100%;
+            height: 100%;
             max-width: 1440px;
             margin: 0 auto;
-            padding: 0 60px;
-            .FinancialAid__container {
-                padding: 30px 0 60px;
-                .FinancialAid__content {
-                    display: flex;
-                    align-items: start;
+            padding: 32px 0 64px;
+            .HelpAnimals__content {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 25% auto;
+                gap: 5rem;
+                .HelpAnimals__content-left {
 
+                }
+                .HelpAnimals__content-right {
 
-                    // Левая часть. Информация о пожертвовании
-                    .FinancialAid__total-card {
-                        width: 35%;
-                        .FinancialAid__total-card-wrapper {
-                            width: 100%;
-                            max-width: 320px;
-                            padding: 30px 41px;
-                            background-color: #F1F1F1;
-                            border-radius: var(--border-radius-medium);
-                            
-                            // Один блок данных
-                            .FinancialAid__total-card-item {
-                                &:nth-child(n):not(:last-child) {
-                                    margin-bottom: 30px;
-                                }
-                                .FinancialAid__total-card-title {
-                                    margin-bottom: 15px;
-                                    font-weight: 600;
-                                    font-size: 14px;
-                                    line-height: 17px;
-                                    letter-spacing: -0.02em;
-                                    color: var(--light-gray);
-                                    opacity: 0.5;
-                                }
-                                .FinancialAid__total-card-text {
-                                    font-size: 18px;
-                                    line-height: 120%;
-                                    font-weight: 600;
-                                    color: var(--light-gray);
-                                    letter-spacing: -0.02em;
-                                }
-                                .FinancialAid__total-card-group {
-                                    display: flex;
-                                    flex-direction: column;
-                                    .FinancialAid__total-card-text {
-                                        margin-bottom: 3px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    // Правая часть. Карточки для заполнения данных
-                    .FinancialAid__user-info {
-                        width: 65%;
-
-                        // Группа кнопок
-                        .FinancialAid__header-btn-group {
-                            display: flex;
-                            flex-direction: row;
-                            margin-bottom: 50px;
-                            .FinancialAid__btn-item {
-                                border-radius: var(--border-radius-small);
-                                outline: var(--outline-light-gray);
-                                background-color: transparent;
-                                padding: 5px 8px;
-                                cursor: pointer;
-                                &:nth-child(n):not(:last-child) {
-                                    margin-right: 10px;
-                                }
-                                .FinancialAid__btn-descr {
-                                    font-size: 24px;
-                                    line-height: 25px;
-                                    font-weight: 600;
-                                    letter-spacing: -0.03em;
-                                    color: var(--gray);
-                                }
-
-                                .checkcircle-icon {
-                                    display: inline-flex;
-                                    width: 20px;
-                                    height: 20px;
-                                    margin-left: 8px;
-                                }
-                            }
-                            .pending {
-                                background: var(--radial-gradient-red-orange);
-                                color: var(--white);
-                            }
-                            .success {
-                                background: var(--green);
-                                color: var(--white);
-                            }
-                        }
-                        
-                        // Тело с контентом
-                        .FinancialAid__content-body {
-                            
-                            // Секция 1. Выбор суммы пожертвования
-                            .FinancialAid__donations {
-                                display: flex;
-                                flex-direction: column;
-                                .FinancialAid__donations-cards {
-                                    display: flex;
-                                    flex-direction: row;
-                                    .FinancialAid__donations-card-group {
-                                        display: flex;
-                                        flex-direction: column;
-                                        width: 206px;
-                                        margin-bottom: 50px;
-                                        :nth-child(n):not(:last-child) {
-                                            margin-right: 15px;
-                                        }
-                                        .FinancialAid__donations-card-label {
-                                            display: block;
-                                            height: 120px;
-                                            .FinancialAid__donations-card-sum {
-                                                display: flex;
-                                                justify-content: center;
-                                                align-items: center;
-                                                box-shadow:  inset 0 0 0 1px rgba(40, 40, 40, 0.3);
-                                                border-radius: var(--border-radius-medium);
-                                                padding: 27px 24.5px;
-                                                width: 100%;
-                                                height: 100%;
-                                                font-weight: 600;
-                                                font-size: 18px;
-                                                line-height: 120%;
-                                                text-align: center;
-                                                letter-spacing: -0.02em;
-                                                color: #bfbfbf;
-                                                cursor: pointer;
-
-                                                &:hover {
-                                                    box-shadow: inset 0 0 0 3px var(--light-gray);
-                                                    color: var(--light-gray);
-                                                }
-                                            }
-                                        }
-
-                                        // Свойство для input ! (скрытие)
-                                        .radio input[type='radio'] {
-                                            position: absolute;
-                                            width: 1px;
-                                            height: 1px;
-                                            margin: -1px;
-                                            clip: rect(0,0,0,0);
-                                        }
-
-                                        // Выбранный элемент input
-                                        .radio input[type='radio']:checked + span {
-                                            box-shadow: inset 0 0 0 3px var(--light-gray);
-                                            color: var(--light-gray);
-                                        }
-
-                                        .FinancialAid__donations-card-descr {
-                                            max-width: 206px;
-                                            text-align: center;
-                                            background: #F1F1F1;
-                                            font-size: 14px;
-                                            line-height: 128%;
-                                            font-weight: 500;
-                                            letter-spacing: -0.02em;
-                                            margin-right: 15px;
-                                            margin-top: 15px;
-                                            padding: 13px 17px;
-                                            border-radius: var(--border-radius-small);
-                                            color: var(--light-gray);
-                                        }
-
-                                        .label {
-                                            display: block;
-                                            position: relative;
-                                            cursor: pointer;
-
-                                            input:focus + .custom-span,
-                                            &.filled .custom-span {
-                                                transform: translateY(-26px);
-                                                font-size: 12px;
-                                                color: var(--dark-gray);
-                                            }
-
-                                            .custom-input {
-                                                width: 100%;
-                                                height: 100%;
-                                                outline: var(--outline-light-gray);
-                                                padding: 48px 20px;
-                                                transition: var(--transition);
-                                                font-weight: 600;
-                                                font-size: 18px;
-                                                line-height: 22px;
-                                                text-align: center;
-                                                letter-spacing: -0.02em;
-                                                color: var(--light-gray);
-                                                border-radius: var(--border-radius-medium);                                               
-                                                &:hover {
-                                                    box-shadow: inset 0 0 0 3px var(--light-gray);
-                                                    .custom-span {
-                                                        color: var(--dark-gray);
-                                                    }
-                                                }
-                                            }
-                                            .custom-span {
-                                                position: absolute;
-                                                display: flex;
-                                                justify-content: center;
-                                                align-items: center;
-                                                top: 0;
-                                                left: 0;
-                                                width: 100%;
-                                                height: 100%;
-                                                font-weight: 600;
-                                                font-size: 18px;
-                                                line-height: 120%;
-                                                letter-spacing: -0.02em;
-                                                text-align: center;
-                                                color: #bfbfbf;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                .FinancialAid__donations-btn {
-                                    max-width: 430px;
-                                    border-radius: var(--border-radius-medium);
-                                    padding: 49px 40px;
-                                    background: var(--radial-gradient-red-orange);
-                                    color: var(--white);
-                                    font-weight: 600;
-                                    font-size: 18px;
-                                    letter-spacing: -0.02em;
-                                    transition: var(--transition);
-                                    cursor: pointer;
-                                    &:hover {
-                                        filter: brightness(0.9);
-                                    }
-                                }
-
-                            }
-
-                            // Секция 2. Выбор периодичности пожертвований
-                            .FinancialAid__period {
-                                display: flex;
-                                flex-direction: column;
-                                
-                                // Группа карточек
-                                .FinancialAid__period-cards {
-                                    display: flex;
-                                    flex-direction: row;
-                                    margin-bottom: 50px;
-                                    .FinancialAid__period-card-label {
-                                        display: block;
-                                        width: 206px;
-                                        height: 120px;
-                                        &:nth-child(n):not(:last-child) {
-                                            margin-right: 15px;
-                                        }
-                                        .FinancialAid__period-card-input[type='radio'] {
-                                            position: absolute;
-                                            width: 1px;
-                                            height: 1px;
-                                            margin: -1px;
-                                            clip: rect(0,0,0,0);
-                                        }
-                                        .FinancialAid__period-card-input:checked + span {
-                                            box-shadow: inset 0 0 0 3px var(--light-gray);
-                                            color: var(--light-gray);
-                                        }
-                                        .FinancialAid__period-card-span {
-                                            display: flex;
-                                            justify-content: center;
-                                            align-items: center;
-                                            width: 100%;
-                                            height: 100%;
-                                            box-shadow: inset 0 0 0 1px rgba(40, 40, 40, 0.3);
-                                            border-radius: var(--border-radius-medium);
-                                            transition: var(--transition);
-                                            font-weight: 600;
-                                            font-size: 18px;
-                                            line-height: 120%;
-                                            letter-spacing: -0.02em;
-                                            color: #bfbfbf;
-                                            cursor: pointer;
-                                            &:hover {
-                                                box-shadow: inset 0 0 0 3px var(--dark-gray);
-                                                color: var(--dark-gray);
-                                            }
-                                        }
-                                        
-                                    }
-                                }
-
-                                // Кнопка
-                                .FinancialAid__period-btn {
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    max-width: 430px;
-                                    border-radius: var(--border-radius-medium);
-                                    padding: 49px 40px;
-                                    background: var(--radial-gradient-red-orange);
-                                    color: var(--white);
-                                    font-weight: 600;
-                                    font-size: 18px;
-                                    letter-spacing: -0.02em;
-                                    transition: var(--transition);
-                                    cursor: pointer;
-                                    &:hover {
-                                        filter: brightness(0.9);
-                                    }
-                                }
-                                
-                            }
-
-                            // Секция 3. Данные пользователя
-                            .FinancialAid__user-data {
-                                display: flex;
-                                flex-direction: column;
-                                .FinancialAid__user-data-cards {
-                                    display: flex;
-                                    flex-direction: row;
-                                    margin-bottom: 50px;
-                                    .FinancialAid__user-data-card-group {
-                                        display: flex;
-                                        flex-direction: column;
-                                        justify-content: center;
-                                        align-items: center;
-                                        &:nth-child(n):not(:last-child) {
-                                            margin-right: 15px;
-                                        }
-
-                                        .FinancialAid__user-data-card-label {
-                                            position: relative;
-                                            display: block;
-                                            width: 206px;
-                                            height: 120px;
-    
-                                            .FinancialAid__user-data-card-input {
-                                                text-align: center;
-                                                box-shadow: inset 0 0 0 1px rgba(40, 40, 40, 0.3);
-                                                border-radius: var(--border-radius-medium);
-                                                width: 100%;
-                                                height: 100%;
-                                                font-weight: 600;
-                                                font-size: 18px;
-                                                line-height: 22px;
-                                                letter-spacing: -0.02em;
-                                                padding: 48px 20px;
-                                                color: var(--dark-gray);
-                                                transition: var(--transition);
-                                                cursor: pointer;
-                                                &::placeholder {
-                                                    color: transparent;
-                                                }
-                                                &:focus::placeholder {
-                                                    color: var(--dark-gray);
-                                                }
-                                                &:hover {
-                                                    box-shadow: inset 0 0 0 3px var(--dark-gray);
-                                                }
-                                            }
-
-                                            // Ошибка не заполнения форм
-                                            .error {
-                                                box-shadow: inset 0 0 0 1px var(--red);
-                                            }
-
-                                            .FinancialAid__user-data-card-input:focus + span {
-                                                transform: translateY(-26px);
-                                                font-size: 12px;
-                                                color: var(--dark-gray);
-                                            }
-    
-                                            .FinancialAid__user-data-card-span {
-                                                position: absolute;
-                                                display: flex;
-                                                justify-content: center;
-                                                align-items: center;
-                                                top: 0;
-                                                left: 0;
-                                                width: 100%;
-                                                height: 100%;
-                                                font-weight: 600;
-                                                font-size: 18px;
-                                                line-height: 120%;
-                                                text-align: center;
-                                                letter-spacing: -0.02em;
-                                                color: #bfbfbf;
-                                                border-radius: var(--border-radius-medium);
-                                                transition: var(--transition);
-                                                cursor: pointer;
-                                                &:hover {
-                                                    color: var(--dark-gray);
-                                                }
-                                            }
-                                            .FinancialAid__user-data-card-input:focus + span {
-                                                color: var(--red);
-                                            }
-                                            .error {
-                                                color: var(--red);
-                                            }
-                                            
-                                        }
-                                        // Если поле input не заполнено
-                                        .FinancialAid__user-data-card-error {
-                                            margin-top: 10px;
-                                            color: var(--red);
-                                        }
-                                        .filled .FinancialAid__user-data-card-span {
-                                            transform: translateY(-26px);
-                                            font-size: 12px;
-                                            color: var(--dark-gray);
-                                        }
-                                    }
-                                }
-                                .FinancialAid__user-data-btn {
-                                    max-width: 430px;
-                                    border-radius: var(--border-radius-medium);
-                                    padding: 49px 40px;
-                                    background: var(--radial-gradient-red-orange);
-                                    color: var(--white);
-                                    font-weight: 600;
-                                    font-size: 18px;
-                                    letter-spacing: -0.02em;
-                                    transition: var(--transition);
-                                    cursor: pointer;
-                                    &:hover {
-                                        filter: brightness(0.9);
-                                    }
-                                }
-                            }
-
-                            // Секция 4. Способ оплаты
-
-                        }
-                    }
                 }
             }
         }
     }
 }
+
+// .HelpAnimals {
+
+//     // Секция 1. Вступление "Финансовая поддержка"
+//     .Introduction {
+//         background-color: var(--white);
+//         border-top-left-radius: var(--border-radius-high);
+//         border-top-right-radius: var(--border-radius-high);
+//         padding-top: 112px;
+//         .Introduction__wrapper {
+//             width: 100%;
+//             max-width: 1440px;
+//             margin: 0 auto;
+//             padding: 0 60px;
+//             .Introduction__container {
+//                 padding: 60px 0 30px;
+//                 .Introduction__content {
+                    
+//                     .Introduction__header {
+//                         border-bottom: 2px solid var(--dark-gray);
+//                         padding-bottom: 37px;
+//                         .Introduction__header-nav {
+//                             display: flex;
+//                             & > :last-child {
+//                                 margin-left: 10px;
+//                             }
+//                             .Introduction__Link-main {
+//                                 display: flex;
+//                                 justify-content: center;
+//                                 align-items: center;
+//                                 .Introduction__Link-text {
+//                                     position: relative;
+//                                     color: var(--light-gray);
+//                                     font-weight: 500;
+//                                     font-size: 12px;
+//                                     line-height: 14px;
+//                                     &:hover::after {
+//                                         width: 0;
+//                                     }
+//                                     &::after {
+//                                         content: '';
+//                                         position: absolute;
+//                                         top: 100%;
+//                                         left: 0;
+//                                         width: 100%;
+//                                         height: 1px;
+//                                         background-color: var(--light-gray);
+//                                         transition: width .3s ease-in-out;
+//                                     }
+//                                 }
+//                                 .icon {
+//                                     width: 10px;
+//                                     height: 10px;
+//                                     margin-left: 5px;
+//                                 }
+//                             }
+//                             .Introduction__current-page {
+//                                 color: rgba(40, 40, 40, 0.5);
+//                                 font-weight: 500;
+//                                 font-size: 12px;
+//                                 line-height: 14px;
+//                             }
+//                         }
+//                     }
+
+//                     .Introduction__body {
+//                         display: flex;
+//                         justify-content: start;
+//                         align-items: start;
+//                         padding-top: 25px;
+//                         padding-bottom: 40px;
+//                         border-bottom: 2px solid var(--dark-gray);
+//                         .Introduction__title {
+//                             width: 50%;
+//                             font-size: 34px;
+//                             font-weight: 600;
+//                             line-height: 41px;
+//                             color: var(--light-gray);
+//                         }
+//                         .Introduction__descr {
+//                             width: 50%;
+//                             display: flex;
+//                             flex-direction: column;
+//                             .Introduction__descr-item {
+//                                 max-width: 500px;
+//                                 font-weight: 600;
+//                                 font-size: 18px;
+//                                 line-height: 120%;
+//                                 letter-spacing: -0.02em;
+//                                 margin-top: 16px;
+//                                 color: var(--light-gray);
+//                             }
+//                             .gradient-item {
+//                                 color: transparent;
+//                                 background: var(--radial-gradient-red-orange);
+//                                 background-clip: text;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+//     // Секция 2. Заполнение данных для финансовой помощи
+//     .FinancialAid {
+//         background-color: var(--white);
+//         border-bottom-left-radius: var(--border-radius-high);
+//         border-bottom-right-radius: var(--border-radius-high);
+//         .FinancialAid__wrapper {
+//             width: 100%;
+//             max-width: 1440px;
+//             margin: 0 auto;
+//             padding: 0 60px;
+//             .FinancialAid__container {
+//                 padding: 30px 0 60px;
+//                 .FinancialAid__content {
+//                     display: flex;
+//                     align-items: start;
+
+
+//                     // Левая часть. Информация о пожертвовании
+//                     .FinancialAid__total-card {
+//                         width: 35%;
+//                         .FinancialAid__total-card-wrapper {
+//                             width: 100%;
+//                             max-width: 320px;
+//                             padding: 30px 41px;
+//                             background-color: #F1F1F1;
+//                             border-radius: var(--border-radius-medium);
+                            
+//                             // Один блок данных
+//                             .FinancialAid__total-card-item {
+//                                 &:nth-child(n):not(:last-child) {
+//                                     margin-bottom: 30px;
+//                                 }
+//                                 .FinancialAid__total-card-title {
+//                                     margin-bottom: 15px;
+//                                     font-weight: 600;
+//                                     font-size: 14px;
+//                                     line-height: 17px;
+//                                     letter-spacing: -0.02em;
+//                                     color: var(--light-gray);
+//                                     opacity: 0.5;
+//                                 }
+//                                 .FinancialAid__total-card-text {
+//                                     font-size: 18px;
+//                                     line-height: 120%;
+//                                     font-weight: 600;
+//                                     color: var(--light-gray);
+//                                     letter-spacing: -0.02em;
+//                                 }
+//                                 .FinancialAid__total-card-group {
+//                                     display: flex;
+//                                     flex-direction: column;
+//                                     .FinancialAid__total-card-text {
+//                                         margin-bottom: 3px;
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                     }
+
+//                     // Правая часть. Карточки для заполнения данных
+//                     .FinancialAid__user-info {
+//                         width: 65%;
+
+//                         // Группа кнопок
+//                         .FinancialAid__header-btn-group {
+//                             display: flex;
+//                             flex-direction: row;
+//                             margin-bottom: 50px;
+//                             .FinancialAid__btn-item {
+//                                 border-radius: var(--border-radius-small);
+//                                 outline: var(--outline-light-gray);
+//                                 background-color: transparent;
+//                                 padding: 5px 8px;
+//                                 cursor: pointer;
+//                                 &:nth-child(n):not(:last-child) {
+//                                     margin-right: 10px;
+//                                 }
+//                                 .FinancialAid__btn-descr {
+//                                     font-size: 24px;
+//                                     line-height: 25px;
+//                                     font-weight: 600;
+//                                     letter-spacing: -0.03em;
+//                                     color: var(--gray);
+//                                 }
+
+//                                 .checkcircle-icon {
+//                                     display: inline-flex;
+//                                     width: 20px;
+//                                     height: 20px;
+//                                     margin-left: 8px;
+//                                 }
+//                             }
+//                             .pending {
+//                                 background: var(--radial-gradient-red-orange);
+//                                 color: var(--white);
+//                             }
+//                             .success {
+//                                 background: var(--green);
+//                                 color: var(--white);
+//                             }
+//                         }
+                        
+//                         // Тело с контентом
+//                         .FinancialAid__content-body {
+                            
+//                             // Секция 1. Выбор суммы пожертвования
+//                             .FinancialAid__donations {
+//                                 display: flex;
+//                                 flex-direction: column;
+//                                 .FinancialAid__donations-cards {
+//                                     display: flex;
+//                                     flex-direction: row;
+//                                     .FinancialAid__donations-card-group {
+//                                         display: flex;
+//                                         flex-direction: column;
+//                                         width: 206px;
+//                                         margin-bottom: 50px;
+//                                         :nth-child(n):not(:last-child) {
+//                                             margin-right: 15px;
+//                                         }
+//                                         .FinancialAid__donations-card-label {
+//                                             display: block;
+//                                             height: 120px;
+//                                             .FinancialAid__donations-card-sum {
+//                                                 display: flex;
+//                                                 justify-content: center;
+//                                                 align-items: center;
+//                                                 box-shadow:  inset 0 0 0 1px rgba(40, 40, 40, 0.3);
+//                                                 border-radius: var(--border-radius-medium);
+//                                                 padding: 27px 24.5px;
+//                                                 width: 100%;
+//                                                 height: 100%;
+//                                                 font-weight: 600;
+//                                                 font-size: 18px;
+//                                                 line-height: 120%;
+//                                                 text-align: center;
+//                                                 letter-spacing: -0.02em;
+//                                                 color: #bfbfbf;
+//                                                 cursor: pointer;
+
+//                                                 &:hover {
+//                                                     box-shadow: inset 0 0 0 3px var(--light-gray);
+//                                                     color: var(--light-gray);
+//                                                 }
+//                                             }
+//                                         }
+
+//                                         // Свойство для input ! (скрытие)
+//                                         .radio input[type='radio'] {
+//                                             position: absolute;
+//                                             width: 1px;
+//                                             height: 1px;
+//                                             margin: -1px;
+//                                             clip: rect(0,0,0,0);
+//                                         }
+
+//                                         // Выбранный элемент input
+//                                         .radio input[type='radio']:checked + span {
+//                                             box-shadow: inset 0 0 0 3px var(--light-gray);
+//                                             color: var(--light-gray);
+//                                         }
+
+//                                         .FinancialAid__donations-card-descr {
+//                                             max-width: 206px;
+//                                             text-align: center;
+//                                             background: #F1F1F1;
+//                                             font-size: 14px;
+//                                             line-height: 128%;
+//                                             font-weight: 500;
+//                                             letter-spacing: -0.02em;
+//                                             margin-right: 15px;
+//                                             margin-top: 15px;
+//                                             padding: 13px 17px;
+//                                             border-radius: var(--border-radius-small);
+//                                             color: var(--light-gray);
+//                                         }
+
+//                                         .label {
+//                                             display: block;
+//                                             position: relative;
+//                                             cursor: pointer;
+
+//                                             input:focus + .custom-span,
+//                                             &.filled .custom-span {
+//                                                 transform: translateY(-26px);
+//                                                 font-size: 12px;
+//                                                 color: var(--dark-gray);
+//                                             }
+
+//                                             .custom-input {
+//                                                 width: 100%;
+//                                                 height: 100%;
+//                                                 outline: var(--outline-light-gray);
+//                                                 padding: 48px 20px;
+//                                                 transition: var(--transition);
+//                                                 font-weight: 600;
+//                                                 font-size: 18px;
+//                                                 line-height: 22px;
+//                                                 text-align: center;
+//                                                 letter-spacing: -0.02em;
+//                                                 color: var(--light-gray);
+//                                                 border-radius: var(--border-radius-medium);                                               
+//                                                 &:hover {
+//                                                     box-shadow: inset 0 0 0 3px var(--light-gray);
+//                                                     .custom-span {
+//                                                         color: var(--dark-gray);
+//                                                     }
+//                                                 }
+//                                             }
+//                                             .custom-span {
+//                                                 position: absolute;
+//                                                 display: flex;
+//                                                 justify-content: center;
+//                                                 align-items: center;
+//                                                 top: 0;
+//                                                 left: 0;
+//                                                 width: 100%;
+//                                                 height: 100%;
+//                                                 font-weight: 600;
+//                                                 font-size: 18px;
+//                                                 line-height: 120%;
+//                                                 letter-spacing: -0.02em;
+//                                                 text-align: center;
+//                                                 color: #bfbfbf;
+//                                             }
+//                                         }
+//                                     }
+//                                 }
+
+//                                 .FinancialAid__donations-btn {
+//                                     max-width: 430px;
+//                                     border-radius: var(--border-radius-medium);
+//                                     padding: 49px 40px;
+//                                     background: var(--radial-gradient-red-orange);
+//                                     color: var(--white);
+//                                     font-weight: 600;
+//                                     font-size: 18px;
+//                                     letter-spacing: -0.02em;
+//                                     transition: var(--transition);
+//                                     cursor: pointer;
+//                                     &:hover {
+//                                         filter: brightness(0.9);
+//                                     }
+//                                 }
+
+//                             }
+
+//                             // Секция 2. Выбор периодичности пожертвований
+//                             .FinancialAid__period {
+//                                 display: flex;
+//                                 flex-direction: column;
+                                
+//                                 // Группа карточек
+//                                 .FinancialAid__period-cards {
+//                                     display: flex;
+//                                     flex-direction: row;
+//                                     margin-bottom: 50px;
+//                                     .FinancialAid__period-card-label {
+//                                         display: block;
+//                                         width: 206px;
+//                                         height: 120px;
+//                                         &:nth-child(n):not(:last-child) {
+//                                             margin-right: 15px;
+//                                         }
+//                                         .FinancialAid__period-card-input[type='radio'] {
+//                                             position: absolute;
+//                                             width: 1px;
+//                                             height: 1px;
+//                                             margin: -1px;
+//                                             clip: rect(0,0,0,0);
+//                                         }
+//                                         .FinancialAid__period-card-input:checked + span {
+//                                             box-shadow: inset 0 0 0 3px var(--light-gray);
+//                                             color: var(--light-gray);
+//                                         }
+//                                         .FinancialAid__period-card-span {
+//                                             display: flex;
+//                                             justify-content: center;
+//                                             align-items: center;
+//                                             width: 100%;
+//                                             height: 100%;
+//                                             box-shadow: inset 0 0 0 1px rgba(40, 40, 40, 0.3);
+//                                             border-radius: var(--border-radius-medium);
+//                                             transition: var(--transition);
+//                                             font-weight: 600;
+//                                             font-size: 18px;
+//                                             line-height: 120%;
+//                                             letter-spacing: -0.02em;
+//                                             color: #bfbfbf;
+//                                             cursor: pointer;
+//                                             &:hover {
+//                                                 box-shadow: inset 0 0 0 3px var(--dark-gray);
+//                                                 color: var(--dark-gray);
+//                                             }
+//                                         }
+                                        
+//                                     }
+//                                 }
+
+//                                 // Кнопка
+//                                 .FinancialAid__period-btn {
+//                                     display: flex;
+//                                     justify-content: center;
+//                                     align-items: center;
+//                                     max-width: 430px;
+//                                     border-radius: var(--border-radius-medium);
+//                                     padding: 49px 40px;
+//                                     background: var(--radial-gradient-red-orange);
+//                                     color: var(--white);
+//                                     font-weight: 600;
+//                                     font-size: 18px;
+//                                     letter-spacing: -0.02em;
+//                                     transition: var(--transition);
+//                                     cursor: pointer;
+//                                     &:hover {
+//                                         filter: brightness(0.9);
+//                                     }
+//                                 }
+                                
+//                             }
+
+//                             // Секция 3. Данные пользователя
+//                             .FinancialAid__user-data {
+//                                 display: flex;
+//                                 flex-direction: column;
+//                                 .FinancialAid__user-data-cards {
+//                                     display: flex;
+//                                     flex-direction: row;
+//                                     margin-bottom: 50px;
+//                                     .FinancialAid__user-data-card-group {
+//                                         display: flex;
+//                                         flex-direction: column;
+//                                         justify-content: center;
+//                                         align-items: center;
+//                                         &:nth-child(n):not(:last-child) {
+//                                             margin-right: 15px;
+//                                         }
+
+//                                         .FinancialAid__user-data-card-label {
+//                                             position: relative;
+//                                             display: block;
+//                                             width: 206px;
+//                                             height: 120px;
+    
+//                                             .FinancialAid__user-data-card-input {
+//                                                 text-align: center;
+//                                                 box-shadow: inset 0 0 0 1px rgba(40, 40, 40, 0.3);
+//                                                 border-radius: var(--border-radius-medium);
+//                                                 width: 100%;
+//                                                 height: 100%;
+//                                                 font-weight: 600;
+//                                                 font-size: 18px;
+//                                                 line-height: 22px;
+//                                                 letter-spacing: -0.02em;
+//                                                 padding: 48px 20px;
+//                                                 color: var(--dark-gray);
+//                                                 transition: var(--transition);
+//                                                 cursor: pointer;
+//                                                 &::placeholder {
+//                                                     color: transparent;
+//                                                 }
+//                                                 &:focus::placeholder {
+//                                                     color: var(--dark-gray);
+//                                                 }
+//                                                 &:hover {
+//                                                     box-shadow: inset 0 0 0 3px var(--dark-gray);
+//                                                 }
+//                                             }
+
+//                                             // Ошибка не заполнения форм
+//                                             .error {
+//                                                 box-shadow: inset 0 0 0 1px var(--red);
+//                                             }
+
+//                                             .FinancialAid__user-data-card-input:focus + span {
+//                                                 transform: translateY(-26px);
+//                                                 font-size: 12px;
+//                                                 color: var(--dark-gray);
+//                                             }
+    
+//                                             .FinancialAid__user-data-card-span {
+//                                                 position: absolute;
+//                                                 display: flex;
+//                                                 justify-content: center;
+//                                                 align-items: center;
+//                                                 top: 0;
+//                                                 left: 0;
+//                                                 width: 100%;
+//                                                 height: 100%;
+//                                                 font-weight: 600;
+//                                                 font-size: 18px;
+//                                                 line-height: 120%;
+//                                                 text-align: center;
+//                                                 letter-spacing: -0.02em;
+//                                                 color: #bfbfbf;
+//                                                 border-radius: var(--border-radius-medium);
+//                                                 transition: var(--transition);
+//                                                 cursor: pointer;
+//                                                 &:hover {
+//                                                     color: var(--dark-gray);
+//                                                 }
+//                                             }
+//                                             .FinancialAid__user-data-card-input:focus + span {
+//                                                 color: var(--red);
+//                                             }
+//                                             .error {
+//                                                 color: var(--red);
+//                                             }
+                                            
+//                                         }
+//                                         // Если поле input не заполнено
+//                                         .FinancialAid__user-data-card-error {
+//                                             margin-top: 10px;
+//                                             color: var(--red);
+//                                         }
+//                                         .filled .FinancialAid__user-data-card-span {
+//                                             transform: translateY(-26px);
+//                                             font-size: 12px;
+//                                             color: var(--dark-gray);
+//                                         }
+//                                     }
+//                                 }
+//                                 .FinancialAid__user-data-btn {
+//                                     max-width: 430px;
+//                                     border-radius: var(--border-radius-medium);
+//                                     padding: 49px 40px;
+//                                     background: var(--radial-gradient-red-orange);
+//                                     color: var(--white);
+//                                     font-weight: 600;
+//                                     font-size: 18px;
+//                                     letter-spacing: -0.02em;
+//                                     transition: var(--transition);
+//                                     cursor: pointer;
+//                                     &:hover {
+//                                         filter: brightness(0.9);
+//                                     }
+//                                 }
+//                             }
+
+//                             // Секция 4. Способ оплаты
+
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

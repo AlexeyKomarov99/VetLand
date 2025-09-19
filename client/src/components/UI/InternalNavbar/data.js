@@ -31,7 +31,41 @@ export const routes = [
         route: '/help-us', 
         linkName: 'Поддержите нас', 
         titlePage: 'Финансовая поддержка',
-        descr: <></>
+        descr: 
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                    alignItems: 'flex-start',
+                    maxWidth: '500px',
+                }}
+            >
+                <span
+                    style={{
+                        fontWeight: '600',
+                        fontSize: '18px',
+                        lineHeight: '1.2',
+                        letterSpacing: '-0.02em',
+                        color: '#282828',
+                        marginBottom: '1.5rem'
+                    }}
+                >
+                    Мы ценим ваше участие и помощь. <br/>
+                    Любая сумма важна и помогает нам работать, а нашим подопечным — жить и дождаться хозяина.
+                </span>
+                <span
+                    style={{
+                        fontSize: '18px',
+                        fontWeight: '600',
+                        lineHeight: '1.2',
+                        letterSpacing: '-0.02em',
+                        color: '#FD0558',
+                    }}
+                >
+                    Спасибо!
+                </span>
+            </div>
     },
     { 
         id: 5, 

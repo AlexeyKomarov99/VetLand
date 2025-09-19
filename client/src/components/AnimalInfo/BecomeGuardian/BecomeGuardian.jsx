@@ -16,7 +16,8 @@ const BecomeGuardian = ({
     phone: '',
     email: '',
     frequencyDonations: 'Ежемесячно',
-    donationAmount: ''
+    donationAmount: '',
+    donationPurpose: 'Опекунство'
   })
   const [isCustomAmount, setIsCustomAmount] = useState(false); // Добавляем состояние для отслеживания ручного ввода
   const [questionInfo, setQuestionInfo] = useState(false);

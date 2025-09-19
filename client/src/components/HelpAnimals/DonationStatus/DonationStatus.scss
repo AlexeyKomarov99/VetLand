@@ -1,0 +1,46 @@
+@import '../../../App.css';
+
+.DonationStatus {
+    margin-bottom: 50px;
+    .DonationStatus__content {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0.625rem;
+        .DonationStatus__item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 8px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius-small);
+            cursor: pointer;
+            .DonationStatus__status-text {
+                text-align: center;
+                font-size: 24px;
+                line-height: 25px;
+                font-weight: 600;
+                letter-spacing: -0.03em;
+            }
+        }
+        .neutral-status {
+
+        }
+        .selected-status {
+            background: var(--radial-gradient-red-orange);
+            border: none;
+            .DonationStatus__status-text {
+                color: var(--white);
+            }
+        }
+        .completed-status {
+            background: green;
+            border: none;
+            .DonationStatus__status-text {
+                color: var(--white);
+            }
+        }
+    }
+}
