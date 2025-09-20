@@ -55,7 +55,7 @@ const AppContent = () => {
   return (
     <div className='container'>
 
-      {/* {shouldShowHeaderAndFooter && <Header />} */}
+      {shouldShowHeaderAndFooter && <Header />}
       <Routes>
 
         {/* Титульная страница - маршрут по умолчанию */}

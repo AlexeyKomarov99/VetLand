@@ -1,0 +1,103 @@
+@import '../../../App.css';
+
+.DonationUserData {
+    .DonationUserData__content {
+        display: flex;
+        flex-direction: column;
+        .DonationUserData__user-data-group {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            .DonationUserData__user-data-item {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 0;
+                gap: 0.75rem;
+                .DonationUserData__user-data-text {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 120px;
+                    font-size: 18px;
+                    line-height: 1.2;
+                    font-weight: 600;
+                    border-radius: var(--border-radius-medium);
+                    padding: 27px 25px;
+                    letter-spacing: -0.02em;
+                    box-shadow: inset 0 0 0 1px rgba(40,40,40,0.3);
+                    text-align: center;
+                    color: var(--dark-gray);
+                    transition: var(--transition);
+                    cursor: pointer;
+                    &:hover {
+                        box-shadow: inset 0 0 0 3px rgba(40,40,40,1);
+                        color: var(--light-gray);
+                    }
+                }
+                .error {
+                    box-shadow: inset 0 0 0 1px var(--red);
+                }
+            }
+        }
+        .DonationUserData__btn {
+            text-align: center;
+            margin-top: 50px;
+            max-width: 450px;
+            padding: 49px 40px;
+            background: var(--radial-gradient-red-orange);
+            border-radius: var(--border-radius-medium);
+            transition: var(--transition);
+            cursor: pointer;
+            &:hover {
+                box-shadow: 2px 4px 10px rgba(40,40,40,0.3);
+            }
+            .DonationUserData__btn-text {
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 1.35;
+                letter-spacing: -0.1;
+                color: var(--white);
+                border: none;
+            }
+        }
+        .DonationUserData__btn--disabled {
+            opacity: 0.5;
+            cursor: not-allowed !important;
+            pointer-events: none;
+        }
+
+        .DonationUserData__label-checkbox {
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            cursor: pointer;
+            .DonationUserData__checkbox {
+                display: none;
+            }
+            .checkbox-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width: 30px;
+                flex-shrink: 0;
+                height: 30px;
+                font-size: 1.25rem;
+                border-radius: 10px;
+                border: 1px solid var(--gray);
+                margin-right: 15px;
+            }
+            .DonationUserData__checkbox-descr {
+                font-size: 12px;
+                flex: 1;
+                word-wrap: break-word;
+                white-space: normal;
+            }
+
+            .DonationUserData__checkbox:checked + .checkbox-box {
+                background: var(--radial-gradient-red-orange);
+            }
+        }
+    }
+}

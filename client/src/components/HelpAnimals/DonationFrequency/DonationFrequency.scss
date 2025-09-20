@@ -31,7 +31,8 @@
                     color: #bfbfbf;
                     transition: var(--transition);
                     cursor: pointer;
-                    &:hover {
+                    &:hover,
+                    &:focus {
                         box-shadow: inset 0 0 0 3px rgba(40,40,40,1);
                         color: var(--light-gray);
                     }
@@ -63,7 +64,6 @@
                 border: none;
             }
         }
-        
         .DonationFrequency__text-descr {
             margin-top: 40px;
             max-width: 510px;
@@ -73,6 +73,9 @@
             line-height: 128%;
             letter-spacing: -0.02em;
             color: var(--light-gray);
+        }
+        .link {
+            text-decoration: underline;
         }
     }
 }

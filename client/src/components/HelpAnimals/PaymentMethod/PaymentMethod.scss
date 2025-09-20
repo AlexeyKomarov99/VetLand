@@ -1,0 +1,54 @@
+@import '../../../App.css';
+
+.PaymentMethod {
+    .PaymentMethod__content {
+        display: grid;
+        grid-template-columns: 200px 200px;
+        gap: 0.625rem;
+        .PaymentMethod__payment-text,
+        .PaymentMethod__btn {
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            line-height: 1.2;
+            font-weight: 600;
+            border-radius: var(--border-radius-medium);
+            letter-spacing: -0.02em;
+            box-shadow: inset 0 0 0 1px rgba(40,40,40,0.3);
+            color: var(--dark-gray);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .PaymentMethod__payment-text {
+            &:hover {
+                box-shadow: inset 0 0 0 3px rgba(40,40,40,1);
+                color: var(--light-gray);
+            }
+        }
+        .active {
+            color: var(--dark-gray);
+            box-shadow: inset 0 0 0 3px rgba(40,40,40,1);
+        }
+        .PaymentMethod__btn {
+            background: var(--radial-gradient-red-orange);
+            &:hover {
+                box-shadow: 2px 4px 10px rgba(40,40,40,0.3);
+            }
+            .PaymentMethod__btn-text {
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 1.35;
+                letter-spacing: -0.1;
+                color: var(--white);
+                border: none;
+            }
+        }
+        .PaymentMethod__btn--disabled {
+            opacity: 0.5;
+            cursor: not-allowed !important;
+            pointer-events: none;
+        }
+    }
+}

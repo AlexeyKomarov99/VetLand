@@ -22,14 +22,15 @@ const HelpAnimals = () => {
     email: donationForm ? donationForm?.email : '',
     frequencyDonations: 'Ежемесячно',
     donationAmount: donationForm ? donationForm?.donationAmount : '1000',
-    paymentMethod: ''
+    paymentMethod: '',
+    displayRatingDonations: false
   })
-
   const [currentSection, setCurrentSection] = useState('sum');
   const [amountStatus, setAmountStatus] = useState(false);
   const [frequencyStatus, setFrequencyStatus] = useState(false);
   const [userDataStatus, setUserDataStatus] = useState(false);
   const [paymentMethodStatus, setPaymentMethodStatus] = useState(false);
+  const [error, setError] = useState({});
 
   // Переключение секций
   const toggleSection = (sectionName) => {
@@ -60,8 +61,6 @@ const HelpAnimals = () => {
       setPaymentMethodStatus(true);
     }
   }
-
-  console.log(donationForm);
 
   return (
     <div className='HelpAnimals'>
@@ -97,9 +96,24 @@ const HelpAnimals = () => {
                 />}
               {currentSection === 'user-data' && 
                 <DonationUserData 
+                  userDonationRequest={userDonationRequest}
+                  error={error}
+                  setCurrentSection={setCurrentSection}
+                  setUserDataStatus={setUserDataStatus}
+                  setPaymentMethodStatus={setPaymentMethodStatus}
+                  setUserDonationRequest={setUserDonationRequest}
+                  setError={setError}
                 />}
               {currentSection === 'payment-method' && 
-                <PaymentMethod 
+                <PaymentMethod
+                  userDonationRequest={userDonationRequest}
+                  setUserDonationRequest={setUserDonationRequest}
+                  setCurrentSection={setCurrentSection}
+                  setAmountStatus={setAmountStatus}
+                  setFrequencyStatus={setFrequencyStatus}
+                  setUserDataStatus={setUserDataStatus}
+                  setPaymentMethodStatus={setPaymentMethodStatus}
+                  setError={setError}
                 />}
             </div>
           </div>

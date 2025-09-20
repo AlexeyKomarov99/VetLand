@@ -52,7 +52,7 @@ const DonationFrequency = ({
         </div>
         
         <div className="DonationFrequency__text-descr">
-          При выборе ежемесячного пожертвования указанная вами сумма будет автоматически списываться каждый месяц. Отменить регулярный платеж можно в любой момент, перейдя по <a href='https://vet.land/cancel-payment' target="_blank">ссылке</a>.
+          При выборе ежемесячного пожертвования указанная вами сумма будет автоматически списываться каждый месяц. Отменить регулярный платеж можно в любой момент, перейдя по <a className='DonationFrequency__text-descr link' href='https://vet.land/cancel-payment' target="_blank">ссылке</a>.
         </div>
 
       </div>
