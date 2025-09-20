@@ -80,5 +80,5 @@ export const routes = [
         linkName: '',
         titlePage: '',
         descr: <></>
-    }
+    },
 ]
