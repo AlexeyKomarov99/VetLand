@@ -9,20 +9,23 @@ import AnimalTreatment from '../../components/TitlePage/AnimalTreatment/AnimalTr
 import Connect from '../../components/TitlePage/Connect/Connect';
 import PurposeFund from '../../components/TitlePage/PurposeFund/PurposeFund';
 import HowTakeHome from '../../components/TitlePage/HowTakeHome/HowTakeHome';
-import HowCanHelp from '../../components/TitlePage/HowCanHelpFund/HowCanHelpFund';
+import HowCanHelpFund from '../../components/TitlePage/HowCanHelpFund/HowCanHelpFund';
+//===== hooks =====//
+import { useScrollObserver } from '../../hooks/useScrollObserver';
 
 const TitlePage = () => {
-  
+  useScrollObserver();
+
   return (
     <div className="TitlePage">
-      <Banner />
-      <ReadyGoHome />
-      <DogVideo />
-      <AnimalTreatment />
-      <Connect />
-      <PurposeFund />
-      <HowTakeHome />
-      <HowCanHelp />
+      <Banner id="Banner" />
+      <ReadyGoHome id="ReadyGoHome" />
+      <DogVideo id="DogVideo" />
+      <AnimalTreatment id="AnimalTreatment" />
+      <Connect id="Connect" />
+      <PurposeFund id="PurposeFund" />
+      <HowTakeHome id="HowTakeHome" />
+      <HowCanHelpFund id="HowCanHelpFund" />
     </div>
   )
 }

@@ -6,9 +6,15 @@ import { Link } from 'react-router-dom';
 import PhotoCat from '../../../assets/background/connect-cat.png';
 import { BsArrowRightCircle as ArrowRightCircleIcon } from "react-icons/bs";
 
-const Connect = () => {
+const Connect = ({
+  id
+}) => {
   return (
-    <section className="Connect">
+    <section 
+      id={id}
+      className="Connect"
+      data-header-theme="dark"
+    >
       <div className="Connect__wrapper">
         <div className="Connect__container">
           <div className="Connect__content">

@@ -6,9 +6,14 @@ import { Link } from 'react-router-dom';
 import SmilingDogVideo from '../../../assets/video/smiling-dog.mp4';
 
 
-const DogVideo = () => {
+const DogVideo = ({
+  id
+}) => {
   return (
-    <section className="DogVideo">
+    <section 
+      id={id}
+      className="DogVideo"
+    >
       <div className="DogVideo__wrapper">
         <div className="DogVideo__container">
           <div className="DogVideo__content">

@@ -2,14 +2,20 @@ import React, {useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 //===== assets =====//
 import './App.css';
-
-//===== Компоненты =====//
-import Header from './components/Common/Header/Header';
+//===== pages =====//
+import TitlePage from './pages/TitlePage/TitlePage';
+import HowTakeHome from './pages/HowTakeHome/HowTakeHome';
+import Animals from './pages/Animals/Animals';
 import AboutUs from './pages/AboutUs/AboutUs';
-import AlreadyHome from './pages/AlreadyHome/AlreadyHome'; // Уже дома
-import Animals from './pages/Animals/Animals'; // Животные
-import HelpAnimals from './pages/HelpAnimals/HelpAnimals'; // Помощь животным
-import Profile from './pages/Profile/Profile/Profile'; // Профиль
+import AlreadyHome from './pages/AlreadyHome/AlreadyHome';
+import HelpAnimals from './pages/HelpAnimals/HelpAnimals';
+import Profile from './pages/Profile/Profile/Profile';
+import RecoverPassword from './pages/RecoverPassword/RecoverPassword';
+import TakeHomeAlgorithm from './pages/TakeHomeAlgorithm/TakeHomeAlgorithm';
+import AnimalInfo from './pages/AnimalInfo/AnimalInfo';
+//===== components =====//
+import Header from './components/Common/Header/Header';
+import Footer from './components/Common/Footer/Footer';
 //=== Вложенные страницы раздела "Профиль" ===//
 import AnimalInfoShelter from './pages/Profile/ProfilePages/AnimalInfoShelter/AnimalInfoShelter';
 import AnimalAdoptedInfo from './pages/Profile/ProfilePages/AnimalAdoptedInfo/AnimalAdoptedInfo';
@@ -22,19 +28,10 @@ import UserProfiles from './pages/Profile/ProfilePages/UserProfiles/UserProfiles
 import Volunteering from './pages/Profile/ProfilePages/Volunteering/Volunteering';
 import MedicalRecords from './pages/Profile/ProfilePages/MedicalRecords/MedicalRecords';
 import UserAdoptedAnimal from './pages/Profile/ProfilePages/UserAdoptedAnimal/UserAdoptedAnimal';
-
-//=== = ===//
-import TitlePage from './pages/TitlePage/TitlePage'; // Титульная страница
-import HowTakeHome from './pages/HowTakeHome/HowTakeHome'; // Анкета забрать домой
-
-
-import RecoverPassword from './pages/RecoverPassword/RecoverPassword'; // Восстановление пароля
-import TakeHomeAlgorithm from './pages/TakeHomeAlgorithm/TakeHomeAlgorithm'; // Алгоритм как забрать домой
-import AnimalInfo from './pages/AnimalInfo/AnimalInfo';
-import Footer from './components/Common/Footer/Footer';
+//===== context =====//
+import { ScrollProvider } from './contexts/ScrollContext';
 
 const AppContent = () => {
-
   // Получаем информацию о текущем маршруте
   const location = useLocation();
   // Определяем нужно ли показывать Header и Footer
@@ -110,9 +107,11 @@ const AppContent = () => {
 const App = () => {
   return (
     <div className='App'>
-      <Router>
-        <AppContent />
-      </Router>
+      <ScrollProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </ScrollProvider>
     </div>
   )
 }

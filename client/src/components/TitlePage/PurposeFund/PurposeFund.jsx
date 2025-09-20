@@ -8,9 +8,15 @@ import DogWithBoyPhoto from '../../../assets/photos/dog-with-boy.jpg';
 import GirlWithCatPhoto from '../../../assets/photos/girl-with-cat.jpg';
 import DogOnBedPhoto from '../../../assets/photos/dog-on-bed.jpg';
 
-const PurposeFund = () => {
+const PurposeFund = ({
+  id
+}) => {
   return (
-    <section className="PurposeFund">
+    <section 
+      id={id}
+      className="PurposeFund"
+      data-header-theme="dark"
+    >
       <div className="PurposeFund__wrapper">
         <div className="PurposeFund__container">
           <div className="PurposeFund__content">

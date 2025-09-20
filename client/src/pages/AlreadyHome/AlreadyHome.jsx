@@ -15,7 +15,7 @@ const AlreadyHome = () => {
   const { filteredAnimals, filters, updateFilter, clearFilters } = useAnimalFilters(animals);
 
   return (
-    <div className='AlreadyHome'>
+    <div className='AlreadyHome' data-header-theme="dark">
       <InternalNavbar />
       <FiltersGroup 
         filters={filters}

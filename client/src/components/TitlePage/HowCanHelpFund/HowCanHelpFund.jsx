@@ -10,9 +10,14 @@ import { IoLogoTwitter as TwitterIcon } from "react-icons/io5";
 import { FaOdnoklassniki as OdnoklassnikiIcon } from "react-icons/fa6";
 import { FaLink as LinkIcon } from "react-icons/fa";
 
-const HowCanHelpFund = () => {
+const HowCanHelpFund = ({
+  id
+}) => {
   return (
-    <section className="HowCanHelpFund">
+    <section 
+      id={id}
+      className="HowCanHelpFund"
+    >
       <div className="HowCanHelpFund__wrapper">
         <div className="HowCanHelpFund__container">
           <div className="HowCanHelpFund__content">

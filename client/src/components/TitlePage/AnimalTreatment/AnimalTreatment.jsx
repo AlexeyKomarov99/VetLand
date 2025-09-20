@@ -13,9 +13,15 @@ const animalInfoTest = [
   {id: 4, name: 'Мухтар', age: 'Почти 7'}
 ]
 
-const AnimalTreatment = () => {
+const AnimalTreatment = ({
+  id
+}) => {
   return (
-    <section className="AnimalTreatment">
+    <section 
+      id={id}
+      className="AnimalTreatment"
+      data-header-theme="dark"
+    >
       <div className="AnimalTreatment__wrapper">
         <div className="AnimalTreatment__container">
           <div className="AnimalTreatment__content">

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from 'react-modal';
 import {useNavigate} from 'react-router-dom';
 
@@ -25,6 +25,15 @@ const Authentication = ({windowAuthentication, closeWindowAuthentication}) => {
         navigate('/recover-password');
         closeWindowAuthentication();
     }
+
+    useEffect(() => {
+        if (windowAuthentication) {
+            document.body.classList.add('body-no-scroll');
+            return () => {
+                document.body.classList.remove('body-no-scroll');
+            };
+        }
+    }, [windowAuthentication]);
 
     return (
     <Modal

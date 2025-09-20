@@ -7,16 +7,11 @@ import './ReadyGoHome.scss';
 import { BsArrowRightCircle as ArrowRightCircleIcon } from "react-icons/bs";
 import PhotoDog from '../../../assets/dog.jpg';
 
-const ReadyGoHome = () => {
+const ReadyGoHome = ({
+  id
+}) => {
 
   const { data: animals, isLoading, isError, error } = useGetRandomAnimalsQuery(18);
-  
-  console.log('Состояние запроса:', {
-    isLoading,
-    isError, 
-    error,
-    animals
-  });
 
   // Функция для получения первой фотографии животного
   const getFirstAnimalPhoto = (animal) => {
@@ -103,7 +98,11 @@ const ReadyGoHome = () => {
   const gridData = transformAnimalsToGridData(animals);
 
   return (
-    <section className="ReadyGoHome">
+    <section 
+      id={id}
+      className="ReadyGoHome"
+      data-header-theme="dark"
+    >
       <div className="ReadyGoHome__wrapper">
         <div className="ReadyGoHome__container">
           <div className="ReadyGoHome__content">

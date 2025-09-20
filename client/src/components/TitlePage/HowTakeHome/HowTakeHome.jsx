@@ -5,9 +5,15 @@ import './HowTakeHome.scss';
 import { Link } from 'react-router-dom';
 import {cardsContent} from './data';
 
-const HowTakeHome = () => {
+const HowTakeHome = ({
+  id
+}) => {
   return (
-    <section className="HowTakeHome">
+    <section 
+      id={id}
+      className="HowTakeHome"
+      data-header-theme="dark"
+    >
       <div className="HowTakeHome__wrapper">
         <div className="HowTakeHome__container">
           <div className="HowTakeHome__content">
