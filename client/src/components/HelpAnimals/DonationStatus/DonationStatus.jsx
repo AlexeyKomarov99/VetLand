@@ -1,4 +1,3 @@
-// DonationStatus.js
 import React from 'react';
 import './DonationStatus.scss';
 import { statuses } from './data';
@@ -7,10 +6,6 @@ const DonationStatus = ({
     userDonationRequest,
     currentSection,
     toggleSection,
-    amountStatus,
-    frequencyStatus,
-    userDataStatus,
-    paymentMethodStatus
 }) => {
     
     const getStatusClass = (section) => {

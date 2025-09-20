@@ -26,10 +26,6 @@ const HelpAnimals = () => {
     displayRatingDonations: false
   })
   const [currentSection, setCurrentSection] = useState('sum');
-  const [amountStatus, setAmountStatus] = useState(false);
-  const [frequencyStatus, setFrequencyStatus] = useState(false);
-  const [userDataStatus, setUserDataStatus] = useState(false);
-  const [paymentMethodStatus, setPaymentMethodStatus] = useState(false);
   const [error, setError] = useState({});
 
   // Переключение секций
@@ -37,28 +33,12 @@ const HelpAnimals = () => {
     console.log(sectionName);
     if(sectionName === 'sum') {
       setCurrentSection('sum');
-      setAmountStatus(true);
-      setFrequencyStatus(false);
-      setUserDataStatus(false);
-      setPaymentMethodStatus(false);
     } else if(sectionName === 'frequency') {
       setCurrentSection('frequency');
-      setAmountStatus(false);
-      setFrequencyStatus(true);
-      setUserDataStatus(false);
-      setPaymentMethodStatus(false);
     } else if(sectionName === 'user-data') {
       setCurrentSection('user-data');
-      setAmountStatus(false);
-      setFrequencyStatus(false);
-      setUserDataStatus(true);
-      setPaymentMethodStatus(false);
     } else {
       setCurrentSection('payment-method');
-      setAmountStatus(false);
-      setFrequencyStatus(false);
-      setUserDataStatus(false);
-      setPaymentMethodStatus(true);
     }
   }
 
@@ -84,13 +64,10 @@ const HelpAnimals = () => {
                   userDonationRequest={userDonationRequest}
                   setUserDonationRequest={setUserDonationRequest}
                   setCurrentSection={setCurrentSection}
-                  setAmountStatus={setAmountStatus}
                 />}
               {currentSection === 'frequency' && 
                 <DonationFrequency
-                  setAmountStatus={setAmountStatus}
                   setCurrentSection={setCurrentSection}
-                  setUserDataStatus={setUserDataStatus}
                   userDonationRequest={userDonationRequest}
                   setUserDonationRequest={setUserDonationRequest}
                 />}
@@ -99,8 +76,6 @@ const HelpAnimals = () => {
                   userDonationRequest={userDonationRequest}
                   error={error}
                   setCurrentSection={setCurrentSection}
-                  setUserDataStatus={setUserDataStatus}
-                  setPaymentMethodStatus={setPaymentMethodStatus}
                   setUserDonationRequest={setUserDonationRequest}
                   setError={setError}
                 />}
@@ -109,10 +84,6 @@ const HelpAnimals = () => {
                   userDonationRequest={userDonationRequest}
                   setUserDonationRequest={setUserDonationRequest}
                   setCurrentSection={setCurrentSection}
-                  setAmountStatus={setAmountStatus}
-                  setFrequencyStatus={setFrequencyStatus}
-                  setUserDataStatus={setUserDataStatus}
-                  setPaymentMethodStatus={setPaymentMethodStatus}
                   setError={setError}
                 />}
             </div>

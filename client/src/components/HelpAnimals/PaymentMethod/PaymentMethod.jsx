@@ -7,10 +7,6 @@ const PaymentMethod = ({
   userDonationRequest,
   setUserDonationRequest,
   setCurrentSection,
-  setAmountStatus,
-  setFrequencyStatus,
-  setUserDataStatus,
-  setPaymentMethodStatus,
   setError
 }) => {
   const [isPaymentMethod, setIsPaymentMethod] = useState(false);
@@ -42,10 +38,6 @@ const PaymentMethod = ({
       displayRatingDonations: false
     });
     setCurrentSection('sum');
-    setAmountStatus(false);
-    setFrequencyStatus(false);
-    setUserDataStatus(false);
-    setPaymentMethodStatus(false);
     setError({});
   }
 

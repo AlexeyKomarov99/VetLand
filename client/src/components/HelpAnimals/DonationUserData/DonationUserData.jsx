@@ -10,8 +10,6 @@ const DonationUserData = ({
   userDonationRequest,
   error,
   setCurrentSection,
-  setUserDataStatus,
-  setPaymentMethodStatus,
   setUserDonationRequest,
   setError
 }) => {
@@ -76,8 +74,6 @@ const DonationUserData = ({
   const nextSection = () => {
     if (validateForm()) {
       setCurrentSection('payment-method');
-      setUserDataStatus(false);
-      setPaymentMethodStatus(true);
     }
   }
 

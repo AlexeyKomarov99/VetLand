@@ -4,10 +4,8 @@ import { frequencyList } from './data';
 
 const DonationFrequency = ({
   setCurrentSection,
-  setUserDataStatus,
   userDonationRequest,
   setUserDonationRequest,
-  setAmountStatus
 }) => {
 
   const handleClickFrequency = (frequency) => {
@@ -20,8 +18,6 @@ const DonationFrequency = ({
   const nextSection = () => {
     if (Number(userDonationRequest.donationAmount) > 0 && userDonationRequest.donationAmount.trim() !== '') {
       setCurrentSection('user-data');
-      setUserDataStatus(true);
-      setAmountStatus(false);
     } else {
       return;
     }

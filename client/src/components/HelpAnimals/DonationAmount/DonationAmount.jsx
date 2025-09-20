@@ -7,7 +7,6 @@ const DonationAmount = ({
   userDonationRequest,
   setUserDonationRequest,
   setCurrentSection,
-  setAmountStatus
 }) => {
 
   const handleClickAmount = (amount) => {
@@ -37,7 +36,6 @@ const DonationAmount = ({
   const nextSection = () => {
     if (Number(userDonationRequest.donationAmount) > 0 && userDonationRequest.donationAmount.trim() !== '') {
       setCurrentSection('frequency');
-      setAmountStatus(true);
     } else {
       return;
     }
