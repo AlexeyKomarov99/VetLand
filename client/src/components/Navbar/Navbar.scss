@@ -2,7 +2,7 @@
 
 .Navbar {
     display: flex;
-
+    pointer-events: auto;
     .Navbar__Link {
         display: flex;
         align-items: center;
@@ -17,18 +17,6 @@
             margin-right: 0;
         }
 
-        &:hover {
-            .Navbar__Link-item {
-                color: transparent;
-                background-image: var(--radial-gradient-red-orange);
-                -webkit-background-clip: text;
-            }
-
-            .icon {
-                color: var(--red);
-            }
-        }
-
         .Navbar__Link-item {
             color: var(--white);
             transition: background-image 0.3s, color 0.3s;
@@ -37,6 +25,19 @@
             font-weight: 500;
             line-height: 14px;
             text-transform: uppercase;
+        }
+
+        &:hover {
+            .Navbar__Link-item {
+                // color: transparent;
+                // background-image: var(--radial-gradient-red-orange);
+                // -webkit-background-clip: text;
+                // background-clip: text;
+                color: var(--red) !important;
+            }
+            .icon {
+                color: var(--red) !important;
+            }
         }
         
         .icon {
