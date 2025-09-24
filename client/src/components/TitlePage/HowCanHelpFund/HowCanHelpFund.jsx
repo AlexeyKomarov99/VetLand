@@ -63,7 +63,7 @@ const HowCanHelpFund = ({
 
                     <Link 
                       className="HowCanHelpFund__card-item card-transform"
-                      to='/help-animals'
+                      to='/help-us'
                     >
                       <div className="HowCanHelpFund__card-header">Помочь фонду</div>
                       <div className="HowCanHelpFund__card-footer">

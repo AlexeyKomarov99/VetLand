@@ -71,7 +71,10 @@ const Banner = ({
                 <div className="Banner__content-right-group">
                   
                   <div className="Banner__content-right-group-cards">
-                    <div className="Banner__content-right-item">
+                    <Link 
+                      to='/how-take-home'
+                      className="Banner__content-right-item"
+                    >
                       <div className="Banner__content-right-left-part">
                         <h3 className="Banner__content-right-item-title">Как забрать домой?</h3>
                         <span className="Banner__content-right-steps">6 шагов</span>
@@ -79,7 +82,7 @@ const Banner = ({
                       <div className="Banner__content-right-right-part">
                         <ArrowRightCircleIcon className='icon' />
                       </div>
-                    </div>
+                    </Link>
                     
                     <div className="Banner__content-right-item">
                       <div className="Banner__content-right-left-part">

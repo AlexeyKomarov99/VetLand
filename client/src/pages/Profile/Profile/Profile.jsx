@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Outlet } from 'react-router-dom';
-
-//===== Ресурсы =====//
+//===== assets =====//
 import './Profile.scss';
 
 //===== Компоненты =====//
@@ -19,7 +18,7 @@ const Profile = () => {
             {/* Содержимое контента */}
             <Outlet className='Profile__content-info' />
 
-            {/* Тестовая панель навигации */}
+            {/* Тестовая панель навигации тест */}
             <PersonalAccountNavigation className='Profile__navbar' />
 
           </div>
